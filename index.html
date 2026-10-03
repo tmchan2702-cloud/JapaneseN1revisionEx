@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f3ec" />
+    <title>ことば | 日文 N1 溫習</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="主要導覽">
+        <a class="brand" href="#study" aria-label="ことば首頁">
+          <span class="brand-mark" aria-hidden="true">言</span>
+          <span class="brand-copy"><strong>ことば</strong><small>JAPANESE NOTES</small></span>
+        </a>
+
+        <div class="nav-label">學習空間</div>
+        <nav class="primary-nav">
+          <button class="nav-item active" type="button" data-view="study">
+            <span class="nav-icon" aria-hidden="true">◉</span>今日複習
+            <span class="nav-count" id="nav-review-count">12</span>
+          </button>
+          <button class="nav-item" type="button" data-view="library">
+            <span class="nav-icon" aria-hidden="true">▤</span>單字庫
+          </button>
+          <button class="nav-item" type="button" data-view="quiz">
+            <span class="nav-icon" aria-hidden="true">✳</span>快速測驗
+          </button>
+          <button class="nav-item" type="button" data-view="exercises">
+            <span class="nav-icon" aria-hidden="true">▧</span>練習題
+          </button>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="note-index">今日一句 · 01</span>
+          <p>継続は力なり。</p>
+          <span class="note-translation">持之以恆就是力量。</span>
+        </div>
+
+        <div class="sidebar-bottom">
+          <span class="level-dot"></span>
+          <span><strong>JLPT N1</strong><small>進階學習者</small></span>
+          <span class="more-mark" aria-hidden="true">···</span>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>我的學習</span><span aria-hidden="true">/</span><strong id="breadcrumb-current">今日複習</strong></div>
+          <div class="topbar-meta"><span class="today-date" id="today-date"></span><span class="streak"><span aria-hidden="true">✦</span> <strong id="streak-count">0</strong> 天連續</span></div>
+        </header>
+
+        <section class="view active" id="study-view" aria-labelledby="study-title">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span>FRIDAY STUDY SESSION</p>
+              <h1 id="study-title">每天一點，<em>日文更近一點。</em></h1>
+              <p class="heading-subtitle">把今天的 12 個單字，變成明天的直覺。</p>
+            </div>
+            <div class="heading-stamp" aria-hidden="true"><span>学</span><small>まなぶ</small></div>
+          </div>
+
+          <section class="daily-progress" aria-label="每日學習進度">
+            <div class="progress-copy"><strong>今日學習</strong><span><b id="reviewed-count">0</b> / 12 個單字</span></div>
+            <div class="progress-track" role="progressbar" aria-label="每日學習進度" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" id="daily-progress-bar"><span id="daily-progress-fill"></span></div>
+            <span class="progress-percent" id="progress-percent">0%</span>
+          </section>
+
+          <div class="study-layout">
+            <section class="study-column" aria-label="單字卡">
+              <div class="section-topline">
+                <div><span class="section-kicker">VOCABULARY</span><span class="word-category" id="word-category">抽象概念</span></div>
+                <span class="card-counter"><span id="card-number">01</span><span class="counter-slash">/</span><span id="card-total">12</span></span>
+              </div>
+
+              <button class="flashcard" id="flashcard" type="button" aria-label="翻開單字卡查看解釋">
+                <span class="card-topline"><span class="card-label">WORD OF THE DAY</span><span class="sound-label">N1 · 單字</span></span>
+                <span class="word-kanji" id="word-kanji">見識</span>
+                <span class="word-reading" id="word-reading">けんしき</span>
+                <span class="card-divider"></span>
+                <span class="word-hint" id="word-hint">點擊卡片，查看意思與例句 <span aria-hidden="true">↗</span></span>
+                <span class="word-detail" id="word-detail" hidden>
+                  <span class="word-meaning" id="word-meaning"></span>
+                  <span class="word-example" id="word-example"></span>
+                  <span class="word-example-translation" id="word-example-translation"></span>
+                </span>
+                <span class="card-watermark" aria-hidden="true">語</span>
+              </button>
+
+              <div class="card-instruction"><span class="keyboard-hint">SPACE</span> 翻卡 <span class="instruction-dot">·</span> 看完後選擇熟悉程度</div>
+              <div class="answer-actions">
+                <button class="answer-button answer-again" id="again-button" type="button"><span class="answer-symbol" aria-hidden="true">↺</span><span><strong>再複習</strong><small>還不太熟</small></span><kbd>1</kbd></button>
+                <button class="answer-button answer-known" id="known-button" type="button"><span class="answer-symbol" aria-hidden="true">✓</span><span><strong>已掌握</strong><small>下次再見</small></span><kbd>2</kbd></button>
+              </div>
+
+              <div class="category-row" aria-label="單字分類">
+                <span>本次分類</span>
+                <button class="category-chip selected" type="button" data-category="全部">全部 <span>12</span></button>
+                <button class="category-chip" type="button" data-category="抽象概念">抽象概念</button>
+                <button class="category-chip" type="button" data-category="社會・文化">社會・文化</button>
+                <button class="category-chip" type="button" data-category="表達・行動">表達・行動</button>
+              </div>
+            </section>
+
+            <aside class="daily-aside">
+              <div class="aside-heading"><span>學習節奏</span><span class="aside-spark" aria-hidden="true">✳</span></div>
+              <div class="goal-number"><strong id="goal-count">0</strong><span> / 12</span></div>
+              <p class="goal-caption">個單字已完成</p>
+              <div class="goal-rule"><span id="goal-rule-fill"></span></div>
+              <p class="goal-message" id="goal-message">穩穩來，今天的練習從第一個字開始。</p>
+              <div class="aside-photo" role="img" aria-label="日本京都街道的日常風景">
+                <div class="photo-caption"><span>今日靈感</span><strong>言葉の力</strong><small>WORDS OPEN WORLDS</small></div>
+              </div>
+              <div class="session-meta"><span>本次練習</span><strong id="session-count">0 個字</strong></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="library-view" aria-labelledby="library-title" hidden>
+          <div class="page-heading compact-heading">
+            <div><p class="eyebrow"><span class="eyebrow-line"></span>YOUR COLLECTION</p><h1 id="library-title">單字，<em>慢慢收進心裡。</em></h1><p class="heading-subtitle">目前收錄的 N1 核心詞彙。</p></div>
+            <div class="heading-stamp library-stamp" aria-hidden="true"><span>辞</span><small>ことば</small></div>
+          </div>
+          <div class="library-toolbar"><span id="library-total">12 個單字</span><label class="search-box"><span aria-hidden="true">⌕</span><input id="library-search" type="search" placeholder="搜尋日文或中文" aria-label="搜尋單字" /></label></div>
+          <div class="word-table-wrap"><table class="word-table"><thead><tr><th>單字</th><th>讀音</th><th>意思</th><th>分類</th><th>狀態</th></tr></thead><tbody id="library-rows"></tbody></table></div>
+        </section>
+
+        <section class="view" id="quiz-view" aria-labelledby="quiz-title" hidden>
+          <div class="page-heading compact-heading">
+            <div><p class="eyebrow"><span class="eyebrow-line"></span>QUICK CHECK</p><h1 id="quiz-title">準備好了嗎？<em>試試看。</em></h1><p class="heading-subtitle">選出日文單字最接近的意思。</p></div>
+            <div class="heading-stamp quiz-stamp" aria-hidden="true"><span>問</span><small>クイズ</small></div>
+          </div>
+          <section class="quiz-panel" aria-live="polite">
+            <div class="quiz-progress"><span id="quiz-progress-label">第 1 題</span><span id="quiz-score-label">答對 0 題</span></div>
+            <h2 class="quiz-word" id="quiz-word">見識</h2>
+            <p class="quiz-reading" id="quiz-reading">けんしき</p>
+            <div class="quiz-options" id="quiz-options"></div>
+            <div class="quiz-feedback" id="quiz-feedback" aria-live="assertive"></div>
+            <button class="next-question" id="next-question" type="button" hidden>下一題 <span aria-hidden="true">→</span></button>
+          </section>
+        </section>
+
+        <section class="view" id="exercises-view" aria-labelledby="exercises-title" hidden>
+          <div class="page-heading compact-heading">
+            <div><p class="eyebrow"><span class="eyebrow-line"></span>STUDY LIBRARY</p><h1 id="exercises-title">挑一份練習，<em>開始複習。</em></h1><p class="heading-subtitle">集中管理 N1 語彙與其他學習項目。</p></div>
+            <div class="heading-stamp exercises-stamp" aria-hidden="true"><span>練</span><small>れんしゅう</small></div>
+          </div>
+
+          <section class="exercise-group" aria-labelledby="vocabulary-exercises-title">
+            <div class="exercise-group-heading"><div><span class="section-kicker">VOCABULARY</span><h2 id="vocabulary-exercises-title">語彙練習</h2></div><span>4 份練習</span></div>
+            <div class="exercise-grid">
+              <a class="exercise-link" href="N1語彙第1週いろいろ表現しよう練習問題.html"><span class="exercise-number">01</span><span class="exercise-copy"><strong>第一週・いろいろ表現しよう</strong><small>核心字彙特訓・50 題</small></span><span class="exercise-arrow" aria-hidden="true">↗</span></a>
+              <a class="exercise-link" href="N1語彙第2週いろいろ表現しよう練習問題.html"><span class="exercise-number">02</span><span class="exercise-copy"><strong>第二週・いろいろ表現しよう</strong><small>語彙特訓與生字速查卡片</small></span><span class="exercise-arrow" aria-hidden="true">↗</span></a>
+              <a class="exercise-link" href="N1語彙第3週副詞練習問題.html"><span class="exercise-number">03</span><span class="exercise-copy"><strong>第三週・副詞</strong><small>副詞綜合實戰・50 題</small></span><span class="exercise-arrow" aria-hidden="true">↗</span></a>
+              <a class="exercise-link" href="N1語彙第4週漢字練習問題.html"><span class="exercise-number">04</span><span class="exercise-copy"><strong>第四週・漢字</strong><small>漢字語彙全面解析・50 題</small></span><span class="exercise-arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </section>
+
+          <section class="exercise-group upcoming-group" aria-labelledby="upcoming-exercises-title">
+            <div class="exercise-group-heading"><div><span class="section-kicker">COMING NEXT</span><h2 id="upcoming-exercises-title">其他練習</h2></div><span>持續新增</span></div>
+            <div class="upcoming-grid">
+              <div class="upcoming-item"><span class="upcoming-symbol" aria-hidden="true">文</span><span><strong>文法</strong><small>準備中</small></span></div>
+              <div class="upcoming-item"><span class="upcoming-symbol" aria-hidden="true">読</span><span><strong>閱讀理解</strong><small>準備中</small></span></div>
+              <div class="upcoming-item"><span class="upcoming-symbol" aria-hidden="true">聴</span><span><strong>聆聽</strong><small>準備中</small></span></div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
