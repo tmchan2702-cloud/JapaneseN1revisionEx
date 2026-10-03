@@ -1,312 +1,298 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N1 漢字語彙・50題全面解析＆生字速查練習系統</title>
-    <style>
-        :root {
-            --primary-color: #4f46e5;
-            --primary-hover: #4338ca;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #1e293b;
-            --border-color: #cbd5e1;
-            --success-color: #16a34a;
-            --error-color: #dc2626;
-            --badge-bg: #e0e7ff;
-            --badge-text: #3730a3;
-        }
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-        h1 {
-            text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 1.8rem;
-        }
-        .subtitle {
-            text-align: center;
-            color: #64748b;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        /* 頂部切換按鈕區 (測驗 vs 生字速查卡片面板) */
-        .mode-switch {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        .switch-btn {
-            background: #e2e8f0;
-            color: #475569;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.2s;
-        }
-        .switch-btn.active {
-            background: var(--primary-color);
-            color: white;
-        }
-        
-        /* 生字速查卡片面板樣式 */
-        #vocab-panel {
-            display: none;
-            margin-bottom: 30px;
-        }
-        .day-section {
-            margin-bottom: 25px;
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-        }
-        .day-title {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #e0e7ff;
-            padding-bottom: 5px;
-        }
-        .vocab-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 12px;
-        }
-        .vocab-card {
-            background: white;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 12px 15px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .vocab-word {
-            font-weight: bold;
-            color: #0f172a;
-            font-size: 1.05rem;
-            margin-bottom: 4px;
-        }
-        .vocab-meaning {
-            font-size: 0.9rem;
-            color: #475569;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N1 漢字語彙・第4週練習問題｜50 題實戰特訓</title>
+  <meta name="description" content="日本語能力試驗 N1 漢字語彙第 4 週：全句翻譯、即時評分、選項解析與生字速查卡 50 題實戰特訓。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='4' y='4' width='56' height='56' rx='10' fill='%23b8432f'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23f5efe3' font-family='serif'>漢</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5efe3;
+      --paper: #fdfaf3;
+      --paper-sub: #f2ebd9;
+      --ink: #2c241d;
+      --ink-muted: #73675c;
+      --primary: #b8432f;
+      --primary-hover: #9c3523;
+      --accent: #2e5a4c;
+      --ok: #2e5a4c;
+      --ng: #b8432f;
+      --border: #dfd4be;
+      --shadow: rgba(44, 36, 29, 0.06);
+    }
 
-        /* 題號快速導航列 */
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            gap: 6px;
-            margin-bottom: 25px;
-            background: #f1f5f9;
-            padding: 12px;
-            border-radius: 10px;
-        }
-        .nav-btn {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 6px 0;
-            font-size: 0.85rem;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.2s;
-        }
-        .nav-btn:hover {
-            background: #e2e8f0;
-        }
-        .nav-btn.answered {
-            background: #c7d2fe;
-            border-color: #818cf8;
-            color: #312e81;
-        }
-        .nav-btn.current {
-            border-color: var(--primary-color);
-            background: var(--primary-color);
-            color: white;
-        }
-        
-        /* 題目卡片 */
-        .question-card {
-            margin-bottom: 25px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 25px;
-        }
-        .question-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-        .question-badge {
-            background: var(--badge-bg);
-            color: var(--badge-text);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        .question-title {
-            font-size: 1.15rem;
-            font-weight: bold;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .option-item {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .option-item:hover {
-            background: #f1f5f9;
-            border-color: #94a3b8;
-        }
-        .option-item.selected {
-            background: #e0e7ff;
-            border-color: var(--primary-color);
-            font-weight: 500;
-        }
-        .option-item.correct {
-            background: #dcfce7 !important;
-            border-color: var(--success-color) !important;
-            color: #166534;
-        }
-        .option-item.incorrect {
-            background: #fee2e2 !important;
-            border-color: var(--error-color) !important;
-            color: #991b1b;
-        }
-        .explanation-box {
-            margin-top: 15px;
-            padding: 15px;
-            background: #fdf4ff;
-            border-left: 4px solid #c084fc;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            color: #4a044e;
-            display: none;
-        }
-        .explanation-box p {
-            margin: 6px 0;
-        }
-        .translation {
-            font-weight: bold;
-            color: #6b21a8;
-            margin-bottom: 8px;
-        }
-        /* 控制按鈕區 */
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-        .btn:hover {
-            background: var(--primary-hover);
-        }
-        .btn:disabled {
-            background: #cbd5e1;
-            cursor: not-allowed;
-        }
-        /* 成績結算畫面 */
-        #result-screen {
-            text-align: center;
-            display: none;
-            padding: 40px 0;
-        }
-        #result-screen h2 {
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        #score-display {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #0f172a;
-            margin: 20px 0;
-        }
-    </style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* 質感雜訊紋理 */
+    .grain {
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* 頂部 masthead */
+    .masthead {
+      background-color: var(--paper);
+      border-bottom: 2px solid var(--border);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .masthead-vertical {
+      position: absolute;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: "Shippori Mincho B1", serif;
+      font-size: 6rem;
+      color: var(--border);
+      opacity: 0.4;
+      user-select: none;
+      letter-spacing: 0.5rem;
+      writing-mode: vertical-rl;
+    }
+
+    .masthead-text { position: relative; z-index: 2; max-width: 700px; }
+    .eyebrow { font-size: 0.85rem; letter-spacing: 0.15em; color: var(--primary); font-weight: 700; margin-bottom: 0.5text; text-transform: uppercase; }
+    h1 { font-family: "Shippori Mincho B1", serif; font-size: 2.2rem; font-weight: 800; color: var(--ink); margin-bottom: 0.75rem; display: flex; align-items: baseline; gap: 1rem; }
+    h1 .count { font-size: 1.2rem; color: var(--ink-muted); font-weight: 500; font-family: "Zen Kaku Gothic New", sans-serif; }
+    .lede { font-size: 1rem; color: var(--ink-muted); line-height: 1.6; }
+
+    /* 印章計分 */
+    .hanko {
+      width: 84px; height: 84px; border: 3px solid var(--primary);
+      border-radius: 50%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; color: var(--primary);
+      background: var(--paper); transform: rotate(-5deg);
+      box-shadow: 0 4px 12px rgba(184, 67, 47, 0.15);
+      position: relative; z-index: 2; flex-shrink: 0;
+    }
+    .hanko-score { font-family: "Shippori Mincho B1", serif; font-size: 2rem; font-weight: 800; line-height: 1; }
+    .hanko-label { font-size: 0.7rem; letter-spacing: 0.1em; font-weight: 700; }
+
+    /* 主佈局 */
+    .layout {
+      max-width: 1400px; width: 100%; margin: 2rem auto; padding: 0 1.5rem;
+      display: grid; grid-template-columns: 1fr 380px; gap: 2rem; flex: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      .masthead-vertical { display: none; }
+    }
+
+    /* 測驗舞台 */
+    .stage {
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem; box-shadow: 0 10px 30px var(--shadow);
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+
+    .stage-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .tag { background: var(--paper-sub); color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; border: 1px solid var(--border); }
+    .q-num { font-size: 0.9rem; color: var(--ink-muted); font-weight: 700; }
+
+    .progress { height: 6px; background: var(--paper-sub); border-radius: 3px; overflow: hidden; margin-bottom: 2rem; }
+    .progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.3s ease; }
+
+    .question { font-family: "Shippori Mincho B1", serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 2rem; line-height: 1.5; color: var(--ink); }
+
+    /* 選項清單 */
+    .options { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+    .option-btn {
+      background: var(--paper); border: 2px solid var(--border); border-radius: 12px;
+      padding: 1.1rem 1.5rem; font-size: 1.1rem; text-align: left; cursor: pointer;
+      font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 500; color: var(--ink);
+      transition: all 0.2s ease; display: flex; justify-content: space-between; align-items: center;
+    }
+    .option-btn:hover:not(:disabled) { border-color: var(--primary); background: var(--paper-sub); transform: translateY(-1px); }
+    .option-btn.correct { background: #eaf2ed !important; border-color: var(--ok) !important; color: var(--ok); font-weight: 700; }
+    .option-btn.incorrect { background: #faeaea !important; border-color: var(--ng) !important; color: var(--ng); }
+    .option-btn:disabled { cursor: default; }
+
+    /* 解析面板 */
+    .explanation { background: var(--paper-sub); border-left: 4px solid var(--primary); padding: 1.5rem; border-radius: 0 12px 12px 0; margin-top: 1.5rem; animation: fadeIn 0.3s ease; }
+    .verdict { font-family: "Shippori Mincho B1", serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; }
+    .verdict.ok { color: var(--ok); }
+    .verdict.ng { color: var(--ng); }
+    .explanation dt { font-weight: 700; color: var(--ink-muted); font-size: 0.85rem; margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .explanation dd { font-size: 1rem; line-height: 1.6; margin-top: 0.3rem; }
+    .notes { list-style: none; margin-top: 0.5rem; }
+    .notes li { position: relative; padding-left: 1.2rem; margin-bottom: 0.4rem; color: var(--ink-muted); }
+    .notes li::before { content: "•"; position: absolute; left: 0; color: var(--primary); }
+
+    /* 控制按鈕列 */
+    .controls { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: auto; }
+    .btn { background: var(--ink); color: var(--paper); border: none; padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.2s; font-family: "Zen Kaku Gothic New", sans-serif; }
+    .btn:hover { background: var(--primary); }
+    .btn.ghost { background: transparent; color: var(--ink-muted); border: 2px solid var(--border); }
+    .btn.ghost:hover { border-color: var(--ink); color: var(--ink); background: transparent; }
+    .btn.primary { background: var(--primary); color: #fff; }
+    .btn.primary:hover { background: var(--primary-hover); }
+    .kbd-hint { font-size: 0.8rem; color: var(--ink-muted); }
+
+    /* 側欄 */
+    .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+    .panel { background: var(--paper); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 30px var(--shadow); }
+    .panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+    .panel-head h2 { font-family: "Shippori Mincho B1", serif; font-size: 1.2rem; font-weight: 700; }
+    .panel-meta { font-size: 0.85rem; color: var(--ink-muted); font-weight: 700; }
+
+    /* 導航方格網格 */
+    .jump-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 1.2rem; }
+    .jump-btn { aspect-ratio: 1; background: var(--paper-sub); border: 1px solid var(--border); border-radius: 6px; font-weight: 700; font-size: 0.9rem; cursor: pointer; color: var(--ink); transition: all 0.2s; }
+    .jump-btn:hover { border-color: var(--primary); }
+    .jump-btn.ok { background: #eaf2ed; color: var(--ok); border-color: var(--ok); }
+    .jump-btn.ng { background: #faeaea; color: var(--ng); border-color: var(--ng); }
+    .jump-btn.cur { border: 2px solid var(--primary); box-shadow: 0 0 0 2px rgba(184,67,47,0.2); }
+
+    .legend { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--ink-muted); padding-top: 0.5rem; border-top: 1px dashed var(--border); margin-bottom: 1rem; }
+    .legend span { display: flex; align-items: center; gap: 4px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot.ok { background: var(--ok); }
+    .dot.ng { background: var(--ng); }
+    .dot.cur { background: var(--primary); }
+
+    .link-btn { width: 100%; background: transparent; border: 2px dashed var(--border); color: var(--ink-muted); padding: 0.7rem; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: "Zen Kaku Gothic New", sans-serif; }
+    .link-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--paper-sub); }
+
+    /* 生字速查卡 */
+    .vocab.panel { max-height: 520px; display: flex; flex-direction: column; }
+    .day-tabs { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 10px; scrollbar-width: thin; }
+    .day-tab { background: var(--paper-sub); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; cursor: pointer; white-space: nowrap; color: var(--ink-muted); }
+    .day-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .vocab-list { list-style: none; overflow-y: auto; flex: 1; padding-right: 4px; display: flex; flex-direction: column; gap: 8px; }
+    .vocab-item { background: var(--paper-sub); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); }
+    .vocab-word { font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 2px; }
+    .vocab-mean { font-size: 0.85rem; color: var(--ink-muted); }
+
+    /* 成績結算頁面 */
+    .results { text-align: center; padding: 2rem 1rem; }
+    .results h2 { font-family: "Shippori Mincho B1", serif; font-size: 2rem; margin-bottom: 1rem; }
+    .result-score { font-size: 3.5rem; font-weight: 800; font-family: "Shippori Mincho B1", serif; color: var(--primary); margin: 1.5rem 0; }
+    .result-score span { font-size: 1.5rem; color: var(--ink-muted); font-weight: 500; }
+    .result-comment { font-size: 1.1rem; color: var(--ink-muted); margin-bottom: 2rem; line-height: 1.6; }
+    .result-actions { display: flex; gap: 1rem; justify-content: center; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
 </head>
 <body>
+  <div class="grain" aria-hidden="true"></div>
 
-<div class="container">
-    <h1>第4週漢字語彙・50題全面解析＆生字速查練習系統</h1>
-    <div class="subtitle">涵蓋全句翻譯、即時評分、詳細選項解析、漢字平假名串字轉換、生字填充與每日速查卡片！</div>
-
-    <!-- 模式切換按鈕 -->
-    <div class="mode-switch">
-        <button class="switch-btn active" id="btnQuizMode" onclick="switchMode('quiz')">50題互動練習測驗</button>
-        <button class="switch-btn" id="btnVocabMode" onclick="switchMode('vocab')">生字速查卡片面板（1日目～6日目）</button>
+  <header class="masthead">
+    <div class="masthead-vertical" aria-hidden="true">第四週・漢字語彙</div>
+    <div class="masthead-text">
+      <p class="eyebrow">JLPT N1 語彙 ／ 第 4 週</p>
+      <h1>漢字語彙練習問題 <span class="count">五十題</span></h1>
+      <p class="lede">涵蓋全句翻譯、即時評分、詳細選項解析與生字速查卡。進度會自動儲存於本機瀏覽器中。</p>
     </div>
-
-    <!-- 生字速查卡片面板 -->
-    <div id="vocab-panel">
-        <div id="vocabContainer"></div>
+    <div class="hanko" id="hanko" aria-live="polite">
+      <span class="hanko-score" id="hanko-score">0</span>
+      <span class="hanko-label">正解</span>
     </div>
+  </header>
 
-    <!-- 測驗主畫面容器 -->
-    <div id="quiz-main-wrapper">
-        <!-- 快速導航方格 -->
-        <div class="nav-grid" id="navGrid"></div>
-
-        <!-- 測驗介面 -->
-        <div id="quiz-screen">
-            <div id="question-container"></div>
-            <div class="controls">
-                <button class="btn" id="prevBtn" onclick="prevQuestion()">上一題</button>
-                <span id="progressIndicator" style="font-weight: bold; color: #64748b;">1 / 50</span>
-                <button class="btn" id="nextBtn" onclick="nextQuestion()">下一題</button>
-            </div>
+  <main class="layout">
+    <!-- 題目區 -->
+    <section class="stage" id="stage" aria-label="測驗">
+      <div>
+        <div class="stage-top">
+          <span class="tag" id="q-tag">詞義理解</span>
+          <span class="q-num" id="q-num">第 1 題 ／ 共 50 題</span>
         </div>
+        <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress"></div></div>
 
-        <!-- 成績結算畫面 -->
-        <div id="result-screen">
-            <h2>測驗完成！</h2>
-            <p>您的最終得分為：</p>
-            <div id="score-display">0 / 50</div>
-            <p id="result-comment" style="margin-bottom: 25px; color: #475569;"></p>
-            <button class="btn" onclick="restartQuiz()">重新測驗</button>
+        <div class="question-card" id="question-card">
+          <p class="question" id="q-text" lang="ja"></p>
+          <div class="options" id="options" role="group" aria-label="選項"></div>
+          <div class="explanation" id="explanation" hidden>
+            <div class="verdict" id="verdict"></div>
+            <dl>
+              <dt>全句翻譯</dt>
+              <dd id="translation"></dd>
+              <dt>選項解析</dt>
+              <dd><ul class="notes" id="notes"></ul></dd>
+            </dl>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
 
-<script>
-// 第4週核心生字速查資料（完整擴充版）
+      <nav class="controls">
+        <button class="btn ghost" id="prev-btn" type="button">← 上一題</button>
+        <span class="kbd-hint">鍵盤：1–4 作答 ・ ←→ 切換</span>
+        <button class="btn primary" id="next-btn" type="button">下一題 →</button>
+      </nav>
+    </section>
+
+    <!-- 結果頁 -->
+    <section class="stage results" id="results" hidden aria-label="成績總結">
+      <div>
+        <p class="eyebrow">練習完成</p>
+        <h2>測驗結算總評</h2>
+        <div class="result-score"><strong id="result-correct">0</strong><span> ／ 50</span></div>
+        <p class="result-comment" id="result-comment"></p>
+        <div class="result-actions">
+          <button class="btn ghost" id="retry-wrong-btn" type="button">只重做答錯的題目</button>
+          <button class="btn primary" id="restart-btn" type="button">全部重新開始</button>
+        </div>
+      </div>
+      <div></div>
+    </section>
+
+    <!-- 側欄 -->
+    <aside class="sidebar">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>題目一覽</h2>
+          <span class="panel-meta" id="answered-count">已作答 0 ／ 50</span>
+        </div>
+        <div class="jump-grid" id="jump-grid"></div>
+        <div class="legend">
+          <span><i class="dot ok"></i>答對</span>
+          <span><i class="dot ng"></i>答錯</span>
+          <span><i class="dot cur"></i>目前</span>
+        </div>
+        <button class="link-btn" id="finish-btn" type="button">查看成績總結</button>
+      </div>
+
+      <div class="panel vocab">
+        <div class="panel-head">
+          <h2>生字速查卡</h2>
+          <span class="panel-meta">1日目〜6日目</span>
+        </div>
+        <div class="day-tabs" id="day-tabs" role="tablist"></div>
+        <ul class="vocab-list" id="vocab-list" lang="ja"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer style="text-align: center; padding: 2rem; color: var(--ink-muted); font-size: 0.85rem;">
+    N1 漢字語彙・第4週練習問題 ・ 作答紀錄僅保存於本機瀏覽器
+  </footer>
+
+  <script>
+    // 第4週核心生字速查資料（完整擴充版）
     const vocabData = [
         {
             day: "1日目（手部・心部・狀態基礎）",
@@ -521,970 +507,969 @@
         }
     ];
 
-    // 50題詳細題庫（涵蓋詞義理解、漢字平假名串字轉換、生字填充運用）
+    // 50題測驗題庫
     const quizData = [
-        {
-            type: "詞義理解",
-            q: "留学の（ ）は整っています。",
-            options: ["手引き", "手がかり", "手はず", "お手上げ"],
-            answer: 2,
-            translation: "留學的步驟（事先安排）已經準備好了。",
-            details: {
-                correct: "「手はず」意為事先安排、步驟、計劃，與「整う（準備就緒）」搭配最自然。",
-                wrong: [
-                    "「手引き」意為指引、手冊或嚮導。",
-                    "「手がかり」意為線索、頭緒。",
-                    "「お手上げ」意為束手無策、沒辦法了。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "その件については、（ ）がない。",
-            options: ["心当たり", "手引き", "下心", "心地"],
-            answer: 0,
-            translation: "關於那件事，我沒有頭緒（線索）。",
-            details: {
-                correct: "「心当たり」意為心裡有底、線索、頭緒，「〜がない」表示毫無頭緒。",
-                wrong: [
-                    "「手引き」意為指引或指南。",
-                    "「下心」意為居心、私心或暗中企圖。",
-                    "「心地」意為感覺、心情。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "あの人は優しそうに見えるが、実は（ ）がある。",
-            options: ["内心", "下心", "心中", "先手"],
-            answer: 1,
-            translation: "那個人看起來很溫柔，但其實心懷不軌（有企圖）。",
-            details: {
-                correct: "「下心」意為不可告人的企圖、居心或私心，符合「表面溫柔但私下有目的」的語境。",
-                wrong: [
-                    "「内心」意為內心、心裡，偏向客觀感受或想法。",
-                    "「心中」意為心境或殉情。",
-                    "「先手」意為先發制人、佔先機。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "都会を離れて、田舎で（ ）よく暮らす。",
-            options: ["行き心地", "住み心地", "寝心地", "着心地"],
-            answer: 1,
-            translation: "離開都市，在鄉下過著居住舒適的生活。",
-            details: {
-                correct: "「住み心地（すみごこち）」專門用來形容「居住環境的舒適感」。",
-                wrong: [
-                    "「行き心地」為不合規範的組合詞。",
-                    "「寝心地」指「睡覺（床鋪）的舒適感」。",
-                    "「着心地」指「穿衣服的舒適感（觸感）」。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "海外旅行の（ ）を読んで準備する。",
-            options: ["手引き", "手口", "手本", "手中"],
-            answer: 0,
-            translation: "閱讀海外旅行的指南（手冊）來做準備。",
-            details: {
-                correct: "「手引き」意為手冊、導引、入門書，旅行前閱讀的指南正合適。",
-                wrong: [
-                    "「手口」意為作案手法、犯罪手段。",
-                    "「手本」意為榜樣、字帖、模範。",
-                    "「手中」意為掌中、控制之中。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "警察は犯罪の（ ）をつかんだ。",
-            options: ["手際", "手元", "手口", "手本"],
-            answer: 2,
-            translation: "警方掌握了犯罪的作案手法（手口）。",
-            details: {
-                correct: "「手口」專指犯罪集團或歹徒作案的手法與手段。",
-                wrong: [
-                    "「手際」意為辦事的手法、效率。",
-                    "「手元」意為手頭、身邊。",
-                    "「手本」意為榜樣、範本。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "この料理は（ ）な材料で作れる。",
-            options: ["手近な", "手軽な", "手ごろな", "有力な"],
-            answer: 1,
-            translation: "這道料理可以用簡單、簡便的材料製作。",
-            details: {
-                correct: "「手軽（てがる）」意為簡單、簡便、不費事，修飾材料表示容易取得且處理簡單。",
-                wrong: [
-                    "「手近な」意為手邊的、附近的。",
-                    "「手ごろな」意為合適的、適中的。",
-                    "「有力な」意為有力的、有影響力的。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "このパソコンは小さくて軽くて、（ ）持ち運べる。",
-            options: ["手ごろに", "手堅く", "手軽に", "直ちに"],
-            answer: 2,
-            translation: "這台電腦又小又輕，可以輕鬆（簡便地）攜帶。",
-            details: {
-                correct: "「手軽に」是副詞形，意為輕便地、簡單地，符合輕巧電腦的特點。",
-                wrong: [
-                    "「手ごろに」意為適度地、合宜地。",
-                    "「手堅く」意為穩健地、踏實地。",
-                    "「直ちに」意為立刻、馬上。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "これ以上景気が悪くなると、もう（ ）だ。",
-            options: ["手分け", "お手上げ", "手柄", "先手"],
-            answer: 1,
-            translation: "景氣要是再惡化下去，就真的束手無策（舉手投降）了。",
-            details: {
-                correct: "「お手上げ」是慣用語，意為束手無策、毫無辦法、舉手投降。",
-                wrong: [
-                    "「手分け」意為分工、分頭進行。",
-                    "「手柄」意為功勞、成就。",
-                    "「先手」意為先發制人。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "家族で（ ）して家中を掃除した。",
-            options: ["手当", "手本", "手分け", "手引き"],
-            answer: 2,
-            translation: "全家人分工合作把家裡打掃乾淨了。",
-            details: {
-                correct: "「手分け」意為分工、分頭（手分けする＝分工合作）。",
-                wrong: [
-                    "「手当」意為補貼、津貼或治療、處理傷口。",
-                    "「手本」意為榜樣、範本。",
-                    "「手引き」意為引導、指南。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "健康のために、毎日の食事で塩分を（ ）する。",
-            options: ["避ける", "控える", "抑える", "減らす"],
-            answer: 1,
-            translation: "為了健康，每天的飲食中要節制（減少攝取）鹽分。",
-            details: {
-                correct: "「控える」在此意為克制、節制（如減少攝取鹽分、酒精等）。",
-                wrong: [
-                    "「避ける」意為避開、躲避。",
-                    "「抑える」意為抑制、壓制。",
-                    "「減らす」意為直接減少。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "彼女は物事の良し悪しの（ ）がつく年頃になった。",
-            options: ["分野", "分別", "同上", "同等"],
-            answer: 1,
-            translation: "她已經到了懂得辨別事物好壞（懂事）的年紀了。",
-            details: {
-                correct: "「分別（ふんべつ）」意為辨別力、分寸、懂事（分別がつく＝懂事、有判斷力）。",
-                wrong: [
-                    "「分野」意為領域、學門。",
-                    "「同上」意為同上、如上所述。",
-                    "「同等」意為同等、相等。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "私と彼は生まれた年も月も一緒で、（ ）だ。",
-            options: ["同い年", "同世代", "同一人物", "同上"],
-            answer: 0,
-            translation: "我和他出生年和月都一樣，是同年的（同歲）。",
-            details: {
-                correct: "「同い年（おなとし）」意為同年齡、同歲。",
-                wrong: [
-                    "「同世代」意為同世代、同年代的人。",
-                    "「同一人物」意為同一個人。",
-                    "「同上」意為同上。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "料理をする前に、塩こしょうで（ ）をつける。",
-            options: ["下地", "下味", "下火", "水気"],
-            answer: 1,
-            translation: "烹調之前，先用鹽和胡椒進行基礎調味（下味）。",
-            details: {
-                correct: "「下味（したあじ）」意為烹調前的基礎調味（醃入底味）。",
-                wrong: [
-                    "「下地」意為基礎、底子、基底。",
-                    "「下火」意為火勢減弱或事情漸趨平息。",
-                    "「水気」意為水分、濕氣。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "インフルエンザの流行がようやく（ ）になってきた。",
-            options: ["下回り", "下火", "下味", "下地"],
-            answer: 1,
-            translation: "流感的流行終於開始減弱（平息）了。",
-            details: {
-                correct: "「下火（したび）」意為火勢減弱，引申為流行病或熱潮逐漸平息、退燒。",
-                wrong: [
-                    "「下回り」意為低於、轉到下方。",
-                    "「下味」意為基礎調味。",
-                    "「下地」意為基礎、基底。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "今年の出生率が予想を（ ）た。",
-            options: ["上回る", "上向く", "下回る", "上書き"],
-            answer: 0,
-            translation: "今年的出生率超過了預期。",
-            details: {
-                correct: "「上回る（うわまわる）」意為超過、高於預期或標準。",
-                wrong: [
-                    "「上向く」意為（情況）好轉、向上起色。",
-                    "「下回る」意為低於、少於。",
-                    "「上書き」意為覆蓋寫入。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "彼は授業中（ ）で、先生の話を聞いていなかった。",
-            options: ["下火", "上の空", "手元", "合間"],
-            answer: 1,
-            translation: "他上課時心不在焉（漫不經心），根本沒聽老師講話。",
-            details: {
-                correct: "「上の空（うわのそら）」意為心不在焉、魂不守舍。",
-                wrong: [
-                    "「下火」意為勢頭減弱。",
-                    "「手元」意為手邊、身邊。",
-                    "「合間」意為空閒時間、空隙。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "古いデータを新しいデータで（ ）して保存する。",
-            options: ["上向く", "上書き", "上回る", "見合わせる"],
-            answer: 1,
-            translation: "用新資料覆蓋舊資料並儲存。",
-            details: {
-                correct: "「上書き（うわがき）」在電腦詞彙中意為「覆蓋寫入」、「覆寫檔案」。",
-                wrong: [
-                    "「上向く」意為行情或狀況好轉。",
-                    "「上回る」意為超越。",
-                    "「見合わせる」意為對視或暫緩、延期。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "料理の前に野菜の（ ）をしっかり切る。",
-            options: ["人気", "水気", "寒気", "気心"],
-            answer: 1,
-            translation: "料理前要把蔬菜的水分（水気）擦乾或切除乾淨。",
-            details: {
-                correct: "「水気（みずけ）」意為水分、濕氣。",
-                wrong: [
-                    "「人気（ひとけ）」意為人的氣息、動靜。",
-                    "「寒気」意為寒氣、發冷。",
-                    "「気心」意為性格、脾氣。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "夜道で（ ）のない通りを歩く。",
-            options: ["水気", "人気", "寒気", "気合"],
-            answer: 1,
-            translation: "走在夜裡沒有人氣（沒有行人氣息）的街道上。",
-            details: {
-                correct: "「人気（ひとけ）」意為人的氣息、動靜（「人気がない」表示荒涼、無人煙）。",
-                wrong: [
-                    "「水気」意為水分。",
-                    "「寒気」意為寒氣。",
-                    "「気合」意為氣魄、幹勁。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "長年付き合っているので、お互いの（ ）が知れている。",
-            options: ["気長", "気心", "正気", "気合"],
-            answer: 1,
-            translation: "因為交往多年，彼此的脾氣（心思）都很清楚。",
-            details: {
-                correct: "「気心（きごころ）」意為性格、脾氣、心思（気心が知れる＝彼此知根知底）。",
-                wrong: [
-                    "「気長」意為性子慢、不急躁。",
-                    "「正気」意為清醒、理智。",
-                    "「気合」意為氣勢、幹勁。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "試合の前にみんなで（ ）を入れる。",
-            options: ["気長", "気合", "正気", "手口"],
-            answer: 1,
-            translation: "比賽開始前大家一起打氣（振奮精神）。",
-            details: {
-                correct: "「気合（きあい）」意為氣魄、精神振作（気合を入れる＝打氣、鼓勁）。",
-                wrong: [
-                    "「気長」意為慢性子、不急躁。",
-                    "「正気」意為清醒、神智正常。",
-                    "「手口」意為作案手法。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "（ ）失業中で、仕事を探しているところです。",
-            options: ["目方", "目下", "目先", "大目"],
-            answer: 1,
-            translation: "我目前失業中，正在找工作。",
-            details: {
-                correct: "「目下（もっか）」意為目前、當今、眼下。",
-                wrong: [
-                    "「目方」意為重量、份量。",
-                    "「目先」意為眼前、眼前利益。",
-                    "「大目」意為寬容、不予計較。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "スーパーで肉や魚の（ ）を量る。",
-            options: ["目下", "目方", "目先", "人目"],
-            answer: 1,
-            translation: "在超市秤量肉或魚的重量（目方）。",
-            details: {
-                correct: "「目方（めかた）」意為重量、份量。",
-                wrong: [
-                    "「目下」意為目前、現今。",
-                    "「目先」意為眼前。",
-                    "「人目」意為世人的目光。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "彼は（ ）の利益にとらわれてはいけない。",
-            options: ["目下", "目先", "大目", "先頭"],
-            answer: 1,
-            translation: "他不能被眼前的利益所迷惑（拘泥於眼前利益）。",
-            details: {
-                correct: "「目先（めさき）」意為眼前、直前（目先の利益＝眼前的利益）。",
-                wrong: [
-                    "「目下」意為目前、眼下。",
-                    "「大目」意為寬容。",
-                    "「先頭」意為最前面。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "彼の失敗を今回は（ ）に見る。",
-            options: ["目下", "目方", "大目", "人目"],
-            answer: 2,
-            translation: "他的這次失敗，我們這次就寬宏大量不予計較了。",
-            details: {
-                correct: "「大目に見る（おおめにみる）」是慣用語，意為寬容、不予深究、睜一隻眼閉一隻眼。",
-                wrong: [
-                    "「目下」意為目前。",
-                    "「目方」意為重量。",
-                    "「人目」意為世人的目光。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "政府が今回の事件について緊急（ ）を発表した。",
-            options: ["証明", "照明", "声明", "透明"],
-            answer: 2,
-            translation: "政府就這次事件發表了緊急聲明。",
-            details: {
-                correct: "「声明（せいめい）」意為官方聲明、公開表態。",
-                wrong: [
-                    "「証明」意為證明、證件。",
-                    "「照明」意為照明、燈光。",
-                    "「透明」意為透明。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "調査が順調に（ ）している。",
-            options: ["進出", "進行", "進度", "行進"],
-            answer: 1,
-            translation: "調查正在順利進行中。",
-            details: {
-                correct: "「進行（しんこう）」意為進行、推進（進行している＝正在進行）。",
-                wrong: [
-                    "「進出」意為進駐、開拓市場。",
-                    "「進度」意為進度。",
-                    "「行進」意為行進、遊行。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "その企業はついにアジア市場に（ ）した。",
-            options: ["進行", "進出", "先頭", "先行"],
-            answer: 1,
-            translation: "該企業終於進駐（開拓）了亞洲市場。",
-            details: {
-                correct: "「進出（しんしゅつ）」意為進入新領域或開拓新市場（如海外進出）。",
-                wrong: [
-                    "「進行」意為事情的進行。",
-                    "「先頭」意為最前面。",
-                    "「先行」意為先行、走在前面。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "マラソン大会でずっと（ ）に立って走る。",
-            options: ["先着", "先頭", "先方", "先進"],
-            answer: 1,
-            translation: "在馬拉松比賽中一直跑在最前面（先頭）。",
-            details: {
-                correct: "「先頭（せんとう）」意為最前面、領頭位置（先頭に立つ＝帶頭、站在最前面）。",
-                wrong: [
-                    "「先着」意為先到達、先到者。",
-                    "「先方」意為對方。",
-                    "「先進」意為先進。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "ご不明な点は（ ）にお問い合わせください。",
-            options: ["先頭", "先方", "先着", "手元"],
-            answer: 1,
-            translation: "如有不明之處，請向對方（先方）詢問。",
-            details: {
-                correct: "「先方（せんぽう）」意為對方、那邊（商業或正式用語常用）。",
-                wrong: [
-                    "「先頭」意為最前面。",
-                    "「先着」意為先到。",
-                    "「手元」意為手邊。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "政府は経済政策の変更を（ ）している。",
-            options: ["意思", "意図", "意地", "意向"],
-            answer: 1,
-            translation: "政府有意（意圖）更改經濟政策。",
-            details: {
-                correct: "「意図（いと）」意為意圖、打算、企圖（意図している＝有意、打算）。",
-                wrong: [
-                    "「意思」意為意志、想法。",
-                    "「意地」意為固執、倔強。",
-                    "「意向」指個人的想法或傾向。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "仕事の（ ）にコーヒーを飲んで一息つく。",
-            options: ["空間", "合間", "民間", "合図"],
-            answer: 1,
-            translation: "趁著工作空檔喝杯咖啡喘口氣。",
-            details: {
-                correct: "「合間（あいま）」意為空閒、空隙時間（仕事の合間＝工作空檔）。",
-                wrong: [
-                    "「空間」意為空間。",
-                    "「民間」意為民間。",
-                    "「合図」意為信號、暗號。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "アパートの狭い（ ）を有効に利用する。",
-            options: ["合間", "空間", "民間", "人間"],
-            answer: 1,
-            translation: "有效利用公寓狹小的空間。",
-            details: {
-                correct: "「空間（くうかん）」意為空間、場所。",
-                wrong: [
-                    "「合間」意為空檔時間。",
-                    "「民間」意為民間。",
-                    "「人間」意為人類、人。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "来年度の経済の（ ）は明るくない。",
-            options: ["見地", "見通し", "見本", "手口"],
-            answer: 1,
-            translation: "來年度的經濟預測（前景）並不樂觀。",
-            details: {
-                correct: "「見通し（みとおし）」意為預測、前景、展望（經濟見通し＝經濟預測/前景）。",
-                wrong: [
-                    "「見地」意為見解、立場。",
-                    "「見本」意為樣品、樣本。",
-                    "「手口」意為作案手法。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "台風のため、新幹線の出発を（ ）する。",
-            options: ["見下す", "見合わせる", "着手する", "見通す"],
-            answer: 1,
-            translation: "因為颱風，新幹線的發車暫緩（延期）了。",
-            details: {
-                correct: "「見合わせる（みあわせる）」意為對視或暫緩、延期（運行見合わせ＝暫停運行）。",
-                wrong: [
-                    "「見下す」意為看不起、俯視。",
-                    "「着手する」意為著手進行。",
-                    "「見通す」意為看透、看穿、預見。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "来月から新しいプロジェクトに（ ）する。",
-            options: ["着工", "着手", "着色", "着目"],
-            answer: 1,
-            translation: "從下個月開始著手進行新的專案。",
-            details: {
-                correct: "「着手（ちゃくしゅ）」意為開始動手、著手進行（適用於企劃、工作、研究）。",
-                wrong: [
-                    "「着工」意為開工動土。",
-                    "「着色」意為著色、上色。",
-                    "「着目」意為注目、關注。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "新しく建てるビルの工事は来月（ ）する。",
-            options: ["着手", "着工", "着色", "着目"],
-            answer: 1,
-            translation: "新建大樓的工程將於下個月開工。",
-            details: {
-                correct: "「着工（ちゃっこう）」專門用於建築或土木工程的「開工、動工」。",
-                wrong: [
-                    "「着手」意為一般事務或企劃的著手。",
-                    "「着色」意為著色。",
-                    "「着目」意為注目。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "朝から晩まで（ ）パソコンに向かっている。",
-            options: ["日夜", "終日", "日々", "日ごろ"],
-            answer: 1,
-            translation: "從早到晚一整天（終日）都面對著電腦。",
-            details: {
-                correct: "「終日（しゅうじつ）」意為終日、一整天（從早到晚）。",
-                wrong: [
-                    "「日夜」意為日夜、晝夜不停。",
-                    "「日々」意為日復一日、天天。",
-                    "「日ごろ」意為平時、平常。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "イタリアの料理を（ ）で学ぶ。",
-            options: ["産地", "本場", "市場", "工場"],
-            answer: 1,
-            translation: "在正宗產地（發源地）學習義大利料理。",
-            details: {
-                correct: "「本場（ほんば）」意為正宗、原產地、最盛行的地方。",
-                wrong: [
-                    "「産地」意為生產地。",
-                    "「市場」意為市場。",
-                    "「工場」意為工廠。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "この土地は私が（ ）している。",
-            options: ["生産", "所有", "代用", "代理"],
-            answer: 1,
-            translation: "這塊土地是由我所有（擁有）的。",
-            details: {
-                correct: "「所有（しょゆう）」意為所有、擁有（所有している＝為我所有）。",
-                wrong: [
-                    "「生産」意為生產。",
-                    "「代用」意為代用。",
-                    "「代理」意為代理。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "青森県はリンゴの有名な（ ）だ。",
-            options: ["本場", "産地", "市場", "工場"],
-            answer: 1,
-            translation: "青森縣是知名的蘋果產地。",
-            details: {
-                correct: "「産地（さんち）」意為農產品或礦物的生產地、產地。",
-                wrong: [
-                    "「本場」意為正宗、發源地。",
-                    "「市場」意為市場。",
-                    "「工場」意為工廠。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "この機械は一日あたり千個を（ ）する。",
-            options: ["産出", "生産", "所有", "代用"],
-            answer: 1,
-            translation: "這台機械一天生產一千個產品。",
-            details: {
-                correct: "「生産（せいさん）」意為生產製造商品。",
-                wrong: [
-                    "「産出」意為出產、開採出（如礦產）。",
-                    "「所有」意為擁有。",
-                    "「代用」意為代用。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "市場に出回っている（ ）品にご注意ください。",
-            options: ["不正", "不良", "不明", "不通"],
-            answer: 1,
-            translation: "請注意市面上流通的不良品（瑕疵品）。",
-            details: {
-                correct: "「不良品（ふりょうひん）」意為不良品、瑕疵品、次級品。",
-                wrong: [
-                    "「不正」意為不正、舞弊。",
-                    "「不明」意為不明。",
-                    "「不通」意為中斷、不通。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "この地方（ ）のユニークな習慣がある。",
-            options: ["特長", "特用", "特有", "特集"],
-            answer: 2,
-            translation: "這裡有這個地方特有的獨特習俗。",
-            details: {
-                correct: "「特用」改為「特有（とくゆう）」，意為某個地方、群體或事物特有的屬性（特有の習慣＝特有習俗）。",
-                wrong: [
-                    "「特長」意為特別的長處、優點。",
-                    "「特用」意為特別用途。",
-                    "「特集」意為專題報導、特輯。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "社長の（ ）として会議に出席する。",
-            options: ["代用", "代理", "立場", "主体"],
-            answer: 1,
-            translation: "作為社長的代理人出席會議。",
-            details: {
-                correct: "「代理（だいり）」意為代理、代表某人處理事務（代理として＝作為代理）。",
-                wrong: [
-                    "「代用」意為替代物品。",
-                    "「立場」意為立場。",
-                    "「主体」意為主體。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "クッションを枕の（ ）にする。",
-            options: ["代理", "所有", "代用", "主体"],
-            answer: 2,
-            translation: "把靠墊當作枕頭來代用（替代）。",
-            details: {
-                correct: "「代用（だいよう）」意為代用、替代（代用にする＝拿來當替代品）。",
-                wrong: [
-                    "「代理」意為人的代理，不能用在物品替代物品。",
-                    "「所有」意為擁有。",
-                    "「主体」意為主體。"
-                ]
-            }
-        },
-        {
-            type: "生字填充",
-            q: "急な雨で、楽しみにしていた桜が（ ）になった。",
-            options: ["台本", "台無し", "正味", "有力"],
-            answer: 1,
-            translation: "因為突如其來的雨，期待已久的賞櫻泡湯了（毀掉了）。",
-            details: {
-                correct: "「台無し（だいなし）」意為毀掉、糟蹋、付諸流水（台無しになる＝泡湯、毀了）。",
-                wrong: [
-                    "「台本」意為劇本。",
-                    "「正味」意為淨重、實質。",
-                    "「有力」意為有力、有影響力。"
-                ]
-            }
-        },
-        {
-            type: "漢字平假名轉換",
-            q: "この工事を（ ）するのはスケジュール的に無理だ。",
-            options: ["早急", "強行", "有力", "正味"],
-            answer: 1,
-            translation: "從行程安排來看，硬行（強行）進行這項工程是不可能的。",
-            details: {
-                correct: "「強行（きょうこう）」意為強行、硬行推進（強行する＝強行進行）。",
-                wrong: [
-                    "「早急」意為刻不容緩、緊急。",
-                    "「有力」意為有力的。",
-                    "「正味」意為淨重、實質。"
-                ]
-            }
-        },
-        {
-            type: "詞義理解",
-            q: "問題の（ ）な解決が求められている。",
-            options: ["強行", "早急", "有力", "正味"],
-            answer: 1,
-            translation: "要求對問題進行刻不容緩（緊急）的解決。",
-            details: {
-                correct: "「早急（さっきゅう/そうきゅう）」意為刻不容緩、緊急、迅速（早急な解決＝緊急解決）。",
-                wrong: [
-                    "「強行」意為強行。",
-                    "「有力」意為有力。",
-                    "「正味」意為淨重。"
-                ]
-            }
+      {
+        type: "詞義理解",
+        q: "留学の（ ）は整っています。",
+        options: ["手引き", "手がかり", "手はず", "お手上げ"],
+        answer: 2,
+        translation: "留學的步驟（事先安排）已經準備好了。",
+        details: {
+          correct: "「手はず」意為事先安排、步驟、計劃，與「整う（準備就緒）」搭配最自然。",
+          wrong: [
+            "「手引き」意為指引、手冊或嚮導。",
+            "「手がかり」意為線索、頭緒。",
+            "「お手上げ」意為束手無策、沒辦法了。"
+          ]
         }
+      },
+      {
+        type: "生字填充",
+        q: "その件については、（ ）がない。",
+        options: ["心当たり", "手引き", "下心", "心地"],
+        answer: 0,
+        translation: "關於那件事，我沒有頭緒（線索）。",
+        details: {
+          correct: "「心当たり」意為心裡有底、線索、頭緒，「〜がない」表示毫無頭緒。",
+          wrong: [
+            "「手引き」意為指引或指南。",
+            "「下心」意為居心、私心或暗中企圖。",
+            "「心地」意為感覺、心情。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "あの人は優しそうに見えるが、実は（ ）がある。",
+        options: ["内心", "下心", "心中", "先手"],
+        answer: 1,
+        translation: "那個人看起來很溫柔，但其實心懷不軌（有企圖）。",
+        details: {
+          correct: "「下心」意為不可告人的企圖、居心或私心，符合「表面溫柔但私下有目的」的語境。",
+          wrong: [
+            "「内心」意為內心、心裡，偏向客觀感受或想法。",
+            "「心中」意為心境或殉情。",
+            "「先手」意為先發制人、佔先機。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "都会を離れて、田舎で（ ）よく暮らす。",
+        options: ["行き心地", "住み心地", "寝心地", "着心地"],
+        answer: 1,
+        translation: "離開都市，在鄉下過著居住舒適的生活。",
+        details: {
+          correct: "「住み心地（すみごこち）」專門用來形容「居住環境的舒適感」。",
+          wrong: [
+            "「行き心地」為不合規範的組合詞。",
+            "「寝心地」指「睡覺（床鋪）的舒適感」。",
+            "「着心地」指「穿衣服的舒適感（觸感）」。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "海外旅行の（ ）を読んで準備する。",
+        options: ["手引き", "手口", "手本", "手中"],
+        answer: 0,
+        translation: "閱讀海外旅行的指南（手冊）來做準備。",
+        details: {
+          correct: "「手引き」意為手冊、導引、入門書，旅行前閱讀的指南正合適。",
+          wrong: [
+            "「手口」意為作案手法、犯罪手段。",
+            "「手本」意為榜樣、字帖、模範。",
+            "「手中」意為掌中、控制之中。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "警察は犯罪の（ ）をつかんだ。",
+        options: ["手際", "手元", "手口", "手本"],
+        answer: 2,
+        translation: "警方掌握了犯罪的作案手法（手口）。",
+        details: {
+          correct: "「手口」專指犯罪集團或歹徒作案的手法與手段。",
+          wrong: [
+            "「手際」意為辦事的手法、效率。",
+            "「手元」意為手頭、身邊。",
+            "「手本」意為榜樣、範本。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "この料理は（ ）な材料で作れる。",
+        options: ["手近な", "手軽な", "手ごろな", "有力な"],
+        answer: 1,
+        translation: "這道料理可以用簡單、簡便的材料製作。",
+        details: {
+          correct: "「手軽（てがる）」意為簡單、簡便、不費事，修飾材料表示容易取得且處理簡單。",
+          wrong: [
+            "「手近な」意為手邊的、附近的。",
+            "「手ごろな」意為合適的、適中的。",
+            "「有力な」意為有力的、有影響力的。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "このパソコンは小さくて軽くて、（ ）持ち運べる。",
+        options: ["手ごろに", "手堅く", "手軽に", "直ちに"],
+        answer: 2,
+        translation: "這台電腦又小又輕，可以輕鬆（簡便地）攜帶。",
+        details: {
+          correct: "「手軽に」是副詞形，意為輕便地、簡單地，符合輕巧電腦的特點。",
+          wrong: [
+            "「手ごろに」意為適度地、合宜地。",
+            "「手堅く」意為穩健地、踏實地。",
+            "「直ちに」意為立刻、馬上。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "これ以上景気が悪くなると、もう（ ）だ。",
+        options: ["手分け", "お手上げ", "手柄", "先手"],
+        answer: 1,
+        translation: "景氣要是再惡化下去，就真的束手無策（舉手投降）了。",
+        details: {
+          correct: "「お手上げ」是慣用語，意為束手無策、毫無辦法、舉手投降。",
+          wrong: [
+            "「手分け」意為分工、分頭進行。",
+            "「手柄」意為功勞、成就。",
+            "「先手」意為先發制人。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "家族で（ ）して家中を掃除した。",
+        options: ["手当", "手本", "手分け", "手引き"],
+        answer: 2,
+        translation: "全家人分工合作把家裡打掃乾淨了。",
+        details: {
+          correct: "「手分け」意為分工、分頭（手分けする＝分工合作）。",
+          wrong: [
+            "「手当」意為補貼、津貼或治療、處理傷口。",
+            "「手本」意為榜樣、範本。",
+            "「手引き」意為引導、指南。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "健康のために、毎日の食事で塩分を（ ）する。",
+        options: ["避ける", "控える", "抑える", "減らす"],
+        answer: 1,
+        translation: "為了健康，每天的飲食中要節制（減少攝取）鹽分。",
+        details: {
+          correct: "「控える」在此意為克制、節制（如減少攝取鹽分、酒精等）。",
+          wrong: [
+            "「避ける」意為避開、躲避。",
+            "「抑える」意為抑制、壓制。",
+            "「減らす」意為直接減少。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "彼女は物事の良し悪しの（ ）がつく年頃になった。",
+        options: ["分野", "分別", "同上", "同等"],
+        answer: 1,
+        translation: "她已經到了懂得辨別事物好壞（懂事）的年紀了。",
+        details: {
+          correct: "「分別（ふんべつ）」意為辨別力、分寸、懂事（分別がつく＝懂事、有判斷力）。",
+          wrong: [
+            "「分野」意為領域、學門。",
+            "「同上」意為同上、如上所述。",
+            "「同等」意為同等、相等。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "私と彼は生まれた年も月も一緒で、（ ）だ。",
+        options: ["同い年", "同世代", "同一人物", "同上"],
+        answer: 0,
+        translation: "我和他出生年和月都一樣，是同年的（同歲）。",
+        details: {
+          correct: "「同い年（おなとし）」意為同年齡、同歲。",
+          wrong: [
+            "「同世代」意為同世代、同年代的人。",
+            "「同一人物」意為同一個人。",
+            "「同上」意為同上。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "料理をする前に、塩こしょうで（ ）をつける。",
+        options: ["下地", "下味", "下火", "水気"],
+        answer: 1,
+        translation: "烹調之前，先用鹽和胡椒進行基礎調味（下味）。",
+        details: {
+          correct: "「下味（したあじ）」意為烹調前的基礎調味（醃入底味）。",
+          wrong: [
+            "「下地」意為基礎、底子、基底。",
+            "「下火」意為火勢減弱或事情漸趨平息。",
+            "「水気」意為水分、濕氣。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "インフルエンザの流行がようやく（ ）になってきた。",
+        options: ["下回り", "下火", "下味", "下地"],
+        answer: 1,
+        translation: "流感的流行終於開始減弱（平息）了。",
+        details: {
+          correct: "「下火（したび）」意為火勢減弱，引申為流行病或熱潮逐漸平息、退燒。",
+          wrong: [
+            "「下回り」意為低於、轉到下方。",
+            "「下味」意為基礎調味。",
+            "「下地」意為基礎、基底。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "今年の出生率が予想を（ ）た。",
+        options: ["上回る", "上向く", "下回る", "上書き"],
+        answer: 0,
+        translation: "今年的出生率超過了預期。",
+        details: {
+          correct: "「上回る（うわまわる）」意為超過、高於預期或標準。",
+          wrong: [
+            "「上向く」意為（情況）好轉、向上起色。",
+            "「下回る」意為低於、少於。",
+            "「上書き」意為覆蓋寫入。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "彼は授業中（ ）で、先生の話を聞いていなかった。",
+        options: ["下火", "上の空", "手元", "合間"],
+        answer: 1,
+        translation: "他上課時心不在焉（漫不經心），根本沒聽老師講話。",
+        details: {
+          correct: "「上の空（うわのそら）」意為心不在焉、魂不守舍。",
+          wrong: [
+            "「下火」意為勢頭減弱。",
+            "「手元」意為手邊、身邊。",
+            "「合間」意為空閒時間、空隙。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "古いデータを新しいデータで（ ）して保存する。",
+        options: ["上向く", "上書き", "上回る", "見合わせる"],
+        answer: 1,
+        translation: "用新資料覆蓋舊資料並儲存。",
+        details: {
+          correct: "「上書き（うわがき）」在電腦詞彙中意為「覆蓋寫入」、「覆寫檔案」。",
+          wrong: [
+            "「上向く」意為行情或狀況好轉。",
+            "「上回る」意為超越。",
+            "「見合わせる」意為對視或暫緩、延期。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "料理の前に野菜の（ ）をしっかり切る。",
+        options: ["人気", "水気", "寒気", "気心"],
+        answer: 1,
+        translation: "料理前要把蔬菜的水分（水気）擦乾或切除乾淨。",
+        details: {
+          correct: "「水気（みずけ）」意為水分、濕氣。",
+          wrong: [
+            "「人気（ひとけ）」意為人的氣息、動靜。",
+            "「寒気」意為寒氣、發冷。",
+            "「気心」意為性格、脾氣。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "夜道で（ ）のない通りを歩く。",
+        options: ["水気", "人気", "寒気", "気合"],
+        answer: 1,
+        translation: "走在夜裡沒有人氣（沒有行人氣息）的街道上。",
+        details: {
+          correct: "「人気（ひとけ）」意為人的氣息、動靜（「人気がない」表示荒涼、無人煙）。",
+          wrong: [
+            "「水気」意為水分。",
+            "「寒気」意為寒氣。",
+            "「気合」意為氣魄、幹勁。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "長年付き合っているので、お互いの（ ）が知れている。",
+        options: ["気長", "気心", "正気", "気合"],
+        answer: 1,
+        translation: "因為交往多年，彼此的脾氣（心思）都很清楚。",
+        details: {
+          correct: "「気心（きごころ）」意為性格、脾氣、心思（気心が知れる＝彼此知根知底）。",
+          wrong: [
+            "「気長」意為性子慢、不急躁。",
+            "「正気」意為清醒、理智。",
+            "「気合」意為氣勢、幹勁。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "試合の前にみんなで（ ）を入れる。",
+        options: ["気長", "気合", "正気", "手口"],
+        answer: 1,
+        translation: "比賽開始前大家一起打氣（振奮精神）。",
+        details: {
+          correct: "「気合（きあい）」意為氣魄、精神振作（気合を入れる＝打氣、鼓勁）。",
+          wrong: [
+            "「気長」意為慢性子、不急躁。",
+            "「正気」意為清醒、神智正常。",
+            "「手口」意為作案手法。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "（ ）失業中で、仕事を探しているところです。",
+        options: ["目方", "目下", "目先", "大目"],
+        answer: 1,
+        translation: "我目前失業中，正在找工作。",
+        details: {
+          correct: "「目下（もっか）」意為目前、當今、眼下。",
+          wrong: [
+            "「目方」意為重量、份量。",
+            "「目先」意為眼前、眼前利益。",
+            "「大目」意為寬容、不予計較。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "スーパーで肉や魚の（ ）を量る。",
+        options: ["目下", "目方", "目先", "人目"],
+        answer: 1,
+        translation: "在超市秤量肉或魚的重量（目方）。",
+        details: {
+          correct: "「目方（めかた）」意為重量、份量。",
+          wrong: [
+            "「目下」意為目前、現今。",
+            "「目先」意為眼前。",
+            "「人目」意為世人的目光。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "彼は（ ）の利益にとらわれてはいけない。",
+        options: ["目下", "目先", "大目", "先頭"],
+        answer: 1,
+        translation: "他不能被眼前的利益所迷惑（拘泥於眼前利益）。",
+        details: {
+          correct: "「目先（めさき）」意為眼前、直前（目先の利益＝眼前的利益）。",
+          wrong: [
+            "「目下」意為目前、眼下。",
+            "「大目」意為寬容。",
+            "「先頭」意為最前面。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "彼の失敗を今回は（ ）に見る。",
+        options: ["目下", "目方", "大目", "人目"],
+        answer: 2,
+        translation: "他的這次失敗，我們這次就寬宏大量不予計較了。",
+        details: {
+          correct: "「大目に見る（おおめにみる）」是慣用語，意為寬容、不予深究、睜一隻眼閉一隻眼。",
+          wrong: [
+            "「目下」意為目前。",
+            "「目方」意為重量。",
+            "「人目」意為世人的目光。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "政府が今回の事件について緊急（ ）を発表した。",
+        options: ["証明", "照明", "声明", "透明"],
+        answer: 2,
+        translation: "政府就這次事件發表了緊急聲明。",
+        details: {
+          correct: "「声明（せいめい）」意為官方聲明、公開表態。",
+          wrong: [
+            "「証明」意為證明、證件。",
+            "「照明」意為照明、燈光。",
+            "「透明」意為透明。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "調査が順調に（ ）している。",
+        options: ["進出", "進行", "進度", "行進"],
+        answer: 1,
+        translation: "調查正在順利進行中。",
+        details: {
+          correct: "「進行（しんこう）」意為進行、推進（進行している＝正在進行）。",
+          wrong: [
+            "「進出」意為進駐、開拓市場。",
+            "「進度」意為進度。",
+            "「行進」意為行進、遊行。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "その企業はついにアジア市場に（ ）した。",
+        options: ["進行", "進出", "先頭", "先行"],
+        answer: 1,
+        translation: "該企業終於進駐（開拓）了亞洲市場。",
+        details: {
+          correct: "「進出（しんしゅつ）」意為進入新領域或開拓新市場（如海外進出）。",
+          wrong: [
+            "「進行」意為事情的進行。",
+            "「先頭」意為最前面。",
+            "「先行」意為先行、走在前面。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "マラソン大会でずっと（ ）に立って走る。",
+        options: ["先着", "先頭", "先方", "先進"],
+        answer: 1,
+        translation: "在馬拉松比賽中一直跑在最前面（先頭）。",
+        details: {
+          correct: "「先頭（せんとう）」意為最前面、領頭位置（先頭に立つ＝帶頭、站在最前面）。",
+          wrong: [
+            "「先着」意為先到達、先到者。",
+            "「先方」意為對方。",
+            "「先進」意為先進。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "ご不明な点は（ ）にお問い合わせください。",
+        options: ["先頭", "先方", "先着", "手元"],
+        answer: 1,
+        translation: "如有不明之處，請向對方（先方）詢問。",
+        details: {
+          correct: "「先方（せんぽう）」意為對方、那邊（商業或正式用語常用）。",
+          wrong: [
+            "「先頭」意為最前面。",
+            "「先着」意為先到。",
+            "「手元」意為手邊。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "政府は経済政策の変更を（ ）している。",
+        options: ["意思", "意図", "意地", "意向"],
+        answer: 1,
+        translation: "政府有意（意圖）更改經濟政策。",
+        details: {
+          correct: "「意図（いと）」意為意圖、打算、企圖（意図している＝有意、打算）。",
+          wrong: [
+            "「意思」意為意志、想法。",
+            "「意地」意為固執、倔強。",
+            "「意向」指個人的想法或傾向。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "仕事の（ ）にコーヒーを飲んで一息つく。",
+        options: ["空間", "合間", "民間", "合図"],
+        answer: 1,
+        translation: "趁著工作空檔喝杯咖啡喘口氣。",
+        details: {
+          correct: "「合間（あいま）」意為空閒、空隙時間（仕事の合間＝工作空檔）。",
+          wrong: [
+            "「空間」意為空間。",
+            "「民間」意為民間。",
+            "「合図」意為信號、暗號。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "アパートの狭い（ ）を有効に利用する。",
+        options: ["合間", "空間", "民間", "人間"],
+        answer: 1,
+        translation: "有效利用公寓狹小的空間。",
+        details: {
+          correct: "「空間（くうかん）」意為空間、場所。",
+          wrong: [
+            "「合間」意為空檔時間。",
+            "「民間」意為民間。",
+            "「人間」意為人類、人。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "来年度の経済の（ ）は明るくない。",
+        options: ["見地", "見通し", "見本", "手口"],
+        answer: 1,
+        translation: "來年度的經濟預測（前景）並不樂觀。",
+        details: {
+          correct: "「見通し（みとおし）」意為預測、前景、展望（經濟見通し＝經濟預測/前景）。",
+          wrong: [
+            "「見地」意為見解、立場。",
+            "「見本」意為樣品、樣本。",
+            "「手口」意為作案手法。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "台風のため、新幹線の出発を（ ）する。",
+        options: ["見下す", "見合わせる", "着手する", "見通す"],
+        answer: 1,
+        translation: "因為颱風，新幹線的發車暫緩（延期）了。",
+        details: {
+          correct: "「見合わせる（みあわせる）」意為對視或暫緩、延期（運行見合わせ＝暫停運行）。",
+          wrong: [
+            "「見下す」意為看不起、俯視。",
+            "「着手する」意為著手進行。",
+            "「見通す」意為看透、看穿、預見。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "来月から新しいプロジェクトに（ ）する。",
+        options: ["着工", "着手", "着色", "着目"],
+        answer: 1,
+        translation: "從下個月開始著手進行新的專案。",
+        details: {
+          correct: "「着手（ちゃくしゅ）」意為開始動手、著手進行（適用於企劃、工作、研究）。",
+          wrong: [
+            "「着工」意為開工動土。",
+            "「着色」意為著色、上色。",
+            "「着目」意為注目、關注。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "新しく建てるビルの工事は来月（ ）する。",
+        options: ["着手", "着工", "着色", "着目"],
+        answer: 1,
+        translation: "新建大樓的工程將於下個月開工。",
+        details: {
+          correct: "「着工（ちゃっこう）」專門用於建築或土木工程的「開工、動工」。",
+          wrong: [
+            "「着手」意為一般事務或企劃的著手。",
+            "「着色」意為著色。",
+            "「着目」意為注目。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "朝から晩まで（ ）パソコンに向かっている。",
+        options: ["日夜", "終日", "日々", "日ごろ"],
+        answer: 1,
+        translation: "從早到晚一整天（終日）都面對著電腦。",
+        details: {
+          correct: "「終日（しゅうじつ）」意為終日、一整天（從早到晚）。",
+          wrong: [
+            "「日夜」意為日夜、晝夜不停。",
+            "「日々」意為日復一日、天天。",
+            "「日ごろ」意為平時、平常。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "イタリアの料理を（ ）で学ぶ。",
+        options: ["産地", "本場", "市場", "工場"],
+        answer: 1,
+        translation: "在正宗產地（發源地）學習義大利料理。",
+        details: {
+          correct: "「本場（ほんば）」意為正宗、原產地、最盛行的地方。",
+          wrong: [
+            "「産地」意為生產地。",
+            "「市場」意為市場。",
+            "「工場」意為工廠。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "この土地は私が（ ）している。",
+        options: ["生産", "所有", "代用", "代理"],
+        answer: 1,
+        translation: "這塊土地是由我所有（擁有）的。",
+        details: {
+          correct: "「所有（しょゆう）」意為所有、擁有（所有している＝為我所有）。",
+          wrong: [
+            "「生産」意為生產。",
+            "「代用」意為代用。",
+            "「代理」意為代理。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "青森県はリンゴの有名な（ ）だ。",
+        options: ["本場", "産地", "市場", "工場"],
+        answer: 1,
+        translation: "青森縣是知名的蘋果產地。",
+        details: {
+          correct: "「産地（さんち）」意為農產品或礦物的生產地、產地。",
+          wrong: [
+            "「本場」意為正宗、發源地。",
+            "「市場」意為市場。",
+            "「工場」意為工廠。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "この機械は一日あたり千個を（ ）する。",
+        options: ["産出", "生産", "所有", "代用"],
+        answer: 1,
+        translation: "這台機械一天生產一千個產品。",
+        details: {
+          correct: "「生産（せいさん）」意為生產製造商品。",
+          wrong: [
+            "「産出」意為出產、開採出（如礦產）。",
+            "「所有」意為擁有。",
+            "「代用」意為代用。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "市場に出回っている（ ）品にご注意ください。",
+        options: ["不正", "不良", "不明", "不通"],
+        answer: 1,
+        translation: "請注意市面上流通的不良品（瑕疵品）。",
+        details: {
+          correct: "「不良品（ふりょうひん）」意為不良品、瑕疵品、次級品。",
+          wrong: [
+            "「不正」意為不正、舞弊。",
+            "「不明」意為不明。",
+            "「不通」意為中斷、不通。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "この地方（ ）のユニークな習慣がある。",
+        options: ["特長", "特用", "特有", "特集"],
+        answer: 2,
+        translation: "這裡有這個地方特有的獨特習俗。",
+        details: {
+          correct: "「特有（とくゆう）」意為某個地方、群體或事物特有的屬性（特有の習慣＝特有習俗）。",
+          wrong: [
+            "「特長」意為特別的長處、優點。",
+            "「特用」意為特別用途。",
+            "「特集」意為專題報導、特輯。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "社長の（ ）として会議に出席する。",
+        options: ["代用", "代理", "立場", "主体"],
+        answer: 1,
+        translation: "作為社長的代理人出席會議。",
+        details: {
+          correct: "「代理（だいり）」意為代理、代表某人處理事務（代理として＝作為代理）。",
+          wrong: [
+            "「代用」意為替代物品。",
+            "「立場」意為立場。",
+            "「主体」意為主體。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "クッションを枕の（ ）にする。",
+        options: ["代理", "所有", "代用", "主体"],
+        answer: 2,
+        translation: "把靠墊當作枕頭來代用（替代）。",
+        details: {
+          correct: "「代用（だいよう）」意為代用、替代（代用にする＝拿來當替代品）。",
+          wrong: [
+            "「代理」意為人的代理，不能用在物品替代物品。",
+            "「所有」意為擁有。",
+            "「主体」意為主體。"
+          ]
+        }
+      },
+      {
+        type: "生字填充",
+        q: "急な雨で、楽しみにしていた桜が（ ）になった。",
+        options: ["台本", "台無し", "正味", "有力"],
+        answer: 1,
+        translation: "因為突如其來的雨，期待已久的賞櫻泡湯了（毀掉了）。",
+        details: {
+          correct: "「台無し（だいなし）」意為毀掉、糟蹋、付諸流水（台無しになる＝泡湯、毀了）。",
+          wrong: [
+            "「台本」意為劇本。",
+            "「正味」意為淨重、實質。",
+            "「有力」意為有力、有影響力。"
+          ]
+        }
+      },
+      {
+        type: "漢字平假名轉換",
+        q: "この工事を（ ）するのはスケジュール的に無理だ。",
+        options: ["早急", "強行", "有力", "正味"],
+        answer: 1,
+        translation: "從行程安排來看，硬行（強行）進行這項工程是不可能的。",
+        details: {
+          correct: "「強行（きょうこう）」意為強行、硬行推進（強行する＝強行進行）。",
+          wrong: [
+            "「早急」意為刻不容緩、緊急。",
+            "「有力」意為有力的。",
+            "「正味」意為淨重、實質。"
+          ]
+        }
+      },
+      {
+        type: "詞義理解",
+        q: "問題の（ ）な解決が求められている。",
+        options: ["強行", "早急", "有力", "正味"],
+        answer: 1,
+        translation: "要求對問題進行刻不容緩（緊急）的解決。",
+        details: {
+          correct: "「早急（さっきゅう/そうきゅう）」意為刻不容緩、緊急、迅速（早急な解決＝緊急解決）。",
+          wrong: [
+            "「強行」意為強行。",
+            "「有力」意為有力。",
+            "「正味」意為淨重。"
+          ]
+        }
+      }
     ];
 
-    let currentQuestion = 0;
-    let userAnswers = new Array(quizData.length).fill(null);
+    let currentIdx = 0;
+    let userAnswers = JSON.parse(localStorage.getItem('n1_w4_answers')) || new Array(quizData.length).fill(null);
+    let activeDay = 0;
 
-    // 切換模式（測驗 vs 生字速查面板）
-    function switchMode(mode) {
-        const btnQuiz = document.getElementById('btnQuizMode');
-        const btnVocab = document.getElementById('btnVocabMode');
-        const vocabPanel = document.getElementById('vocab-panel');
-        const quizWrapper = document.getElementById('quiz-main-wrapper');
+    // DOM 元素
+    const qTag = document.getElementById('q-tag');
+    const qNum = document.getElementById('q-num');
+    const progress = document.getElementById('progress');
+    const qText = document.getElementById('q-text');
+    const optionsEl = document.getElementById('options');
+    const explanationEl = document.getElementById('explanation');
+    const verdictEl = document.getElementById('verdict');
+    const translationEl = document.getElementById('translation');
+    const notesEl = document.getElementById('notes');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const stage = document.getElementById('stage');
+    const results = document.getElementById('results');
+    const hankoScore = document.getElementById('hanko-score');
+    const answeredCount = document.getElementById('answered-count');
+    const jumpGrid = document.getElementById('jump-grid');
+    const finishBtn = document.getElementById('finish-btn');
+    const retryWrongBtn = document.getElementById('retry-wrong-btn');
+    const restartBtn = document.getElementById('restart-btn');
+    const dayTabs = document.getElementById('day-tabs');
+    const vocabList = document.getElementById('vocab-list');
 
-        if (mode === 'quiz') {
-            btnQuiz.classList.add('active');
-            btnVocab.classList.remove('active');
-            vocabPanel.style.display = 'none';
-            quizWrapper.style.display = 'block';
-        } else {
-            btnVocab.classList.add('active');
-            btnQuiz.classList.remove('active');
-            vocabPanel.style.display = 'block';
-            quizWrapper.style.display = 'none';
-            renderVocabPanel();
-        }
+    function init() {
+      renderJumpGrid();
+      renderVocabTabs();
+      renderVocabList(activeDay);
+      loadQuestion(currentIdx);
+      updateStats();
     }
 
-    // 渲染生字速查卡片面板
-    function renderVocabPanel() {
-        const container = document.getElementById('vocabContainer');
-        if (container.innerHTML.trim() !== '') return; // 避免重複渲染
+    function loadQuestion(idx) {
+      currentIdx = idx;
+      const q = quizData[idx];
+      stage.hidden = false;
+      results.hidden = true;
 
-        let html = '';
-        vocabData.forEach(dayGroup => {
-            html += `
-                <div class="day-section">
-                    <div class="day-title">${dayGroup.day}</div>
-                    <div class="vocab-grid">
-            `;
-            dayGroup.words.forEach(item => {
-                html += `
-                    <div class="vocab-card">
-                        <div class="vocab-word">${item.word}</div>
-                        <div class="vocab-meaning">${item.meaning}</div>
-                    </div>
-                `;
-            });
-            html += `
-                    </div>
-                </div>
-            `;
-        });
-        container.innerHTML = html;
-    }
+      qTag.textContent = q.type;
+      qNum.textContent = `第 ${idx + 1} 題 ／ 共 ${quizData.length} 題`;
+      progress.style.width = `${((idx + 1) / quizData.length) * 100}%`;
+      qText.textContent = q.q;
 
-    // 初始化測驗介面
-    function initQuiz() {
-        renderNavGrid();
-        loadQuestion(currentQuestion);
-    }
-
-    // 渲染導航方格
-    function renderNavGrid() {
-        const navGrid = document.getElementById('navGrid');
-        navGrid.innerHTML = '';
-        quizData.forEach((_, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'nav-btn';
-            btn.innerText = index + 1;
-            if (userAnswers[index] !== null) {
-                btn.classList.add('answered');
-            }
-            if (index === currentQuestion) {
-                btn.classList.add('current');
-            }
-            btn.onclick = () => goToQuestion(index);
-            navGrid.appendChild(btn);
-        });
-    }
-
-    // 載入指定題目
-    function loadQuestion(index) {
-        currentQuestion = index;
-        const qData = quizData[index];
-        const container = document.getElementById('question-container');
+      optionsEl.innerHTML = '';
+      q.options.forEach((opt, oIdx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = `${['A', 'B', 'C', 'D'][oIdx]}. ${opt}`;
         
-        let html = `
-            <div class="question-card">
-                <div class="question-header">
-                    <span class="question-badge">${qData.type}</span>
-                    <span style="font-size: 0.9rem; color: #64748b; font-weight: bold;">第 ${index + 1} 題 / 共 50 題</span>
-                </div>
-                <div class="question-title">${qData.q}</div>
-                <ul class="options-list">
-        `;
-
-        qData.options.forEach((opt, optIndex) => {
-            let itemClass = 'option-item';
-            const isAnswered = userAnswers[index] !== null;
-            const selectedOpt = userAnswers[index];
-
-            if (isAnswered) {
-                if (optIndex === qData.answer) {
-                    itemClass += ' correct';
-                } else if (selectedOpt === optIndex) {
-                    itemClass += ' incorrect';
-                }
-            } else if (selectedOpt === optIndex) {
-                itemClass += ' selected';
-            }
-
-            html += `<li class="${itemClass}" onclick="selectOption(${index}, ${optIndex})">${opt}</li>`;
-        });
-
-        html += `</ul>`;
-        
-        if (userAnswers[index] !== null) {
-            html += `
-                <div class="explanation-box" style="display: block;">
-                    <div class="translation">【全句翻譯】${qData.translation}</div>
-                    <p><strong>【正確解析】</strong>${qData.details.correct}</p>
-                    <p><strong>【錯誤選項辨析】</strong></p>
-                    <ul style="margin: 5px 0 0 20px; padding: 0;">
-            `;
-            qData.details.wrong.forEach(w => {
-                html += `<li style="margin-bottom: 4px; color: #581c87;">${w}</li>`;
-            });
-            html += `
-                    </ul>
-                </div>
-            `;
-        }
-
-        html += `</div>`;
-        container.innerHTML = html;
-
-        // 更新進度與按鈕狀態
-        document.getElementById('progressIndicator').innerText = `${currentQuestion + 1} / ${quizData.length}`;
-        document.getElementById('prevBtn').disabled = currentQuestion === 0;
-        document.getElementById('nextBtn').innerText = currentQuestion === quizData.length - 1 ? '查看成績' : '下一題';
-        
-        renderNavGrid();
-    }
-
-    // 選擇答案
-    function selectOption(qIndex, optIndex) {
-        if (userAnswers[qIndex] !== null) return; // 作答後不可更改
-        userAnswers[qIndex] = optIndex;
-        loadQuestion(qIndex);
-    }
-
-    // 上一題
-    function prevQuestion() {
-        if (currentQuestion > 0) {
-            loadQuestion(currentQuestion - 1);
-        }
-    }
-
-    // 下一題 / 結算
-    function nextQuestion() {
-        if (currentQuestion < quizData.length - 1) {
-            loadQuestion(currentQuestion + 1);
+        const answered = userAnswers[idx] !== null;
+        if (answered) {
+          btn.disabled = true;
+          if (oIdx === q.answer) {
+            btn.classList.add('correct');
+          } else if (userAnswers[idx] === oIdx) {
+            btn.classList.add('incorrect');
+          }
         } else {
-            showResult();
+          btn.onclick = () => selectAnswer(idx, oIdx);
         }
-    }
+        optionsEl.appendChild(btn);
+      });
 
-    // 跳轉到指定題目
-    function goToQuestion(index) {
-        loadQuestion(index);
-    }
+      if (userAnswers[idx] !== null) {
+        explanationEl.hidden = false;
+        const isCorrect = userAnswers[idx] === q.answer;
+        verdictType = isCorrect;
+        verdictEl.textContent = isCorrect ? '✓ 正解！' : '✕ 残念…';
+        verdictEl.className = `verdict ${isCorrect ? 'ok' : 'ng'}`;
+        translationEl.textContent = q.translation;
+        notesEl.innerHTML = '';
+        
+        const correctLi = document.createElement('li');
+        correctLi.innerHTML = `<strong>【正確解析】</strong>${q.details.correct}`;
+        notesEl.appendChild(correctLi);
 
-    // 顯示結算畫面
-    function showResult() {
-        let score = 0;
-        userAnswers.forEach((ans, index) => {
-            if (ans === quizData[index].answer) {
-                score++;
-            }
+        q.details.wrong.forEach(w => {
+          const wrongLi = document.createElement('li');
+          wrongLi.textContent = w;
+          notesEl.appendChild(wrongLi);
         });
+      } else {
+        explanationEl.hidden = true;
+      }
 
-        document.getElementById('quiz-screen').style.display = 'none';
-        document.getElementById('navGrid').style.display = 'none';
-        document.getElementById('result-screen').style.display = 'block';
-        document.getElementById('score-display').innerText = `${score} / ${quizData.length}`;
+      prevBtn.disabled = idx === 0;
+      nextBtn.textContent = idx === quizData.length - 1 ? '查看成績 →' : '下一題 →';
+      renderJumpGrid();
+    }
 
-        let comment = "";
-        const percentage = (score / quizData.length) * 100;
-        if (percentage === 100) {
-            comment = "太神啦！全數答對，對第4週漢字與語彙的掌握已臻化境！";
-        } else if (percentage >= 80) {
-            comment = "表現非常優秀！觀念清晰，實力堅強。";
-        } else if (percentage >= 60) {
-            comment = "及格囉！建議利用詳細解析與生字速查卡片面板再回頭複習容易混淆的詞彙。";
-        } else {
-            comment = "革命尚未成功！建議先瀏覽【生字速查卡片面板】熟悉核心詞彙後再重新測驗。";
+    function selectAnswer(qIdx, oIdx) {
+      userAnswers[qIdx] = oIdx;
+      localStorage.setItem('n1_w4_answers', JSON.stringify(userAnswers));
+      loadQuestion(qIdx);
+      updateStats();
+    }
+
+    function updateStats() {
+      const answered = userAnswers.filter(a => a !== null).length;
+      let correct = 0;
+      userAnswers.forEach((a, i) => {
+        if (a === quizData[i].answer) correct++;
+      });
+      hankoScore.textContent = correct;
+      answeredCount.textContent = `已作答 ${answered} ／ ${quizData.length}`;
+    }
+
+    function renderJumpGrid() {
+      jumpGrid.innerHTML = '';
+      quizData.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'jump-btn';
+        btn.textContent = i + 1;
+        if (i === currentIdx) btn.classList.add('cur');
+        if (userAnswers[i] !== null) {
+          btn.classList.add(userAnswers[i] === quizData[i].answer ? 'ok' : 'ng');
         }
-        document.getElementById('result-comment').innerText = comment;
+        btn.onclick = () => loadQuestion(i);
+        jumpGrid.appendChild(btn);
+      });
     }
 
-    // 重新測驗
-    function restartQuiz() {
-        userAnswers = new Array(quizData.length).fill(null);
-        currentQuestion = 0;
-        document.getElementById('result-screen').style.display = 'none';
-        document.getElementById('quiz-screen').style.display = 'block';
-        document.getElementById('navGrid').style.display = 'grid';
-        initQuiz();
+    function renderVocabTabs() {
+      dayTabs.innerHTML = '';
+      vocabData.forEach((day, idx) => {
+        const tab = document.createElement('button');
+        tab.className = `day-tab ${idx === activeDay ? 'active' : ''}`;
+        tab.textContent = day.day;
+        tab.onclick = () => {
+          activeDay = idx;
+          renderVocabTabs();
+          renderVocabList(idx);
+        };
+        dayTabs.appendChild(tab);
+      });
     }
 
-    // 頁面載入時初始化
-    window.onload = initQuiz;
-</script>
+    function renderVocabList(dayIdx) {
+      vocabList.innerHTML = '';
+      vocabData[dayIdx].words.forEach(w => {
+        const li = document.createElement('li');
+        li.className = 'vocab-item';
+        li.innerHTML = `<div class="vocab-word">${w.word}</div><div class="vocab-mean">${w.meaning}</div>`;
+        vocabList.appendChild(li);
+      });
+    }
 
+    function showResults() {
+      stage.hidden = true;
+      results.hidden = false;
+      let correct = 0;
+      userAnswers.forEach((a, i) => {
+        if (a === quizData[i].answer) correct++;
+      });
+      document.getElementById('result-correct').textContent = correct;
+      
+      const commentEl = document.getElementById('result-comment');
+      const p = (correct / quizData.length) * 100;
+      if (p === 100) commentEl.textContent = "太神啦！全數答對，對第4週漢字與語彙的掌握已臻化境！";
+      else if (p >= 80) commentEl.textContent = "表現非常優秀！觀念清晰，實力堅強。";
+      else if (p >= 60) commentEl.textContent = "及格囉！建議利用側欄生字速查卡再複習容易混淆的詞彙。";
+      else commentEl.textContent = "革命尚未成功！建議先瀏覽生字速查卡片熟悉核心詞彙後再重新挑戰。";
+    }
+
+    // 事件監聽
+    prevBtn.onclick = () => { if (currentIdx > 0) loadQuestion(currentIdx - 1); };
+    nextBtn.onclick = () => {
+      if (currentIdx < quizData.length - 1) loadQuestion(currentIdx + 1);
+      else showResults();
+    };
+    finishBtn.onclick = showResults;
+
+    restartBtn.onclick = () => {
+      userAnswers = new Array(quizData.length).fill(null);
+      localStorage.removeItem('n1_w4_answers');
+      currentIdx = 0;
+      init();
+    };
+
+    retryWrongBtn.onclick = () => {
+      const firstWrong = userAnswers.findIndex((a, i) => a !== null && a !== quizData[i].answer);
+      if (firstWrong !== -1) {
+        loadQuestion(firstWrong);
+      } else {
+        alert("目前沒有答錯的題目可供重試！");
+      }
+    };
+
+    // 鍵盤支援
+    window.onkeydown = (e) => {
+      if (results.hidden) {
+        if (['1', '2', '3', '4'].includes(e.key)) {
+          const optIdx = parseInt(e.key) - 1;
+          if (userAnswers[currentIdx] === null && quizData[currentIdx].options[optIdx]) {
+            selectAnswer(currentIdx, optIdx);
+          }
+        } else if (e.key === 'ArrowLeft' && currentIdx > 0) {
+          loadQuestion(currentIdx - 1);
+        } else if (e.key === 'ArrowRight') {
+          if (currentIdx < quizData.length - 1) loadQuestion(currentIdx + 1);
+          else showResults();
+        }
+      }
+    };
+
+    window.onload = init;
+  </script>
 </body>
 </html>
