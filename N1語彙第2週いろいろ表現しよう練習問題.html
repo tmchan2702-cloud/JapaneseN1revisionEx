@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N1 語彙 50 題全方位特訓與溫習程式</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- 頂部標題列 -->
+    <header class="bg-indigo-700 text-white shadow-md">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-2">
+            <h1 class="text-xl font-bold">🎯 N1 語彙 50 題特訓與溫習程式</h1>
+            <div class="flex items-center gap-3">
+                <span id="score-badge" class="bg-indigo-800 text-sm px-3 py-1 rounded-full border border-indigo-500">得分: 0 / 50</span>
+                <button onclick="switchTab('quiz')" id="btn-tab-quiz" class="bg-indigo-600 hover:bg-indigo-500 text-xs px-3 py-1.5 rounded font-bold transition">實戰測驗</button>
+                <button onclick="switchTab('flashcard')" id="btn-tab-flashcard" class="bg-indigo-800 hover:bg-indigo-600 text-xs px-3 py-1.5 rounded transition">生字速查卡片</button>
+                <button onclick="resetQuiz()" class="bg-rose-600 hover:bg-rose-500 text-xs px-3 py-1.5 rounded transition">重新開始</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主內容區 -->
+    <main class="flex-grow max-w-5xl mx-auto px-4 py-6 w-full flex flex-col gap-6">
+
+        <!-- 測驗主介面 (Quiz Panel) -->
+        <div id="quiz-view" class="flex flex-col gap-6">
+            <!-- 50 題導航面板 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider">題目導航（點擊可快速跳題，共 50 題不重複）</h2>
+                    <div class="text-xs text-slate-400">已答: <span id="answered-count">0</span> / 50</div>
+                </div>
+                <div id="nav-grid" class="grid grid-cols-10 gap-1.5 md:gap-2">
+                    <!-- 導航方格由 JS 動態生成 -->
+                </div>
+            </div>
+
+            <!-- 答題卡片面板 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 flex-grow flex flex-col justify-between">
+                <div>
+                    <!-- 題號與類型標籤 -->
+                    <div class="flex justify-between items-center mb-4">
+                        <span id="q-type-tag" class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded">類型</span>
+                        <span id="q-number-indicator" class="text-sm font-bold text-slate-400">第 1 / 50 題</span>
+                    </div>
+                    
+                    <!-- 題目敘述 -->
+                    <h3 id="question-text" class="text-lg md:text-xl font-medium mb-3 text-slate-900 leading-relaxed">載入中...</h3>
+                    
+                    <!-- 全句中文翻譯 -->
+                    <div class="mb-6 bg-slate-50 border-l-4 border-indigo-500 p-3 rounded-r text-sm text-slate-600">
+                        <span class="font-bold text-slate-700">【中文翻譯】：</span><span id="question-translation">載入中...</span>
+                    </div>
+
+                    <!-- 選項區 -->
+                    <div id="options-container" class="space-y-3 mb-6">
+                        <!-- 選項按鈕由 JS 動態生成 -->
+                    </div>
+                </div>
+
+                <!-- 解析與導航按鈕 -->
+                <div>
+                    <div id="explanation-box" class="hidden mb-6 bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-slate-700 space-y-2">
+                        <div class="font-bold text-amber-900 flex items-center gap-1">💡 詳細解析</div>
+                        <div id="explanation-text"></div>
+                        <div id="options-breakdown" class="mt-3 pt-3 border-t border-amber-200/60 space-y-1 text-xs"></div>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                        <button onclick="prevQuestion()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium px-5 py-2 rounded-xl transition text-sm">上一題</button>
+                        <button onclick="nextQuestion()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2 rounded-xl transition text-sm shadow-sm">下一題</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 生字速查卡片介面 (Flashcards Panel) -->
+        <div id="flashcard-view" class="hidden flex flex-col gap-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900">📖 第二週核心生字速查卡片 (Flashcards)</h2>
+                        <p class="text-xs text-slate-500 mt-1">按日整理核心動詞、形容詞與程度副詞，方便溫習。</p>
+                    </div>
+                    <select id="day-filter" onchange="filterFlashcards(this.value)" class="border border-slate-300 rounded-lg px-3 py-1.5 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="all">全部顯示 (Day 1 - 6)</option>
+                        <option value="1">1日目：様子・行動①</option>
+                        <option value="2">2日目：様子・行動②</option>
+                        <option value="3">3日目：様子・行動③</option>
+                        <option value="4">4日目：形容詞・な形容詞</option>
+                        <option value="5">5日目：様子を表す形容詞②</option>
+                        <option value="6">6日目：程度を表す言葉</option>
+                    </select>
+                </div>
+                <div id="flashcard-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- 卡片由 JS 產生 -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
+        N1 語彙 50 題特訓與溫習程式 &copy; 2026 | 依據教材第二週重點設計
+    </footer>
+
+    <script>
+        // 核心生字速查卡片完整資料庫 (Flashcards Data)
+        const flashcardData = [
+            // Day 1
+            { day: "1", word: "こもる", reading: "こもる", type: "動詞", meaning: "留在家中、充滿" },
+            { day: "1", word: "誤魔化す", reading: "ごまかす", type: "動詞", meaning: "瞞過、掩飾、價格作假" },
+            { day: "1", word: "冴える", reading: "さえる", type: "動詞", meaning: "頭腦清晰、眼睛發亮" },
+            { day: "1", word: "叶う", reading: "かなう", type: "動詞", meaning: "願望實現、比得上" },
+            { day: "1", word: "意気込む", reading: "いきごむ", type: "動詞", meaning: "幹勁十足、熱烈期待" },
+            { day: "1", word: "老ける", reading: "ふける", type: "動詞", meaning: "顯老" },
+            { day: "1", word: "強がる", reading: "つよがる", type: "動詞", meaning: "逞強" },
+            { day: "1", word: "くたびれる", reading: "くたびれる", type: "動詞", meaning: "疲勞、筋疲力盡" },
+            { day: "1", word: "とぼける", reading: "とぼける", type: "動詞", meaning: "裝傻、假裝不知道" },
+            { day: "1", word: "ぼける", reading: "ぼける", type: "動詞", meaning: "健忘、糊塗、失焦" },
+            { day: "1", word: "どもる", reading: "どもる", type: "動詞", meaning: "口結、結巴" },
+            { day: "1", word: "しくじる", reading: "しくじる", type: "動詞", meaning: "搞砸、失敗" },
+            { day: "1", word: "察する", reading: "さっする", type: "動詞", meaning: "察覺、體察" },
+            { day: "1", word: "ささげる", reading: "ささげる", type: "動詞", meaning: "奉獻、貢獻" },
+            { day: "1", word: "おびえる", reading: "おびえる", type: "動詞", meaning: "害怕、膽戰心驚" },
+            { day: "1", word: "こみあげる", reading: "こみあげる", type: "動詞", meaning: "湧上心頭、淚水湧出" },
+            { day: "1", word: "うぬぼれる", reading: "うぬぼれる", type: "動詞", meaning: "自負、自大、自我陶醉" },
+            { day: "1", word: "凝る", reading: "こる", type: "動詞", meaning: "熱衷、入迷、精雕細琢" },
+            { day: "1", word: "懲りる", reading: "こりる", type: "動詞", meaning: "吸取教訓、吃一塹長一智" },
+            { day: "1", word: "こだわる", reading: "こだわる", type: "動詞", meaning: "拘泥、講究" },
+            { day: "1", word: "戸惑う", reading: "とまどう", type: "動詞", meaning: "不知所措、迷惘" },
+            { day: "1", word: "嘆く", reading: "なげく", type: "動詞", meaning: "感嘆、悲傷" },
+            { day: "1", word: "ぼやく", reading: "ぼやく", type: "動詞", meaning: "發牢騷、抱怨" },
+            { day: "1", word: "まごつく", reading: "まごつく", type: "動詞", meaning: "不知所措、慌張" },
+            { day: "1", word: "和む", reading: "なごむ", type: "動詞", meaning: "心情平靜、和睦" },
+
+            // Day 2
+            { day: "2", word: "差し掛かる", reading: "さしかかる", type: "動詞", meaning: "來到、接近、臨近" },
+            { day: "2", word: "引きずる", reading: "ひきずる", type: "動詞", meaning: "拖著、拖延" },
+            { day: "2", word: "反る", reading: "そる", type: "動詞", meaning: "翹起、反彎" },
+            { day: "2", word: "とがる", reading: "とがる", type: "動詞", meaning: "尖、銳利" },
+            { day: "2", word: "ずれる", reading: "ずれる", type: "動詞", meaning: "滑落、錯開、偏差" },
+            { day: "2", word: "かする", reading: "かする", type: "動詞", meaning: "擦過、擦傷" },
+            { day: "2", word: "ぶれる", reading: "ぶれる", type: "動詞", meaning: "晃動、模糊" },
+            { day: "2", word: "かさむ", reading: "かさむ", type: "動詞", meaning: "增加、積累" },
+            { day: "2", word: "そびえる", reading: "そびえる", type: "動詞", meaning: "聳立、高聳" },
+            { day: "2", word: "たるむ", reading: "たるむ", type: "動詞", meaning: "鬆弛、怠惰" },
+            { day: "2", word: "とろける", reading: "とろける", type: "動詞", meaning: "融化、融解" },
+            { day: "2", word: "さえずる", reading: "さえずる", type: "動詞", meaning: "鳥鳴、啁啾" },
+            { day: "2", word: "きしむ", reading: "きしむ", type: "動詞", meaning: "發出嘎吱聲、作響" },
+            { day: "2", word: "弾く", reading: "はじく", type: "動詞", meaning: "彈奏、彈開、撥開" },
+            { day: "2", word: "潤う", reading: "うるおう", type: "動詞", meaning: "滋潤、受惠、繁榮" },
+            { day: "2", word: "繕う", reading: "つくろう", type: "動詞", meaning: "修補、修飾外表" },
+            { day: "2", word: "はかどる", reading: "はかどる", type: "動詞", meaning: "進展順利" },
+
+            // Day 3
+            { day: "3", word: "絡む", reading: "からむ", type: "動詞", meaning: "纏繞、糾纏、牽涉" },
+            { day: "3", word: "覆す", reading: "くつがえす", type: "動詞", meaning: "顛覆、推翻" },
+            { day: "3", word: "見なす", reading: "みなす", type: "動詞", meaning: "看作、視為" },
+            { day: "3", word: "もたらす", reading: "もたらす", type: "動詞", meaning: "帶來、招致" },
+            { day: "3", word: "凌ぐ", reading: "しのぐ", type: "動詞", meaning: "忍耐、度過、凌駕" },
+            { day: "3", word: "継ぐ", reading: "つぐ", type: "動詞", meaning: "繼承" },
+            { day: "3", word: "つつく", reading: "つつく", type: "動詞", meaning: "用手肘或指頭輕戳" },
+            { day: "3", word: "尽きる", reading: "つきる", type: "動詞", meaning: "枯竭、用盡" },
+            { day: "3", word: "偏る", reading: "かたよる", type: "動詞", meaning: "偏重、偏頗" },
+            { day: "3", word: "はまる", reading: "はまる", type: "動詞", meaning: "掉入、合適、陷入、熱衷" },
+            { day: "3", word: "とどまる", reading: "とどまる", type: "動詞", meaning: "停留、停止、抑制" },
+            { day: "3", word: "途切れる", reading: "とぎれる", type: "動詞", meaning: "中斷、暫停" },
+            { day: "3", word: "よみがえる", reading: "よみがえる", type: "動詞", meaning: "復活、復甦、重現" },
+            { day: "3", word: "ありふれる", reading: "ありふれる", type: "動詞", meaning: "平凡、陳舊、司空見慣" },
+            { day: "3", word: "廃れる", reading: "すたれる", type: "動詞", meaning: "衰退、過時、廢棄" },
+            { day: "3", word: "化ける", reading: "ばける", type: "動詞", meaning: "化妝、扮作、變身" },
+            { day: "3", word: "釣り合う", reading: "つりあう", type: "動詞", meaning: "相稱、平衡、協調" },
+
+            // Day 4
+            { day: "4", word: "くすぐったい", reading: "くすぐったい", type: "形容詞", meaning: "發癢、害羞" },
+            { day: "4", word: "渋い", reading: "しぶい", type: "形容詞", meaning: "濃澀、古樸素雅、面露難色" },
+            { day: "4", word: "華々しい", reading: "はなばなしい", type: "形容詞", meaning: "華麗、輝煌" },
+            { day: "4", word: "みずみずしい", reading: "みずみずしい", type: "形容詞", meaning: "新鮮水嫩" },
+            { day: "4", word: "寝苦しい", reading: "ねぐるしい", type: "形容詞", meaning: "難以入眠的" },
+            { day: "4", word: "息苦しい", reading: "いきぐるしい", type: "形容詞", meaning: "呼吸困難、氣氛令人窒息" },
+            { day: "4", word: "素早い", reading: "すば早い", type: "形容詞", meaning: "敏捷、迅速" },
+            { day: "4", word: "速やか", reading: "すみやか", type: "な形容詞", meaning: "迅速、順暢" },
+            { day: "4", word: "健全", reading: "けんぜん", type: "な形容詞", meaning: "健全" },
+            { day: "4", word: "健やか", reading: "すこやか", type: "な形容詞", meaning: "健康、茁壯" },
+            { day: "4", word: "軽快", reading: "けいかい", type: "な形容詞", meaning: "輕快" },
+            { day: "4", word: "滑らか", reading: "なめらか", type: "な形容詞", meaning: "滑順、流利" },
+            { day: "4", word: "鮮やか", reading: "あざやか", type: "な形容詞", meaning: "鮮豔、嫺熟" },
+            { day: "4", word: "緩やか", reading: "ゆるやか", type: "な形容詞", meaning: "緩慢、平緩、寬鬆" },
+            { day: "4", word: "和やか", reading: "なごやか", type: "な形容詞", meaning: "和氣、融洽" },
+            { day: "4", word: "巧妙", reading: "きょうみょう", type: "な形容詞", meaning: "巧妙、狡猾" },
+            { day: "4", word: "円満", reading: "えんまん", type: "な形容詞", meaning: "圓滿、和睦" },
+
+            // Day 5
+            { day: "5", word: "雑", reading: "ざつ", type: "な形容詞", meaning: "粗糙、草率" },
+            { day: "5", word: "露骨", reading: "ろこつ", type: "な形容詞", meaning: "露骨、毫不掩飾" },
+            { day: "5", word: "念入り", reading: "ねんいり", type: "な形容詞", meaning: "周密、細致" },
+            { day: "5", word: "密か", reading: "ひそか", type: "な形容詞", meaning: "秘密、私下" },
+            { day: "5", word: "おろそか", reading: "おろそか", type: "な形容詞", meaning: "疏忽、馬虎" },
+            { day: "5", word: "まとも", reading: "まとも", type: "な形容詞", meaning: "正經、正面" },
+            { day: "5", word: "何気ない", reading: "なにげない", type: "形容詞", meaning: "不經意、若無其事" },
+            { day: "5", word: "あっけない", reading: "あっけない", type: "形容詞", meaning: "太快結束、未盡興、空虛" },
+            { day: "5", word: "みすぼらしい", reading: "みすぼらしい", type: "形容詞", meaning: "寒酸、破舊" },
+            { day: "5", word: "みっともない", reading: "みっともない", type: "形容詞", meaning: "不體面、難看" },
+            { day: "5", word: "乏しい", reading: "とぼしい", type: "形容詞", meaning: "匱乏、貧乏" },
+            { day: "5", word: "あくどい", reading: "あくどい", type: "形容詞", meaning: "惡劣、花俏過頭、奸詐" },
+            { day: "5", word: "危うい", reading: "あやうい", type: "形容詞", meaning: "危險、岌岌可危" },
+            { day: "5", word: "ややこしい", reading: "ややこしい", type: "形容詞", meaning: "複雜、麻煩" },
+            { day: "5", word: "素っ気ない", reading: "そっけない", type: "形容詞", meaning: "冷淡、無情" },
+            { day: "5", word: "もろい", reading: "もろい", type: "形容詞", meaning: "脆弱、易碎" },
+            { day: "5", word: "紛らわしい", reading: "まぎらわしい", type: "形容詞", meaning: "容易混淆、難辨認" },
+
+            // Day 6
+            { day: "6", word: "大げさ", reading: "おおげさ", type: "な形容詞", meaning: "誇張" },
+            { day: "6", word: "大まか", reading: "おおまか", type: "な形容詞", meaning: "粗略、大致" },
+            { day: "6", word: "おおかた", reading: "おおかた", type: "副詞", meaning: "大體、大約、多半" },
+            { day: "6", word: "おおむね", reading: "おおむね", type: "副詞", meaning: "大體上、大致" },
+            { day: "6", word: "ものすごい", reading: "ものすごい", type: "形容詞", meaning: "驚人的、厲害的" },
+            { day: "6", word: "おびただしい", reading: "おびただしい", type: "形容詞", meaning: "數不勝數、大量的" },
+            { day: "6", word: "甚だしい", reading: "はなはだしい", type: "形容詞", meaning: "甚劇、極端、嚴重" },
+            { day: "6", word: "目覚ましい", reading: "めざましい", type: "形容詞", meaning: "驚人的、顯著的" },
+            { day: "6", word: "極めて", reading: "きわめて", type: "副詞", meaning: "極其、非常" },
+            { day: "6", word: "断然", reading: "だんぜん", type: "副詞", meaning: "斷然、絕對、壓倒性" },
+            { day: "6", word: "完ぺき", reading: "かんぺき", type: "な形容詞", meaning: "完美" },
+            { day: "6", word: "強烈", reading: "きょうれつ", type: "な形容詞", meaning: "強烈" },
+            { day: "6", word: "猛烈", reading: "もうれつ", type: "な形容詞", meaning: "猛烈、拼命" },
+            { day: "6", word: "圧倒的", reading: "あっとうてき", type: "な形容詞", meaning: "壓倒性" },
+            { day: "6", word: "大幅", reading: "おおはば", type: "な形容詞/名詞", meaning: "大幅度的" },
+            { day: "6", word: "半端", reading: "はんぱ", type: "な形容詞/名詞", meaning: "零頭、半途而廢" },
+            { day: "6", word: "あらゆる", reading: "あらゆる", type: "連體詞", meaning: "所有的、每種" }
+        ];
+
+        // 50 題完全不重複題庫 (精確對應 1 到 50 題)
+        const quizData = [
+            { type: "【情境應用】詞彙選擇", q: "第 1 題：駅で電車の乗り換えに (  )。", translation: "在車站換乘電車時感到不知所措、手忙腳亂。", options: ["おびえた", "まごついた", "うぬぼれて", "とぼけた"], answer: 1, explanation: "「まごつく」意為因不知所措而慌亂、茫然失措。", breakdown: ["① おびえた（おびえる）：害怕、恐懼。", "② まごついた（まごつく）：慌亂、不知所措【正確答案】。", "③ うぬぼれて（うぬぼれる）：自負、自我陶醉。", "④ とぼけた（とぼける）：裝傻、假裝不知道。"] },
+            { type: "【情境應用】詞彙選擇", q: "第 2 題：ピントが合っていない (  )写真。", translation: "對焦模糊不清的照片。", options: ["ぼけた", "とがった", "こった", "くたびれた"], answer: 0, explanation: "「ぼける」在此處指相片模糊、對焦不清。", breakdown: ["① ぼけた（ぼける）：模糊、對焦不準【正確答案】。", "② とがった（とがる）：尖銳、變尖。", "③ こった（凝る）：熱衷於、講究的。", "④ くたびれた（くたびれる）：疲憊、勞累。"] },
+            { type: "【情境應用】詞彙選擇", q: "第 3 題：彼は自分に才能があると (  )いる。", translation: "他自負地認為自己很有才能。", options: ["こだわって", "うぬぼれて", "そって", "ばてて"], answer: 1, explanation: "「うぬぼれる」意指自負、自我感覺良好。", breakdown: ["① こだわって（こだわる）：拘泥於、講究。", "② うぬぼれて（うぬぼれる）：自負、自大【正確答案】。", "③ そって（反る／剃る）：翹起、刮鬍子。", "④ ばてて（ばてる）：筋疲力盡。"] },
+            { type: "【漢字轉換】串字測驗", q: "第 4 題：「意気込む」的正確平假名讀音與含意是？", translation: "充滿幹勁地說：「這次一定要贏！」", options: ["いきごむ", "いきこむ", "のりこむ", "おちこむ"], answer: 0, explanation: "「意気込む」讀作「いきごむ」，意為「幹勁十足、摩拳擦掌」。", breakdown: ["① いきごむ：意気込む【正確答案】。", "② いきこむ：非標準讀音。", "③ のりこむ（乗り込む）：乘入、進駐。", "④ おちこむ（落ち込む）：低落、陷入。"] },
+            { type: "【生字填充】實戰測驗", q: "第 5 題：夢が(  ) プロの野球選手になれた！", translation: "夢想實現了，成為了職業棒球選手！", options: ["こもって", "こみあげて", "意気込んで", "かなって"], answer: 3, explanation: "「願いがかなう」為固定搭配，意指「願望實現」。", breakdown: ["① こもって：充滿、悶在裡面。", "② こみあげて：湧上心頭（如淚水）。", "③ 意気込んで：幹勁十足地。", "④ かなって（かなう）：實現、敵得過【正確答案】。"] },
+            { type: "【漢字轉換】串字測驗", q: "第 6 題：「ごまかす」的漢字寫法為？", translation: "企圖隱瞞價格或掩蓋事實。", options: ["誤魔化す", "試す", "惑わす", "紛らす"], answer: 0, explanation: "「ごまかす」寫作漢字「誤魔化す」，意為「瞞過、掩飾、敷衍」。", breakdown: ["① 誤魔化す：ごまかす【正確答案】。", "② 試す（ためす）：嘗試、試驗。", "③ 惑わす（まどわす）：迷惑、使困惑。", "④ 紛らす（まぎらす）：排遣、打發。"] },
+            { type: "【情境應用】詞彙選擇", q: "第 7 題：最近、先の(  )靴がはやっているようだ。", translation: "最近似乎很流行鞋頭尖尖的鞋子。", options: ["そびえた", "とがった", "きしんだ", "うるおった"], answer: 1, explanation: "「とがる」意為尖、銳利。「とがった靴」即為尖頭鞋。", breakdown: ["① そびえた（そびえる）：高聳。", "② とがった（とがる）：尖、銳利【正確答案】。", "③ きしんだ（きしむ）：發出吱吱聲。", "④ うるおった（潤う）：滋潤、獲益。"] },
+            { type: "【情境應用】詞彙選擇", q: "第 8 題：戸が(  ) キーキーうるさい音がする。", translation: "門發出吱吱嘎嘎吵雜的聲音。", options: ["きしんで", "さえずって", "はいて", "はがれて"], answer: 0, explanation: "「きしむ」指木頭、門、地板等發出「吱吱嘎嘎（摩擦）」的聲音。", breakdown: ["① きしんで（きしむ）：發出嘎吱聲【正確答案】。", "② さえずって（さえずる）：鳥兒鳴叫。", "③ はいて（弾く／吐く）：彈奏、防水、吐出。", "④ はがれて（剥がれる）：剝落。"] },
+            { type: "【生字填充】實戰測驗", q: "第 9 題：このシチューは牛肉が(  )ようにやわらかい。", translation: "這道燉菜的牛肉軟得入口即化，非常好吃。", options: ["たるむ", "とろける", "ずれる", "いかれる"], answer: 1, explanation: "「とろける」意為「融化、入口即化」。", breakdown: ["① たるむ：鬆弛、鬆懈。", "② とろける：融化、入口即化【正確答案】。", "③ ずれる：滑落、偏離時機。", "④ いかれる：故障、壞掉。"] },
+            { type: "【漢字轉換】串字測驗", q: "第 10 題：「繕う」的正確讀音與意思是？", translation: "幫忙縫補破洞的襪子。", options: ["つくろう（修繕・整理）", "やぐろう（破壞）", "へりくだる（謙遜）", "つぐなう（補償）"], answer: 0, explanation: "「繕う」讀作「つくろう」，意為「修理、縫補、修飾外表」。", breakdown: ["① つくろう：繕う【正確答案】。", "② やぐろう：無此常用詞。", "③ へりくだる：謙卑、謙遜。", "④ つぐなう（償う）：補償、贖罪。"] },
+            { type: "【情境應用】動詞辨析", q: "第 11 題：長年の努力の末、ついに従来の学説を(  )。", translation: "經過長年努力，終於推翻了傳統的學說。", options: ["くつがえした", "しのいだ", "かたよった", "すたれた"], answer: 0, explanation: "「くつがえす（覆す）」意指顛覆、推翻（學說、政權、判決等）。", breakdown: ["① くつがえした（覆す）：顛覆、推翻【正確答案】。", "② しのいだ（凌ぐ）：忍耐、度過。", "③ かたよった（偏る）：偏頗。", "④ すたれた（廃れる）：過時、荒廢。"] },
+            { type: "【情境應用】動詞辨析", q: "第 12 題：厳しい寒さを (  ) て、どうにか春を迎えた。", translation: "熬過嚴寒，總算迎來了春天。", options: ["からんで", "しのいで", "こもって", "へだてて"], answer: 1, explanation: "「しのぐ（凌ぐ）」表示克服、忍耐困難或度過難關。", breakdown: ["① からんで（絡む）：糾纏。", "② しのいで（凌ぐ）：度過、克服【正確答案】。", "③ こもって（籠る）：悶在裡面。", "④ へだてて（隔てる）：隔開。"] },
+            { type: "【情境應用】形容詞辨析", q: "第 13 題：彼の態度は世間知らずで、少し (  ) ところがある。", translation: "他的態度有些涉世未深，帶點粗魯或草率。", options: ["ぞんざいな", "みすぼらしい", "華々しい", "和やかな"], answer: 0, explanation: "「ぞんざい」意為粗魯、草率、不禮貌的。", breakdown: ["① ぞんざいな：粗魯、草率【正確答案】。", "② みすぼらしい：寒酸的、破舊的。", "③ 華々しい：華麗的、輝煌的。", "④ 和やかな：溫和、融洽的。"] },
+            { type: "【情境應用】副詞與程度", q: "第 14 題：今度のプロジェクトは、前回とは (  ) 成果を上げた。", translation: "這次的專案取得了壓倒性／截然不同的成果。", options: ["めったに", "だんぜん", "おびただしく", "ものすごく"], answer: 1, explanation: "「だんぜん（断然）」意指斷然、絕對、壓倒性地。", breakdown: ["① めったに：難得、幾乎不（後接否定）。", "② だんぜん：斷然、壓倒性地【正確答案】。", "③ おびただしく：大量地（通常修飾數量）。", "④ ものすごく：非常地、極度地。"] },
+            { type: "【N1 綜合實戰】", q: "第 15 題：情報が一部に(  )ており、全体像が見えない。", translation: "情報偏頗，看不到全貌。", options: ["潤っ", "偏っ", "繕っ", "弾い"], answer: 1, explanation: "「偏る（かたよる）」意指偏向一方、偏頗。", breakdown: ["① 潤って：滋潤", "② 偏って：偏頗【正確答案】", "③ 繕って：修飾", "④ 弾いて：彈奏"] },
+            { type: "【N1 綜合實戰】", q: "第 16 題：時代遅れになり、その風習はすっかり(  )てしまった。", translation: "時代改變，那個習俗完全沒落、過時了。", options: ["冴え", "絡み", "廃れ", "そびえ"], answer: 2, explanation: "「廃れる（すたれる）」意指（風俗、習慣等）過時、荒廢。", breakdown: ["① 冴え：清醒", "② 絡み：糾纏", "③ 廃れ：過時【正確答案】", "④ そびえ：高聳"] },
+            { type: "【N1 綜合實戰】", q: "第 17 題：お茶の(  )苦味が、大人の味を引き立てる。", translation: "茶葉特有的微苦口感，襯托出成熟的風味。", options: ["渋い", "巧みな", "華々しい", "速やかな"], answer: 0, explanation: "「渋い（しぶい）」在此指（味道）濃澀、沉穩古樸。", breakdown: ["① 渋い：澀、沉穩【正確答案】", "② 巧みな：巧妙的", "③ 華々しい：華麗的", "④ 速やかな：迅速的"] },
+            { type: "【N1 綜合實戰】", q: "第 18 題：彼は(  )手口で巧みに人々をだました。", translation: "他用狡猾惡毒的手法巧妙地欺騙了大家。", options: ["念入りな", "露骨な", "和やかな", "あくどい"], answer: 3, explanation: "「あくどい」意指（手段等）惡劣、過分、奸詐。", breakdown: ["① 念入りな：周到的", "② 露骨な：露骨的", "③ 和やかな：溫和的", "④ あくどい：惡劣、過分【正確答案】"] },
+            { type: "【N1 綜合實戰】", q: "第 19 題：彼は(  )様子で、落ち着かない様子だった。", translation: "他神情緊張不安，看起來定不下心。", options: ["おびえた", "のどかな", "円満な", "清らかな"], answer: 0, explanation: "「おびえる（怯える）」意指害怕、膽戰心驚。", breakdown: ["① おびえた：害怕、膽戰心驚【正確答案】", "② のどかな：悠閒的", "③ 円満な：圓滿的", "④ 清らかな：清澈的"] },
+            { type: "【N1 綜合實戰】", q: "第 20 題：この問題は非常に(  )から、慎重に考えよう。", translation: "這道題目非常複雜麻煩，必須謹慎思考。", options: ["華々しい", "ややこしい", "健やかな", "軽快な"], answer: 1, explanation: "「ややこしい」意指複雜、難懂、麻煩。", breakdown: ["① 華々しい：華麗的", "② ややこしい：複雜、麻煩【正確答案】", "③ 健やかな：健康的", "④ 軽快な：輕快的"] },
+            { type: "【N1 綜合實戰】", q: "第 21 題：山の上から(  )ビル群を眺めた。", q_alt: "第 21 題：都会には高いビルが(  )立っている。", translation: "都市裡高樓大廈林立。", options: ["そびえ", "とがり", "うずくまり", "おびえ"], answer: 0, explanation: "「そびえる（聳える）」意指高聳、聳立。", breakdown: ["① そびえ：聳立【正確答案】", "② とがり：尖銳", "③ うずくまり：抱頭蹲下", "④ おびえ：害怕"] },
+            { type: "【N1 綜合實戰】", q: "第 22 題：彼女の笑顔には、人を(  )魅力がある。", translation: "她迷人的笑容有著能吸引人的魅力。", options: ["惹きつける", "見なす", "食い違う", "引きずる"], answer: 0, explanation: "「惹きつける」意指吸引、引人注目。", breakdown: ["① 惹きつける：吸引【正確答案】", "② 見なす：視為", "③ 食い違う：分歧、不一致", "④ 引きずる：拖著"] },
+            { type: "【N1 綜合實戰】", q: "第 23 題：彼の説明は(  )すぎて、かえってよくわからない。", translation: "他的說明太過簡略草率，反而讓人聽不懂。", options: ["念入りな", "大まか", "密かな", "細やかな"], answer: 1, explanation: "「大まか（おおまか）」意指粗略、大致、不拘細節。", breakdown: ["① 念入りな：周密的", "② 大まか：粗略、大致【正確答案】", "③ 密かな：秘密的", "④ 細やかな：細緻的"] },
+            { type: "【N1 綜合實戰】", q: "第 24 題：その話を聞いて、思わず涙が(  )てきた。", translation: "聽了那個故事，眼淚不禁湧了上來。", options: ["こみあげ", "そびえ", "はてし", "おびえ"], answer: 0, explanation: "「こみあげる」意指（情感、淚水等）湧上心頭。", breakdown: ["① こみあげ：湧上心頭【正確答案】", "② そびえ：聳立", "③ はてし：無邊", "④ おびえ：害怕"] },
+            { type: "【N1 綜合實戰】", q: "第 25 題：二人の意見が(  )て、なかなか結論が出ない。", translation: "兩個人的意見分歧、對不上，很難得出結論。", options: ["食い違っ", "調和し", "和らいで", "みなし"], answer: 0, explanation: "「食い違う（くい違う）」意指意見不合、相左、交錯。", breakdown: ["① 食い違って：分歧、相左【正確答案】", "② 調和して：調和", "③ 和らいで：緩和", "④ みなして：視為"] },
+            { type: "【N1 綜合實戰】", q: "第 26 題：夜空に(  )星が輝いている。", translation: "夜空中閃爍著數不清的繁星。", options: ["おびただしい", "ばかばかしい", "みすぼらしい", "ありふれた"], answer: 0, explanation: "「おびただしい」意指數量龐大、數不勝數的。", breakdown: ["① おびただしい：大量的、數不清的【正確答案】", "② ばかばかしい：荒謬的", "③ みすぼらしい：寒酸的", "④ ありふれた：平凡的"] },
+            { type: "【N1 綜合實戰】", q: "第 27 題：彼は仕事に対して(  )態度をとるべきではない。", translation: "他不應該對工作採取敷衍、馬虎的態度。", options: ["おろそかな", "おだやかな", "しなやかな", "なごやかな"], answer: 0, explanation: "「おろそか」意指疏忽、馬虎、漫不經心。", breakdown: ["① おろそかな：疏忽、馬虎【正確答案】", "② おだやかな：平穩的", "③ しなやかな：柔軟的", "④ なごやかな：和睦的"] },
+            { type: "【N1 綜合實戰】", q: "第 28 題：今回の試験は(  )簡単に合格できた。", translation: "這次的考試輕而易舉地就及格了。", options: ["たやすく", "やむを得ず", "心細く", "生ぬるく"], answer: 0, explanation: "「たやすい」意指輕而易舉、容易的。", breakdown: ["① たやすく：輕而易舉地【正確答案】", "② やむを得ず：不得已", "③ 心細く：孤單、不安", "④ 生ぬるく：溫吞、不夠嚴格"] },
+            { type: "【N1 綜合實戰】", q: "第 29 題：彼の成功の裏には(  )努力があった。", translation: "在他的成功背後，有著不為人知的祕密努力。", options: ["ひそかな", "あつくるしい", "めざましい", "気まぐれな"], answer: 0, explanation: "「ひそか（密か）」意指私下、祕密地。", breakdown: ["① ひそかな：祕密、私下的【正確答案】", "② あつくるしい：悶熱壓抑的", "③ めざましい：驚人的", "④ 気まぐれな：反覆無常的"] },
+            { type: "【N1 綜合實戰】", q: "第 30 題：このガラス細工はとても(  )から、丁寧に扱ってね。", q_alt: "第 30 題：彼女は(  )心を持っていて、すぐ泣く。", translation: "這個玻璃工藝品非常脆弱，請小心輕放。", options: ["もろい", "たくましい", "しぶい", "ずうずうしい"], answer: 0, explanation: "「もろい（脆弱）」意指容易破碎、脆弱的。", breakdown: ["① もろい：脆弱、易碎【正確答案】", "② たくましい：健壯的", "③ しぶい：澀的", "④ ずうずうしい：厚顏無恥的"] },
+            { type: "【N1 綜合實戰】", q: "第 31 題：彼の業績は(  )発展を遂げた。", translation: "他的業績取得了驚人顯著的發展。", options: ["めざましい", "ささやかな", "なごやかな", "むなしい"], answer: 0, explanation: "「目覚ましい（めざましい）」意指驚人的、顯著的。", breakdown: ["① めざましい：驚人、顯著【正確答案】", "② ささやかな：微小的", "③ なごやかな：和氣的", "④ むなしい：空虛的"] },
+            { type: "【N1 綜合實戰】", q: "第 32 題：人工知能の進歩は(  )スピードで進んでいる。", translation: "人工智慧的進步正以驚人的速度發展著。", options: ["猛烈な", "のどかな", "地味な", "粗大な"], answer: 0, explanation: "「猛烈（もうれつ）」意指猛烈、極快的。", breakdown: ["① 猛烈な：猛烈、快速【正確答案】", "② のどかな：悠閒的", "③ 地味な：樸素的", "④ 粗大な：粗大的"] },
+            { type: "【N1 綜合實戰】", q: "第 33 題：その二人のデザインは、どこか(  )ところがある。", translation: "這兩個人的設計，有些地方十分相似、大同小異。", options: ["似たり寄ったりな", "一石二鳥な", "多種多様な", "波乱万丈な"], answer: 0, explanation: "「似たり寄ったり」意指半斤八兩、差不多。", breakdown: ["① 似たり寄ったりな：差不多、半斤八兩【正確答案】", "② 一石二鳥な：一石二鳥", "③ 多種多様な：多種多樣", "④ 波乱万丈な：波瀾萬丈"] },
+            { type: "【N1 綜合實戰】", q: "第 34 題：彼は(  )性格で、一度決めたら曲げない。", translation: "他個性頑固，一旦決定了就絕不改變。", options: ["頑固な", "気さくな", "おだやかな", "大らかな"], answer: 0, explanation: "「頑固（がんこ）」意指頑固、固執。", breakdown: ["① 頑固な：頑固、固執【正確答案】", "② 気さくな：爽朗的", "③ おだやかな：溫和的", "④ 大らかな：大氣的"] },
+            { type: "【N1 綜合實戰】", q: "第 35 題：トラブルが起きたが、(  )解決に向かった。", translation: "雖然發生了糾紛，但大體上朝著解決的方向發展。", options: ["おおむね", "めったに", "ついに", "あえて"], answer: 0, explanation: "「おおむね」意指大體上、大致。", breakdown: ["① おおむね：大體上、大致【正確答案】", "② めったに：幾乎不", "③ ついに：終於", "④ あえて：特意、膽敢"] },
+            { type: "【N1 綜合實戰】", q: "第 36 題：夜道で突然の物音に(  )しまった。", translation: "在夜路中被突如其來的聲音嚇了一跳。", options: ["びくっとして", "すっきりと", "ぐっすりと", "さっぱりと"], answer: 0, explanation: "「びくっとする」意指嚇了一大跳、猛然一驚。", breakdown: ["① びくっとして：嚇一跳【正確答案】", "② すっきりと：清爽地", "③ ぐっすりと：沉睡地", "④ さっぱりと：乾脆地"] },
+            { type: "【N1 綜合實戰】", q: "第 37 題：この地方の冬は(  )寒さが厳しい。", translation: "這個地方的冬天寒冷程度極其嚴重。", options: ["甚だしい", "みすぼらしい", "はかない", "まぎらわしい"], answer: 0, explanation: "「甚だしい（はなはだしい）」意指甚劇、極端、嚴重。", breakdown: ["① 甚だしい：甚劇、嚴重【正確答案】", "② みすぼらしい：寒酸的", "③ はかない：虛幻的", "④ まぎらわしい：易混淆的"] },
+            { type: "【N1 綜合實戰】", q: "第 38 題：彼女の意見は(  )正論と言える。", translation: "她的意見可以說是完全正確的正論。", options: ["まともな", "いい加減な", "ぞんざいな", "ばかばかしい"], answer: 0, explanation: "「まとも」意指正面、正經、正常。", breakdown: ["① まともな：正經、正常的【正確答案】", "② いい加減な：敷衍的", "③ ぞんざいな：粗魯的", "④ ばかばかしい：荒謬的"] },
+            { type: "【N1 綜合實戰】", q: "第 39 題：彼の才能は(  )ものがある。", translation: "他的才能有著極其令人驚嘆的部分。", options: ["尋常ではない", "何気ない", "心細い", "物足りない"], answer: 0, explanation: "「尋常ではない（じんじょうではない）」意指非比尋常、不同凡響。", breakdown: ["① 尋常ではない：非比尋常【正確答案】", "② 何気ない：不經意的", "③ 心細い：不安的", "④ 物足りない：不滿足的"] },
+            { type: "【N1 綜合實戰】", q: "第 40 題：この計画には(  )問題点が隠されている。", translation: "這個計畫中隱藏著複雜且容易混淆的問題點。", options: ["まぎらわしい", "香ばしい", "香しい", "愛おしい"], answer: 0, explanation: "「紛らわしい（まぎらわしい）」意指容易混淆、難以分辨。", breakdown: ["① まぎらわしい：容易混淆【正確答案】", "② 香ばしい：香氣撲鼻的", "③ 香しい：芬芳的", "④ 愛おしい：可愛的"] },
+            { type: "【N1 綜合實戰】", q: "第 41 題：彼は(  )様子で、失敗を全然気にしていない。", translation: "他一副若無其事、毫不介意失敗的樣子。", options: ["何気ない", "頼もしい", "待ち遠しい", "煙たい"], answer: 0, explanation: "「何気ない（なにげない）」意指若無其事、不經意。", breakdown: ["① 何気ない：若無其事【正確答案】", "② 頼もしい：可靠的", "③ 待ち遠しい：期盼的", "④ 煙たい：令人拘束的"] },
+            { type: "【N1 綜合實戰】", q: "第 42 題：努力が(  )に終わってしまい、非常に残念だ。", translation: "努力最後落得一場空（白費心機），非常遺憾。", options: ["水泡に帰す / 徒勞", "水の泡", "破綻", "挫折"], answer: 1, explanation: "「水の泡（みずのあわ）」意指化為烏有、白費。", breakdown: ["① 水の泡：水泡、白費【正確答案】", "② 順風満帆：一帆風順", "③ 一期一会：一期一會", "④ 電光石火：電光石火"] },
+            { type: "【N1 綜合實戰】", q: "第 43 題：今回のスキャンダルで彼の評判は(  )に落ちた。", translation: "因為這次的醜聞，他的名聲一落千丈。", options: ["地に落ちた", "天に昇った", "海に沈んだ", "山を越えた"], answer: 0, explanation: "「地に落ちる」為固定慣用語，意指名譽掃地、一落千丈。", breakdown: ["① 地に落ちた：落空、名譽掃地【正確答案】", "② 天に昇った：升天", "③ 海に沈んだ：沉海", "④ 山を越えた：度過難關"] },
+            { type: "【N1 綜合實戰】", q: "第 44 題：このプロジェクトを成功させるには(  )の協力が必要だ。", translation: "要讓這個專案成功，需要所有的、每種力量的合作。", options: ["あらゆる", "いかなる", "いかに", "もしも"], answer: 0, explanation: "「あらゆる」意指所有的、每種的。", breakdown: ["① あらゆる：所有的【正確答案】", "② いかなる：無論什麼樣的", "③ いかに：如何", "④ もしも：如果"] },
+            { type: "【N1 綜合實戰】", q: "第 45 題：(  )困難に直面しても、私たちは諦めない。", translation: "無論面臨什麼樣的困難，我們都不會放棄。", options: ["いかなる", "あらゆる", "あたかも", "いわゆる"], answer: 0, explanation: "「いかなる」意指無論怎樣的、不管什麼樣的。", breakdown: ["① いかなる：無論怎樣的【正確答案】", "② あらゆる：所有的", "③ あたかも：彷彿", "④ いわゆる：所謂的"] },
+            { type: "【N1 綜合實戰】", q: "第 46 題：彼の説明は(  )事実と異なる部分がある。", translation: "他的說明與事實有若干程度的差異。", options: ["若干", "ひそか", "めった", "わずか"], answer: 0, explanation: "「若干（じゃっかん）」意指若干、少許。", breakdown: ["① 若干：若干、少許【正確答案】", "② ひそか：祕密", "③ めった：稀少（後接否定）", "④ わずか：僅僅"] },
+            { type: "【N1 綜合實戰】", q: "第 47 題：彼は(  )冗談を言って周囲を笑わせた。", translation: "他開了個誇張的玩笑，逗得大家笑出來。", options: ["大げさな", "粗大な", "軽率な", "強引な"], answer: 0, explanation: "「大げさ（おおげさ）」意指誇張、小題大作。", breakdown: ["① 大げさな：誇張的【正確答案】", "② 粗大な：粗大的", "③ 軽率な：輕率的", "④ 強引な：強硬的"] },
+            { type: "【N1 綜合實戰】", q: "第 48 題：人生は(  )ものであるから、今を大切に生きよう。", translation: "人生是短暫虛幻的，所以要好好珍惜現在活著。", options: ["はかない", "香ばしい", "芳しい", "心強い"], answer: 0, explanation: "「儚い（はかない）」意指虛幻、短暫、無常。", breakdown: ["① はかない：虛幻、短暫【正確答案】", "② 香ばしい：香氣濃郁的", "③ 芳しい：芬芳的", "④ 心強い：安心的"] },
+            { type: "【N1 綜合實戰】", q: "第 49 題：彼女は(  )微笑みを浮かべて部屋を出て行った。", translation: "她浮現出淡淡的微笑，離開了房間。", options: ["かすかな", "ささやかな", "なごやかな", "のどかな"], answer: 0, explanation: "「かすか（微か）」意指微弱的、隱約的。", breakdown: ["① かすかな：微弱、隱約的【正確答案】", "② ささやかな：微小的", "③ なごやかな：和睦的", "④ のどかな：悠閒的"] },
+            { type: "【N1 綜合實戰】", q: "第 50 題：その計画は(  )段階で中止になってしまった。", translation: "那個計畫在半途而廢、不徹底的階段就中止了。", options: ["中途半端な", "おおまかな", "でたらめな", "いい加減な"], answer: 0, explanation: "「中途半端（ちゅうとはんぱ）」意指半途而廢、不徹底、不上不下。", breakdown: ["① 中途半端な：半途而廢、不上不下【正確答案】", "② おおまかな：大致的", "③ でたらめな：胡說八道的", "④ いい加減な：敷衍的"] }
+        ];
+
+        let currentIdx = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+
+        // 切換介面 (Tab Switcher)
+        function switchTab(viewName) {
+            const quizView = document.getElementById('quiz-view');
+            const flashcardView = document.getElementById('flashcard-view');
+            const btnQuiz = document.getElementById('btn-tab-quiz');
+            const btnFlashcard = document.getElementById('btn-tab-flashcard');
+
+            if (viewName === 'quiz') {
+                quizView.classList.remove('hidden');
+                flashcardView.classList.add('hidden');
+                btnQuiz.className = "bg-indigo-600 hover:bg-indigo-500 text-xs px-3 py-1.5 rounded font-bold transition";
+                btnFlashcard.className = "bg-indigo-800 hover:bg-indigo-600 text-xs px-3 py-1.5 rounded transition";
+            } else {
+                quizView.classList.add('hidden');
+                flashcardView.classList.remove('hidden');
+                btnFlashcard.className = "bg-indigo-600 hover:bg-indigo-500 text-xs px-3 py-1.5 rounded font-bold transition";
+                btnQuiz.className = "bg-indigo-800 hover:bg-indigo-600 text-xs px-3 py-1.5 rounded transition";
+                renderFlashcards('all');
+            }
+        }
+
+        // 渲染 Flashcards
+        function renderFlashcards(dayFilter) {
+            const grid = document.getElementById('flashcard-grid');
+            grid.innerHTML = '';
+            
+            const filtered = dayFilter === 'all' 
+                ? flashcardData 
+                : flashcardData.filter(item => item.day === dayFilter);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-50 border border-slate-200 rounded-xl p-4 hover:shadow-md transition flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded">Day ${item.day}</span>
+                            <span class="text-xs text-slate-400">${item.type}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">${item.word}</h3>
+                        <p class="text-xs text-indigo-600 font-medium mb-2">[ ${item.reading} ]</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-200 text-sm text-slate-700 font-medium">
+                        ${item.meaning}
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterFlashcards(day) {
+            renderFlashcards(day);
+        }
+
+        // 初始化測驗
+        function initQuiz() {
+            renderNavGrid();
+            loadQuestion();
+        }
+
+        function renderNavGrid() {
+            const grid = document.getElementById('nav-grid');
+            grid.innerHTML = '';
+            quizData.forEach((_, idx) => {
+                const btn = document.createElement('button');
+                btn.id = `nav-btn-${idx}`;
+                btn.className = "h-8 rounded text-xs font-bold transition flex items-center justify-center border ";
+                
+                if (userAnswers[idx] === null) {
+                    btn.className += "bg-white border-slate-200 text-slate-600 hover:border-indigo-400";
+                } else if (userAnswers[idx] === quizData[idx].answer) {
+                    btn.className += "bg-emerald-500 border-emerald-600 text-white";
+                } else {
+                    btn.className += "bg-rose-500 border-rose-600 text-white";
+                }
+                
+                if (idx === currentIdx) {
+                    btn.className += " ring-2 ring-indigo-600 ring-offset-1";
+                }
+
+                btn.innerText = idx + 1;
+                btn.onclick = () => goToQuestion(idx);
+                grid.appendChild(btn);
+            });
+
+            const answeredCount = userAnswers.filter(ans => ans !== null).length;
+            document.getElementById('answered-count').innerText = answeredCount;
+            document.getElementById('score-badge').innerText = `得分: ${userAnswers.filter((ans, i) => ans === quizData[i].answer).length} / 50`;
+        }
+
+        function loadQuestion() {
+            const q = quizData[currentIdx];
+            document.getElementById('q-type-tag').innerText = q.type;
+            document.getElementById('q-number-indicator').innerText = `第 ${currentIdx + 1} / 50 題`;
+            document.getElementById('question-text').innerText = q.q;
+            document.getElementById('question-translation').innerText = q.translation;
+
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border transition flex items-center justify-between font-medium ";
+                
+                const isAnswered = userAnswers[currentIdx] !== null;
+                const userChoice = userAnswers[currentIdx];
+
+                if (!isAnswered) {
+                    btn.className += "border-slate-200 bg-white hover:border-indigo-500 hover:bg-indigo-50/40 text-slate-700";
+                } else {
+                    if (idx === q.answer) {
+                        btn.className += "border-emerald-500 bg-emerald-50 text-emerald-900";
+                    } else if (idx === userChoice && userChoice !== q.answer) {
+                        btn.className += "border-rose-500 bg-rose-50 text-rose-900";
+                    } else {
+                        btn.className += "border-slate-200 bg-slate-50 text-slate-400 opacity-60";
+                    }
+                }
+
+                btn.innerHTML = `<span>${opt}</span><span class="text-xs text-slate-400">選項 ${['A','B','C','D'][idx]}</span>`;
+                btn.onclick = () => selectOption(idx);
+                container.appendChild(btn);
+            });
+
+            const expBox = document.getElementById('explanation-box');
+            if (userAnswers[currentIdx] !== null) {
+                expBox.classList.remove('hidden');
+                document.getElementById('explanation-text').innerText = q.explanation;
+                
+                const breakdownContainer = document.getElementById('options-breakdown');
+                breakdownContainer.innerHTML = '<div class="font-bold text-slate-700 mb-1">選項逐一解析：</div>' + 
+                    q.breakdown.map(b => `<div>• ${b}</div>`).join('');
+            } else {
+                expBox.classList.add('hidden');
+            }
+
+            renderNavGrid();
+        }
+
+        function selectOption(idx) {
+            if (userAnswers[currentIdx] !== null) return;
+            userAnswers[currentIdx] = idx;
+            loadQuestion();
+        }
+
+        function goToQuestion(idx) {
+            currentIdx = idx;
+            loadQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentIdx < quizData.length - 1) {
+                currentIdx++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIdx > 0) {
+                currentIdx--;
+                loadQuestion();
+            }
+        }
+
+        function resetQuiz() {
+            if (confirm('確定要重新開始所有測驗嗎？')) {
+                userAnswers = new Array(quizData.length).fill(null);
+                currentIdx = 0;
+                initQuiz();
+            }
+        }
+
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>

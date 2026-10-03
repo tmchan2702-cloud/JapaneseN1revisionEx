@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日文核心字彙特訓 (50題精修版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        body { font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- 頂部導航欄 -->
+    <header class="bg-indigo-600 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+            <h1 class="text-xl font-bold flex items-center gap-2">
+                <span>⛩</span> 日文核心字彙特訓 (50題精修版)
+            </h1>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleFlashcards()" class="bg-indigo-500 hover:bg-indigo-400 px-3 py-1.5 rounded-lg text-sm font-medium transition shadow-sm">
+                    📚 生字速查卡片面板
+                </button>
+                <div id="score-display" class="bg-indigo-700 px-3 py-1.5 rounded-lg text-sm font-medium">
+                    得分: <span id="current-score">0</span> / 50
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主容器 -->
+    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full grid grid-cols-1 md:grid-cols-4 gap-6">
+
+        <!-- 左側/上方：50題導航方格 (RWD 響應式) -->
+        <section class="md:col-span-1 bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-3">
+            <div class="flex justify-between items-center">
+                <h2 class="font-bold text-slate-700 text-sm">📌 50題導航方格</h2>
+                <span class="text-xs text-slate-400">點擊跳題</span>
+            </div>
+            <div id="nav-grid" class="grid grid-cols-10 md:grid-cols-5 gap-1.5 max-h-64 md:max-h-[500px] overflow-y-auto p-1">
+                <!-- 動態生成 50 個方格 -->
+            </div>
+            <div class="text-xs text-slate-500 flex justify-between pt-2 border-t border-slate-100">
+                <span class="flex items-center gap-1"><span class="w-3 h-3 bg-emerald-500 rounded inline-block"></span> 已答</span>
+                <span class="flex items-center gap-1"><span class="w-3 h-3 bg-indigo-600 rounded inline-block"></span> 當前</span>
+                <span class="flex items-center gap-1"><span class="w-3 h-3 bg-slate-200 rounded inline-block"></span> 未答</span>
+            </div>
+        </section>
+
+        <!-- 右側/下方：答題核心區 -->
+        <section class="md:col-span-3 flex flex-col gap-6">
+            
+            <!-- 題目卡片 -->
+            <div id="question-card" class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4">
+                <div class="flex justify-between items-center text-sm text-indigo-600 font-semibold">
+                    <span id="q-category">詞義辨析</span>
+                    <span id="q-progress">題目 1 / 50</span>
+                </div>
+
+                <div class="text-lg font-medium text-slate-900 leading-relaxed" id="q-text">
+                    載入中...
+                </div>
+
+                <!-- 選項區 -->
+                <div id="options-container" class="flex flex-col gap-3 mt-2">
+                    <!-- 動態選項 -->
+                </div>
+
+                <!-- 即時解析面板 (預設隱藏) -->
+                <div id="explanation-box" class="hidden mt-4 p-4 rounded-lg bg-slate-50 border border-slate-200 text-sm flex flex-col gap-3">
+                    <div id="result-status" class="font-bold text-base"></div>
+                    <div>
+                        <span class="font-semibold text-slate-700">💡 全句翻譯：</span>
+                        <p id="full-translation" class="text-slate-600 mt-1"></p>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-slate-700">📖 詳細選項解析：</span>
+                        <div id="detailed-explanation" class="text-slate-600 mt-1 space-y-1"></div>
+                    </div>
+                </div>
+
+                <!-- 上一題 / 下一題 按鈕 -->
+                <div class="flex justify-between items-center mt-6 pt-4 border-t border-slate-100">
+                    <button onclick="prevQuestion()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-sm font-medium transition">
+                        ⬅️ 上一題
+                    </button>
+                    <button onclick="nextQuestion()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition shadow-sm">
+                        下一題 ➡️
+                    </button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- 生字速查卡片面板 (Modal / Drawer) -->
+    <div id="flashcard-modal" class="fixed inset-0 bg-black/50 hidden z-50 flex justify-center items-center p-4">
+        <div class="bg-white w-full max-w-3xl max-h-[85vh] rounded-2xl shadow-xl flex flex-col overflow-hidden">
+            <div class="px-6 py-4 bg-indigo-600 text-white flex justify-between items-center">
+                <h3 class="font-bold text-lg">📚 生字速查卡片面板 (1日目 ～ 6日目 完整精選)</h3>
+                <button onclick="toggleFlashcards()" class="text-white hover:bg-indigo-500 p-1.5 rounded-lg text-sm">✕ 關閉</button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-6">
+                <!-- 標籤切換 -->
+                <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-3" id="day-tabs">
+                    <button onclick="switchDay(1)" class="day-tab px-4 py-1.5 rounded-lg text-sm font-medium bg-indigo-600 text-white">1日目(性格)</button>
+                    <button onclick="switchDay(2)" class="day-tab px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200">2日目(心情)</button>
+                    <button onclick="switchDay(3)" class="day-tab px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200">3日目(動作)</button>
+                    <button onclick="switchDay(4)" class="day-tab px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200">4日目(態度)</button>
+                    <button onclick="switchDay(5)" class="day-tab px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200">5日目(人際關係)</button>
+                    <button onclick="switchDay(6)" class="day-tab px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200">6日目(身體狀況)</button>
+                </div>
+                <div id="flashcard-content" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- 動態填入卡片 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer class="bg-white border-t border-slate-200 text-center py-4 text-xs text-slate-500 mt-auto">
+        日文核心字彙線上溫習系統 &copy; 2026 | 支援 RWD 手機與電腦操作
+    </footer>
+
+    <script>
+        // 50 題題庫資料
+        const questions = [
+            {
+                id: 1, category: "1日目 漢字與平假名轉換",
+                text: "私(わたし)の夫(おっと)はとても金(かね)づかいが (      )。",
+                options: [
+                    { label: "A", text: "まめな", correct: false },
+                    { label: "B", text: "荒い (あらい)", correct: true },
+                    { label: "C", text: "ルーズな", correct: false },
+                    { label: "D", text: "気さくな", correct: false }
+                ],
+                translation: "我的丈夫非常花錢大手大腳（金づかいが荒い）。",
+                analysis: {
+                    A: "「まめな」指勤勉、勤快。",
+                    B: "【正確答案】「金づかいが荒い」為固定搭配，意指「揮金如土、花錢大手大腳」。",
+                    C: "「ルーズな」指散漫、鬆懈。",
+                    D: "「気さくな」指爽朗、平易近人。"
+                }
+            },
+            {
+                id: 2, category: "1日目 生字填充",
+                text: "彼はちょっと時間に (      ) ところがあるから、待ち合わせには注意してね。",
+                options: [
+                    { label: "A", text: "ルーズな", correct: true },
+                    { label: "B", text: "誠実な", correct: false },
+                    { label: "C", text: "生真面目な", correct: false },
+                    { label: "D", text: "おおらかな", correct: false }
+                ],
+                translation: "他這人有些時間觀念鬆懈（ルーズな），所以約會時要注意喔。",
+                analysis: {
+                    A: "【正確答案】「ルーズな」源自英文 loose，形容散漫、鬆懈、對時間或規矩不嚴格。",
+                    B: "「誠実な」指誠實、真摯。",
+                    C: "「生真面目な」指非常認真、古板。",
+                    D: "「おおらかな」指心胸寬廣、不拘小節。"
+                }
+            },
+            {
+                id: 3, category: "1日目 詞義辨析",
+                text: "彼女は大スターなのに、とても (      ) 人です。誰とでも気兼ねなく話せます。",
+                options: [
+                    { label: "A", text: "近寄りがたい", correct: false },
+                    { label: "B", text: "気さくな", correct: true },
+                    { label: "C", text: "陰気な", correct: false },
+                    { label: "D", text: "傲慢な", correct: false }
+                ],
+                translation: "她雖然是大明星，卻是個非常平易近人（気さくな）的人。",
+                analysis: {
+                    A: "「近寄りがたい」指難以靠近。",
+                    B: "【正確答案】「気さくな」意指性情爽朗、平易近人、不擺架子。",
+                    C: "「陰気な」指陰鬱、憂鬱。",
+                    D: "「傲慢な」指傲慢。"
+                }
+            },
+            {
+                id: 4, category: "1日目 漢字與平假名轉換",
+                text: "豪華で (      ) 輝きの宝石を目の当たりにした。",
+                options: [
+                    { label: "A", text: "色気のある", correct: false },
+                    { label: "B", text: "気品のある (きひんのある)", correct: true },
+                    { label: "C", text: "素朴な", correct: false },
+                    { label: "D", text: "無邪気な", correct: false }
+                ],
+                translation: "親眼見到了散發豪華且有氣派（気品のある）光芒的寶石。",
+                analysis: {
+                    A: "「色気がある」指有性感魅力。",
+                    B: "【正確答案】「気品がある」意指有氣派、有高雅的品味與氣質。",
+                    C: "「素朴な」指樸素、質樸。",
+                    D: "「無邪気な」指天真爛漫。"
+                }
+            },
+            {
+                id: 5, category: "1日目 生字填充",
+                text: "あまりお金に (      ) 人は、周りから嫌われてしまいますよ。",
+                options: [
+                    { label: "A", text: "でしゃばりな", correct: false },
+                    { label: "B", text: "意地悪な", correct: false },
+                    { label: "C", text: "いやしい (卑しい)", correct: true },
+                    { label: "D", text: "きざな", correct: false }
+                ],
+                translation: "對金錢太過卑鄙吝嗇/貪婪（いやしい）的人，會被周圍的人討厭喔。",
+                analysis: {
+                    A: "「でしゃばりな」指愛出風頭、多管閒事。",
+                    B: "「意地悪な」指壞心眼。",
+                    C: "【正確答案】「いやしい（卑しい）」在此形容對金錢或食物貪婪、下流、卑鄙。",
+                    D: "「きざな」指矯揉造作、裝腔作勢。"
+                }
+            },
+            {
+                id: 6, category: "1日目 慣用表現辨析",
+                text: "あの店員はだれにでも (      )ので、お客さんにとても人気があります。",
+                options: [
+                    { label: "A", text: "愛想がいい (あいそがいい)", correct: true },
+                    { label: "B", text: "センスがいい", correct: false },
+                    { label: "C", text: "気が強い", correct: false },
+                    { label: "D", text: "心強い", correct: false }
+                ],
+                translation: "那個店員對誰都很和善親切（愛想がいい），所以深受客人喜愛。",
+                analysis: {
+                    A: "【正確答案】「愛想がいい」意指和藹可親、態度親切討人喜歡。",
+                    B: "「センスがいい」指很有品味。",
+                    C: "「気が強い」指個性要強、不服輸。",
+                    D: "「心強い」指心裡踏實、有安全感。"
+                }
+            },
+            {
+                id: 7, category: "1日目 漢字與讀音對應",
+                text: "彼女は将来 (      ) 新人女優として、各界から注目を集めている。",
+                options: [
+                    { label: "A", text: "チャーミングな", correct: false },
+                    { label: "B", text: "しとやかな", correct: false },
+                    { label: "C", text: "活発な", correct: false },
+                    { label: "D", text: "有望な (ゆうぼうな)", correct: true }
+                ],
+                translation: "她作為一名很有前途（有望な）的新人女演員，正受到各界的關注。",
+                analysis: {
+                    A: "「チャーミングな」指迷人的。",
+                    B: "「しとやかな」指端莊、溫柔文靜。",
+                    C: "「活発な」指活潑。",
+                    D: "【正確答案】「有望な」意指有希望的、前途看好的。"
+                }
+            },
+            {
+                id: 8, category: "1日目 形容詞辨析",
+                text: "毎日のハードなトレーニングのおかげで、彼は (      ) 肉体をしている。",
+                options: [
+                    { label: "A", text: "りりしい", correct: false },
+                    { label: "B", text: "たくましい", correct: true },
+                    { label: "C", text: "若々しい", correct: false },
+                    { label: "D", text: "頼もしい", correct: false }
+                ],
+                translation: "多虧了每天高強度的訓練，他擁有一副健壯（たくましい）的體格。",
+                analysis: {
+                    A: "「りりしい」指英姿颯爽、威武。",
+                    B: "【正確答案】「たくましい」意指健壯、強壯、堅韌有活力。",
+                    C: "「若々しい」指顯得年輕。",
+                    D: "「頼もしい」指可靠。"
+                }
+            },
+            {
+                id: 9, category: "2日目 心情動詞辨析",
+                text: "試験の開始時間まであと少しなのに、電車が止まってしまい、本当に (      )。",
+                options: [
+                    { label: "A", text: "焦った (あせった)", correct: true },
+                    { label: "B", text: "あきれた", correct: false },
+                    { label: "C", text: "気恥ずかしかった", correct: false },
+                    { label: "D", text: "心細かった", correct: false }
+                ],
+                translation: "距離考試開始時間只剩一點點，電車卻停了，真的讓人很著急（焦った）。",
+                analysis: {
+                    A: "【正確答案】「焦る（あせる）」意指焦急、急躁、慌張。",
+                    B: "「あきれる」指愕然、傻眼。",
+                    C: "「気恥ずかしい」指感覺有點害羞、不好意思。",
+                    D: "「心細い」指孤立無援、心裡沒底。"
+                }
+            },
+            {
+                id: 10, category: "2日目 心情動詞辨析",
+                text: "デパートで提示された商品のあまりの高額な値段に、思わず (      )。",
+                options: [
+                    { label: "A", text: "へこんだ", correct: false },
+                    { label: "B", text: "あきれた", correct: true },
+                    { label: "C", text: "すねた", correct: false },
+                    { label: "D", text: "むかついた", correct: false }
+                ],
+                translation: "百貨公司標示的商品價格實在太高，讓人不禁感到錯愕/傻眼（あきれた）。",
+                analysis: {
+                    A: "「へこむ」指受挫、沮喪。",
+                    B: "【正確答案】「あきれる」指因為荒謬或過分而感到傻眼、愕然。",
+                    C: "「すねる」指鬧彆扭、使性子。",
+                    D: "「むかつく」指感到噁心、火大。"
+                }
+            },
+            {
+                id: 11, category: "2日目 慣用表現辨析",
+                text: "彼の子供っぽい言い方が、どうしても (      )。",
+                options: [
+                    { label: "A", text: "しゃくに障る (しゃくにさわる)", correct: true },
+                    { label: "B", text: "気がねする", correct: false },
+                    { label: "C", text: "恥をかく", correct: false },
+                    { label: "D", text: "気まりが悪い", correct: false }
+                ],
+                translation: "他那種孩子氣的說話方式，怎麼想都讓人很不順眼/生氣（しゃくに障る）。",
+                analysis: {
+                    A: "【正確答案】「しゃくに障る」為固定慣用句，意指惹人生氣、不順眼、觸怒。",
+                    B: "「気がねする」指拘謹、顧慮周到。",
+                    C: "「恥をかく」指出醜、丟臉。",
+                    D: "「気まりが悪い」指不好意思、難為情。"
+                }
+            },
+            {
+                id: 12, category: "2日目 形容詞辨析",
+                text: "毎日忙しくて自分の時間が全くない、なんだか (      ) 生活だ。",
+                options: [
+                    { label: "A", text: "空しい (むなしい)", correct: true },
+                    { label: "B", text: "切ない", correct: false },
+                    { label: "C", text: "物足りない", correct: false },
+                    { label: "D", text: "わずらわしい", correct: false }
+                ],
+                translation: "每天都很忙、完全沒有自己的時間，總覺得過著空虛（空しい）的生活。",
+                analysis: {
+                    A: "【正確答案】「空しい（むなしい）」意指空虛的、無意義的、徒勞的。",
+                    B: "「切ない」指悲傷、痛苦、難受（多指感情）。",
+                    C: "「物足りない」指覺得不夠、不滿足。",
+                    D: "「わずらわしい」指麻煩、繁雜、令人煩心。"
+                }
+            },
+            {
+                id: 13, category: "2日目 形容詞辨析",
+                text: "一人暮らしの夜は、やはり (      ) ものだ。",
+                options: [
+                    { label: "A", text: "心強い", correct: false },
+                    { label: "B", text: "心細い (こころぼそい)", correct: true },
+                    { label: "C", text: "待ち遠しい", correct: false },
+                    { label: "D", text: "清々しい", correct: false }
+                ],
+                translation: "獨居的夜晚，やはり還是會感到心裡沒底、孤單不安（心細い）。",
+                analysis: {
+                    A: "「心強い」指心裡踏實、有依靠。",
+                    B: "【正確答案】「心細い」意指孤立無援、心裡沒底、感到不安與寂寞。",
+                    C: "「待ち遠しい」指殷切期盼。",
+                    D: "「清々しい」指清爽舒暢。"
+                }
+            },
+            {
+                id: 14, category: "2日目 感情表現辨析",
+                text: "こんな簡単な問題を間違えてしまい、自分が本当に (      )。",
+                options: [
+                    { label: "A", text: "情けない (なさけない)", correct: true },
+                    { label: "B", text: "痛ましい", correct: false },
+                    { label: "C", text: "香ばしい", correct: false },
+                    { label: "D", text: "芳しい", correct: false }
+                ],
+                translation: "竟然連這種簡單的題目都寫錯，自己真的讓人覺得很難堪/窩囊（情けない）。",
+                analysis: {
+                    A: "【正確答案】「情けない」意指令人失望、悲慘、窩囊、無能為力。",
+                    B: "「痛ましい」指悲慘、凄慘（多形容事故現場或受害者）。",
+                    C: "「香ばしい」指香味撲鼻。",
+                    D: "「芳しい」指芬芳，或多用於否定句（成績不理想）。"
+                }
+            },
+            {
+                id: 15, category: "3日目 動作動詞辨析",
+                text: "疲れたので、休日に温泉に行ってゆっくり (      ) たい。",
+                options: [
+                    { label: "A", text: "つかる", correct: true },
+                    { label: "B", text: "もぐり", correct: false },
+                    { label: "C", text: "くぐる", correct: false },
+                    { label: "D", text: "さする", correct: false }
+                ],
+                translation: "因為很累，想在假日去溫泉好好泡個澡（湯につかる）。",
+                analysis: {
+                    A: "【正確答案】「お湯につかる」為固定搭配，指浸泡在熱水或溫泉中。",
+                    B: "「もぐり」為潛水、偷渡等，此處動詞不符。",
+                    C: "「くぐる」指鑽過、穿過下方（如門或鳥居）。",
+                    D: "「さする」指摩擦、撫摸（身體部位）。"
+                }
+            },
+            {
+                id: 16, category: "3日目 動作動詞辨析",
+                text: "神社に入る前に、鳥居を (      ) てしてから進んでください。",
+                options: [
+                    { label: "A", text: "くぐる", correct: true },
+                    { label: "B", text: "またぐ", correct: false },
+                    { label: "C", text: "さする", correct: false },
+                    { label: "D", text: "なだめる", correct: false }
+                ],
+                translation: "進入神社之前，請先穿過（くぐる）鳥居再往前走。",
+                analysis: {
+                    A: "【正確答案】「門や鳥居をくぐる」指穿過、鑽過門框或鳥居下方。",
+                    B: "「またぐ」指跨過（門檻或障礙物）。",
+                    C: "「さする」指按摩、撫摸。",
+                    D: "「なだめる」指安撫。"
+                }
+            },
+            {
+                id: 17, category: "3日目 手指動作辨析",
+                text: "彼は緊張しているのか、ずっと自分の (      ) ている。",
+                options: [
+                    { label: "A", text: "髪の毛をいじっ", correct: true },
+                    { label: "B", text: "カレンダーをめくっ", correct: false },
+                    { label: "C", text: "塩をつまん", correct: false },
+                    { label: "D", text: "マッチを擦っ", correct: false }
+                ],
+                translation: "他或許是因為緊張，一直不停地擺弄（いじる）自己的頭髮。",
+                analysis: {
+                    A: "【正確答案】「髪の毛をいじる」意指用手指把玩或擺弄頭髮。",
+                    B: "「カレンダーをめくる」指翻日曆。",
+                    C: "「塩をつまむ」指用手指捏取鹽巴。",
+                    D: "「マッチを擦る」指劃火柴。"
+                }
+            },
+            {
+                id: 18, category: "3日目 身體動作辨析",
+                text: "先生の質問に対して、彼は黙って (      ) た。",
+                options: [
+                    { label: "A", text: "うなずい", correct: true },
+                    { label: "B", text: "うつむい", correct: false },
+                    { label: "C", text: "もがいた", correct: false },
+                    { label: "D", text: "さまよっ", correct: false }
+                ],
+                translation: "對於老師的問題，他默默地點了點頭（うなずく）。",
+                analysis: {
+                    A: "【正確答案】「うなずく」意指點頭示意、表示同意。",
+                    B: "「うつむく」指低頭、垂下頭。",
+                    C: "「もがく」指掙扎。",
+                    D: "「さまよう」指徘徊、流浪。"
+                }
+            },
+            {
+                id: 19, category: "3日目 動作動詞辨析",
+                text: "失敗して落ち込んでいる友だちを、優しく (      ) やった。",
+                options: [
+                    { label: "A", text: "なだめ", correct: true },
+                    { label: "B", text: "おだて", correct: false },
+                    { label: "C", text: "けなし", correct: false },
+                    { label: "D", text: "ひやかし", correct: false }
+                ],
+                translation: "溫柔地安撫（なだめる）了因為失敗而沮喪的朋友。",
+                analysis: {
+                    A: "【正確答案】「なだめる」意指勸解、安撫、平息對方的悲傷或怒氣。",
+                    B: "「おだてる」指奉承、拍馬屁。",
+                    C: "「けなす」指貶低、批評。",
+                    D: "「ひやかす」指嘲笑、揶揄。"
+                }
+            },
+            {
+                id: 20, category: "3日目 動作動詞辨析",
+                text: "熱いスープを急いで飲んだら、気管に入って (      ) てしまった。",
+                options: [
+                    { label: "A", text: "むせ", correct: true },
+                    { label: "B", text: "すすっ", correct: false },
+                    { label: "C", text: "くるん", correct: false },
+                    { label: "D", text: "ゆすっ", correct: false }
+                ],
+                translation: "急忙喝了熱湯，結果跑進氣管裡，嗆到了（むせる）。",
+                analysis: {
+                    A: "【正確答案】「食べ物や煙でむせる」指因食物或煙霧而嗆到、噎住。",
+                    B: "「すすぐ」指漱口或清洗。",
+                    C: "「くるむ」指包裹。",
+                    D: "「ゆする」指搖晃。"
+                }
+            },
+            {
+                id: 21, category: "4日目 人際動詞辨析",
+                text: "隣の家とゴミ出しのルールを巡って、よく (      ) いる。",
+                options: [
+                    { label: "A", text: "もめて", correct: true },
+                    { label: "B", text: "養って", correct: false },
+                    { label: "C", text: "さらって", correct: false },
+                    { label: "D", text: "あざむいて", correct: false }
+                ],
+                translation: "因為倒垃圾的規則問題，和鄰居經常發生糾紛/爭執（もめる）。",
+                analysis: {
+                    A: "【正確答案】「もめる」意指發生糾紛、爭執、意見不合。",
+                    B: "「養う」指扶養、養家。",
+                    C: "「さらう」指綁架或撈取。",
+                    D: "「あざむく」指欺騙。"
+                }
+            },
+            {
+                id: 22, category: "4日目 人際動詞辨析",
+                text: "一人で家族全員を (      ) のは、本当に大変なことです。",
+                options: [
+                    { label: "A", text: "養う (やしなう)", correct: true },
+                    { label: "B", text: "裁く (さばく)", correct: false },
+                    { label: "C", text: "呪う (のらう)", correct: false },
+                    { label: "D", text: "労る (いたわる)", correct: false }
+                ],
+                translation: "一個人要扶養（養う）全家人，真是一件非常辛苦的事。",
+                analysis: {
+                    A: "【正確答案】「養う」意指扶養、養育、培養。",
+                    B: "「裁く」指審判、裁決。",
+                    C: "「呪う」指詛咒。",
+                    D: "「労る」指慰勞、體恤、關懷。"
+                }
+            },
+            {
+                id: 23, category: "4日目 慣用句辨析",
+                text: "彼は自分の失敗を隠すために、すぐに (      ) を張る。",
+                options: [
+                    { label: "A", text: "見栄 (みえ)", correct: true },
+                    { label: "B", text: "気", correct: false },
+                    { label: "C", text: "手", correct: false },
+                    { label: "D", text: "耳", correct: false }
+                ],
+                translation: "他為了掩飾自己的失敗，總是馬上打腫臉充胖子/死要面子（見栄を張る）。",
+                analysis: {
+                    A: "【正確答案】「見栄を張る」為固定慣用句，意指死要面子、擺闊。",
+                    B: "「気を張る」指精神緊繃，意思不同。",
+                    C: "「手を焼く」指感到棘手。",
+                    D: "「耳を疑う」指懷疑耳朵。"
+                }
+            },
+            {
+                id: 24, category: "4日目 態度動詞辨析",
+                text: "彼女は新しいブランドのバッグを買って、友達に (      ) た。",
+                options: [
+                    { label: "A", text: "見せびらかし", correct: true },
+                    { label: "B", text: "言いつけ", correct: false },
+                    { label: "C", text: "告げ口し", correct: false },
+                    { label: "D", text: "バラし", correct: false }
+                ],
+                translation: "她買了新品牌的包包，在朋友面前炫耀（見せびらかす）了一番。",
+                analysis: {
+                    A: "【正確答案】「見せびらかす」意指炫耀、耀武揚威。",
+                    B: "「言いつける」指告發、吩咐。",
+                    C: "「告げ口する」指打小報告。",
+                    D: "「バラす」指洩漏秘密。"
+                }
+            },
+            {
+                id: 25, category: "4日目 慣用句辨析",
+                text: "友達の秘密をほかの人に (      ) てはいけないよ。",
+                options: [
+                    { label: "A", text: "ばし", correct: false },
+                    { label: "B", text: "ばらし", correct: true },
+                    { label: "C", text: "おごっ", correct: false },
+                    { label: "D", text: "ねだっ", correct: false }
+                ],
+                translation: "絕對不可以把朋友的秘密洩漏（秘密をばらす）出去喔。",
+                analysis: {
+                    A: "選項拼字錯誤。",
+                    B: "【正確答案】「秘密をばらす」為固定搭配，意指洩漏秘密、暴光。",
+                    C: "「おごる」指請客。",
+                    D: "「ねだる」指糾纏著要東西（撒嬌索求）。"
+                }
+            },
+            {
+                id: 26, category: "4日目 行動表現辨析",
+                text: "風邪をこじらせて、ついに病院に (      ) ことになってしまった。",
+                options: [
+                    { label: "A", text: "入院する", correct: true },
+                    { label: "B", text: "退院する", correct: false },
+                    { label: "C", text: "面会する", correct: false },
+                    { label: "D", text: "通院する", correct: false }
+                ],
+                translation: "感冒病情惡化（こじらせる），結果搞到必須住院（入院する）的地步。",
+                analysis: {
+                    A: "【正確答案】「入院する」意指住院治療。",
+                    B: "「退院する」指出院。",
+                    C: "「面会する」指探視、會面。",
+                    D: "「通院する」指定期去醫院看診。"
+                }
+            },
+            {
+                id: 27, category: "5日目 動詞搭配",
+                text: "みんなで力を (      )、この難局を乗り越えましょう。",
+                options: [
+                    { label: "A", text: "合わせて", correct: true },
+                    { label: "B", text: "交わして", correct: false },
+                    { label: "C", text: "背いて", correct: false },
+                    { label: "D", text: "逃して", correct: false }
+                ],
+                translation: "大家齊心協力（力を合わせる），一起度過這個難關吧。",
+                analysis: {
+                    A: "【正確答案】「力を合わせる」為固定慣用句，意指齊心協力、合力。",
+                    B: "「声を交わす」意指互相交流問候，此處搭配不合。",
+                    C: "「命令に背く」指違背命令。",
+                    D: "「チャンスを逃す」指錯失機會。"
+                }
+            },
+            {
+                id: 28, category: "5日目 慣用句辨析",
+                text: "親の期待に (      )、彼は違う道に進むことを決めた。",
+                options: [
+                    { label: "A", text: "合わせ", correct: false },
+                    { label: "B", text: "背いて (そむいて)", correct: true },
+                    { label: "C", text: "交わし", correct: false },
+                    { label: "D", text: "束ねて", correct: false }
+                ],
+                translation: "違背（背く）父母的期望，他決定走向不同的道路。",
+                analysis: {
+                    A: "不合文意。",
+                    B: "【正確答案】「期待や命令に背く」意指違背期待或命令。",
+                    C: "不合文意。",
+                    D: "「髪を束ねる」指綁頭髮。"
+                }
+            },
+            {
+                id: 29, category: "5日目 動詞辨析",
+                text: "この植物は、太陽の光に (      ) と枯れてしまう。",
+                options: [
+                    { label: "A", text: "さらす", correct: true },
+                    { label: "B", text: "ゆるめる", correct: false },
+                    { label: "C", text: "すする", correct: false },
+                    { label: "D", text: "生やす", correct: false }
+                ],
+                translation: "這種植物如果一直曝露在（さらす）強烈陽光下就會枯萎。",
+                analysis: {
+                    A: "【正確答案】「日光にさらす」意指曝露在陽光下、風吹雨打。",
+                    B: "「ベルトを緩める」指放鬆皮帶。",
+                    C: "「お茶をすすり」指啜飲茶水。",
+                    D: "「ひげを生やす」指留鬍子。"
+                }
+            },
+            {
+                id: 30, category: "5日目 慣用句辨析",
+                text: "都合が悪くなると、すぐに (      ) を変えるなよ。",
+                options: [
+                    { label: "A", text: "話 (はなし)", correct: true },
+                    { label: "B", text: "目 (め)", correct: false },
+                    { label: "C", text: "手 (て)", correct: false },
+                    { label: "D", text: "身 (み)", correct: false }
+                ],
+                translation: "情況變得對自己不利時，別馬上就轉移話題/岔開話頭（話をかえる）啊。",
+                analysis: {
+                    A: "【正確答案】「話をかえる（変える）」意指岔開話題、轉移焦點。",
+                    B: "「目をそらす」指移開視線。",
+                    C: "「手口」指手法。",
+                    D: "不符合慣用說法。"
+                }
+            },
+            {
+                id: 31, category: "5日目 動詞搭配",
+                text: "毎日の食事では、できるだけ塩分を (      ) ようにしています。",
+                options: [
+                    { label: "A", text: "控える (ひかえる)", correct: true },
+                    { label: "B", text: "阻む (はばむ)", correct: false },
+                    { label: "C", text: "遮る (さえぎる)", correct: false },
+                    { label: "D", text: "もくろむ", correct: false }
+                ],
+                translation: "平時的飲食中，我盡量克制/減少（控える）鹽分的攝取。",
+                analysis: {
+                    A: "【正確答案】「塩分を控える」意指節制、減少鹽分攝取。",
+                    B: "「侵入を阻む」指阻止入侵。",
+                    C: "「話を遮る」指打斷別人的話。",
+                    D: "「世界進出をもくろむ」指企劃進軍世界。"
+                }
+            },
+            {
+                id: 32, category: "5日目 動詞辨析",
+                text: "話し合っている途中で、他人の話を (      ) のはマナー違反だ。",
+                options: [
+                    { label: "A", text: "遮る (さえぎる)", correct: true },
+                    { label: "B", text: "控える", correct: false },
+                    { label: "C", text: "つづる", correct: false },
+                    { label: "D", text: "据える", correct: false }
+                ],
+                translation: "在大家討論途中，打斷（遮る）別人的發言是違反禮儀的。",
+                analysis: {
+                    A: "【正確答案】「人の話を遮る」意指打斷、中斷別人的說話。",
+                    B: "「控える」指節制或等待。",
+                    C: "「つづる」指拼寫、撰寫。",
+                    D: "「防犯カメラを据える」指安裝監視器。"
+                }
+            },
+            {
+                id: 33, category: "6日目 身體狀況表現",
+                text: "昨夜から熱っぽくて、なんだか (      ) がする。",
+                options: [
+                    { label: "A", text: "寒気 (さむけ)", correct: true },
+                    { label: "B", text: "めまい", correct: false },
+                    { label: "C", text: "貧血", correct: false },
+                    { label: "D", text: "湿疹", correct: false }
+                ],
+                translation: "從昨晚開始有點發燒，總覺得有一點發冷/寒顫（寒気がする）。",
+                analysis: {
+                    A: "【正確答案】「寒気がする」為固定搭配，意指發冷、起寒顫。",
+                    B: "「めまいがする」指頭暈目眩。",
+                    C: "「貧血になる」指貧血。",
+                    D: "「湿疹ができる」指長濕疹。"
+                }
+            },
+            {
+                id: 34, category: "6日目 身體狀況表現",
+                text: "立ち上がった瞬間、急に (      ) がして倒れそうになった。",
+                options: [
+                    { label: "A", text: "めまい", correct: true },
+                    { label: "B", text: "寒気", correct: false },
+                    { label: "C", text: "便秘", correct: false },
+                    { label: "D", text: "下痢", correct: false }
+                ],
+                translation: "站起來的瞬間，突然一陣頭暈目眩（めまいがする），差點跌倒。",
+                analysis: {
+                    A: "【正確答案】「めまいがする」意指頭暈、暈眩。",
+                    B: "「寒気」指發冷。",
+                    C: "「便秘」指便秘。",
+                    D: "「下痢」指腹瀉。"
+                }
+            },
+            {
+                id: 35, category: "6日目 醫療症狀表現",
+                text: "スポーツの練習中に足首を (      ) てしまい、歩くのが痛い。",
+                options: [
+                    { label: "A", text: "ねじっ", correct: false },
+                    { label: "B", text: "ねんざし", correct: true },
+                    { label: "C", text: "かいて", correct: false },
+                    { label: "D", text: "はれ", correct: false }
+                ],
+                translation: "在運動練習時不小心扭傷了（足首をねんざする）腳踝，走路會痛。",
+                analysis: {
+                    A: "用字不夠精準。",
+                    B: "【正確答案】「足首をねんざする」為醫學與日常生活標準搭配，意指扭傷腳踝。",
+                    C: "「皮膚をかく」指抓皮膚。",
+                    D: "「はれる」指腫脹。"
+                }
+            },
+            {
+                id: 36, category: "6日目 醫療動態辨析",
+                text: "虫に刺されたところが赤く (      ) て、かゆくてたまらない。",
+                options: [
+                    { label: "A", text: "腫れて (はれて)", correct: true },
+                    { label: "B", text: "かすんで", correct: false },
+                    { label: "C", text: "弱って", correct: false },
+                    { label: "D", text: "和らいで", correct: false }
+                ],
+                translation: "被蟲咬到的地方紅腫（はれる）起來，癢得不得了。",
+                analysis: {
+                    A: "【正確答案】「打ったところがはれる」指受傷或被咬處紅腫起來。",
+                    B: "「目がかすむ」指眼睛模糊。",
+                    C: "「体が弱る」指身體衰弱。",
+                    D: "「痛みが和らぐ」指疼痛減緩。"
+                }
+            },
+            {
+                id: 37, category: "6日目 醫療動詞辨析",
+                text: "薬を飲んだおかげで、激しい頭痛がようやく (      ) た。",
+                options: [
+                    { label: "A", text: "弱まっ", correct: false },
+                    { label: "B", text: "和らいだ (やわらいだ)", correct: true },
+                    { label: "C", text: "早まっ", correct: false },
+                    { label: "D", text: "遠ざかっ", correct: false }
+                ],
+                translation: "多虧吃了藥，劇烈的頭痛終於緩解（和らいだ）了。",
+                analysis: {
+                    A: "「弱まる」多用於客觀力量減弱，疼痛較常搭配「和らぐ」。",
+                    B: "【正確答案】「痛みが和らぐ」為標準慣用搭配，意指疼痛緩和、減輕。",
+                    C: "「早まる」指提前或加快。",
+                    D: "「遠ざかる」指漸漸遠離。"
+                }
+            },
+            {
+                id: 38, category: "6日目 醫療照護名詞",
+                text: "祖母が入院したため、母が病院に (      ) ことになった。",
+                options: [
+                    { label: "A", text: "面会する", correct: false },
+                    { label: "B", text: "つきそう (付き添う)", correct: true },
+                    { label: "C", text: "リハビリする", correct: false },
+                    { label: "D", text: "矯正する", correct: false }
+                ],
+                translation: "因為祖母住院了，母親決定去醫院隨侍照顧（付き添う）。",
+                analysis: {
+                    A: "「面会する」指探病、會面。",
+                    B: "【正確答案】「患者に付き添う」意指陪伴、看護患者。",
+                    C: "「リハビリする」指復健。",
+                    D: "「歯を矯正する」指牙齒矯正。"
+                }
+            },
+            {
+                id: 39, category: "綜合複習 漢字讀音",
+                text: "彼の突然の提案には、みんな (      ) た。",
+                options: [
+                    { label: "A", text: "あきれ", correct: true },
+                    { label: "B", text: "あせり", correct: false },
+                    { label: "C", text: "なだめ", correct: false },
+                    { label: "D", text: "おだて", correct: false }
+                ],
+                translation: "對於他突如其來的提案，大家都感到傻眼/愕然（あきれた）。",
+                analysis: {
+                    A: "【正確答案】「あきれる」指因過分離譜而感到錯愕、傻眼。",
+                    B: "「焦る」指焦急。",
+                    C: "「なだめる」指安撫。",
+                    D: "「おだてる」指奉承。"
+                }
+            },
+            {
+                id: 40, category: "綜合複習 慣用表達",
+                text: "彼は人に好かれるために、いつも上司の (      ) をとっている。",
+                options: [
+                    { label: "A", text: "ご機嫌 (ごきげん)", correct: true },
+                    { label: "B", text: "見栄", correct: false },
+                    { label: "C", text: "塩分", correct: false },
+                    { label: "D", text: "髪の毛", correct: false }
+                ],
+                translation: "他為了討人喜歡，總是看上司的臉色/討好上司（ご機嫌をとる）。",
+                analysis: {
+                    A: "【正確答案】「ご機嫌をとる」為固定慣用句，意指討好、巴結、看臉色。",
+                    B: "「見栄を張る」指死要面子。",
+                    C: "「塩分を控える」指控制鹽分。",
+                    D: "與語意不符。"
+                }
+            },
+            {
+                id: 41, category: "綜合複習 生字應用",
+                text: "初対面の人に対して、あまり (      ) 話しかけないほうがいい。",
+                options: [
+                    { label: "A", text: "なれなれしく", correct: true },
+                    { label: "B", text: "生真面目に", correct: false },
+                    { label: "C", text: "誠実に", correct: false },
+                    { label: "D", text: "心強く", correct: false }
+                ],
+                translation: "對初次見面的人，最好不要表現得太過熟不拘禮/套近乎（なれなれしい）。",
+                analysis: {
+                    A: "【正確答案】「なれなれしい」意指過分親熱、熟不拘禮、沒大沒小。",
+                    B: "「生真面目」指過分認真。",
+                    C: "「誠実」指誠實。",
+                    D: "「心強い」指心裡踏實。"
+                }
+            },
+            {
+                id: 42, category: "綜合複習 生字應用",
+                text: "彼は他人の仕事に首を突っ込む (      ) な性格をしている。",
+                options: [
+                    { label: "A", text: "おせっかいな", correct: true },
+                    { label: "B", text: "おおらかな", correct: false },
+                    { label: "C", text: "気さくな", correct: false },
+                    { label: "D", text: "有望な", correct: false }
+                ],
+                translation: "他是一個愛管閒事、多管閒事（おせっかいな）個性的人。",
+                analysis: {
+                    A: "【正確答案】「おせっかいな」意指愛管閒事、好操心。",
+                    B: "「おおらかな」指心胸寬廣。",
+                    C: "「気さくな」指爽朗親切。",
+                    D: "「有望な」指前途看好。"
+                }
+            },
+            {
+                id: 43, category: "綜合複習 漢字書寫",
+                text: "祖父は年齢の割にとても (      ) 体をしています。",
+                options: [
+                    { label: "A", text: "たくましい", correct: true },
+                    { label: "B", text: "しとやかな", correct: false },
+                    { label: "C", text: "陰気な", correct: false },
+                    { label: "D", text: "臆病な", correct: false }
+                ],
+                translation: "祖父相較於他的年齡，擁有非常健壯（たくましい）的身體。",
+                analysis: {
+                    A: "【正確答案】「たくましい」意指健壯、強健。",
+                    B: "「しとやかな」指端莊。",
+                    C: "「陰気な」指陰鬱。",
+                    D: "「臆病な」指膽小。"
+                }
+            },
+            {
+                id: 44, category: "綜合複習 動詞辨析",
+                text: "彼女の優しい言葉を聞いて、不安な気持ちが (      ) た。",
+                options: [
+                    { label: "A", text: "和らいだ", correct: true },
+                    { label: "B", text: "こじれた", correct: false },
+                    { label: "C", text: "劣った", correct: false },
+                    { label: "D", text: "誤った", correct: false }
+                ],
+                translation: "聽了她溫柔的話語，不安的心情終於緩和（和らいだ）了下來。",
+                analysis: {
+                    A: "【正確答案】「気持ちや痛みが和らぐ」意指情緒或疼痛減緩、放輕鬆。",
+                    B: "「話がこじれる」指關係惡化、談判陷入僵局。",
+                    C: "「劣る」指遜色、低於。",
+                    D: "「誤る」指弄錯。"
+                }
+            },
+            {
+                id: 45, category: "綜合複習 漢字串字",
+                text: "暗い夜道を一人で歩くのは、どうしても (      )。",
+                options: [
+                    { label: "A", text: "おっかない", correct: true },
+                    { label: "B", text: "もの足りない", correct: false },
+                    { label: "C", text: "めったにない", correct: false },
+                    { label: "D", text: "手間取る", correct: false }
+                ],
+                translation: "獨自走昏暗的夜路，怎麼說都很令人感到害怕/恐怖（おっかない）。",
+                analysis: {
+                    A: "【正確答案】「おっかない」意指可怕的、令人提心吊膽的。",
+                    B: "「物足りない」指覺得不夠。",
+                    C: "「めったにない」指難得有。",
+                    D: "「手間取る」指費時費事。"
+                }
+            },
+            {
+                id: 46, category: "綜合複習 慣用表達",
+                text: "そんなに怖がらなくても、誰も君を (      ) わけではないよ。",
+                options: [
+                    { label: "A", text: "裁く (さばく)", correct: true },
+                    { label: "B", text: "養う", correct: false },
+                    { label: "C", text: "労る", correct: false },
+                    { label: "D", text: "励ます", correct: false }
+                ],
+                translation: "就算不用那麼害怕，也沒有人會審判/處罰（裁く）你呀。",
+                analysis: {
+                    A: "【正確答案】「人を裁く」意指審判、審理、裁決某人。",
+                    B: "「養う」指扶養。",
+                    C: "「労る」指慰勞。",
+                    D: "「励ます」指鼓勵。"
+                }
+            },
+            {
+                id: 47, category: "綜合複習 身體部位搭配",
+                text: "あまりの驚きに、思わず (      ) を疑ってしまった。",
+                options: [
+                    { label: "A", text: "耳 (みみ)", correct: true },
+                    { label: "B", text: "目", correct: false },
+                    { label: "C", text: "手", correct: false },
+                    { label: "D", text: "足", correct: false }
+                ],
+                translation: "因為太過震驚，讓人不由得懷疑自己的耳朵（耳を疑う）。",
+                analysis: {
+                    A: "【正確答案】「耳を疑う」為固定慣用句，意指不敢相信自己的耳朵。",
+                    B: "雖有「目を疑う」（不敢相信眼睛），但此處固定搭配以聽覺為主。",
+                    C: "不合文意。",
+                    D: "不合文意。"
+                }
+            },
+            {
+                id: 48, category: "綜合複習 狀態描述",
+                text: "徹夜で勉強したせいで、頭がボーっとして (      ) がもうろうとしている。",
+                options: [
+                    { label: "A", text: "意識 (いしき)", correct: true },
+                    { label: "B", text: "機嫌", correct: false },
+                    { label: "C", text: "気概", correct: false },
+                    { label: "D", text: "体調", correct: false }
+                ],
+                translation: "因為熬夜唸書，頭腦昏沉，神智/意識（意識がもうろうとする）有些不清醒。",
+                analysis: {
+                    A: "【正確答案】「意識がもうろうとする」意指神智不清、意識模糊。",
+                    B: "「機嫌」指心情。",
+                    C: "「気概」指氣概。",
+                    D: "「体調」指身體狀況。"
+                }
+            },
+            {
+                id: 49, category: "綜合複習 醫療名詞",
+                text: "高齢化が進むにつれて、 (      ) などの病気が増えている。",
+                options: [
+                    { label: "A", text: "認知症 (にんちしょう)", correct: true },
+                    { label: "B", text: "花粉症", correct: false },
+                    { label: "C", text: "熱中症", correct: false },
+                    { label: "D", text: "気管支炎", correct: false }
+                ],
+                translation: "隨著高齡化進展，失智症（認知症）等疾病正在增加。",
+                analysis: {
+                    A: "【正確答案】「認知症」意指失智症、痴呆症。",
+                    B: "「花粉症」指花粉症。",
+                    C: "「熱中症」指中暑。",
+                    D: "「気管支炎」指支氣管炎。"
+                }
+            },
+            {
+                id: 50, category: "綜合複習 總結字彙",
+                text: "今回のプロジェクト成功は、チーム全員の協力があった (      ) のことだ。",
+                options: [
+                    { label: "A", text: "こそ", correct: true },
+                    { label: "B", text: "せい", correct: false },
+                    { label: "C", text: "あげく", correct: false },
+                    { label: "D", text: "もと", correct: false }
+                ],
+                translation: "這次專案的成功，正是因為有了團隊全員的合作（～こそ）。",
+                analysis: {
+                    A: "【正確答案】「〜こそ」接在名詞後表示強調「正是因為……」。",
+                    B: "「〜のせい」通常用於歸咎不好的結果（怪罪）。",
+                    C: "「〜あげく」指「結果……（多指負面或折騰老半天後的結果）」。",
+                    D: "「〜のもとで」指在……之下。"
+                }
+            }
+        ];
+
+        // 擴充與修改後的生字速查卡片面板資料 (1日目 ~ 6日目，均涵蓋豐富單字)
+const flashcardData = {
+    1: [
+        { word: "なれなれしい", reading: "なれなれしい", meaning: "過於熱情、熟不拘禮" },
+        { word: "おせっかいな", reading: "おせっかいな", meaning: "多管閒事" },
+        { word: "いやらしい", reading: "いやらしい", meaning: "卑劣、下流、猥褻" },
+        { word: "おっちょこちょいな", reading: "おっちょこちょいな", meaning: "粗心大意、冒冒失失" },
+        { word: "でしゃばりな", reading: "でしゃばりな", meaning: "愛出風頭、多嘴、愛插手" },
+        { word: "しぶとい", reading: "しぶとい", meaning: "頑固、固執、頑強" },
+        { word: "きざな", reading: "きざな", meaning: "裝腔作勢、令人討厭的做作" },
+        { word: "荒っぽい", reading: "あらっぽい", meaning: "粗魯、粗暴" },
+        { word: "ルーズな", reading: "ルーズな", meaning: "鬆懈、散漫、生活隨便" },
+        { word: "金遣いが荒い", reading: "かねづかいがらい", meaning: "揮金如土、花錢大手大腳" },
+        { word: "無礼な", reading: "ぶれいな", meaning: "無禮" },
+        { word: "愛想がいい", reading: "あいそがいい", meaning: "和氣、親切、付情好" },
+        { word: "まめな", reading: "まめな", meaning: "勤勞、勤懇" },
+        { word: "センスがいい", reading: "センスがいい", meaning: "很有品味、眼光好" },
+        { word: "気立てがいい", reading: "きだてがいい", meaning: "性情溫和、心地善良" },
+        { word: "いさぎよい", reading: "いさぎよい", meaning: "果斷、乾脆、有擔當" },
+        { word: "情け深い", reading: "なさけぶかい", meaning: "仁慈、富有同情心、重感情" },
+        { word: "用心深い", reading: "ようじんぶかい", meaning: "小心謹慎、審慎" },
+        { word: "りりしい", reading: "りりしい", meaning: "威風凜凜、英姿煥發、可敬" },
+        { word: "若々しい", reading: "わかわかしい", meaning: "年輕有朝氣" },
+        { word: "勇ましい", reading: "いさましい", meaning: "勇猛、勇敢" },
+        { word: "たくましい", reading: "たくましい", meaning: "健壯、堅強" },
+        { word: "思いやりがある", reading: "おもいやりがある", meaning: "有體貼心、有同情心" },
+        { word: "生真面目な", reading: "きまじめな", meaning: "過於認真、老實過頭" },
+        { word: "勤勉な", reading: "きんべんな", meaning: "勤勉" },
+        { word: "誠実な", reading: "せいじつな", meaning: "誠實、實心" },
+        { word: "まともな", reading: "まともな", meaning: "正經、健全、像樣的" },
+        { word: "大柄な", reading: "おおがらな", meaning: "身材高大的" },
+        { word: "小柄な", reading: "こがらな", meaning: "身材矮小的" },
+        { word: "活発な", reading: "かっぱつな", meaning: "活潑" },
+        { word: "有望な", reading: "ゆうぼうな", meaning: "有前途、有希望的" },
+        { word: "純粋な", reading: "じゅんすいな", meaning: "純真、純粹" },
+        { word: "無邪気な", reading: "むじゃきな", meaning: "天真爛漫" },
+        { word: "温和な", reading: "おんわな", meaning: "溫和" },
+        { word: "気さくな", reading: "きさくな", meaning: "平易近人、爽快" },
+        { word: "気品がある", reading: "きひんがある", meaning: "有氣派、有風度、有氣質" },
+        { word: "おおらかな", reading: "おおらかな", meaning: "落落大方、心胸寬廣、樂觀" },
+        { word: "色気がある", reading: "いろけがある", meaning: "性感、有魅力" },
+        { word: "素朴な", reading: "そぼくな", meaning: "質樸、樸素" },
+        { word: "しとやかな", reading: "しとやかな", meaning: "溫婉、端莊、文靜" },
+        { word: "チャーミングな", reading: "チャーミングな", meaning: "迷人的、有魅力的" },
+        { word: "気まぐれな", reading: "きまぐれな", meaning: "反覆無常、心血來潮、變幻莫測" },
+        { word: "近寄りがたい", reading: "ちかよりがたい", meaning: "難以靠近" },
+        { word: "無口な", reading: "むくちな", meaning: "沉默寡言" },
+        { word: "陰気な", reading: "いんきな", meaning: "陰鬱、憂鬱" },
+        { word: "デリケートな", reading: "デリケートな", meaning: "纖細、微妙、敏感的" },
+        { word: "物好きな", reading: "ものずきな", meaning: "好奇心強、愛好稀奇古怪的事物" },
+        { word: "孤独な", reading: "こどくな", meaning: "孤獨" },
+        { word: "臆病な", reading: "おくびょうな", meaning: "膽小、懦弱" }
+    ],
+    2: [
+        { word: "焦る", reading: "あせる", meaning: "焦急、急躁" },
+        { word: "あきれる", reading: "あきれる", meaning: "愕然、吃驚、無語" },
+        { word: "気に障る", reading: "きにさわる", meaning: "惹人生氣、讓人心裡不痛快" },
+        { word: "しゃくに障る / かんに障る", reading: "しゃくにさわる / かんにさわる", meaning: "惹人生氣、使人惱火" },
+        { word: "気兼ねする", reading: "きがねする", meaning: "拘束、客套、顧慮" },
+        { word: "すねる", reading: "すねる", meaning: "鬧脾氣、撒嬌、扭捏" },
+        { word: "むかつく", reading: "むかつく", meaning: "噁心、作嘔、感到火大" },
+        { word: "恥をかく", reading: "はじをかく", meaning: "出醜、丟臉" },
+        { word: "情けない", reading: "なさけない", meaning: "悲慘、令人同情、難堪、羞恥" },
+        { word: "望ましい", reading: "のぞましい", meaning: "合乎心願的、理想的、令人滿意的" },
+        { word: "好ましい", reading: "このましい", meaning: "討人喜歡的、合意的" },
+        { word: "申し分がない", reading: "もうぶんがない", meaning: "無可挑剔、完美" },
+        { word: "快い", reading: "こころよい", meaning: "舒適的、爽快的、愉快的" },
+        { word: "すがすがしい", reading: "すがすがしい", meaning: "清爽的、神清氣爽的" },
+        { word: "爽快な", reading: "そうかいな", meaning: "心情爽快、痛快" },
+        { word: "待ち遠しい", reading: "まちどおしい", meaning: "期盼的、急切等待的" },
+        { word: "心強い", reading: "こころづよい", meaning: "心裡踏實的、有底氣的" },
+        { word: "心細い", reading: "こころぼそい", meaning: "心中不安的、孤立無援的" },
+        { word: "空しい", reading: "むなしい", meaning: "空虛的、無意義的" },
+        { word: "切ない", reading: "せつない", meaning: "難受的、痛苦的、依依不捨的" },
+        { word: "物足りない", reading: "ものたりない", meaning: "不滿足的、總覺得欠缺點什麼的" },
+        { word: "わずらわしい", reading: "わずらわしい", meaning: "麻煩的、煩人的" },
+        { word: "うっとうしい", reading: "うっとうしい", meaning: "陰鬱的、鬱悶的、討厭的" },
+        { word: "うざい", reading: "うざい", meaning: "煩人的、囉嗦的（口語）" },
+        { word: "ばかばかしい", reading: "ばかばかしい", meaning: "無聊的、荒謬的、愚蠢的" },
+        { word: "痛ましい", reading: "いたましい", meaning: "淒慘的、悲慘的" },
+        { word: "きまりが悪い", reading: "きまりがわるい", meaning: "不好意思的、難為情的" },
+        { word: "あさましい", reading: "あさましい", meaning: "卑鄙的、下流的、自私的" },
+        { word: "おっかない", reading: "おっかない", meaning: "可怕的、令人毛骨悚然的" },
+        { word: "ふさわしい", reading: "ふさわしい", meaning: "適合的、相稱的" },
+        { word: "見苦しい", reading: "みぐるしい", meaning: "不體面的、不好看的" },
+        { word: "心苦しい", reading: "こころぐるしい", meaning: "於心不安的、過意不去的" }
+    ],
+    3: [
+        { word: "体を反らす", reading: "からだをそらす", meaning: "把身體向後仰" },
+        { word: "馬にまたがる", reading: "うまにまたがる", meaning: "騎馬、跨坐" },
+        { word: "湯につかる", reading: "ゆにつかる", meaning: "泡澡、泡溫泉" },
+        { word: "3年にまたがる", reading: "3ねんにまたがる", meaning: "跨越3年" },
+        { word: "門をくぐる", reading: "もんをくぐる", meaning: "穿過門、鑽過門" },
+        { word: "水たまりをよける", reading: "みずたまりをよける", meaning: "避開水坑" },
+        { word: "水中でもがく / あがく", reading: "すいちゅうでもがく / あがく", meaning: "在水中掙扎" },
+        { word: "山中をさまよう", reading: "さんちゅうをさまよう", meaning: "在山中徬徨、迷路遊蕩" },
+        { word: "うつむく", reading: "うつむく", meaning: "低頭" },
+        { word: "うなずく", reading: "うなずく", meaning: "點頭" },
+        { word: "まばたきをする", reading: "まばたきをする", meaning: "眨眼睛" },
+        { word: "目をつぶる", reading: "めをつぶる", meaning: "閉眼睛" },
+        { word: "一言つぶやく", reading: "ひとことつぶやく", meaning: "嘀咕、低聲抱怨" },
+        { word: "ささやく", reading: "ささやく", meaning: "低聲私語、說悄悄話" },
+        { word: "歌を口ずさむ", reading: "うたをくちずさむ", meaning: "哼唱歌曲" },
+        { word: "煙にむせる", reading: "けむにむせる", meaning: "被煙嗆到" },
+        { word: "食べ物でむせる", reading: "たべものでむせる", meaning: "吃東西嗆到" },
+        { word: "ほっぺたをつねる", reading: "ほっぺたをつねる", meaning: "捏臉頰" },
+        { word: "草をむしる", reading: "くさをむしる", meaning: "拔草" },
+        { word: "カレンダーをめくる", reading: "カレンダーをめくる", meaning: "翻日曆、翻頁" },
+        { word: "塩をつまむ", reading: "しおをつまむ", meaning: "捏取少許鹽巴" },
+        { word: "花を摘む", reading: "はなをつむ", meaning: "摘花、文雅版「去廁所」" },
+        { word: "足をさする", reading: "あしをさする", meaning: "搓腿、撫摩腳部" },
+        { word: "髪の毛をいじる", reading: "かみのけをいじる", meaning: "擺弄頭髮" },
+        { word: "家具のほこりをはたく", reading: "かぐのほこりをはたく", meaning: "拍打、清除家具上的灰塵" },
+        { word: "鼻をつまむ", reading: "はなをつまむ", meaning: "捏鼻子" },
+        { word: "才能の芽を摘む", reading: "さいのうのめをつむ", meaning: "扼殺才能" },
+        { word: "庭をいじる", reading: "にわをいじる", meaning: "整理庭園、園藝" },
+        { word: "水をすくう", reading: "みずをすくう", meaning: "舀水" },
+        { word: "杖を突く", reading: "つえをつく", meaning: "拄拐杖" },
+        { word: "赤ちゃんとバスタオルでくるむ", reading: "赤ちゃんとバスタオルでくるむ", meaning: "用浴巾把嬰兒包裹起來" },
+        { word: "紙を丸める", reading: "かみをまるめる", meaning: "把紙揉成團" },
+        { word: "マッチを擦る", reading: "マッチをする", meaning: "劃火柴" },
+        { word: "指をさす", reading: "ゆびをさす", meaning: "用手指指著" },
+        { word: "体を丸める", reading: "からだをまるめる", meaning: "蜷縮身體" },
+        { word: "体を横にする", reading: "からだをよこにする", meaning: "躺下" },
+        { word: "うつ伏せになる", reading: "うつぶせになる", meaning: "趴著" },
+        { word: "仰向けになる", reading: "あおむけになる", meaning: "仰面躺著" }
+    ],
+    4: [
+        { word: "近所の人ともめる", reading: "きんじょのひとともめる", meaning: "與鄰居發生糾紛、爭執" },
+        { word: "家族を養う", reading: "かぞくをやしなう", meaning: "養家糊口" },
+        { word: "名付ける", reading: "なづける", meaning: "命名、取名字" },
+        { word: "人見知りする", reading: "ひとみしりする", meaning: "怕生、害羞" },
+        { word: "名付け親", reading: "なづけおや", meaning: "起名字的人、教父教母" },
+        { word: "へりくだった態度で接する", reading: "へりくだったたいどでせっする", meaning: "以謙遜的態度對待人" },
+        { word: "関係がこじれる / 話がこじれる", reading: "かんけいがこじれる / はなしがこじれる", meaning: "關係惡化、事情變得複雜糾纏" },
+        { word: "風邪をこじらせる", reading: "かぜをこじらせる", meaning: "感冒惡化、拖延不癒" },
+        { word: "なだめる", reading: "なだめる", meaning: "撫慰、勸解、平息" },
+        { word: "いたわる", reading: "いたわる", meaning: "憐恤、安慰、關懷" },
+        { word: "しつける", reading: "しつける", meaning: "教育、訓練（教導禮貌與規矩）" },
+        { word: "ちやほやする", reading: "ちやほやする", meaning: "奉承、過分寵愛、眾星拱月般捧著" },
+        { word: "おだてる", reading: "おだてる", meaning: "戴高帽、奉承、吹捧" },
+        { word: "あざ笑う", reading: "あざわらう", meaning: "嘲笑、譏笑" },
+        { word: "裁く", reading: "さばく", meaning: "審判、判決" },
+        { word: "かばう", reading: "かばう", meaning: "庇護、袒護、保護" },
+        { word: "励ます", reading: "はげます", meaning: "鼓勵、激勵" },
+        { word: "もてなす", reading: "もてなす", meaning: "接待、招待" },
+        { word: "冷やかす", reading: "ひやかす", meaning: "調侃、取笑、冷嘲熱諷" },
+        { word: "おどす", reading: "おどす", meaning: "威脅、恐嚇" },
+        { word: "あざむく", reading: "あざむく", meaning: "欺騙、瞞過" },
+        { word: "けなす", reading: "けなす", meaning: "貶低、誹謗、辱罵" },
+        { word: "ねたむ", reading: "ねたむ", meaning: "嫉妒、眼紅" },
+        { word: "ののしる", reading: "ののしる", meaning: "咒罵、嚴厲指責" },
+        { word: "さらう", reading: "さらう", meaning: "掠奪、誘拐、席捲" },
+        { word: "なじる", reading: "なじる", meaning: "責問、責難" },
+        { word: "とがめる", reading: "とがめる", meaning: "責備、指責、責問" },
+        { word: "殴る", reading: "なぐる", meaning: "毆打、揍" },
+        { word: "やっつける", reading: "やっつける", meaning: "收拾掉、擊敗、痛打" },
+        { word: "恋する", reading: "こいする", meaning: "戀愛、愛慕" },
+        { word: "片思いをする", reading: "かたおもいをする", meaning: "單相思、暗戀" },
+        { word: "尽くす", reading: "つくす", meaning: "盡力、奉獻、竭盡全力" },
+        { word: "食事をおごる", reading: "しょくじをおごる", meaning: "請客吃飯" },
+        { word: "小遣いをねだる", reading: "こづかいをねだる", meaning: "索要零花錢" },
+        { word: "寄付を強いる", reading: "きふをしいる", meaning: "強迫捐款" },
+        { word: "新しいバッグを見せびらかす", reading: "あたらしいバッグをみせびらかす", meaning: "炫耀新包包" },
+        { word: "なつく", reading: "なつく", meaning: "親近、依戀" },
+        { word: "親しまれる", reading: "したしまれる", meaning: "受人喜愛、受歡迎" },
+        { word: "もてる", reading: "もてる", meaning: "異性緣好、受歡迎" },
+        { word: "出くわす", reading: "でくわす", meaning: "偶然碰見、相遇" },
+        { word: "言いつける", reading: "いいつける", meaning: "吩咐、告發、打小報告" },
+        { word: "告げ口をする", reading: "つげぐちをする", meaning: "告密、打小報告" },
+        { word: "嫌がらせをする", reading: "いやがらせをする", meaning: "故意惡作劇、使壞、故意找麻煩" },
+        { word: "秘密をばらす", reading: "ひみつをばらす", meaning: "洩漏秘密" }
+    ],
+    5: [
+        { word: "声を合わす / 合わせる", reading: "こえをあわす / あわせる", meaning: "齊聲、合唱、同心協力" },
+        { word: "子どもに小遣いを与える", reading: "こどもにこづかいをあたえる", meaning: "給孩子零花錢" },
+        { word: "先生を交えて話し合う", reading: "せんせいをもじえてはなしあう", meaning: "有老師參加並一起討論" },
+        { word: "あいさつを交わす", reading: "あいさつをかわす", meaning: "互相打招呼、交流" },
+        { word: "髪を束ねる", reading: "かみをたばねる", meaning: "綁頭髮、紮馬尾" },
+        { word: "命令に背く", reading: "めいれいにそむく", meaning: "違背命令" },
+        { word: "チャンスを逃す", reading: "チャンスをのがす", meaning: "錯失機會" },
+        { word: "成長を促す", reading: "せいちょうをうながす", meaning: "促進生長" },
+        { word: "ふきんをすすぐ", reading: "ふきんをすすぐ", meaning: "洗抹布、涮抹布" },
+        { word: "コップをゆすぐ", reading: "コップをゆすぐ", meaning: "洗杯子、漱口" },
+        { word: "口をゆすぐ", reading: "くちをゆすぐ", meaning: "漱口" },
+        { word: "水をこす", reading: "みずをこす", meaning: "過濾水" },
+        { word: "豆をばらまく", reading: "まめをばらまく", meaning: "撒豆子" },
+        { word: "ベルトを緩める", reading: "ベルトをゆるめる", meaning: "放鬆皮帶、鬆開" },
+        { word: "木を揺する", reading: "きをゆする", meaning: "晃動樹木" },
+        { word: "ひげを生やす", reading: "ひげをはやす", meaning: "留鬍子" },
+        { word: "花を生ける", reading: "はなをいける", meaning: "插花" },
+        { word: "手紙をよこす", reading: "てがみをよこす", meaning: "寄信來、傳話過來" },
+        { word: "目をそらす", reading: "めをそらす", meaning: "移開視線、把目光轉開" },
+        { word: "話をそらす", reading: "はなしをそらす", meaning: "岔開話題" },
+        { word: "日光にさらす / 水にさらす", reading: "にっこうにさらす / みずにさらす", meaning: "曝曬於陽光下 / 泡在冷水裡漂洗" },
+        { word: "工夫を凝らす", reading: "くふうをこらす", meaning: "動腦筋、精心設計、深入琢磨" },
+        { word: "足跡をたどる", reading: "あしあとをたどる", meaning: "追尋足跡、循跡" },
+        { word: "防犯カメラを据える", reading: "ぼうはんカメラをすえる", meaning: "安裝防盜攝影機" },
+        { word: "写真を添える", reading: "しゃしんをそえる", meaning: "添加照片、附上照片" },
+        { word: "隣室に控える", reading: "りんしつにひかえる", meaning: "在隔壁房間等候 / 控制（鹽分等）" },
+        { word: "彼と別の人生を歩む", reading: "かれとべつのじんせいをあゆむ", meaning: "與他走不同的人生道路" },
+        { word: "世界進出をもくろむ", reading: "せかいしんしゅつをもくろむ", meaning: "企劃開拓全球市場" },
+        { word: "彼らの侵入を阻む", reading: "かれらのしんにゅうをはばむ", meaning: "阻止他們的入侵" },
+        { word: "人の話を遮る", reading: "ひとの話をおさえぎる", meaning: "打斷別人的話" },
+        { word: "英文でつづる", reading: "えいぶんでつづる", meaning: "用英文撰寫、拼寫" },
+        { word: "わなを仕掛ける", reading: "わなをしかける", meaning: "設陷阱" },
+        { word: "新しい仕事を手掛ける", reading: "あたらしいしごとを手がける", meaning: "親手處理新工作、從事" }
+    ],
+    6: [
+        { word: "体がだるい", reading: "からだがだるい", meaning: "身體沉重、全身無力、倦怠" },
+        { word: "寒気がする", reading: "さむけがする", meaning: "發冷、畏寒" },
+        { word: "疲労で目がかすむ", reading: "ひろうでめがかすむ", meaning: "因疲勞而視線模糊" },
+        { word: "貧血になる", reading: "ひんけつになる", meaning: "貧血" },
+        { word: "安静にする", reading: "あんせいにする", meaning: "靜養、安靜休息" },
+        { word: "虫に刺される", reading: "むしにさされる", meaning: "被蟲子叮咬" },
+        { word: "とげが刺さる", reading: "とげがささる", meaning: "扎刺" },
+        { word: "めまいがする", reading: "めまいがする", meaning: "頭暈、眩暈" },
+        { word: "意識がもうろうとする", reading: "いしきがもうろうとする", meaning: "意識模糊、神智不清" },
+        { word: "意識が遠ざかる", reading: "いしきがとおざかる", meaning: "意識漸漸遠去、昏迷" },
+        { word: "意識不明になる", reading: "いしきふめいになる", meaning: "意識不明、昏迷不醒" },
+        { word: "足首をねんざする", reading: "あしくびをねんざする", meaning: "扭傷腳踝" },
+        { word: "打ったところがはれる", reading: "うったところがはれる", meaning: "碰撞的地方腫起來" },
+        { word: "足がむくむ", reading: "あしがむくむ", meaning: "雙腳浮腫" },
+        { word: "下痢をする", reading: "げりをする", meaning: "腹瀉、拉肚子" },
+        { word: "便秘になる", reading: "べんぴになる", meaning: "便秘" },
+        { word: "妊娠する", reading: "にんしんする", meaning: "懷孕" },
+        { word: "出産する / お産", reading: "しゅっさんする / おさん", meaning: "生產、分娩" },
+        { word: "歯を矯正する", reading: "はをきょうせいする", meaning: "矯正牙齒" },
+        { word: "湿疹ができる", reading: "しっしんができる", meaning: "長濕疹" },
+        { word: "皮膚をかく", reading: "ひふをかく", meaning: "抓皮膚" },
+        { word: "病気の進行が早まる", reading: "びょうきのしんこうがはやまる", meaning: "病情進展加快" },
+        { word: "体が弱る", reading: "からだがよわる", meaning: "身體衰弱" },
+        { word: "痛みが強まる / 弱まる", reading: "いたみがつよまる / よわまる", meaning: "疼痛加劇 / 減輕" },
+        { word: "痛みを和らげる", reading: "いたみをやわらげる", meaning: "緩解疼痛" },
+        { word: "じんましん", reading: "じんましん", meaning: "蕁麻疹" },
+        { word: "猫に引っかかれる", reading: "ねこに引っかかれる", meaning: "被貓抓傷" },
+        { word: "リハビリを受ける", reading: "リハビリをうける", meaning: "接受復健" },
+        { word: "入院する / 退院する", reading: "にゅういんする / たいいんする", meaning: "住院 / 出院" },
+        { word: "患者に付き添う", reading: "かんじゃにつきそう", meaning: "陪護患者、隨侍在側" },
+        { word: "面会に行く / お見舞いに行く", reading: "めんかいにいく / おみまいにいく", meaning: "去會面 / 去探病" },
+        { word: "ガン", reading: "ガン", meaning: "癌症" },
+        { word: "ぜんそく（発作）", reading: "ぜんそく（ほっさ）", meaning: "氣喘（發作）" },
+        { word: "気管支炎", reading: "きかんしえん", meaning: "支氣管炎" },
+        { word: "肺炎", reading: "はいえん", meaning: "肺炎" },
+        { word: "皮膚炎", reading: "ひふえん", meaning: "皮膚炎" },
+        { word: "うつ病", reading: "うつびょう", meaning: "憂鬱症" },
+        { word: "認知症", reading: "にんちしょう", meaning: "失智症、認知症" },
+        { word: "熱中症", reading: "ねっちゅうしょう", meaning: "中暑、熱衰竭" },
+        { word: "花粉症", reading: "かふんしょう", meaning: "花粉症" }
+    ]
+};
+
+        let currentIndex = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+        let score = 0;
+
+        function initApp() {
+            renderNavGrid();
+            loadQuestion(0);
+        }
+
+        function renderNavGrid() {
+            const gridContainer = document.getElementById("nav-grid");
+            gridContainer.innerHTML = "";
+            questions.forEach((q, idx) => {
+                const btn = document.createElement("button");
+                btn.id = `nav-btn-${idx}`;
+                btn.className = `h-8 rounded text-xs font-semibold transition flex items-center justify-center border ${getNavBtnStyle(idx)}`;
+                btn.innerText = idx + 1;
+                btn.onclick = () => goToQuestion(idx);
+                gridContainer.appendChild(btn);
+            });
+        }
+
+        function getNavBtnStyle(idx) {
+            if (idx === currentIndex) {
+                return "bg-indigo-600 text-white border-indigo-600 shadow-sm ring-2 ring-indigo-300";
+            } else if (userAnswers[idx] !== null) {
+                return "bg-emerald-500 text-white border-emerald-500";
+            } else {
+                return "bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200";
+            }
+        }
+
+        function loadQuestion(index) {
+            currentIndex = index;
+            const q = questions[currentIndex];
+
+            document.getElementById("q-category").innerText = q.category;
+            document.getElementById("q-progress").innerText = `題目 ${currentIndex + 1} / 50`;
+            document.getElementById("q-text").innerText = q.text;
+
+            const optionsContainer = document.getElementById("options-container");
+            optionsContainer.innerHTML = "";
+
+            q.options.forEach((opt) => {
+                const btn = document.createElement("button");
+                btn.className = `w-full text-left p-3.5 rounded-xl border transition flex items-center justify-between text-sm sm:text-base font-medium ${getOptionStyle(currentIndex, opt.label)}`;
+                btn.innerHTML = `<span><strong class="mr-2">${opt.label}.</strong> ${opt.text}</span>`;
+                btn.onclick = () => selectOption(currentIndex, opt.label);
+                optionsContainer.appendChild(btn);
+            });
+
+            const expBox = document.getElementById("explanation-box");
+            if (userAnswers[currentIndex] !== null) {
+                showExplanation(q);
+            } else {
+                expBox.classList.add("hidden");
+            }
+
+            updateNavGridStyles();
+        }
+
+        function getOptionStyle(qIdx, label) {
+            const userAns = userAnswers[qIdx];
+            const q = questions[qIdx];
+            const correctOpt = q.options.find(o => o.correct).label;
+
+            if (userAns === null) {
+                return "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-indigo-300";
+            } else {
+                if (label === correctOpt) {
+                    return "bg-emerald-50 border-emerald-300 text-emerald-800 font-bold";
+                } else if (label === userAns) {
+                    return "bg-rose-50 border-rose-300 text-rose-800";
+                } else {
+                    return "bg-white border-slate-200 text-slate-400 opacity-60";
+                }
+            }
+        }
+
+        function selectOption(qIdx, label) {
+            if (userAnswers[qIdx] !== null) return;
+
+            userAnswers[qIdx] = label;
+            const q = questions[qIdx];
+            const correctOpt = q.options.find(o => o.correct).label;
+
+            if (label === correctOpt) {
+                score++;
+                document.getElementById("current-score").innerText = score;
+            }
+
+            loadQuestion(qIdx);
+        }
+
+        function showExplanation(q) {
+            const expBox = document.getElementById("explanation-box");
+            const resultStatus = document.getElementById("result-status");
+            const fullTranslation = document.getElementById("full-translation");
+            const detailedExplanation = document.getElementById("detailed-explanation");
+
+            const userAns = userAnswers[currentIndex];
+            const correctOpt = q.options.find(o => o.correct).label;
+
+            if (userAns === correctOpt) {
+                resultStatus.innerHTML = `<span class="text-emerald-600">🎉 回答正確！太棒了！</span>`;
+            } else {
+                resultStatus.innerHTML = `<span class="text-rose-600">❌ 回答錯誤。正確答案是：${correctOpt} 題</span>`;
+            }
+
+            fullTranslation.innerText = q.translation;
+
+            detailedExplanation.innerHTML = "";
+            for (let key in q.analysis) {
+                const p = document.createElement("p");
+                p.className = "text-xs sm:text-sm";
+                p.innerHTML = `<strong class="text-indigo-600">${key}:</strong> ${q.analysis[key]}`;
+                detailedExplanation.appendChild(p);
+            }
+
+            expBox.classList.remove("hidden");
+        }
+
+        function updateNavGridStyles() {
+            questions.forEach((_, idx) => {
+                const btn = document.getElementById(`nav-btn-${idx}`);
+                if (btn) {
+                    btn.className = `h-8 rounded text-xs font-semibold transition flex items-center justify-center border ${getNavBtnStyle(idx)}`;
+                }
+            });
+        }
+
+        function goToQuestion(index) {
+            loadQuestion(index);
+        }
+
+        function nextQuestion() {
+            if (currentIndex < questions.length - 1) {
+                loadQuestion(currentIndex + 1);
+            } else {
+                alert(`恭喜完成 50 題測驗！您的最終得分為：${score} / 50 分！`);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                loadQuestion(currentIndex - 1);
+            }
+        }
+
+        function toggleFlashcards() {
+            const modal = document.getElementById("flashcard-modal");
+            modal.classList.toggle("hidden");
+            if (!modal.classList.contains("hidden")) {
+                switchDay(1);
+            }
+        }
+
+        function switchDay(day) {
+            const tabs = document.querySelectorAll(".day-tab");
+            tabs.forEach((t, idx) => {
+                if (idx + 1 === day) {
+                    t.className = "day-tab px-4 py-1.5 rounded-lg text-sm font-medium bg-indigo-600 text-white";
+                } else {
+                    t.className = "day-tab px-4 py-1.5 rounded-lg text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200";
+                }
+            });
+
+            const content = document.getElementById("flashcard-content");
+            content.innerHTML = "";
+            const cards = flashcardData[day] || [];
+            cards.forEach(card => {
+                const div = document.createElement("div");
+                div.className = "bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col gap-1";
+                div.innerHTML = `
+                    <div class="flex justify-between items-baseline">
+                        <span class="font-bold text-indigo-600 text-base">${card.word}</span>
+                        <span class="text-xs text-slate-400">${card.reading}</span>
+                    </div>
+                    <p class="text-sm text-slate-700">${card.meaning}</p>
+                `;
+                content.appendChild(div);
+            });
+        }
+
+        window.onload = initApp;
+    </script>
+</body>
+</html>
