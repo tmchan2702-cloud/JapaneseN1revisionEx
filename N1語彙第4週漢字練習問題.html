@@ -73,7 +73,7 @@
     }
 
     .masthead-text { position: relative; z-index: 2; max-width: 700px; }
-    .eyebrow { font-size: 0.85rem; letter-spacing: 0.15em; color: var(--primary); font-weight: 700; margin-bottom: 0.5text; text-transform: uppercase; }
+    .eyebrow { font-size: 0.85rem; letter-spacing: 0.15em; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; }
     h1 { font-family: "Shippori Mincho B1", serif; font-size: 2.2rem; font-weight: 800; color: var(--ink); margin-bottom: 0.75rem; display: flex; align-items: baseline; gap: 1rem; }
     h1 .count { font-size: 1.2rem; color: var(--ink-muted); font-weight: 500; font-family: "Zen Kaku Gothic New", sans-serif; }
     .lede { font-size: 1rem; color: var(--ink-muted); line-height: 1.6; }
@@ -131,7 +131,8 @@
     .option-btn:disabled { cursor: default; }
 
     /* 解析面板 */
-    .explanation { background: var(--paper-sub); border-left: 4px solid var(--primary); padding: 1.5rem; border-radius: 0 12px 12px 0; margin-top: 1.5rem; animation: fadeIn 0.3s ease; }
+    .explanation { background: var(--paper-sub); border-left: 4px solid var(--primary); padding: 1.5rem; border-radius: 0 12px 12px 0; margin-top: 1.5rem; animation: fadeIn 0.3s ease; display: none; }
+    .explanation.show { display: block; }
     .verdict { font-family: "Shippori Mincho B1", serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; }
     .verdict.ok { color: var(--ok); }
     .verdict.ng { color: var(--ng); }
@@ -159,14 +160,14 @@
     .panel-meta { font-size: 0.85rem; color: var(--ink-muted); font-weight: 700; }
 
     /* 導航方格網格 */
-    .jump-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 1.2rem; }
+    .jump-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 1.2rem; max-height: 220px; overflow-y: auto; }
     .jump-btn { aspect-ratio: 1; background: var(--paper-sub); border: 1px solid var(--border); border-radius: 6px; font-weight: 700; font-size: 0.9rem; cursor: pointer; color: var(--ink); transition: all 0.2s; }
     .jump-btn:hover { border-color: var(--primary); }
-    .jump-btn.ok { background: #eaf2ed; color: var(--ok); border-color: var(--ok); }
-    .jump-btn.ng { background: #faeaea; color: var(--ng); border-color: var(--ng); }
-    .jump-btn.cur { border: 2px solid var(--primary); box-shadow: 0 0 0 2px rgba(184,67,47,0.2); }
+    .jump-btn.correct { background: #eaf2ed; color: var(--ok); border-color: var(--ok); }
+    .jump-btn.incorrect { background: #faeaea; color: var(--ng); border-color: var(--ng); }
+    .jump-btn.active { border: 2px solid var(--primary); box-shadow: 0 0 0 2px rgba(184,67,47,0.2); }
 
-    .legend { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--ink-muted); padding-top: 0.5rem; border-top: 1px dashed var(--border); margin-bottom: 1rem; }
+    .legend { display: flex; justify-content: space-around; font-size: 0.8rem; color: var(--ink-muted); padding-top: 0.5rem; border-top: 1px dashed var(--border); margin-bottom: 1rem; }
     .legend span { display: flex; align-items: center; gap: 4px; }
     .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
     .dot.ok { background: var(--ok); }
@@ -178,18 +179,16 @@
 
     /* 生字速查卡 */
     .vocab.panel { max-height: 520px; display: flex; flex-direction: column; }
-    .day-tabs { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 10px; scrollbar-width: thin; }
+    .day-tabs { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 10px; scrollbar-width: thin; flex-wrap: wrap; }
     .day-tab { background: var(--paper-sub); border: 1px solid var(--border); padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; cursor: pointer; white-space: nowrap; color: var(--ink-muted); }
     .day-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
-    .vocab-list { list-style: none; overflow-y: auto; flex: 1; padding-right: 4px; display: flex; flex-direction: column; gap: 8px; }
-    .vocab-item { background: var(--paper-sub); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); }
-    .vocab-word { font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 2px; }
-    .vocab-mean { font-size: 0.85rem; color: var(--ink-muted); }
+    .vocab-list { list-style: none; overflow-y: auto; flex: 1; padding-right: 4px; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; }
+    .vocab-list li { background: var(--paper-sub); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); }
 
     /* 成績結算頁面 */
-    .results { text-align: center; padding: 2rem 1rem; }
-    .results h2 { font-family: "Shippori Mincho B1", serif; font-size: 2rem; margin-bottom: 1rem; }
-    .result-score { font-size: 3.5rem; font-weight: 800; font-family: "Shippori Mincho B1", serif; color: var(--primary); margin: 1.5rem 0; }
+    .results { background: var(--paper); border: 1px solid var(--border); border-radius: 16px; padding: 3rem 2rem; text-align: center; display: none; box-shadow: 0 10px 30px var(--shadow); }
+    .results h2 { font-family: "Shippori Mincho B1", serif; font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
+    .result-score { font-size: 3.5rem; font-weight: 800; font-family: "Shippori Mincho B1", serif; color: var(--ink); margin: 1.5rem 0; }
     .result-score span { font-size: 1.5rem; color: var(--ink-muted); font-weight: 500; }
     .result-comment { font-size: 1.1rem; color: var(--ink-muted); margin-bottom: 2rem; line-height: 1.6; }
     .result-actions { display: flex; gap: 1rem; justify-content: center; }
@@ -204,8 +203,8 @@
     <div class="masthead-vertical" aria-hidden="true">第四週・漢字語彙</div>
     <div class="masthead-text">
       <p class="eyebrow">JLPT N1 語彙 ／ 第 4 週</p>
-      <h1>漢字語彙練習問題 <span class="count">五十題</span></h1>
-      <p class="lede">涵蓋全句翻譯、即時評分、詳細選項解析與生字速查卡。進度會自動儲存於本機瀏覽器中。</p>
+      <h1>漢字語彙練習問題 <span class="count">50 題</span></h1>
+      <p class="lede">涵蓋全句翻譯、即時評分、選項解析與生字速查卡。每題作答後立即顯示全句翻譯與詳細選項解析。</p>
     </div>
     <div class="hanko" id="hanko" aria-live="polite">
       <span class="hanko-score" id="hanko-score">0</span>
@@ -226,7 +225,7 @@
         <div class="question-card" id="question-card">
           <p class="question" id="q-text" lang="ja"></p>
           <div class="options" id="options" role="group" aria-label="選項"></div>
-          <div class="explanation" id="explanation" hidden>
+          <div class="explanation" id="explanation">
             <div class="verdict" id="verdict"></div>
             <dl>
               <dt>全句翻譯</dt>
@@ -239,25 +238,21 @@
       </div>
 
       <nav class="controls">
-        <button class="btn ghost" id="prev-btn" type="button">← 上一題</button>
-        <span class="kbd-hint">鍵盤：1–4 作答 ・ ←→ 切換</span>
-        <button class="btn primary" id="next-btn" type="button">下一題 →</button>
+        <button class="btn ghost" id="prev-btn" type="button" onclick="prevQuestion()">← 上一題</button>
+        <span class="kbd-hint">點擊選項即時作答與看解析</span>
+        <button class="btn primary" id="next-btn" type="button" onclick="nextQuestion()">下一題 →</button>
       </nav>
     </section>
 
     <!-- 結果頁 -->
-    <section class="stage results" id="results" hidden aria-label="成績總結">
-      <div>
-        <p class="eyebrow">練習完成</p>
-        <h2>測驗結算總評</h2>
-        <div class="result-score"><strong id="result-correct">0</strong><span> ／ 50</span></div>
-        <p class="result-comment" id="result-comment"></p>
-        <div class="result-actions">
-          <button class="btn ghost" id="retry-wrong-btn" type="button">只重做答錯的題目</button>
-          <button class="btn primary" id="restart-btn" type="button">全部重新開始</button>
-        </div>
+    <section class="results" id="results" aria-label="成績總結">
+      <p class="eyebrow">練習完成</p>
+      <h2>第 4 週漢字語彙實戰特訓結算</h2>
+      <p class="result-score"><strong id="result-correct">0</strong><span> ／ 50</span></p>
+      <p class="result-comment" id="result-desc" style="color: var(--ink-muted);"></p>
+      <div class="result-actions">
+        <button class="btn primary" id="restart-btn" type="button" onclick="restartQuiz()">重新開始練習</button>
       </div>
-      <div></div>
     </section>
 
     <!-- 側欄 -->
@@ -273,7 +268,7 @@
           <span><i class="dot ng"></i>答錯</span>
           <span><i class="dot cur"></i>目前</span>
         </div>
-        <button class="link-btn" id="finish-btn" type="button">查看成績總結</button>
+        <button class="link-btn" id="finish-btn" type="button" onclick="checkFinish()">查看成績總結</button>
       </div>
 
       <div class="panel vocab">
@@ -281,233 +276,123 @@
           <h2>生字速查卡</h2>
           <span class="panel-meta">1日目〜6日目</span>
         </div>
-        <div class="day-tabs" id="day-tabs" role="tablist"></div>
+        <div class="day-tabs" id="day-tabs" role="tablist">
+          <button class="day-tab active" onclick="switchVocabDay(1)">1日目</button>
+          <button class="day-tab" onclick="switchVocabDay(2)">2日目</button>
+          <button class="day-tab" onclick="switchVocabDay(3)">3日目</button>
+          <button class="day-tab" onclick="switchVocabDay(4)">4日目</button>
+          <button class="day-tab" onclick="switchVocabDay(5)">5日目</button>
+          <button class="day-tab" onclick="switchVocabDay(6)">6日目</button>
+        </div>
         <ul class="vocab-list" id="vocab-list" lang="ja"></ul>
       </div>
     </aside>
   </main>
 
   <footer style="text-align: center; padding: 2rem; color: var(--ink-muted); font-size: 0.85rem;">
-    N1 漢字語彙・第4週練習問題 ・ 作答紀錄僅保存於本機瀏覽器
+    N1 漢字語彙・第4週練習問題
   </footer>
 
   <script>
-    // 第4週核心生字速查資料（完整擴充版）
-    const vocabData = [
-        {
-            day: "1日目（手部・心部・狀態基礎）",
-            words: [
-                { word: "整う（ととのう）", meaning: "整齊、準備就緒、安排妥當" },
-                { word: "控える（ひかえる）", meaning: "節制、克制、等候、備忘" },
-                { word: "避ける（さける）", meaning: "避開、躲避（危險或不良事物）" },
-                { word: "抑える（おさえる）", meaning: "抑制、控制（情緒、價格等）" },
-                { word: "減らす（へらす）", meaning: "減少、減輕數量" },
-                { word: "手分け（てわけ）", meaning: "分頭、分工" },
-                { word: "同い年（おないどし）", meaning: "同齡、同歲" },
-                { word: "心地（ここち）", meaning: "感覺、心情" },
-                { word: "手はず（てはず）", meaning: "步驟、安排、籌備" },
-                { word: "手がかり（手がかり）", meaning: "線索" },
-                { word: "手引き（てびき）", meaning: "引導、手冊、指南" },
-                { word: "心当たり（こころあたり）", meaning: "心裡有底、線索、頭緒" },
-                { word: "内心（ないしん）", meaning: "內心、私下" },
-                { word: "下心（したごころ）", meaning: "不可告人的企圖、私心、別有用心" },
-                { word: "心中（しんちゅう / しんじゅう）", meaning: "心中／殉情、同死" },
-                { word: "心遣い（こころづかい）", meaning: "關心、周到、體貼" },
-                { word: "手口（てぐち）", meaning: "犯罪手段、作案手法" },
-                { word: "手本（てほん）", meaning: "範本、字帖、榜樣" },
-                { word: "手軽（てがる）", meaning: "簡單、輕易、簡便" },
-                { word: "手近（てぢか）", meaning: "手邊、鄰近、常見" },
-                { word: "手ごろ（てごろ）", meaning: "合適、適中" },
-                { word: "手元（てもと）", meaning: "手頭、身邊" },
-                { word: "お手上げ（おてあげ）", meaning: "束手無策、雙手投降" },
-                { word: "手中（しゅちゅう）", meaning: "手中、掌控之中" },
-                { word: "先手（せんて）", meaning: "先發制人、先手" },
-                { word: "右手（ゆきて / みぎて）", meaning: "右手" },
-                { word: "入手（にゅうしゅ）", meaning: "入手、獲得" },
-                { word: "塩分（えんぶん）", meaning: "鹽分" },
-                { word: "分別（ぶんべつ）", meaning: "辨別力、分寸、懂事／分類" },
-                { word: "分野（ぶんや）", meaning: "領域、專門分野" },
-                { word: "同上（どうじょう）", meaning: "同上" },
-                { word: "同一（どういつ）", meaning: "同一" },
-                { word: "同意（どうい）", meaning: "同意" }
-            ]
-        },
-        {
-            day: "2日目（状態・程度變化・氣字頭）",
-            words: [
-                { word: "上回る（うわまわる）", meaning: "超過、高於（預期或標準）" },
-                { word: "下回る（したまわる）", meaning: "低於、少於" },
-                { word: "上向く（うわむく）", meaning: "（情況、行情）好轉、向上起色" },
-                { word: "下火（したび）", meaning: "火勢減弱，引申為熱潮或流行病平息、走下坡路" },
-                { word: "住み心地（すみごこち）", meaning: "居住環境的舒適感" },
-                { word: "上の空（うえのそら）", meaning: "心不在焉、心猿意馬" },
-                { word: "水気（みずけ）", meaning: "水分、濕氣" },
-                { word: "人気（ひとけ）", meaning: "人的氣息、動靜、人煙（「人気がない」表示無人煙）" },
-                { word: "寒気（さむけ）", meaning: "發冷、寒顫" },
-                { word: "気心（きごころ）", meaning: "性格、脾氣、互相了解的個性（気心が知れる）" },
-                { word: "正気（しょうき）", meaning: "神智、清醒、正常狀態" },
-                { word: "気合（きあい）", meaning: "氣魄、幹勁、精神振作（気合を入れる）" },
-                { word: "気長（きなが）", meaning: "不急躁、耐心、慢條斯理" },
-                { word: "出品（しゅっぴん）", meaning: "參展、展出" },
-                { word: "家出（いえで）", meaning: "離家出走" },
-                { word: "出産（しゅっさん）", meaning: "生產、分娩" },
-                { word: "出生（しゅっしょう）", meaning: "出生" },
-                { word: "出題（しゅつだい）", meaning: "出題" },
-                { word: "出動（しゅつどう）", meaning: "出動" },
-                { word: "出社（しゅっしゃ）", meaning: "上班、到公司" },
-                { word: "出世（しゅっせ）", meaning: "出人頭地、飛黃騰達" },
-                { word: "下味（したあじ）", meaning: "烹調前的基礎調味、醃底味" },
-                { word: "下地（したじ）", meaning: "基礎、底子、粉底" }
-            ]
-        },
-        {
-            day: "3日目（目・家・人・進・先相關）",
-            words: [
-                { word: "手際（てぎわ）", meaning: "辦事的手法、效率與技巧" },
-                { word: "手引き（てびき）", meaning: "指引、手冊、入門指南" },
-                { word: "目下（もっか / めした）", meaning: "目前、當前／晚輩、手下" },
-                { word: "大家（たいか / おおや）", meaning: "大家、名家／房東" },
-                { word: "万人（ばんにん）", meaning: "萬人、大眾" },
-                { word: "切れ目（きれめ）", meaning: "斷絕處、間隙、段落" },
-                { word: "目先（めさき）", meaning: "眼前、目下" },
-                { word: "大目（おおめ）", meaning: "寬大、寬容" },
-                { word: "明白（めいはく）", meaning: "明白、顯然" },
-                { word: "声明（せいめい）", meaning: "聲明" },
-                { word: "夜明け（よあけ）", meaning: "黎明、破曉" },
-                { word: "文明（ぶんめい）", meaning: "文明" },
-                { word: "明かす（あかす）", meaning: "揭露、過夜、熬夜" },
-                { word: "家計（かけい）", meaning: "家計、家庭經濟" },
-                { word: "家業（かぎょう）", meaning: "家業" },
-                { word: "家主（やぬし / いけぬし）", meaning: "房東、戶主" },
-                { word: "家来（けらい）", meaning: "家臣、隨從" },
-                { word: "社會人（しゃかいじん）", meaning: "社會人、成人" },
-                { word: "人目（ひとめ）", meaning: "世人的目光、人眼" },
-                { word: "住人（じゅうにん）", meaning: "住戶、居民" },
-                { word: "進行（しんこう）", meaning: "進行" },
-                { word: "進出（しんしゅつ）", meaning: "進駐、開拓新市場或領域、進軍" },
-                { word: "進度（しんど）", meaning: "進度" },
-                { word: "行進（こうしん）", meaning: "行進、遊行" },
-                { word: "先頭（せんとう）", meaning: "最前面、領頭位置" },
-                { word: "先行（せんこう）", meaning: "先行、走在時代前面" },
-                { word: "先着（せんちゃく）", meaning: "先到、先著順" },
-                { word: "先方（せんぽう）", meaning: "對方、那邊（商務用語）" }
-            ]
-        },
-        {
-            day: "4日目（心理・見・着手表現）",
-            words: [
-                { word: "心当たり（こころあたり）", meaning: "心裡有底、線索、頭緒" },
-                { word: "下心（したごころ）", meaning: "不可告人的企圖、私心、居心" },
-                { word: "気心（きごころ）", meaning: "性格、脾氣、心思（気心が知れる）" },
-                { word: "気合（きあい）", meaning: "氣魄、幹勁、精神振作（気合を入れる）" },
-                { word: "意図（いと）", meaning: "意圖、打算、企圖" },
-                { word: "分別（ふんべつ）", meaning: "辨別力、分寸、懂事" },
-                { word: "終日（しゅうじつ）", meaning: "終日、一整天（從早到晚）" },
-                { word: "小売り（こうり）", meaning: "零售" },
-                { word: "自立（じりつ）", meaning: "自立" },
-                { word: "自首（じしゅ）", meaning: "自首" },
-                { word: "前売り（まえうり）", meaning: "預售、預先發售" },
-                { word: "売買（ばいばい）", meaning: "買賣" },
-                { word: "合間（あいま）", meaning: "空閒、空隙時間" },
-                { word: "空間（くうかん）", meaning: "空間" },
-                { word: "民間（みんかん）", meaning: "民間" },
-                { word: "物体（ぶったい）", meaning: "物體" },
-                { word: "立体（りったい）", meaning: "立體" },
-                { word: "正体（しょうたい）", meaning: "真面目、原形、真實身分" },
-                { word: "意向（いこう）", meaning: "意向" },
-                { word: "意思（いし）", meaning: "意思、意志" },
-                { word: "意地（いじ）", meaning: "固執、志氣" },
-                { word: "見地（けんち）", meaning: "見地、立場" },
-                { word: "見通し（みとおし）", meaning: "預測、遠景、視野" },
-                { word: "見下す（みくだす）", meaning: "看不起、瞧不起" },
-                { word: "見下ろす（みおろす）", meaning: "俯視、從高處往下看" },
-                { word: "見合わせる（みあわせる）", meaning: "對視或暫緩、延期（運行見合わせ）" },
-                { word: "着手（ちゃくしゅ）", meaning: "開始動手、著手進行（企劃或工作）" },
-                { word: "着色（ちゃくしょく）", meaning: "著色、染色" },
-                { word: "着目（ちゃくもく）", meaning: "著眼、關注" },
-                { word: "着工（ちゃっこう）", meaning: "開工、動土（專門用於建築工程）" },
-                { word: "日夜（にちや）", meaning: "日夜、晝夜" },
-                { word: "日々（ひび）", meaning: "日日、每天" },
-                { word: "日ごろ（ひごろ）", meaning: "平時、平常" }
-            ]
-        },
-        {
-            day: "5日目（特有・産地・生産相關）",
-            words: [
-                { word: "特有（とくゆう）", meaning: "某個地方或群體特有的屬性" },
-                { word: "本場（ほんば）", meaning: "正宗、原產地、最盛行的地方" },
-                { word: "世代（せだい）", meaning: "世代" },
-                { word: "作用（さよう）", meaning: "作用" },
-                { word: "野生（やせい）", meaning: "野生" },
-                { word: "生理（せいり）", meaning: "生理" },
-                { word: "生計（せいけい）", meaning: "生計" },
-                { word: "生かす（いかす）", meaning: "發揮、利用、使活下來" },
-                { word: "用品（ようひん）", meaning: "用品" },
-                { word: "所有（しょゆう）", meaning: "所有" },
-                { word: "長所（ちょうしょ）", meaning: "長處" },
-                { word: "産地（さんち）", meaning: "產地" },
-                { word: "産出（さんしゅつ）", meaning: "產出" },
-                { word: "国産（こくさん）", meaning: "國產" },
-                { word: "生産（せいさん）", meaning: "生產" },
-                { word: "名産（めいさん）", meaning: "名產" },
-                { word: "不正（ふせい）", meaning: "不正、不法" },
-                { word: "不通（ふつう）", meaning: "不通、中斷" },
-                { word: "不明（ふめい）", meaning: "不明" },
-                { word: "不良（ふりょう）", meaning: "不良、次品" },
-                { word: "特色（とくしょく）", meaning: "特色" },
-                { word: "特産（とくさん）", meaning: "特產" },
-                { word: "特集（とくしゅう）", meaning: "特集、專題" },
-                { word: "代理（だいり）", meaning: "代理" },
-                { word: "代用（だいよう）", meaning: "代用" },
-                { word: "立場（たちば）", meaning: "立場" },
-                { word: "行事（ぎょうじ）", meaning: "活動、行事" },
-                { word: "人事（じんじ）", meaning: "人事" },
-                { word: "事前（じぜん）", meaning: "事前" },
-                { word: "主食（しゅしょく）", meaning: "主食" },
-                { word: "主体（しゅたい）", meaning: "主體" },
-                { word: "主題（しゅだい）", meaning: "主題" }
-            ]
-        },
-        {
-            day: "6日目（状態・評價・副詞綜合）",
-            words: [
-                { word: "台無し（だいなし）", meaning: "毀掉、糟蹋、泡湯（付諸流水）" },
-                { word: "強行（きょうこう）", meaning: "強行、硬行推進" },
-                { word: "早急（さっきゅう/そうきゅう）", meaning: "刻不容緩、緊急" },
-                { word: "新入り（しんいり）", meaning: "新成員、新進人員" },
-                { word: "本音（ほんね）", meaning: "真心話、真實想法" },
-                { word: "発足（ほっそく）", meaning: "成立、發起、創立" },
-                { word: "台本（だいほん）", meaning: "劇本" },
-                { word: "正味（しょうみ）", meaning: "淨重、實際（時間等）" },
-                { word: "有力（ゆうりょく）", meaning: "有力、有實力" },
-                { word: "思考（しこう）", meaning: "思考" },
-                { word: "口頭（こうとう）", meaning: "口頭" },
-                { word: "國民（こくみん）", meaning: "國民" },
-                { word: "國家（こっか）", meaning: "國家" },
-                { word: "國會（こっかい）", meaning: "國會" },
-                { word: "國有（こくゆう）", meaning: "國有" },
-                { word: "母國（ぼこく）", meaning: "母國" },
-                { word: "歸國（きこく）", meaning: "回國" },
-                { word: "國土（こくど）", meaning: "國土" },
-                { word: "新入（しんにゅう）", meaning: "新入" },
-                { word: "新人（しんじん）", meaning: "新人" },
-                { word: "土台（どだい）", meaning: "土台、地基" },
-                { word: "土手（どて）", meaning: "堤壩" },
-                { word: "土砂（どしゃ）", meaning: "泥沙、土石" },
-                { word: "業者（ぎょうしゃ）", meaning: "業者" },
-                { word: "事業（じぎょう）", meaning: "事業" },
-                { word: "分業（ぶんぎょう）", meaning: "分工、分業" },
-                { word: "音色（ねいろ / おんしょく）", meaning: "音色" },
-                { word: "自發（じはつ）", meaning: "自發" },
-                { word: "風習（ふうしゅう）", meaning: "風俗習慣" },
-                { word: "風土（ふうど）", meaning: "風土" },
-                { word: "青春（せいしゅん）", meaning: "青春" },
-                { word: "思春期（ししゅんき）", meaning: "青春期" }
-            ]
-        }
-    ];
+    // 第4週生字速查資料庫
+    const vocabData = {
+        1: [
+            "・整う（ととのう）：整齊、準備就緒、安排妥當",
+            "・控える（ひかえる）：節制、克制、等候、備忘",
+            "・避ける（さける）：避開、躲避",
+            "・抑える（おさえる）：抑制、控制",
+            "・減らす（へらす）：減少、減輕",
+            "・手分け（てわけ）：分頭、分工",
+            "・同い年（おないどし）：同齡、同歲",
+            "・心地（ここち）：感覺、心情",
+            "・手はず（てはず）：步驟、安排、籌備",
+            "・手がかり：線索",
+            "・手引き（てびき）：引導、手冊、指南",
+            "・心当たり（こころあたり）：心裡有底、線索",
+            "・内心（ないしん）：內心、私下",
+            "・下心（したごころ）：不可告人的企圖、私心",
+            "・心中（しんちゅう）：心中",
+            "・手口（てぐち）：犯罪手段、作案手法",
+            "・手本（てほん）：範本、榜樣",
+            "・手軽（てがる）：簡單、輕易",
+            "・手近（てぢか）：手邊、鄰近"
+        ],
+        2: [
+            "・上回る（うわまわる）：超過、高於",
+            "・下回る（したまわる）：低於、少於",
+            "・上向く（うわむく）：好轉、向上起色",
+            "・下火（したび）：火勢減弱、熱潮平息",
+            "・住み心地（すみごこち）：居住舒適感",
+            "・上の空（うえのそら）：心不在焉、心猿意馬",
+            "・水気（みずけ）：水分、濕氣",
+            "・人気（ひとけ）：人的氣息、動靜",
+            "・寒気（さむけ）：發冷、寒顫",
+            "・気心（きごころ）：性格、脾氣",
+            "・正気（しょうき）：神智、清醒",
+            "・気合（きあい）：氣魄、幹勁"
+        ],
+        3: [
+            "・手際（てぎわ）：辦事的手法、效率",
+            "・目下（もっか / めした）：目前、當前／晚輩",
+            "・大家（たいか / おおや）：大家、名家／房東",
+            "・切れ目（きれめ）：斷絕處、間隙",
+            "・目先（めさき）：眼前、目下",
+            "・大目（おおめ）：寬大、寬容",
+            "・明白（めいはく）：明白、顯然",
+            "・声明（せいめい）：聲明",
+            "・家計（かけい）：家計、家庭經濟",
+            "・人目（ひとめ）：世人的目光",
+            "・進行（しんこう）：進行",
+            "・進出（しんしゅつ）：進駐、開拓市場",
+            "・先頭（せんとう）：最前面、領頭",
+            "・先方（せんぽう）：對方"
+        ],
+        4: [
+            "・心当たり（こころあたり）：心裡有底、線索",
+            "・下心（したごころ）：私心、企圖",
+            "・意図（いと）：意圖、打算",
+            "・分別（ふんべつ）：辨別力、分寸",
+            "・終日（しゅうじつ）：終日、一整天",
+            "・合間（あいま）：空閒、空隙時間",
+            "・見通し（みとおし）：預測、遠景",
+            "・見合わせる（みあわせる）：對視或暫緩、延期",
+            "・着手（ちゃくしゅ）：開始動手、著手進行",
+            "・着工（ちゃっこう）：開工、動土",
+            "・日夜（にちや）：日夜、晝夜",
+            "・日々（ひび）：日日、每天"
+        ],
+        5: [
+            "・特有（とくゆう）：特有的屬性",
+            "・本場（ほんば）：正宗、原產地",
+            "・世代（せだい）：世代",
+            "・野生（やせい）：野生",
+            "・長所（ちょうしょ）：長處",
+            "・産地（さんち）：產地",
+            "・国産（こくさん）：國產",
+            "・生産（せいさん）：生產",
+            "・不正（ふせい）：不正、不法",
+            "・不良（ふりょう）：不良、次品",
+            "・特色（とくしょく）：特色",
+            "・代理（だいり）：代理",
+            "・立場（たちば）：立場"
+        ],
+        6: [
+            "・台無し（だいなし）：毀掉、糟蹋、泡湯",
+            "・強行（きょうこう）：強行、硬行推進",
+            "・早急（さっきゅう）：刻不容緩、緊急",
+            "・新入り（しんいり）：新進人員",
+            "・本音（ほんね）：真心話",
+            "・発足（ほっそく）：成立、發起",
+            "・台本（だいほん）：劇本",
+            "・正味（しょうみ）：淨重、實際",
+            "・有力（ゆうりょく）：有力、有實力",
+            "・土台（どだい）：土台、地基",
+            "・業者（ぎょうしゃ）：業者",
+            "・事業（じぎょう）：事業"
+        ]
+    };
 
-    // 50題測驗題庫
+    // 第4週 50 題測驗題庫
     const quizData = [
       {
         type: "詞義理解",
@@ -517,11 +402,7 @@
         translation: "留學的步驟（事先安排）已經準備好了。",
         details: {
           correct: "「手はず」意為事先安排、步驟、計劃，與「整う（準備就緒）」搭配最自然。",
-          wrong: [
-            "「手引き」意為指引、手冊或嚮導。",
-            "「手がかり」意為線索、頭緒。",
-            "「お手上げ」意為束手無策、沒辦法了。"
-          ]
+          wrong: ["「手引き」意為指引、手冊或嚮導。", "「手がかり」意為線索、頭緒。", "「お手上げ」意為束手無策、沒辦法了。"]
         }
       },
       {
@@ -532,11 +413,7 @@
         translation: "關於那件事，我沒有頭緒（線索）。",
         details: {
           correct: "「心当たり」意為心裡有底、線索、頭緒，「〜がない」表示毫無頭緒。",
-          wrong: [
-            "「手引き」意為指引或指南。",
-            "「下心」意為居心、私心或暗中企圖。",
-            "「心地」意為感覺、心情。"
-          ]
+          wrong: ["「手引き」意為指引或指南。", "「下心」意為居心、私心或暗中企圖。", "「心地」意為感覺、心情。"]
         }
       },
       {
@@ -547,11 +424,7 @@
         translation: "那個人看起來很溫柔，但其實心懷不軌（有企圖）。",
         details: {
           correct: "「下心」意為不可告人的企圖、居心或私心，符合「表面溫柔但私下有目的」的語境。",
-          wrong: [
-            "「内心」意為內心、心裡，偏向客觀感受或想法。",
-            "「心中」意為心境或殉情。",
-            "「先手」意為先發制人、佔先機。"
-          ]
+          wrong: ["「内心」意為內心、心裡，偏向客觀感受或想法。", "「心中」意為心境或殉情。", "「先手」意為先發制人、佔先機。"]
         }
       },
       {
@@ -562,11 +435,7 @@
         translation: "離開都市，在鄉下過著居住舒適的生活。",
         details: {
           correct: "「住み心地（すみごこち）」專門用來形容「居住環境的舒適感」。",
-          wrong: [
-            "「行き心地」為不合規範的組合詞。",
-            "「寝心地」指「睡覺（床鋪）的舒適感」。",
-            "「着心地」指「穿衣服的舒適感（觸感）」。"
-          ]
+          wrong: ["「行き心地」為不合規範的組合詞。", "「寝心地」指「睡覺（床鋪）的舒適感」。", "「着心地」指「穿衣服的舒適感（觸感）」。"]
         }
       },
       {
@@ -577,11 +446,7 @@
         translation: "閱讀海外旅行的指南（手冊）來做準備。",
         details: {
           correct: "「手引き」意為手冊、導引、入門書，旅行前閱讀的指南正合適。",
-          wrong: [
-            "「手口」意為作案手法、犯罪手段。",
-            "「手本」意為榜樣、字帖、模範。",
-            "「手中」意為掌中、控制之中。"
-          ]
+          wrong: ["「手口」意為作案手法、犯罪手段。", "「手本」意為榜樣、字帖、模範。", "「手中」意為掌中、控制之中。"]
         }
       },
       {
@@ -592,11 +457,7 @@
         translation: "警方掌握了犯罪的作案手法（手口）。",
         details: {
           correct: "「手口」專指犯罪集團或歹徒作案的手法與手段。",
-          wrong: [
-            "「手際」意為辦事的手法、效率。",
-            "「手元」意為手頭、身邊。",
-            "「手本」意為榜樣、範本。"
-          ]
+          wrong: ["「手際」意為辦事的手法、效率。", "「手元」意為手頭、身邊。", "「手本」意為榜樣、範本。"]
         }
       },
       {
@@ -607,11 +468,7 @@
         translation: "這道料理可以用簡單、簡便的材料製作。",
         details: {
           correct: "「手軽（てがる）」意為簡單、簡便、不費事，修飾材料表示容易取得且處理簡單。",
-          wrong: [
-            "「手近な」意為手邊的、附近的。",
-            "「手ごろな」意為合適的、適中的。",
-            "「有力な」意為有力的、有影響力的。"
-          ]
+          wrong: ["「手近な」意為手邊的、附近的。", "「手ごろな」意為合適的、適中的。", "「有力な」意為有力的、有影響力的。"]
         }
       },
       {
@@ -622,11 +479,7 @@
         translation: "這台電腦又小又輕，可以輕鬆（簡便地）攜帶。",
         details: {
           correct: "「手軽に」是副詞形，意為輕便地、簡單地，符合輕巧電腦的特點。",
-          wrong: [
-            "「手ごろに」意為適度地、合宜地。",
-            "「手堅く」意為穩健地、踏實地。",
-            "「直ちに」意為立刻、馬上。"
-          ]
+          wrong: ["「手ごろに」意為適度地、合宜地。", "「手堅く」意為穩健地、踏實地。", "「直ちに」意為立刻、馬上。"]
         }
       },
       {
@@ -637,11 +490,7 @@
         translation: "景氣要是再惡化下去，就真的束手無策（舉手投降）了。",
         details: {
           correct: "「お手上げ」是慣用語，意為束手無策、毫無辦法、舉手投降。",
-          wrong: [
-            "「手分け」意為分工、分頭進行。",
-            "「手柄」意為功勞、成就。",
-            "「先手」意為先發制人。"
-          ]
+          wrong: ["「手分け」意為分工、分頭進行。", "「手柄」意為功勞、成就。", "「先手」意為先發制人。"]
         }
       },
       {
@@ -652,11 +501,7 @@
         translation: "全家人分工合作把家裡打掃乾淨了。",
         details: {
           correct: "「手分け」意為分工、分頭（手分けする＝分工合作）。",
-          wrong: [
-            "「手当」意為補貼、津貼或治療、處理傷口。",
-            "「手本」意為榜樣、範本。",
-            "「手引き」意為引導、指南。"
-          ]
+          wrong: ["「手当」意為補貼、津貼或治療、處理傷口。", "「手本」意為榜樣、範本。", "「手引き」意為引導、指南。"]
         }
       },
       {
@@ -667,26 +512,18 @@
         translation: "為了健康，每天的飲食中要節制（減少攝取）鹽分。",
         details: {
           correct: "「控える」在此意為克制、節制（如減少攝取鹽分、酒精等）。",
-          wrong: [
-            "「避ける」意為避開、躲避。",
-            "「抑える」意為抑制、壓制。",
-            "「減らす」意為直接減少。"
-          ]
+          wrong: ["「避ける」意為避開、躲避。", "「抑える」意為抑制、壓制。", "「減らす」意為直接減少。"]
         }
       },
       {
         type: "漢字平假名轉換",
-        q: "彼女は物事の良し悪しの（ ）がつく年頃になった。",
+        q: "彼女は物事の良し悪し基準の（ ）がつく年頃になった。",
         options: ["分野", "分別", "同上", "同等"],
         answer: 1,
         translation: "她已經到了懂得辨別事物好壞（懂事）的年紀了。",
         details: {
           correct: "「分別（ふんべつ）」意為辨別力、分寸、懂事（分別がつく＝懂事、有判斷力）。",
-          wrong: [
-            "「分野」意為領域、學門。",
-            "「同上」意為同上、如上所述。",
-            "「同等」意為同等、相等。"
-          ]
+          wrong: ["「分野」意為領域、學門。", "「同上」意為同上、如上所述。", "「同等」意為同等、相等。"]
         }
       },
       {
@@ -697,11 +534,7 @@
         translation: "我和他出生年和月都一樣，是同年的（同歲）。",
         details: {
           correct: "「同い年（おなとし）」意為同年齡、同歲。",
-          wrong: [
-            "「同世代」意為同世代、同年代的人。",
-            "「同一人物」意為同一個人。",
-            "「同上」意為同上。"
-          ]
+          wrong: ["「同世代」意為同世代、同年代的人。", "「同一人物」意為同一個人。", "「同上」意為同上。"]
         }
       },
       {
@@ -712,11 +545,7 @@
         translation: "烹調之前，先用鹽和胡椒進行基礎調味（下味）。",
         details: {
           correct: "「下味（したあじ）」意為烹調前的基礎調味（醃入底味）。",
-          wrong: [
-            "「下地」意為基礎、底子、基底。",
-            "「下火」意為火勢減弱或事情漸趨平息。",
-            "「水気」意為水分、濕氣。"
-          ]
+          wrong: ["「下地」意為基礎、底子、基底。", "「下火」意為火勢減弱或事情漸趨平息。", "「水気」意為水分、濕氣。"]
         }
       },
       {
@@ -727,11 +556,7 @@
         translation: "流感的流行終於開始減弱（平息）了。",
         details: {
           correct: "「下火（したび）」意為火勢減弱，引申為流行病或熱潮逐漸平息、退燒。",
-          wrong: [
-            "「下回り」意為低於、轉到下方。",
-            "「下味」意為基礎調味。",
-            "「下地」意為基礎、基底。"
-          ]
+          wrong: ["「下回り」意為低於、轉到下方。", "「下味」意為基礎調味。", "「下地」意為基礎、基底。"]
         }
       },
       {
@@ -742,11 +567,7 @@
         translation: "今年的出生率超過了預期。",
         details: {
           correct: "「上回る（うわまわる）」意為超過、高於預期或標準。",
-          wrong: [
-            "「上向く」意為（情況）好轉、向上起色。",
-            "「下回る」意為低於、少於。",
-            "「上書き」意為覆蓋寫入。"
-          ]
+          wrong: ["「上向く」意為（情況）好轉、向上起色。", "「下回る」意為低於、少於。", "「上書き」意為覆蓋寫入。"]
         }
       },
       {
@@ -756,12 +577,8 @@
         answer: 1,
         translation: "他上課時心不在焉（漫不經心），根本沒聽老師講話。",
         details: {
-          correct: "「上の空（うわのそら）」意為心不在焉、魂不守舍。",
-          wrong: [
-            "「下火」意為勢頭減弱。",
-            "「手元」意為手邊、身邊。",
-            "「合間」意為空閒時間、空隙。"
-          ]
+          correct: "「上の空（うえのそら）」意為心不在焉、魂不守舍。",
+          wrong: ["「下火」意為勢頭減弱。", "「手元」意為手邊、身邊。", "「合間」意為空閒時間、空隙。"]
         }
       },
       {
@@ -772,11 +589,7 @@
         translation: "用新資料覆蓋舊資料並儲存。",
         details: {
           correct: "「上書き（うわがき）」在電腦詞彙中意為「覆蓋寫入」、「覆寫檔案」。",
-          wrong: [
-            "「上向く」意為行情或狀況好轉。",
-            "「上回る」意為超越。",
-            "「見合わせる」意為對視或暫緩、延期。"
-          ]
+          wrong: ["「上向く」意為行情或狀況好轉。", "「上回る」意為超越。", "「見合わせる」意為對視或暫緩、延期。"]
         }
       },
       {
@@ -787,11 +600,7 @@
         translation: "料理前要把蔬菜的水分（水気）擦乾或切除乾淨。",
         details: {
           correct: "「水気（みずけ）」意為水分、濕氣。",
-          wrong: [
-            "「人気（ひとけ）」意為人的氣息、動靜。",
-            "「寒気」意為寒氣、發冷。",
-            "「気心」意為性格、脾氣。"
-          ]
+          wrong: ["「人気（ひとけ）」意為人的氣息、動靜。", "「寒気」意為寒氣、發冷。", "「気心」意為性格、脾氣。"]
         }
       },
       {
@@ -802,11 +611,7 @@
         translation: "走在夜裡沒有人氣（沒有行人氣息）的街道上。",
         details: {
           correct: "「人気（ひとけ）」意為人的氣息、動靜（「人気がない」表示荒涼、無人煙）。",
-          wrong: [
-            "「水気」意為水分。",
-            "「寒気」意為寒氣。",
-            "「気合」意為氣魄、幹勁。"
-          ]
+          wrong: ["「水気」意為水分。", "「寒気」意為寒氣。", "「気合」意為氣魄、幹勁。"]
         }
       },
       {
@@ -817,11 +622,7 @@
         translation: "因為交往多年，彼此的脾氣（心思）都很清楚。",
         details: {
           correct: "「気心（きごころ）」意為性格、脾氣、心思（気心が知れる＝彼此知根知底）。",
-          wrong: [
-            "「気長」意為性子慢、不急躁。",
-            "「正気」意為清醒、理智。",
-            "「気合」意為氣勢、幹勁。"
-          ]
+          wrong: ["「気長」意為性子慢、不急躁。", "「正気」意為清醒、理智。", "「気合」意為氣勢、幹勁。"]
         }
       },
       {
@@ -832,11 +633,7 @@
         translation: "比賽開始前大家一起打氣（振奮精神）。",
         details: {
           correct: "「気合（きあい）」意為氣魄、精神振作（気合を入れる＝打氣、鼓勁）。",
-          wrong: [
-            "「気長」意為慢性子、不急躁。",
-            "「正気」意為清醒、神智正常。",
-            "「手口」意為作案手法。"
-          ]
+          wrong: ["「気長」意為慢性子、不急躁。", "「正気」意為清醒、神智正常。", "「手口」意為作案手法。"]
         }
       },
       {
@@ -847,11 +644,7 @@
         translation: "我目前失業中，正在找工作。",
         details: {
           correct: "「目下（もっか）」意為目前、當今、眼下。",
-          wrong: [
-            "「目方」意為重量、份量。",
-            "「目先」意為眼前、眼前利益。",
-            "「大目」意為寬容、不予計較。"
-          ]
+          wrong: ["「目方」意為重量、份量。", "「目先」意為眼前、眼前利益。", "「大目」意為寬容、不予計較。"]
         }
       },
       {
@@ -862,11 +655,7 @@
         translation: "在超市秤量肉或魚的重量（目方）。",
         details: {
           correct: "「目方（めかた）」意為重量、份量。",
-          wrong: [
-            "「目下」意為目前、現今。",
-            "「目先」意為眼前。",
-            "「人目」意為世人的目光。"
-          ]
+          wrong: ["「目下」意為目前、現今。", "「目先」意為眼前。", "「人目」意為世人的目光。"]
         }
       },
       {
@@ -877,11 +666,7 @@
         translation: "他不能被眼前的利益所迷惑（拘泥於眼前利益）。",
         details: {
           correct: "「目先（めさき）」意為眼前、直前（目先の利益＝眼前的利益）。",
-          wrong: [
-            "「目下」意為目前、眼下。",
-            "「大目」意為寬容。",
-            "「先頭」意為最前面。"
-          ]
+          wrong: ["「目下」意為目前、眼下。", "「大目」意為寬容。", "「先頭」意為最前面。"]
         }
       },
       {
@@ -892,11 +677,7 @@
         translation: "他的這次失敗，我們這次就寬宏大量不予計較了。",
         details: {
           correct: "「大目に見る（おおめにみる）」是慣用語，意為寬容、不予深究、睜一隻眼閉一隻眼。",
-          wrong: [
-            "「目下」意為目前。",
-            "「目方」意為重量。",
-            "「人目」意為世人的目光。"
-          ]
+          wrong: ["「目下」意為目前。", "「目方」意為重量。", "「人目」意為世人的目光。"]
         }
       },
       {
@@ -907,11 +688,7 @@
         translation: "政府就這次事件發表了緊急聲明。",
         details: {
           correct: "「声明（せいめい）」意為官方聲明、公開表態。",
-          wrong: [
-            "「証明」意為證明、證件。",
-            "「照明」意為照明、燈光。",
-            "「透明」意為透明。"
-          ]
+          wrong: ["「証明」意為證明、證件。", "「照明」意為照明、燈光。", "「透明」意為透明。"]
         }
       },
       {
@@ -922,11 +699,7 @@
         translation: "調查正在順利進行中。",
         details: {
           correct: "「進行（しんこう）」意為進行、推進（進行している＝正在進行）。",
-          wrong: [
-            "「進出」意為進駐、開拓市場。",
-            "「進度」意為進度。",
-            "「行進」意為行進、遊行。"
-          ]
+          wrong: ["「進出」意為進駐、開拓市場。", "「進度」意為進度。", "「行進」意為行進、遊行。"]
         }
       },
       {
@@ -937,11 +710,7 @@
         translation: "該企業終於進駐（開拓）了亞洲市場。",
         details: {
           correct: "「進出（しんしゅつ）」意為進入新領域或開拓新市場（如海外進出）。",
-          wrong: [
-            "「進行」意為事情的進行。",
-            "「先頭」意為最前面。",
-            "「先行」意為先行、走在前面。"
-          ]
+          wrong: ["「進行」意為事情的進行。", "「先頭」意為最前面。", "「先行」意為先行、走在前面。"]
         }
       },
       {
@@ -952,11 +721,7 @@
         translation: "在馬拉松比賽中一直跑在最前面（先頭）。",
         details: {
           correct: "「先頭（せんとう）」意為最前面、領頭位置（先頭に立つ＝帶頭、站在最前面）。",
-          wrong: [
-            "「先着」意為先到達、先到者。",
-            "「先方」意為對方。",
-            "「先進」意為先進。"
-          ]
+          wrong: ["「先着」意為先到達、先到者。", "「先方」意為對方。", "「先進」意為先進。"]
         }
       },
       {
@@ -967,11 +732,7 @@
         translation: "如有不明之處，請向對方（先方）詢問。",
         details: {
           correct: "「先方（せんぽう）」意為對方、那邊（商業或正式用語常用）。",
-          wrong: [
-            "「先頭」意為最前面。",
-            "「先着」意為先到。",
-            "「手元」意為手邊。"
-          ]
+          wrong: ["「先頭」意為最前面。", "「先着」意為先到。", "「手元」意為手邊。"]
         }
       },
       {
@@ -982,11 +743,7 @@
         translation: "政府有意（意圖）更改經濟政策。",
         details: {
           correct: "「意図（いと）」意為意圖、打算、企圖（意図している＝有意、打算）。",
-          wrong: [
-            "「意思」意為意志、想法。",
-            "「意地」意為固執、倔強。",
-            "「意向」指個人的想法或傾向。"
-          ]
+          wrong: ["「意思」意為意志、想法。", "「意地」意為固執、倔強。", "「意向」指個人的想法或傾向。"]
         }
       },
       {
@@ -997,11 +754,7 @@
         translation: "趁著工作空檔喝杯咖啡喘口氣。",
         details: {
           correct: "「合間（あいま）」意為空閒、空隙時間（仕事の合間＝工作空檔）。",
-          wrong: [
-            "「空間」意為空間。",
-            "「民間」意為民間。",
-            "「合図」意為信號、暗號。"
-          ]
+          wrong: ["「空間」意為空間。", "「民間」意為民間。", "「合図」意為信號、暗號。"]
         }
       },
       {
@@ -1012,11 +765,7 @@
         translation: "有效利用公寓狹小的空間。",
         details: {
           correct: "「空間（くうかん）」意為空間、場所。",
-          wrong: [
-            "「合間」意為空檔時間。",
-            "「民間」意為民間。",
-            "「人間」意為人類、人。"
-          ]
+          wrong: ["「合間」意為空檔時間。", "「民間」意為民間。", "「人間」意為人類、人。"]
         }
       },
       {
@@ -1027,11 +776,7 @@
         translation: "來年度的經濟預測（前景）並不樂觀。",
         details: {
           correct: "「見通し（みとおし）」意為預測、前景、展望（經濟見通し＝經濟預測/前景）。",
-          wrong: [
-            "「見地」意為見解、立場。",
-            "「見本」意為樣品、樣本。",
-            "「手口」意為作案手法。"
-          ]
+          wrong: ["「見地」意為見解、立場。", "「見本」意為樣品、樣本。", "「手口」意為作案手法。"]
         }
       },
       {
@@ -1042,11 +787,7 @@
         translation: "因為颱風，新幹線的發車暫緩（延期）了。",
         details: {
           correct: "「見合わせる（みあわせる）」意為對視或暫緩、延期（運行見合わせ＝暫停運行）。",
-          wrong: [
-            "「見下す」意為看不起、俯視。",
-            "「着手する」意為著手進行。",
-            "「見通す」意為看透、看穿、預見。"
-          ]
+          wrong: ["「見下す」意為看不起、俯視。", "「着手する」意為著手進行。", "「見通す」意為看透、看穿、預見。"]
         }
       },
       {
@@ -1057,11 +798,7 @@
         translation: "從下個月開始著手進行新的專案。",
         details: {
           correct: "「着手（ちゃくしゅ）」意為開始動手、著手進行（適用於企劃、工作、研究）。",
-          wrong: [
-            "「着工」意為開工動土。",
-            "「着色」意為著色、上色。",
-            "「着目」意為注目、關注。"
-          ]
+          wrong: ["「着工」意為開工動土。", "「着色」意為著色、上色。", "「着目」意為注目、關注。"]
         }
       },
       {
@@ -1072,11 +809,7 @@
         translation: "新建大樓的工程將於下個月開工。",
         details: {
           correct: "「着工（ちゃっこう）」專門用於建築或土木工程的「開工、動工」。",
-          wrong: [
-            "「着手」意為一般事務或企劃的著手。",
-            "「着色」意為著色。",
-            "「着目」意為注目。"
-          ]
+          wrong: ["「着手」意為一般事務或企劃的著手。", "「着色」意為著色。", "「着目」意為注目。"]
         }
       },
       {
@@ -1087,11 +820,7 @@
         translation: "從早到晚一整天（終日）都面對著電腦。",
         details: {
           correct: "「終日（しゅうじつ）」意為終日、一整天（從早到晚）。",
-          wrong: [
-            "「日夜」意為日夜、晝夜不停。",
-            "「日々」意為日復一日、天天。",
-            "「日ごろ」意為平時、平常。"
-          ]
+          wrong: ["「日夜」意為日夜、晝夜不停。", "「日々」意為日復一日、天天。", "「日ごろ」意為平時、平常。"]
         }
       },
       {
@@ -1102,11 +831,7 @@
         translation: "在正宗產地（發源地）學習義大利料理。",
         details: {
           correct: "「本場（ほんば）」意為正宗、原產地、最盛行的地方。",
-          wrong: [
-            "「産地」意為生產地。",
-            "「市場」意為市場。",
-            "「工場」意為工廠。"
-          ]
+          wrong: ["「産地」意為生產地。", "「市場」意為市場。", "「工場」意為工廠。"]
         }
       },
       {
@@ -1117,11 +842,7 @@
         translation: "這塊土地是由我所有（擁有）的。",
         details: {
           correct: "「所有（しょゆう）」意為所有、擁有（所有している＝為我所有）。",
-          wrong: [
-            "「生産」意為生產。",
-            "「代用」意為代用。",
-            "「代理」意為代理。"
-          ]
+          wrong: ["「生産」意為生產。", "「代用」意為代用。", "「代理」意為代理。"]
         }
       },
       {
@@ -1132,11 +853,7 @@
         translation: "青森縣是知名的蘋果產地。",
         details: {
           correct: "「産地（さんち）」意為農產品或礦物的生產地、產地。",
-          wrong: [
-            "「本場」意為正宗、發源地。",
-            "「市場」意為市場。",
-            "「工場」意為工廠。"
-          ]
+          wrong: ["「本場」意為正宗、發源地。", "「市場」意為市場。", "「工場」意為工廠。"]
         }
       },
       {
@@ -1147,11 +864,7 @@
         translation: "這台機械一天生產一千個產品。",
         details: {
           correct: "「生産（せいさん）」意為生產製造商品。",
-          wrong: [
-            "「産出」意為出產、開採出（如礦產）。",
-            "「所有」意為擁有。",
-            "「代用」意為代用。"
-          ]
+          wrong: ["「産出」意為出產、開採出（如礦產）。", "「所有」意為擁有。", "「代用」意為代用。"]
         }
       },
       {
@@ -1162,11 +875,7 @@
         translation: "請注意市面上流通的不良品（瑕疵品）。",
         details: {
           correct: "「不良品（ふりょうひん）」意為不良品、瑕疵品、次級品。",
-          wrong: [
-            "「不正」意為不正、舞弊。",
-            "「不明」意為不明。",
-            "「不通」意為中斷、不通。"
-          ]
+          wrong: ["「不正」意為不正、舞弊。", "「不明」意為不明。", "「不通」意為中斷、不通。"]
         }
       },
       {
@@ -1176,300 +885,195 @@
         answer: 2,
         translation: "這裡有這個地方特有的獨特習俗。",
         details: {
-          correct: "「特有（とくゆう）」意為某個地方、群體或事物特有的屬性（特有の習慣＝特有習俗）。",
-          wrong: [
-            "「特長」意為特別的長處、優點。",
-            "「特用」意為特別用途。",
-            "「特集」意為專題報導、特輯。"
-          ]
-        }
-      },
-      {
-        type: "漢字平假名轉換",
-        q: "社長の（ ）として会議に出席する。",
-        options: ["代用", "代理", "立場", "主体"],
-        answer: 1,
-        translation: "作為社長的代理人出席會議。",
-        details: {
-          correct: "「代理（だいり）」意為代理、代表某人處理事務（代理として＝作為代理）。",
-          wrong: [
-            "「代用」意為替代物品。",
-            "「立場」意為立場。",
-            "「主体」意為主體。"
-          ]
-        }
-      },
-      {
-        type: "詞義理解",
-        q: "クッションを枕の（ ）にする。",
-        options: ["代理", "所有", "代用", "主体"],
-        answer: 2,
-        translation: "把靠墊當作枕頭來代用（替代）。",
-        details: {
-          correct: "「代用（だいよう）」意為代用、替代（代用にする＝拿來當替代品）。",
-          wrong: [
-            "「代理」意為人的代理，不能用在物品替代物品。",
-            "「所有」意為擁有。",
-            "「主体」意為主體。"
-          ]
-        }
-      },
-      {
-        type: "生字填充",
-        q: "急な雨で、楽しみにしていた桜が（ ）になった。",
-        options: ["台本", "台無し", "正味", "有力"],
-        answer: 1,
-        translation: "因為突如其來的雨，期待已久的賞櫻泡湯了（毀掉了）。",
-        details: {
-          correct: "「台無し（だいなし）」意為毀掉、糟蹋、付諸流水（台無しになる＝泡湯、毀了）。",
-          wrong: [
-            "「台本」意為劇本。",
-            "「正味」意為淨重、實質。",
-            "「有力」意為有力、有影響力。"
-          ]
-        }
-      },
-      {
-        type: "漢字平假名轉換",
-        q: "この工事を（ ）するのはスケジュール的に無理だ。",
-        options: ["早急", "強行", "有力", "正味"],
-        answer: 1,
-        translation: "從行程安排來看，硬行（強行）進行這項工程是不可能的。",
-        details: {
-          correct: "「強行（きょうこう）」意為強行、硬行推進（強行する＝強行進行）。",
-          wrong: [
-            "「早急」意為刻不容緩、緊急。",
-            "「有力」意為有力的。",
-            "「正味」意為淨重、實質。"
-          ]
-        }
-      },
-      {
-        type: "詞義理解",
-        q: "問題の（ ）な解決が求められている。",
-        options: ["強行", "早急", "有力", "正味"],
-        answer: 1,
-        translation: "要求對問題進行刻不容緩（緊急）的解決。",
-        details: {
-          correct: "「早急（さっきゅう/そうきゅう）」意為刻不容緩、緊急、迅速（早急な解決＝緊急解決）。",
-          wrong: [
-            "「強行」意為強行。",
-            "「有力」意為有力。",
-            "「正味」意為淨重。"
-          ]
+          correct: "「特有（とくゆう）」意為某個地方或群體特有的屬性。",
+          wrong: ["「特長」意為特長、優點。", "「特用」意為特用。", "「特集」意為專題、特集。"]
         }
       }
     ];
 
-    let currentIdx = 0;
-    let userAnswers = JSON.parse(localStorage.getItem('n1_w4_answers')) || new Array(quizData.length).fill(null);
-    let activeDay = 0;
+    let currentQuestion = 0;
+    let userAnswers = new Array(quizData.length).fill(null);
 
-    // DOM 元素
-    const qTag = document.getElementById('q-tag');
-    const qNum = document.getElementById('q-num');
-    const progress = document.getElementById('progress');
-    const qText = document.getElementById('q-text');
+    // DOM 元素快取
+    const qTagEl = document.getElementById('q-tag');
+    const qNumEl = document.getElementById('q-num');
+    const qTextEl = document.getElementById('q-text');
     const optionsEl = document.getElementById('options');
     const explanationEl = document.getElementById('explanation');
     const verdictEl = document.getElementById('verdict');
     const translationEl = document.getElementById('translation');
     const notesEl = document.getElementById('notes');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const stage = document.getElementById('stage');
-    const results = document.getElementById('results');
-    const hankoScore = document.getElementById('hanko-score');
-    const answeredCount = document.getElementById('answered-count');
-    const jumpGrid = document.getElementById('jump-grid');
-    const finishBtn = document.getElementById('finish-btn');
-    const retryWrongBtn = document.getElementById('retry-wrong-btn');
-    const restartBtn = document.getElementById('restart-btn');
-    const dayTabs = document.getElementById('day-tabs');
-    const vocabList = document.getElementById('vocab-list');
+    const progressBarEl = document.getElementById('progress');
+    const stageEl = document.getElementById('stage');
+    const resultsEl = document.getElementById('results');
+    const jumpGridEl = document.getElementById('jump-grid');
+    const answeredCountEl = document.getElementById('answered-count');
+    const hankoScoreEl = document.getElementById('hanko-score');
+    const vocabListEl = document.getElementById('vocab-list');
 
-    function init() {
-      renderJumpGrid();
-      renderVocabTabs();
-      renderVocabList(activeDay);
-      loadQuestion(currentIdx);
-      updateStats();
-    }
-
-    function loadQuestion(idx) {
-      currentIdx = idx;
-      const q = quizData[idx];
-      stage.hidden = false;
-      results.hidden = true;
-
-      qTag.textContent = q.type;
-      qNum.textContent = `第 ${idx + 1} 題 ／ 共 ${quizData.length} 題`;
-      progress.style.width = `${((idx + 1) / quizData.length) * 100}%`;
-      qText.textContent = q.q;
-
-      optionsEl.innerHTML = '';
-      q.options.forEach((opt, oIdx) => {
-        const btn = document.createElement('button');
-        btn.className = 'option-btn';
-        btn.textContent = `${['A', 'B', 'C', 'D'][oIdx]}. ${opt}`;
-        
-        const answered = userAnswers[idx] !== null;
-        if (answered) {
-          btn.disabled = true;
-          if (oIdx === q.answer) {
-            btn.classList.add('correct');
-          } else if (userAnswers[idx] === oIdx) {
-            btn.classList.add('incorrect');
-          }
-        } else {
-          btn.onclick = () => selectAnswer(idx, oIdx);
-        }
-        optionsEl.appendChild(btn);
+    // 切換生字速查卡天數
+    function switchVocabDay(day) {
+      document.querySelectorAll('.day-tab').forEach((tab) => {
+        tab.classList.toggle('active', tab.getAttribute('onclick').includes(day));
       });
-
-      if (userAnswers[idx] !== null) {
-        explanationEl.hidden = false;
-        const isCorrect = userAnswers[idx] === q.answer;
-        verdictType = isCorrect;
-        verdictEl.textContent = isCorrect ? '✓ 正解！' : '✕ 残念…';
-        verdictEl.className = `verdict ${isCorrect ? 'ok' : 'ng'}`;
-        translationEl.textContent = q.translation;
-        notesEl.innerHTML = '';
-        
-        const correctLi = document.createElement('li');
-        correctLi.innerHTML = `<strong>【正確解析】</strong>${q.details.correct}`;
-        notesEl.appendChild(correctLi);
-
-        q.details.wrong.forEach(w => {
-          const wrongLi = document.createElement('li');
-          wrongLi.textContent = w;
-          notesEl.appendChild(wrongLi);
-        });
-      } else {
-        explanationEl.hidden = true;
-      }
-
-      prevBtn.disabled = idx === 0;
-      nextBtn.textContent = idx === quizData.length - 1 ? '查看成績 →' : '下一題 →';
-      renderJumpGrid();
+      vocabListEl.innerHTML = (vocabData[day] || []).map(item => `<li>${item}</li>`).join('');
     }
 
-    function selectAnswer(qIdx, oIdx) {
-      userAnswers[qIdx] = oIdx;
-      localStorage.setItem('n1_w4_answers', JSON.stringify(userAnswers));
-      loadQuestion(qIdx);
-      updateStats();
-    }
-
-    function updateStats() {
-      const answered = userAnswers.filter(a => a !== null).length;
-      let correct = 0;
-      userAnswers.forEach((a, i) => {
-        if (a === quizData[i].answer) correct++;
-      });
-      hankoScore.textContent = correct;
-      answeredCount.textContent = `已作答 ${answered} ／ ${quizData.length}`;
-    }
-
-    function renderJumpGrid() {
-      jumpGrid.innerHTML = '';
+    // 初始化跳題網格
+    function initJumpGrid() {
+      jumpGridEl.innerHTML = '';
       quizData.forEach((_, i) => {
         const btn = document.createElement('button');
         btn.className = 'jump-btn';
-        btn.textContent = i + 1;
-        if (i === currentIdx) btn.classList.add('cur');
-        if (userAnswers[i] !== null) {
-          btn.classList.add(userAnswers[i] === quizData[i].answer ? 'ok' : 'ng');
+        btn.innerText = i + 1;
+        btn.onclick = () => goToQuestion(i);
+        jumpGridEl.appendChild(btn);
+      });
+      updateJumpGridUI();
+    }
+
+    function updateJumpGridUI() {
+      const buttons = jumpGridEl.getElementsByClassName('jump-btn');
+      let answeredCount = 0;
+      let correctCount = 0;
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].className = 'jump-btn';
+        if (i === currentQuestion) buttons[i].classList.add('active');
+        if (userAnswers[i] === true) {
+          buttons[i].classList.add('correct');
+          answeredCount++;
+          correctCount++;
+        } else if (userAnswers[i] === false) {
+          buttons[i].classList.add('incorrect');
+          answeredCount++;
         }
-        btn.onclick = () => loadQuestion(i);
-        jumpGrid.appendChild(btn);
-      });
+      }
+
+      answeredCountEl.innerText = `已作答 ${answeredCount} ／ 50`;
+      hankoScoreEl.innerText = correctCount;
     }
 
-    function renderVocabTabs() {
-      dayTabs.innerHTML = '';
-      vocabData.forEach((day, idx) => {
-        const tab = document.createElement('button');
-        tab.className = `day-tab ${idx === activeDay ? 'active' : ''}`;
-        tab.textContent = day.day;
-        tab.onclick = () => {
-          activeDay = idx;
-          renderVocabTabs();
-          renderVocabList(idx);
-        };
-        dayTabs.appendChild(tab);
+    // 載入題目
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      qTagEl.innerText = q.type;
+      qNumEl.innerText = `第 ${currentQuestion + 1} 題 ／ 共 50 題`;
+      qTextEl.innerText = q.q;
+      progressBarEl.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+
+      optionsEl.innerHTML = '';
+      const isAnswered = userAnswers[currentQuestion] !== null;
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        if (isAnswered) {
+          btn.disabled = true;
+          if (idx === q.answer) btn.classList.add('correct');
+        }
+        btn.onclick = () => selectOption(idx);
+        optionsEl.appendChild(btn);
       });
-    }
 
-    function renderVocabList(dayIdx) {
-      vocabList.innerHTML = '';
-      vocabData[dayIdx].words.forEach(w => {
-        const li = document.createElement('li');
-        li.className = 'vocab-item';
-        li.innerHTML = `<div class="vocab-word">${w.word}</div><div class="vocab-mean">${w.meaning}</div>`;
-        vocabList.appendChild(li);
-      });
-    }
-
-    function showResults() {
-      stage.hidden = true;
-      results.hidden = false;
-      let correct = 0;
-      userAnswers.forEach((a, i) => {
-        if (a === quizData[i].answer) correct++;
-      });
-      document.getElementById('result-correct').textContent = correct;
-      
-      const commentEl = document.getElementById('result-comment');
-      const p = (correct / quizData.length) * 100;
-      if (p === 100) commentEl.textContent = "太神啦！全數答對，對第4週漢字與語彙的掌握已臻化境！";
-      else if (p >= 80) commentEl.textContent = "表現非常優秀！觀念清晰，實力堅強。";
-      else if (p >= 60) commentEl.textContent = "及格囉！建議利用側欄生字速查卡再複習容易混淆的詞彙。";
-      else commentEl.textContent = "革命尚未成功！建議先瀏覽生字速查卡片熟悉核心詞彙後再重新挑戰。";
-    }
-
-    // 事件監聽
-    prevBtn.onclick = () => { if (currentIdx > 0) loadQuestion(currentIdx - 1); };
-    nextBtn.onclick = () => {
-      if (currentIdx < quizData.length - 1) loadQuestion(currentIdx + 1);
-      else showResults();
-    };
-    finishBtn.onclick = showResults;
-
-    restartBtn.onclick = () => {
-      userAnswers = new Array(quizData.length).fill(null);
-      localStorage.removeItem('n1_w4_answers');
-      currentIdx = 0;
-      init();
-    };
-
-    retryWrongBtn.onclick = () => {
-      const firstWrong = userAnswers.findIndex((a, i) => a !== null && a !== quizData[i].answer);
-      if (firstWrong !== -1) {
-        loadQuestion(firstWrong);
+      if (isAnswered) {
+        showExplanation(q, userAnswers[currentQuestion]);
       } else {
-        alert("目前沒有答錯的題目可供重試！");
+        explanationEl.classList.remove('show');
       }
-    };
 
-    // 鍵盤支援
-    window.onkeydown = (e) => {
-      if (results.hidden) {
-        if (['1', '2', '3', '4'].includes(e.key)) {
-          const optIdx = parseInt(e.key) - 1;
-          if (userAnswers[currentIdx] === null && quizData[currentIdx].options[optIdx]) {
-            selectAnswer(currentIdx, optIdx);
-          }
-        } else if (e.key === 'ArrowLeft' && currentIdx > 0) {
-          loadQuestion(currentIdx - 1);
-        } else if (e.key === 'ArrowRight') {
-          if (currentIdx < quizData.length - 1) loadQuestion(currentIdx + 1);
-          else showResults();
-        }
+      updateJumpGridUI();
+    }
+
+    // 顯示解析
+    function showExplanation(q, isCorrect) {
+      verdictEl.className = `verdict ${isCorrect ? 'ok' : 'ng'}`;
+      verdictEl.innerText = isCorrect ? "【正解】恭喜答對！" : "【不正解】再接再厲！";
+      translationEl.innerText = q.translation;
+      
+      notesEl.innerHTML = `
+        <li>${q.details.correct}</li>
+        ${q.details.wrong.map(w => `<li>${w}</li>`).join('')}
+      `;
+      explanationEl.classList.add('show');
+    }
+
+    // 作答選擇
+    function selectOption(idx) {
+      if (userAnswers[currentQuestion] !== null) return;
+
+      const q = quizData[currentQuestion];
+      const buttons = optionsEl.getElementsByTagName('button');
+      const isCorrect = (idx === q.answer);
+      userAnswers[currentQuestion] = isCorrect;
+
+      if (isCorrect) {
+        buttons[idx].classList.add('correct');
+      } else {
+        buttons[idx].classList.add('incorrect');
+        buttons[q.answer].classList.add('correct');
       }
-    };
 
-    window.onload = init;
+      for (let btn of buttons) btn.disabled = true;
+
+      showExplanation(q, isCorrect);
+      updateJumpGridUI();
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quizData.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+      } else {
+        checkFinish();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+      }
+    }
+
+    function goToQuestion(idx) {
+      currentQuestion = idx;
+      loadQuestion();
+    }
+
+    function checkFinish() {
+      const answered = userAnswers.filter(a => a !== null).length;
+      if (answered < quizData.length) {
+        if (!confirm(`還有 ${quizData.length - answered} 題尚未作答，確定要查看總成績嗎？`)) return;
+      }
+      showScore();
+    }
+
+    function showScore() {
+      stageEl.style.display = 'none';
+      resultsEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'none';
+
+      const correctCount = userAnswers.filter(a => a === true).length;
+      document.getElementById('result-correct').innerText = correctCount;
+      document.getElementById('result-desc').innerText = correctCount >= 45 ? "太出色了！第 4 週漢字語彙掌握得完美無缺！" : correctCount >= 35 ? "表現優異！再接再厲就能挑戰 N1 高分！" : "建議搭配右側生字速查卡多加溫習喔！";
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      userAnswers = new Array(quizData.length).fill(null);
+      resultsEl.style.display = 'none';
+      stageEl.style.display = 'flex';
+      document.querySelector('.sidebar').style.display = 'flex';
+      initJumpGrid();
+      loadQuestion();
+    }
+
+    // 初始化執行
+    initJumpGrid();
+    switchVocabDay(1);
+    loadQuestion();
   </script>
 </body>
 </html>
