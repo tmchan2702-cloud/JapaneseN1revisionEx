@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N1 語彙第4〜6日目・總合實戰特訓｜50 題精選題庫</title>
+  <meta name="description" content="日本語能力試驗 N1 語彙第4至6日目綜合特訓：副詞、漢字平假名串字與生字填充 50 題，含全句翻譯、選項解析與生字速查卡。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='4' y='4' width='56' height='56' rx='10' fill='%23b8432f'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23f5efe3' font-family='serif'>語</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5efe3;
+      --paper: #fdfbf7;
+      --ink: #2b2b2b;
+      --muted: #767168;
+      --primary: #b8432f;
+      --primary-hover: #963423;
+      --accent: #2c5e50;
+      --border: #e6dfd1;
+      --ok: #2c5e50;
+      --ng: #b8432f;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    h1, h2, h3, .masthead-vertical, .hanko {
+      font-family: "Shippori Mincho B1", serif;
+    }
+
+    /* 頂部 Header 風格 */
+    .masthead {
+      max-width: 1100px;
+      margin: 0 auto 2rem auto;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .masthead-vertical {
+      writing-mode: vertical-rl;
+      font-size: 1.25rem;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      border-right: 2px solid var(--border);
+      padding-right: 1.5rem;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .masthead h1 {
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .masthead h1 .count {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+    }
+
+    .lede {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* 印花戳記計分 */
+    .hanko {
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      background: rgba(184, 67, 47, 0.05);
+      transform: rotate(-8deg);
+    }
+
+    .hanko-score {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .hanko-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* 主體佈局 */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+    }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .masthead { grid-template-columns: 1fr; text-align: center; }
+      .masthead-vertical { display: none; }
+      .hanko { margin: 0 auto; }
+    }
+
+    /* 測驗舞台區 */
+    .stage {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .stage-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: rgba(184, 67, 47, 0.1);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .q-num {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-family: "Shippori Mincho B1", serif;
+    }
+
+    .options {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .option-btn {
+      background: var(--paper);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 1rem;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: rgba(184, 67, 47, 0.02);
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    .option-btn.correct {
+      background: rgba(44, 94, 80, 0.1) !important;
+      border-color: var(--ok) !important;
+      color: var(--ok);
+      font-weight: 700;
+    }
+
+    .option-btn.incorrect {
+      background: rgba(184, 67, 47, 0.1) !important;
+      border-color: var(--ng) !important;
+      color: var(--ng);
+    }
+
+    /* 解析區 */
+    .explanation {
+      background: #f4ede2;
+      border-left: 4px solid var(--primary);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .explanation.show { display: block; }
+    .explanation dt { font-weight: 700; color: var(--primary); margin-top: 0.5rem; font-size: 0.9rem; }
+    .explanation dd { font-size: 0.95rem; margin-top: 0.2rem; }
+
+    /* 控制按鈕列 */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn.primary:hover { background: var(--primary-hover); }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--ink);
+    }
+
+    .btn.ghost:hover { background: var(--border); }
+
+    .kbd-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* 側邊欄 */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .panel-head h2 { font-size: 1.1rem; }
+    .panel-meta { font-size: 0.8rem; color: var(--muted); }
+
+    .jump-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 1rem;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .jump-btn {
+      aspect-ratio: 1;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .jump-btn:hover { border-color: var(--primary); }
+    .jump-btn.active { border-width: 2px; border-color: var(--ink); }
+    .jump-btn.correct { background: rgba(44, 94, 80, 0.15); color: var(--ok); border-color: var(--ok); }
+    .jump-btn.incorrect { background: rgba(184, 67, 47, 0.15); color: var(--ng); border-color: var(--ng); }
+
+    .legend {
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .legend span { display: flex; align-items: center; gap: 4px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot.ok { background: var(--ok); }
+    .dot.ng { background: var(--ng); }
+    .dot.cur { background: var(--ink); }
+
+    .link-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* 生字速查面板 */
+    .day-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .day-tab {
+      padding: 3px 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .day-tab.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .vocab-list {
+      list-style: none;
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 0.85rem;
+    }
+
+    .vocab-list li {
+      padding: 4px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    /* 成績結果頁面 */
+    .results {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .results h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
+    .result-score { font-size: 3.5rem; font-weight: 800; font-family: "Shippori Mincho B1", serif; margin-bottom: 2rem; color: var(--ink); }
+    .result-score span { font-size: 1.5rem; color: var(--muted); }
+    
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-vertical" aria-hidden="true">第4〜6日目特訓</div>
+    <div class="masthead-text">
+      <p class="eyebrow">JLPT N1 語彙第4日目〜6日目 ／ 50 題總合模擬</p>
+      <h1>日文語彙實戰特訓 <span class="count">50 題</span></h1>
+      <p class="lede">涵蓋詞義辨析、漢字平假名串字與生字填充。每題作答後立即顯示全句翻譯與詳細選項解析。</p>
+    </div>
+    <div class="hanko" id="hanko" aria-live="polite">
+      <span class="hanko-score" id="hanko-score">0</span>
+      <span class="hanko-label">正解</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- 題目區 -->
+    <section class="stage" id="stage" aria-label="測驗">
+      <div class="stage-top">
+        <span class="tag" id="q-tag">詞義辨析題</span>
+        <span class="q-num" id="q-num">第 1 題 ／ 共 50 題</span>
+      </div>
+      <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress"></div></div>
+      
+      <div class="question-card" id="question-card">
+        <p class="question" id="q-text" lang="ja"></p>
+        <div class="options" id="options" role="group" aria-label="選項"></div>
+        <div class="explanation" id="explanation">
+          <dl>
+            <dt>全句翻譯與詳細解析</dt>
+            <dd id="explanation-content"></dd>
+          </dl>
+        </div>
+      </div>
+
+      <nav class="controls">
+        <button class="btn ghost" id="prev-btn" type="button" onclick="prevQuestion()">← 上一題</button>
+        <span class="kbd-hint">點擊選項即時作答與看解析</span>
+        <button class="btn primary" id="next-btn" type="button" onclick="nextQuestion()">下一題 →</button>
+      </nav>
+    </section>
+
+    <!-- 結果頁 -->
+    <section class="results" id="results" aria-label="成績總結">
+      <p class="eyebrow">練習完成</p>
+      <h2>第4〜6日目總合實戰特訓結算</h2>
+      <p class="result-score"><strong id="result-correct">0</strong><span> ／ 50</span></p>
+      <p id="result-desc" style="color: var(--muted);"></p>
+      <div class="result-actions">
+        <button class="btn primary" id="restart-btn" type="button" onclick="restartQuiz()">重新開始練習</button>
+      </div>
+    </section>
+
+    <!-- 側欄 -->
+    <aside class="sidebar">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>題目一覽</h2>
+          <span class="panel-meta" id="answered-count">已作答 0 ／ 50</span>
+        </div>
+        <div class="jump-grid" id="jump-grid"></div>
+        <div class="legend">
+          <span><i class="dot ok"></i>答對</span>
+          <span><i class="dot ng"></i>答錯</span>
+          <span><id class="dot cur"></i>目前</span>
+        </div>
+        <button class="link-btn" id="finish-btn" type="button" onclick="checkFinish()">查看成績總結</button>
+      </div>
+
+      <div class="panel vocab">
+        <div class="panel-head">
+          <h2>生字速查卡</h2>
+          <span class="panel-meta">4日目〜6日目</span>
+        </div>
+        <div class="day-tabs" id="day-tabs" role="tablist">
+          <button class="day-tab active" onclick="switchVocabDay(4)">4日目</button>
+          <button class="day-tab" onclick="switchVocabDay(5)">5日目</button>
+          <button class="day-tab" onclick="switchVocabDay(6)">6日目</button>
+        </div>
+        <ul class="vocab-list" id="vocab-list" lang="ja"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">N1 語彙（第4〜6日目）總合實戰特訓 50 題</footer>
+
+  <script>
+    // 第4日目 ~ 第6日目 的生字速查卡片資料庫[cite: 1]
+    const vocabData = {
+        4: [
+            "・予(あらかじ)め：預先、事先",
+            "・予(かね)て (から)：先前、早前",
+            "・曾(かつ)て：曾經、以往",
+            "・絶えず (たえず)：不斷地、持續地",
+            "・しょっちゅう：經常、總是",
+            "・再三 (さいさん)：再三、多次",
+            "・片時も (かたときも)：片刻也 (不)",
+            "・四六時中 (しろくじちゅう)：一天到晚",
+            "・時折 (ときおり)：時而、偶爾",
+            "・先に (さきに)：先前、以前",
+            "・直(じき)に：不久、馬上",
+            "・最中(さなか)：正當……之中",
+            "・咄嗟(とっさ)に：剎那間、本能地",
+            "・にわか：突然、急遽",
+            "・不意に (ふいに)：突然、不經意地",
+            "・今さら (いまさら)：事到如今才……",
+            "・今に (いまに)：不久、遲早",
+            "・今にも (いまにも)：眼看就要……",
+            "・未だに (いまだに)：至今仍然……",
+            "・いざ (という時)：緊要關頭、萬一",
+            "・到底〜ない (とうてい〜ない)：怎麼也〜不",
+            "・一向に〜ない (いっこうに〜ない)：完全不…",
+            "・一切〜ない (いっさい〜ない)：一切、完全不",
+            "・然(さ)ほど〜ない：沒有那麼…、不至於"
+        ],
+        5: [
+            "・至って (いたって)：極其、非常",
+            "・いかにも：實在是、簡直是",
+            "・いやに：異常、格外",
+            "・然(さ)も：擺出……的樣子、好像",
+            "・何より (なより)：比什麼都好、最…",
+            "・殊(こと)に / 取り分け(とりわけ)：特別、尤其",
+            "・嘸(さぞ) (/+かし)：想必、一定",
+            "・余程(よほど) / よっぽど：相當、很",
+            "・尚更(なおさら)：更加、越發",
+            "・正(まさ)しく：確確實實、正是",
+            "・況(まし)て：更不用說、況且",
+            "・自棄(やけ)に：過分、格外",
+            "・矢鱈(やたら)と：胡亂、盲目地",
+            "・誠に (まことは)：實在、真的",
+            "・専(もっぱ)ら：專門、主要",
+            "・只管(ひたすら)：一門心思、專一地",
+            "・諸(もろ)に：正面迎擊、直接",
+            "・高(たか)が：區區、不過是…",
+            "・されど：話雖如此、然而",
+            "・てんで〜ない：完全不…",
+            "・勿論(むろん)：不用說、當然",
+            "・なんて：多麼……啊！",
+            "・残らず (のこらず)：全部、不剩"
+        ],
+        6: [
+            "・何(いず)れにしても / いずれにせよ：反正、不管怎樣",
+            "・いずれ：不久、早晚",
+            "・仮に (かりに)：假使、假設",
+            "・ひょっとすると / もしかして：或許、說不定",
+            "・どうにか：總算、好歹",
+            "・どうやら：總算、看樣子",
+            "・生憎(あいにく)：不巧",
+            "・案の定 (あんのじょう)：不出所料",
+            "・敢えて (あえて)：硬要、冒昧、特意",
+            "・強いて (しいて)：勉強、非要",
+            "・自ずから / 自ずと (おのずから)：自然而然地",
+            "・自ら (みずから)：親自、主動",
+            "・兎角(とかく)：動不動就、往往",
+            "・成(な)るべく / なるたけ：儘量",
+            "・努めて (つとめて)：盡量、努力",
+            "・延(ひ)いては：進而、從而",
+            "・最早(もはや)〜ない：已經 (不再……)",
+            "・却(かえ)って：反而",
+            "・取り敢(あ)えず (とりあえず)：暫且、首先",
+            "・辛(かろ)うじて：勉強、險險地",
+            "・悉(ことごと)く：全部、統統",
+            "・ふんだんに：大量地、豐富地",
+            "・幸いに (さいわいに)：幸虧、幸好",
+            "・現に (げんに)：實際、親眼"
+        ]
+    };
+
+    // 第4日目〜6日目 的 50 題測驗題庫（含詞義、串字轉換、填充）
+    const quizData = [
+      { type: "詞義辨析題", question: "会議の資料は (  ) 配布しておいた。", options: ["a. あらかじめ", "b. かつて", "c. にわかにお", "d. さきに"], answer: 0, explanation: "【正解】a. あらかじめ (預先、事先)。<br>【全句翻譯】會議資料已經事先發放了。" },
+      { type: "漢字平假名轉換", question: "その話は (予て) から聞いていた。", options: ["a. かねて", "b. あらた", "c. ついに", "d. すでに"], answer: 0, explanation: "【正解】a. かねて (先前、早前)。<br>【全句翻譯】那件事我先前就聽說過了。" },
+      { type: "詞義辨析題", question: "ここは (  ) 私が子供の頃によく遊んだ場所だ。", options: ["a. しろくじちゅう", "b. かつて", "c. たえず", "d. いまだに"], answer: 1, explanation: "【正解】b. かつて (曾經、以往)。<br>【全句翻譯】這裡曾經是我小時候經常玩耍的地方。" },
+      { type: "生字填充題", question: "彼は (  ) 努力を続けて、ついに成功した。", options: ["a. 絶えず", "b. まさに", "c. たまたま", "d. とっさに"], answer: 0, explanation: "【正解】a. 絶えず (不斷地、持續地)。<br>【全句翻譯】他持續不斷地努力，終於成功了。" },
+      { type: "詞義辨析題", question: "彼は (  ) ゴルフの話ばかりしている。", options: ["a. しろくじちゅう", "b. しょっちゅう", "c. ときおり", "d. じきに"], answer: 1, explanation: "【正解】b. しょっちゅう (經常、總是)。<br>【全句翻譯】他總是滿嘴高爾夫球的話題。" },
+      { type: "漢字平假名轉換", question: "その問題について (再三) 注意したはずだ。", options: ["a. さいさん", "b. さいざん", "c. ささん", "d. さざん"], answer: 0, explanation: "【正解】a. さいさん (再三、多次)。<br>【全句翻譯】關於那個問題應該已經再三提醒過了。" },
+      { type: "詞義辨析題", question: "母の病状が心配で、(  ) 気気が休まらない。", options: ["a. 片時も", "b. 四六時中", "c. 今にも", "d. じきに"], answer: 0, explanation: "【正解】a. 片時も (片刻也不……)。<br>【全句翻譯】因為擔心母親的病情，片刻也得不到安心。" },
+      { type: "詞義辨析題", question: "彼は (  ) 世界中を飛び回っている。", options: ["a. 四六時中", "b. 時折", "c. かかつて", "d. 予て"], answer: 0, explanation: "【正解】a. 四六時中 (一天到晚、整天)。<br>【全句翻譯】他整天都在世界各地奔波。" },
+      { type: "生字填充題", question: "仕事の合間に (  ) 昔の写真を見返す。", options: ["a. 時折", "b. 常に", "c. ぜひ", "d. 必ず"], answer: 0, explanation: "【正解】a. 時折 (時而、偶爾)。<br>【全句翻譯】工作空檔時偶爾會翻看以前的照片。" },
+      { type: "詞義辨析題", question: "その件については (  ) お話しした通りです。", options: ["a. 先に", "b. 直に", "c. 今に", "d. 未だに"], answer: 0, explanation: "【正解】a. 先に (先前、以前)。<br>【全句翻譯】關於那件事正如先前所談過的一樣。" },
+      { type: "漢字平假名轉換", question: "彼は (咄嗟) に身をかわした。", options: ["a. とっさ", "b. としゃ", "c. つっさ", "d. つしゃ"], answer: 0, explanation: "【正解】a. とっさ (剎那間、本能地)。<br>【全句翻譯】他在剎那間閃開了身體。" },
+      { type: "詞義辨析題", question: "空が暗くなって、(  ) 雨が降り出した。", options: ["a. にわかに", "b. 今さら", "c. 到底", "d. 一向に"], answer: 0, explanation: "【正解】a. にわかに (突然、急遽)。<br>【全句翻譯】天空變暗，突然下起雨來。" },
+      { type: "生字填充題", question: "財布を落としたことに、家へ帰ってきてから (  ) 気づいた。", options: ["a. 不意に", "b. 今さら", "c. じきに", "d. いまだに"], answer: 1, explanation: "【正解】b. 今さら (事到如今才……)。<br>【全句翻譯】直到回到家後，事到如今才發現錢包掉了。" },
+      { type: "詞義辨析題", question: "あんなに反対していた彼が、(  ) 賛成し出すかもしれない。", options: ["a. 今にも", "b. 未だに", "c. 到底", "d. 一切"], answer: 0, explanation: "【正解】a. 今にも (眼看就要……、隨時可能)。<br>【全句翻譯】之前那麼反對的他，眼看隨時可能會轉為贊成。" },
+      { type: "漢字平假名轉換", question: "その問題は (未だに) 解決していない。", options: ["a. いまだに", "b. すでにと", "c. とうていに", "d. かつてに"], answer: 0, explanation: "【正解】a. いまだに (至今仍然……)。<br>【全句翻譯】那個問題至今仍未解決。" },
+      { type: "詞義辨析題", question: "彼はその仕事について (  ) 理解していない。", options: ["a. 到底", "b. 一向に", "c. 然ほど", "d. 至って"], answer: 1, explanation: "【正解】b. 一向に (完全不……、毫無……)。<br>【全句翻譯】他對那個工作完全不理解。" },
+      { type: "漢字平假名轉換", question: "彼の意見は (至って) シンプルだ。", options: ["a. いたって", "b. しだって", "c. じって", "d. ちだって"], answer: 0, explanation: "【正解】a. いたって (極其、非常)。<br>【全句翻譯】他的意見極其簡單。" },
+      { type: "詞義辨析題", question: "この絵は (  ) プロの作品のようだ。", options: ["a. いかにも", "b. いやに", "c. さも", "d. 殊に"], answer: 0, explanation: "【正解】a. いかにも (實在是、簡直是、完全符合)。<br>【全句翻譯】這幅畫實在就像是專業人士的作品。" },
+      { type: "生字填充題", question: "今日は (  ) 暑いですね。", options: ["a. いやに", "b. そもそも", "c. くだいて", "d. まして"], answer: 0, explanation: "【正解】a. いやに (異常、格外)。<br>【全句翻譯】今天格外地熱呢。" },
+      { type: "漢字平假名轉換", question: "彼は (勝手) な行動ばかりする。", options: ["a. かって", "b. がって", "c. かつて", "d. がつて"], answer: 0, explanation: "【正解】a. かって (隨便、任性)。<br>【全句翻譯】他老是做出任性妄為的舉動。" },
+      { type: "詞義辨析題", question: "富士山の頂上からの景色は (  ) 美しかった。", options: ["a. 何より", "b. 取り分け", "c. さぞ", "d. よほど"], answer: 1, explanation: "【正解】b. 取り分け (特別、尤其)。<br>【全句翻譯】從富士山山頂看出去的景色特別美麗。" },
+      { type: "詞義辨析題", question: "長年暮らした家を手放すとは、(  ) 寂しいことだろう。", options: ["a. さぞ", "b. 尚更", "c. 正しく", "d. 殊に"], answer: 0, explanation: "【正解】a. さぞ (想必、一定)。<br>【全句翻譯】要放棄住了多年的房子，想必一定非常寂寞吧。" },
+      { type: "生字填充題", question: "一度失敗したのだから、次は (  ) 気をつけなければならない。", options: ["a. 尚更", "b. 逆に", "c. ひとまず", "d. たまたま"], answer: 0, explanation: "【正解】a. 尚更 (更加、越發)。<br>【全句翻譯】既然失敗過一次，接下來就更應該格外小心。" },
+      { type: "漢字平假名轉換", question: "それは (正しく) 彼の実力不足が原因だ。", options: ["a. まさしく", "b. ただし", "c. まさに", "d. すこし"], answer: 0, explanation: "【正解】a. まさしく (確確實實、正是)。<br>【全句翻譯】那確確實實是由於他實力不足所造成的。" },
+      { type: "詞義辨析題", question: "大人ができないのだから、(  ) 子供には無理だ。", options: ["a. まして", "b. かえって", "c. むしろ", "d. ともかく"], answer: 0, explanation: "【正解】a. まして (更不用說、況且)。<br>【全句翻譯】連大人都做不到，更不用說小孩子了肯定辦不到。" },
+      { type: "生字填充題", question: "彼は (  ) 自分の趣味の勉強ばかりしている。", options: ["a. 専ら", "b. ひたすら", "c. 諸に", "d. たかが"], answer: 0, explanation: "【正解】a. 専ら (專門、主要)。<br>【全句翻譯】他專門只顧著K自己興趣相關的書。" },
+      { type: "漢字平假名轉換", question: "合格を目指して (只管) 勉強する。", options: ["a. ひたすら", "b. もっぱら", "c. みだりに", "d. いやに"], answer: 0, explanation: "【正解】a. ひたすら (一門心思、專一地)。<br>【全句翻譯】為了考試合格而一門心思拼命讀書。" },
+      { type: "詞義辨析題", question: "失敗したからといって、(  ) 諦めることはない。", options: ["a. 高が", "b. されど", "c. 決して", "d. 別に"], answer: 2, explanation: "【正解】c. 決して (絕不……)。<br>【全句翻譯】雖說失敗了，但也絕不能就此放棄。" },
+      { type: "詞義辨析題", question: "計画が順調に進むか、(  ) 分からない。", options: ["a. ひょっとすると", "b. 仮に", "c. いずれにしても", "d. あいにく"], answer: 0, explanation: "【正解】a. ひょっとすると (或許、說不定)。<br>【全句翻譯】計畫是否能順利進行，說不定還很难说。" },
+      { type: "漢字平假名轉換", question: "雨が降ったら、(仮に) 中止にする。", options: ["a. かりに", "b. かりそめに", "c. よそに", "d. たてに"], answer: 0, explanation: "【正解】a. かりに (假使、假設)。<br>【全句翻譯】如果下雨的話，假設就取消。" },
+      { type: "詞義辨析題", question: "彼は (  ) 間に合って、電車の時間セーフだった。", options: ["a. どうにか", "b. どうやら", "c. 案の定", "d. あいにく"], answer: 0, explanation: "【正解】a. どうにか (總算、好歹)。<br>【全句翻譯】他總算趕上了，來得及搭上電車。" },
+      { type: "生字填充題", question: "彼は (  ) 彼の言う通りに仕事を進めた。", options: ["a. どうやら", "b. 案の定", "c. あえて", "d. しいて"], answer: 1, explanation: "【正解】b. 案の定 (不出所料)。<br>【全句翻譯】事情如預期般，他不出所料地照著對方說的方法推進工作。" },
+      { type: "漢字平假名轉換", question: "それを (敢えて) 言う必要はない。", options: ["a. あえて", "b. しいて", "c. すすんで", "d. むりに"], answer: 0, explanation: "【正解】a. あえて (硬要、冒昧、特意)。<br>【全句翻譯】沒有必要特意去說那件事。" },
+      { type: "詞義辨析題", question: "この問題は (  ) 自然と解決するだろう。", options: ["a. 自ずから", "b. 自ら", "c. 努めて", "d. 却って"], answer: 0, explanation: "【正解】a. 自ずから (自然而然地)。<br>【全句翻譯】這個問題自然而然就會解決吧。" },
+      { type: "生字填充題", question: "自分のことは (  ) でやりなさい。", options: ["a. 自ら", "b. 互いに", "c. たまたま", "d. 常に"], answer: 0, explanation: "【正解】a. 自ら (親自、主動)。<br>【全句翻譯】自己的事情要自己主動去做。" },
+      { type: "詞義辨析題", question: "彼は (  ) 重要な会議に遅刻する。", options: ["a. 兎角", "b. なるべく", "c. 努めて", "d. まさに"], answer: 0, explanation: "【正解】a. 兎角 (動不動就、往往)。<br>【全句翻譯】他動不動就在重要的會議上遲到。" },
+      { type: "漢字平假名轉換", question: "健康のために、(努めて) 野菜を食べる。", options: ["a. つとめて", "b. ともなって", "c. もとめて", "d. かぞえて"], answer: 0, explanation: "【正解】a. つとめて (盡量、努力)。<br>【全句翻譯】為了健康，盡量多吃蔬菜。" },
+      { type: "詞義辨析題", question: "技術の進歩は、(  ) 社会全体に影響を与える。", options: ["a. 延いては", "b. もはや", "c. かえって", "d. 幸いに"], answer: 0, explanation: "【正解】a. 延いては (進而、從而)。<br>【全句翻譯】技術的進步，進而會對整個社會帶來影響。" },
+      { type: "漢字平假名轉換", question: "彼は (最早) 言うべき言葉を持たない。", options: ["a. もはや", "b. すでに", "c. いまや", "d. とうに"], answer: 0, explanation: "【正解】a. もはや (已經……不再……)。<br>【全句翻譯】他已經沒有什麼好說的了。" },
+      { type: "詞義辨析題", question: "親切で言ったのに、(  ) 怒られてしまった。", options: ["a. 却って", "b. まして", "c. むしろ", "d. 偶然"], answer: 0, explanation: "【正解】a. 却って (反而)。<br>【全句翻譯】本來是好意關心，結果反而被生氣了。" },
+      { type: "生字填充題", question: "(  ) この書類に目を通しておいてください。", options: ["a. 取り敢えず", "b. 辛うじて", "c. 悉く", "d. 現に"], answer: 0, explanation: "【正解】a. 取り敢えず (暫且、首先)。<br>【全句翻譯】請暫且先瀏覽一下這份文件。" },
+      { type: "漢字平假名轉換", question: "彼は (辛うじて) 試験に合格した。", options: ["a. かろうじて", "b. くろうじて", "c. はげしく", "d. やっとこ"], answer: 0, explanation: "【正解】a. かろうじて (勉強、險險地)。<br>【全句翻譯】他勉強及格通過了考試。" },
+      { type: "詞義辨析題", question: "棚の上の本が (  ) 床に落ちた。", options: ["a. 悉く", "b. ふんだんに", "c. 完全に", "d. 大いに"], answer: 0, explanation: "【正解】a. 悉く (全部、統統)。<br>【全句翻譯】架子上的書全掉到了地板上。" },
+      { type: "生字填充題", question: "このケーキにはイチゴが (  ) 使われている。", options: ["a. ふんだんに", "b. ざっと", "c. ちまちま", "d. ぽつぽつ"], answer: 0, explanation: "【正解】a. ふんだんに (大量地、豐富地)。<br>【全句翻譯】這個蛋糕裡面使用了大量的草莓。" },
+      { type: "漢字平假名轉換", question: "(幸い) に怪我はなかった。", options: ["a. さいわい", "b. さいはい", "c. 幸運", "d. よい"], answer: 0, explanation: "【正解】a. さいわい (幸虧、幸好)。<br>【全句翻譯】幸好沒有受傷。" },
+      { type: "詞義辨析題", question: "(  ) 彼は毎朝ジョギングをしている。", options: ["a. 現に", "b. 事実", "c. 実際に", "d. たまに"], answer: 0, explanation: "【正解】a. 現に (實際、親眼、目前)。<br>【全句翻譯】實際上他每天早上都在慢跑。" },
+      { type: "漢字平假名轉換", question: "彼の意見には (共感) する。", options: ["a. きょうかん", "b. こうかん", "c. きょうがん", "d. こうがん"], answer: 0, explanation: "【正解】a. きょうかん (共感)。<br>【全句翻譯】對他的意見感到共鳴。" },
+      { type: "生字填充題", question: "失敗を恐れず、(  ) 挑戦しよう。", options: ["a. 積極的に", "b. 消極的に", "c. 漫然と", "d. 密かに"], answer: 0, explanation: "【正解】a. 積極的に (積極地)。<br>【全句翻譯】不要害怕失敗，積極地去挑戰吧。" },
+      { type: "詞義辨析題", question: "この資料は (  ) 重要なので、よく読んでおいてください。", options: ["a. 極めて", "b. わずかに", "c. たまに", "d. けっして"], answer: 0, explanation: "【正解】a. 極めて (極其、非常)。<br>【全句翻譯】這份資料極其重要，請務必好好閱讀。" },
+      { type: "漢字平假名轉換", question: "新しい (試み) を始める。", options: ["a. こころみ", "b. ためし", "c. はかり", "d. のぞみ"], answer: 0, explanation: "【正解】a. こころみ (嘗試、試驗)。<br>【全句翻譯】開始一項全新的嘗試。" }
+    ];
+
+    let currentQuestion = 0;
+    let userAnswers = new Array(quizData.length).fill(null);
+
+    // DOM 元素快取
+    const qTagEl = document.getElementById('q-tag');
+    const qNumEl = document.getElementById('q-num');
+    const qTextEl = document.getElementById('q-text');
+    const optionsEl = document.getElementById('options');
+    const explanationEl = document.getElementById('explanation');
+    const explanationContentEl = document.getElementById('explanation-content');
+    const progressBarEl = document.getElementById('progress');
+    const stageEl = document.getElementById('stage');
+    const resultsEl = document.getElementById('results');
+    const jumpGridEl = document.getElementById('jump-grid');
+    const answeredCountEl = document.getElementById('answered-count');
+    const hankoScoreEl = document.getElementById('hanko-score');
+    const vocabListEl = document.getElementById('vocab-list');
+
+    // 切換生字速查卡天數
+    function switchVocabDay(day) {
+      document.querySelectorAll('.day-tab').forEach((tab) => {
+        tab.classList.toggle('active', tab.getAttribute('onclick').includes(day));
+      });
+      vocabListEl.innerHTML = (vocabData[day] || []).map(item => `<li>${item}</li>`).join('');
+    }
+
+    // 初始化跳題網格
+    function initJumpGrid() {
+      jumpGridEl.innerHTML = '';
+      quizData.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'jump-btn';
+        btn.innerText = i + 1;
+        btn.onclick = () => goToQuestion(i);
+        jumpGridEl.appendChild(btn);
+      });
+      updateJumpGridUI();
+    }
+
+    function updateJumpGridUI() {
+      const buttons = jumpGridEl.getElementsByClassName('jump-btn');
+      let answeredCount = 0;
+      let correctCount = 0;
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].className = 'jump-btn';
+        if (i === currentQuestion) buttons[i].classList.add('active');
+        if (userAnswers[i] === true) {
+          buttons[i].classList.add('correct');
+          answeredCount++;
+          correctCount++;
+        } else if (userAnswers[i] === false) {
+          buttons[i].classList.add('incorrect');
+          answeredCount++;
+        }
+      }
+
+      answeredCountEl.innerText = `已作答 ${answeredCount} ／ 50`;
+      hankoScoreEl.innerText = correctCount;
+    }
+
+    // 載入題目
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      qTagEl.innerText = q.type;
+      qNumEl.innerText = `第 ${currentQuestion + 1} 題 ／ 共 50 題`;
+      qTextEl.innerText = q.question;
+      progressBarEl.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+
+      optionsEl.innerHTML = '';
+      const isAnswered = userAnswers[currentQuestion] !== null;
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        if (isAnswered) {
+          btn.disabled = true;
+          if (idx === q.answer) btn.classList.add('correct');
+        }
+        btn.onclick = () => selectOption(idx);
+        optionsEl.appendChild(btn);
+      });
+
+      if (isAnswered) {
+        explanationContentEl.innerHTML = q.explanation;
+        explanationEl.classList.add('show');
+      } else {
+        explanationEl.classList.remove('show');
+      }
+
+      updateJumpGridUI();
+    }
+
+    // 作答選擇
+    function selectOption(idx) {
+      if (userAnswers[currentQuestion] !== null) return;
+
+      const q = quizData[currentQuestion];
+      const buttons = optionsEl.getElementsByTagName('button');
+      const isCorrect = (idx === q.answer);
+      userAnswers[currentQuestion] = isCorrect;
+
+      if (isCorrect) {
+        buttons[idx].classList.add('correct');
+      } else {
+        buttons[idx].classList.add('incorrect');
+        buttons[q.answer].classList.add('correct');
+      }
+
+      for (let btn of buttons) btn.disabled = true;
+
+      explanationContentEl.innerHTML = q.explanation;
+      explanationEl.classList.add('show');
+      updateJumpGridUI();
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quizData.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+      } else {
+        checkFinish();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+      }
+    }
+
+    function goToQuestion(idx) {
+      currentQuestion = idx;
+      loadQuestion();
+    }
+
+    function checkFinish() {
+      const answered = userAnswers.filter(a => a !== null).length;
+      if (answered < quizData.length) {
+        if (!confirm(`還有 ${quizData.length - answered} 題尚未作答，確定要查看總成績嗎？`)) return;
+      }
+      showScore();
+    }
+
+    function showScore() {
+      stageEl.style.display = 'none';
+      resultsEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'none';
+
+      const correctCount = userAnswers.filter(a => a === true).length;
+      document.getElementById('result-correct').innerText = correctCount;
+      document.getElementById('result-desc').innerText = correctCount >= 45 ? "太出色了！第4〜6日目語彙掌握得完美無缺！" : correctCount >= 35 ? "表現優異！再接再厲就能挑戰 N1 高分！" : "建議搭配右側生字速查卡多加溫習喔！";
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      userAnswers = new Array(quizData.length).fill(null);
+      resultsEl.style.display = 'none';
+      stageEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'flex';
+      initJumpGrid();
+      loadQuestion();
+    }
+
+    // 初始化執行
+    initJumpGrid();
+    switchVocabDay(4);
+    loadQuestion();
+  </script>
+</body>
+</html>
