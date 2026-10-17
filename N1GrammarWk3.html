@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N1 語彙・第三週（1〜6日目）總合實戰特訓｜50 題精選題庫</title>
+  <meta name="description" content="日本語能力試驗 N1 第三週核心文法總合特訓：50 題精選題庫，含全句翻譯、詳細選項解析與日目文法速查卡。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='4' y='4' width='56' height='56' rx='10' fill='%232c5e50'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23f5efe3' font-family='serif'>文</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5efe3;
+      --paper: #fdfbf7;
+      --ink: #2b2b2b;
+      --muted: #767168;
+      --primary: #2c5e50;
+      --primary-hover: #1f4339;
+      --accent: #b8432f;
+      --border: #e6dfd1;
+      --ok: #2c5e50;
+      --ng: #b8432f;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    h1, h2, h3, .masthead-vertical, .hanko {
+      font-family: "Shippori Mincho B1", serif;
+    }
+
+    /* 頂部 Header 風格 */
+    .masthead {
+      max-width: 1100px;
+      margin: 0 auto 2rem auto;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .masthead-vertical {
+      writing-mode: vertical-rl;
+      font-size: 1.25rem;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      border-right: 2px solid var(--border);
+      padding-right: 1.5rem;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .masthead h1 {
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .masthead h1 .count {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+    }
+
+    .lede {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* 印花戳記計分 */
+    .hanko {
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      background: rgba(44, 94, 80, 0.05);
+      transform: rotate(-8deg);
+    }
+
+    .hanko-score {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .hanko-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* 主體佈局 */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+    }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .masthead { grid-template-columns: 1fr; text-align: center; }
+      .masthead-vertical { display: none; }
+      .hanko { margin: 0 auto; }
+    }
+
+    /* 測驗舞台區 */
+    .stage {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .stage-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: rgba(44, 94, 80, 0.1);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .q-num {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-family: "Shippori Mincho B1", serif;
+    }
+
+    .options {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .option-btn {
+      background: var(--paper);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 1rem;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: rgba(44, 94, 80, 0.02);
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    .option-btn.correct {
+      background: rgba(44, 94, 80, 0.1) !important;
+      border-color: var(--ok) !important;
+      color: var(--ok);
+      font-weight: 700;
+    }
+
+    .option-btn.incorrect {
+      background: rgba(184, 67, 47, 0.1) !important;
+      border-color: var(--ng) !important;
+      color: var(--ng);
+    }
+
+    /* 解析區 */
+    .explanation {
+      background: #f4ede2;
+      border-left: 4px solid var(--primary);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .explanation.show { display: block; }
+    .explanation dt { font-weight: 700; color: var(--primary); margin-top: 0.5rem; font-size: 0.9rem; }
+    .explanation dd { font-size: 0.95rem; margin-top: 0.2rem; line-height: 1.6; }
+
+    /* 控制按鈕列 */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn.primary:hover { background: var(--primary-hover); }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--ink);
+    }
+
+    .btn.ghost:hover { background: var(--border); }
+
+    .kbd-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* 側邊欄 */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .panel-head h2 { font-size: 1.1rem; }
+    .panel-meta { font-size: 0.8rem; color: var(--muted); }
+
+    .jump-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 1rem;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .jump-btn {
+      aspect-ratio: 1;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .jump-btn:hover { border-color: var(--primary); }
+    .jump-btn.active { border-width: 2px; border-color: var(--ink); }
+    .jump-btn.correct { background: rgba(44, 94, 80, 0.15); color: var(--ok); border-color: var(--ok); }
+    .jump-btn.incorrect { background: rgba(184, 67, 47, 0.15); color: var(--ng); border-color: var(--ng); }
+
+    .legend {
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .legend span { display: flex; align-items: center; gap: 4px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot.ok { background: var(--ok); }
+    .dot.ng { background: var(--ng); }
+    .dot.cur { background: var(--ink); }
+
+    .link-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* 文法速查面板 */
+    .day-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .day-tab {
+      padding: 3px 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .day-tab.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .vocab-list {
+      list-style: none;
+      max-height: 220px;
+      overflow-y: auto;
+      font-size: 0.82rem;
+    }
+
+    .vocab-list li {
+      padding: 5px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    /* 成績結果頁面 */
+    .results {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .results h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
+    .result-score { font-size: 3.5rem; font-weight: 800; font-family: "Shippori Mincho B1", serif; margin-bottom: 2rem; color: var(--ink); }
+    .result-score span { font-size: 1.5rem; color: var(--muted); }
+    
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-vertical" aria-hidden="true">第三週文法總合</div>
+    <div class="masthead-text">
+      <p class="eyebrow">JLPT N1 第三週（1〜6日目）精選文法 ／ 50 題實戰特訓</p>
+      <h1>日文核心文法特訓 <span class="count">50 題</span></h1>
+      <p class="lede">嚴選第三週所有重點文法句型與動詞變化。全 50 題經嚴格校正，每題皆附帶全句翻譯、正解剖析與詳細的錯誤選項排除說明。</p>
+    </div>
+    <div class="hanko" id="hanko" aria-live="polite">
+      <span class="hanko-score" id="hanko-score">0</span>
+      <span class="hanko-label">正解</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- 測驗舞台區 -->
+    <section class="stage" id="stage" aria-label="測驗">
+      <div class="stage-top">
+        <span class="tag" id="q-tag">文法運用題</span>
+        <span class="q-num" id="q-num">第 1 題 ／ 共 50 題</span>
+      </div>
+      <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress"></div></div>
+      
+      <div class="question-card" id="question-card">
+        <p class="question" id="q-text" lang="ja"></p>
+        <div class="options" id="options" role="group" aria-label="選項"></div>
+        <div class="explanation" id="explanation">
+          <dl>
+            <dt>全句翻譯與詳細選項解析</dt>
+            <dd id="explanation-content"></dd>
+          </dl>
+        </div>
+      </div>
+
+      <nav class="controls">
+        <button class="btn ghost" id="prev-btn" type="button" onclick="prevQuestion()">← 上一題</button>
+        <span class="kbd-hint">點擊選項即時作答與看解析</span>
+        <button class="btn primary" id="next-btn" type="button" onclick="nextQuestion()">下一題 →</button>
+      </nav>
+    </section>
+
+    <!-- 結果頁 -->
+    <section class="results" id="results" aria-label="成績總結">
+      <p class="eyebrow">練習完成</p>
+      <h2>第三週文法總合實戰特訓結算</h2>
+      <p class="result-score"><strong id="result-correct">0</strong><span> ／ 50</span></p>
+      <p id="result-desc" style="color: var(--muted);"></p>
+      <div class="result-actions">
+        <button class="btn primary" id="restart-btn" type="button" onclick="restartQuiz()">重新開始練習</button>
+      </div>
+    </section>
+
+    <!-- 側欄 -->
+    <aside class="sidebar">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>題目一覽</h2>
+          <span class="panel-meta" id="answered-count">已作答 0 ／ 50</span>
+        </div>
+        <div class="jump-grid" id="jump-grid"></div>
+        <div class="legend">
+          <span><i class="dot ok"></i>答對</span>
+          <span><i class="dot ng"></i>答錯</span>
+          <span><i class="dot cur"></i>目前</span>
+        </div>
+        <button class="link-btn" id="finish-btn" type="button" onclick="checkFinish()">查看成績總結</button>
+      </div>
+
+      <div class="panel vocab">
+        <div class="panel-head">
+          <h2>文法速查卡片</h2>
+          <span class="panel-meta">1日目〜6日目</span>
+        </div>
+        <div class="day-tabs" id="day-tabs" role="tablist">
+          <button class="day-tab active" onclick="switchVocabDay(1)">1日目</button>
+          <button class="day-tab" onclick="switchVocabDay(2)">2日目</button>
+          <button class="day-tab" onclick="switchVocabDay(3)">3日目</button>
+          <button class="day-tab" onclick="switchVocabDay(4)">4日目</button>
+          <button class="day-tab" onclick="switchVocabDay(5)">5日目</button>
+          <button class="day-tab" onclick="switchVocabDay(6)">6日目</button>
+        </div>
+        <ul class="vocab-list" id="vocab-list" lang="ja"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">JLPT N1 第三週文法總合實戰特訓 50 題</footer>
+
+  <script>
+    // 第三週（1〜6日目）文法速查卡片資料庫
+    const vocabData = {
+        1: [
+            "・Vるまでもない / までもなく：用不著……、不需要……[cite: 30]",
+            "・Vる/Vたまでだ / まで(のこと)だ：只是……而已 / 就只有……的辦法[cite: 30]",
+            "・Vないまでも：就算不……也至少……[cite: 30]",
+            "・Vてまでも：甚至不惜……也要……[cite: 30]"
+        ],
+        2: [
+            "・Nに限ったことではない：不限於……、這不是特例",
+            "・Aい/naな限りだ：……至極、……極了（情感）",
+            "・Nを限りに / 限りで：以此為最後期限、竭盡……",
+            "・Vる/Vない/Nに限る：莫過於……、……最好"
+        ],
+        3: [
+            "・[文]とのことだ / とのN：據說……（傳聞）",
+            "・V/A/na/Nとは：竟然……！（強烈驚訝）",
+            "・V/A/na/Nとはいえ：雖說是……但話雖如此",
+            "・V/A/na/Nといえども：縱使是……、話雖如此（書面強調）"
+        ],
+        4: [
+            "・ここNというもの：在這一段……期間內一直……",
+            "・Nを皮切りに(して) / を皮切りとして：以……為開端/起點",
+            "・Nをもって：以……（手段/時間/資格）來……"
+        ],
+        5: [
+            "・Vるや / や否や：一……就……（緊接發生）",
+            "・Vるが早いか：剛一……就立刻……",
+            "・かと思いきや：原以為……，不料卻……",
+            "・Vたが最後 / たら最後：一旦……就必定會……"
+        ],
+        6: [
+            "・Nかたがた：順便、兼顧……（正式社交/書面）",
+            "・Vる/Vたそばから：剛一……就馬上又……（負面反覆）",
+            "・Nのかたわら / Vるかたわら：一邊……一邊……（正職兼顧）",
+            "・Nがてら / Vます形がてら：順便……（伴隨移動）"
+        ]
+    };
+
+    // 第三週核心文法 50 題題庫（每題均完整包含翻譯、正解理由與詳細錯誤選項排除說明）
+    const quizData = [
+      {
+        type: "1日目：不需要",
+        question: "その件については、社長に許可を取る (  ) 。",
+        options: ["a. までもない", "b. までだ", "c. ないまでも", "d. てまでも"],
+        answer: 0,
+        explanation: "【全句翻譯】關於那件事，用不著取得社長的許可[cite: 30]。<br><br>" +
+                     "<strong>【正解分析】a. までもない：</strong>表示某事理所當然或程度淺顯，根本沒有必要特地去做前項動作[cite: 30]。在此句中「取 るまでもない」意為「用不著特地去取得」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. までだ：表示單純如此或不得已時的最後手段，語意不合。<br>" +
+                     "・c. ないまでも：表示「雖不至於……但至少……」，接續與語意皆不符。<br>" +
+                     "・d. てまでも：表示「甚至不惜……也要……」，放入句中會變成「不惜取得社長許可」，與常理及語意完全相背。"
+      },
+      {
+        type: "1日目：單純如此",
+        question: "ちょっと聞いてみた (  ) です。",
+        options: ["a. までもない", "b. までだ", "c. ないまでも", "d. てまでも"],
+        answer: 1,
+        explanation: "【全句翻譯】我只是稍微打聽一下而已[cite: 30]。<br><br>" +
+                     "<strong>【正解分析】b. までだ：</strong>用於解釋自己只是單純做某事，沒有別的意圖或企圖[cite: 30]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. までもない：表示「用不著……」，與「稍微打聽一下」的自謙或單純解釋口吻不符。<br>" +
+                     "・c. ないまでも：屬於讓步句型，無法與句尾的「です」自然構成文法結構。<br>" +
+                     "・d. てまでも：表示不惜付出代價，語意過於誇大且不合文法。"
+      },
+      {
+        type: "1日目：最低限度",
+        question: "毎日はしない (  ) 、週に1回くらいは部屋の掃除をしよう。",
+        options: ["a. までもない", "b. までだ", "c. までも", "d. てまでも"],
+        answer: 2,
+        explanation: "【全句翻譯】就算不每天打掃，至少一週打掃一次房間吧[cite: 30]。<br><br>" +
+                     "<strong>【正解分析】c. までも：</strong>表示雖然達不到前項較高的標準或程度（每天打掃），但至少能做到後項（一週一次）[cite: 30]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. までもない：表示沒必要，無法與前面的否定形「しない」完美組成此讓步搭配。<br>" +
+                     "・b. までだ：表示單純如此，無法表達「就算不……也至少……」的讓步語氣。<br>" +
+                     "・d. てまでも：表示不惜代價，與句意「不每天打掃」完全衝突。"
+      },
+      {
+        type: "1日目：不惜代價",
+        question: "母は体を壊し (  ) 、朝から晩まで働き続けた。",
+        options: ["a. てまでも", "b. までもない", "c. までだ", "d. ないまでも"],
+        answer: 0,
+        explanation: "【全句翻譯】母親甚至不惜操壞身體，從早到晚一直工作[cite: 30]。<br><br>" +
+                     "<strong>【正解分析】a. てまでも：</strong>表示為了達成某個目的，不惜冒著壞掉、受傷或極大代價的風險去做某事[cite: 30]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. までもない：表示用不著，放入句中會變成「用不著操壞身體」，語意不通。<br>" +
+                     "・c. までだ：表示單純如此，無法表達「不惜犧牲身體」的強烈程度。<br>" +
+                     "・d. ないまでも：屬於讓步用法，無法表達為了賺錢而甘願犧牲健康的極端行為。"
+      },
+      {
+        type: "2日目：不限特例",
+        question: "若者の言葉遣いが悪いのは、我が国に (  ) ことではない。",
+        options: ["a. 限る", "b. 限った", "c. 限りだ", "d. を限りに"],
+        answer: 1,
+        explanation: "【全句翻譯】年輕人說話粗魯，不只限於我們國家。<br><br>" +
+                     "<strong>【正解分析】b. 限った：</strong>構成固定慣用表現「Nに限ったことではない」，表示某種不良現象或特點不只限於某個特定對象。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. 限る：原形動詞，無法直接修飾後方的「ことではない」。<br>" +
+                     "・c. 限りだ：表示情感至極（如残念な限りだ），無法與「ことではない」搭配。<br>" +
+                     "・d. を限りに：表示以此為最後期限，語意完全不合。"
+      },
+      {
+        type: "2日目：極致情感",
+        question: "結婚式に出席できないとは、残念な (  ) 。",
+        options: ["a. に限る", "b. 限ったことではない", "c. を限りに", "d. 限りだ"],
+        answer: 3,
+        explanation: "【全句翻譯】竟然無法參加婚禮，遺憾之至。<br><br>" +
+                     "<strong>【正解分析】d. 限りだ：</strong>接在情感形容詞（如残念、嬉しい、恐ろしい）後，強調某種內心情感達到最高點。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. に限る：表示「……最好、莫過於……」，句尾接「残念だ」會造成文法衝突。<br>" +
+                     "・b. 限ったことではない：表示不只限於該特例，與句意「遺憾」無關。<br>" +
+                     "・c. を限りに：表示以某個時間為最後期限，文法上無法連接。"
+      },
+      {
+        type: "2日目：以此為期限",
+        question: "今日 (  ) 甘いものをやめることにした。",
+        options: ["a. を限りに", "b. に限る", "c. 限ったことではない", "d. 限りだ"],
+        answer: 0,
+        explanation: "【全句翻譯】決定從今天起戒掉甜食。<br><br>" +
+                     "<strong>【正解分析】a. を限りに：</strong>表示到某個時間點或日子為止就徹底結束、不再持續。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. に限る：表示最好，無法表達「以此為期限」的時間終點。<br>" +
+                     "・c. 限ったことではない：表示不只限於該情況，與戒除甜食的時間點無關。<br>" +
+                     "・d. 限りだ：表示極度情感，無法用來表示時間期限。"
+      },
+      {
+        type: "2日目：最佳選擇",
+        question: "風邪を引いたときは、暖かくして寝る (  ) 。",
+        options: ["a. 限りだ", "b. に限る", "c. を限りに", "d. 限ったことではない"],
+        answer: 1,
+        explanation: "【全句翻譯】感冒的時候，最好保暖並好好睡一覺。<br><br>" +
+                     "<strong>【正解分析】b. に限る：</strong>表示說話者的強烈推薦，認為在眾多應對方式中，某個做法是最好、最明智的選擇。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. 限りだ：表情感至極，放入句中毫無意義。<br>" +
+                     "・c. を限りに：表時間期限，放入句中無法表達「最好這樣做」的建議。<br>" +
+                     "・d. 限ったことではない：表不限於此，語意不通。"
+      },
+      {
+        type: "3日目：傳聞轉述",
+        question: "社長の話によると、来月から給料を1割カットする (  ) 。",
+        options: ["a. とは", "b. とはいえ", "c. ととのことだ", "d. といえども"],
+        answer: 2,
+        explanation: "【全句翻譯】據社長說，從下個月開始薪水要砍掉一成。<br><br>" +
+                     "<strong>【正解分析】c. ととのことだ：</strong>高級的傳聞表現，多用於轉述別人的話、信件或官方訊息。與句首的「〜によると」完美呼應。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. とは：表示強烈驚訝的終助詞，與前面的「根據社長說話」傳聞語氣不搭。<br>" +
+                     "・b. とはいえ：表示「雖說是……但話雖如此」，無法用於轉述客觀消息。<br>" +
+                     "・d. といえども：表示「縱使是……」，多用於強烈讓步，與傳述消息無關。"
+      },
+      {
+        type: "3日目：強烈驚訝",
+        question: "東京は家賃が高いと聞いていたが、こんなに高い (  ) 驚きだ。",
+        options: ["a. ととのことだ", "b. とはいえ", "c. といえども", "d. とは"],
+        answer: 3,
+        explanation: "【全句翻譯】聽說東京房租貴，但沒想到竟然這麼貴，太讓人驚訝了。<br><br>" +
+                     "<strong>【正解分析】d. とは：</strong>用於對前項發生的意外事實或超乎想像的狀況表示強烈的驚訝、讚嘆或感慨。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ととのことだ：表傳聞轉述，無法表達說話者自身的強烈驚訝情緒。<br>" +
+                     "・b. とはいえ：表示讓步轉折，無法與後方的「驚きだ」直接構成句型。<br>" +
+                     "・c. といえども：表示縱使是，語意不符合此處對房租昂貴的驚嘆。"
+      },
+      {
+        type: "3日目：雖說如此",
+        question: "教師 (  ) 、答えられないこともある。",
+        options: ["a. とはいえ", "b. とは", "c. ととのことだ", "d. といえども"],
+        answer: 0,
+        explanation: "【全句翻譯】雖說是老師，也有回答不出來的時候。<br><br>" +
+                     "<strong>【正解分析】a. とはいえ：</strong>表示承認前項事實（身為老師），但後文會提出與之相反或打了折扣的實際狀況（也有答不出來的時候）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. とは：表驚訝，不適用於身分條件的讓步。<br>" +
+                     "・c. ととのことだ：表傳聞，放入句中會變成「聽說身為老師」，不合邏輯。<br>" +
+                     "・d. といえども：雖然也能表示縱使是，但此處一般日常對話或文章多傾向使用更自然的 `とはいえ`。"
+      },
+      {
+        type: "3日目：縱使身分",
+        question: "たとえ兄弟 (  ) 、憎しみ合うこともある。",
+        options: ["a. とは", "b. ととのことだ", "c. といえども", "d. とはいえ"],
+        answer: 2,
+        explanation: "【全句翻譯】縱使是親兄弟，也有互相憎恨的時候。<br><br>" +
+                     "<strong>【正解分析】c. といえども：</strong>比 `とはいえ` 更書面、語氣更強，表示「就算處於某個極端身分或條件下（即使是親兄弟），也不能例外」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. とは：表強烈驚訝，無法與「たとえ」完美搭配表達極端假設。<br>" +
+                     "・b. ととのことだ：表傳聞轉述，不符合此處哲理或普遍現象的假設語氣。<br>" +
+                     "・d. とはいえ：雖也可表示雖說如此，但在「たとえ〜（即使……）」的強烈假設句型中，`といえども` 表現力更強。"
+      },
+      {
+        type: "4日目：一段期間",
+        question: "この1ヵ月 (  ) 、シャワーを浴びるだけでお風呂に入っていない。",
+        options: ["a. を皮切りに", "b. というもの", "c. をもって", "d. に限る"],
+        answer: 1,
+        explanation: "【全句翻譯】這一個月以來，我一直都只沖澡而沒有泡澡。<br><br>" +
+                     "<strong>【正解分析】b. というもの：</strong>強調在某個特定且較長的時間區段（這一個月）中，持續著某種狀態或動作。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. を皮切りに：表示以某事為開端，後面需接陸續擴散的事件，無法修飾單一持續狀態。<br>" +
+                     "・c. ををもって：表示以某種手段或時間點生效，與「這一個月持續」的時間段不合。<br>" +
+                     "・d. に限る：表示最好，文法完全不通。"
+      },
+      {
+        type: "4日目：大型開端",
+        question: "今度の演奏会は、東京 (  ) 、全国10ヵ所で行われる。",
+        options: ["a. というもの", "b. をもって", "c. を皮切りに", "d. に限る"],
+        answer: 2,
+        explanation: "【全句翻譯】這次的演奏會將以東京為開端，在全國10個地方舉行。<br><br>" +
+                     "<strong>【正解分析】c. を皮切りに：</strong>表示某個大型活動或連鎖事件以某個事件作為第一步展開，之後陸續擴散到其他地方。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. というもの：表示長時間持續，與演奏會的空間起點無關。<br>" +
+                     "・b. をもって：表示期限生效，若用在此處語意會變成「以東京為截止點」，完全相反。<br>" +
+                     "・d. に限る：表示最好，文法不通。"
+      },
+      {
+        type: "4日目：期限生效",
+        question: "本日 (  ) 、セールは終了となります。",
+        options: ["a. をもって", "b. を皮切りに", "c. というもの", "d. に限る"],
+        answer: 0,
+        explanation: "【全句翻譯】特賣會到今天為止結束。<br><br>" +
+                     "<strong>【正解分析】a. ををもって：</strong>書面正式用語。表示在某個時間點（如期限、活動結束）正式生效或終止。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. を皮切りに：表示開端，與特賣會「結束」的語意完全對立。<br>" +
+                     "・c. というもの：表示長時間持續，與單一截止日期的正式公告不合。<br>" +
+                     "・d. に限る：表示最好，不符合商業公告的正式文法。"
+      },
+      {
+        type: "5日目：一進去就",
+        question: "部屋に入る (  ) 、いきなり大声で怒鳴り始めた。",
+        options: ["a. が早いか", "b. や否や", "c. かと思いきや", "d. が最後"],
+        answer: 1,
+        explanation: "【全句翻譯】一進房間，立刻就大聲吼叫起來。<br><br>" +
+                     "<strong>【正解分析】b. や否や：</strong>表示前項動作剛結束，後項緊接著發生（幾乎同時發生的突發狀況）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. が早いか：雖也表示緊接，但 `が早いか` 強調動作幾乎同時甚至搶先，而 `や否や` 更貼近日常突發連動。<br>" +
+                     "・c. かと思いきや：表示原以為卻不料，與此處的連續動作不符。<br>" +
+                     "・d. が最後：表示一旦發生就無可挽回，語意過重且文法不順。"
+      },
+      {
+        type: "5日目：剛響起就",
+        question: "授業の終わりのベルが鳴る (  ) 、教室を出て行った。",
+        options: ["a. や否や", "b. が早いか", "c. かと思いきや", "d. が最後"],
+        answer: 1,
+        explanation: "【全句翻譯】下課鈴聲一響，立刻就走出了教室。<br><br>" +
+                     "<strong>【正解分析】b. が早いか：</strong>強調前項動作才剛發生，後項動作幾乎同時、甚至是搶先一步發生（前腳剛響，後腳就走）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. や否や：雖也可表示緊接，但 `が早いか` 在強調「鈴聲響起的瞬間立刻行動」的緊湊感上更為道地。<br>" +
+                     "・c. かと思いきや：表示意外轉折，與下課立刻離開的理所當然行為不合。<br>" +
+                     "・d. が最後：表示一旦……就完蛋了，語意不合。"
+      },
+      {
+        type: "5日目：原以為卻意外",
+        question: "やっとテストが終わって休める (  ) 、宿題をたくさん出された。",
+        options: ["a. かと思いきや", "b. が早いか", "c. や否や", "d. が最後"],
+        answer: 0,
+        explanation: "【全句翻譯】本以為考試終於結束可以休息了，沒想到卻被派了大量作業。<br><br>" +
+                     "<strong>【正解分析】a. かと思いきや：</strong>表示實際結果與原本的猜測或期待完全相反、大出意外。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. が早いか：表示動作緊接，無法表達心裡預期落空的驚訝轉折。<br>" +
+                     "・c. や否や：表示前後動作緊接，不符合心理猜測與事實相反的語境。<br>" +
+                     "・d. が最後：表示一旦發生就無法挽回，與「本以為卻發現」的轉折語意不符。"
+      },
+      {
+        type: "5日目：一旦就必定",
+        question: "彼はパソコンでゲームを始めた (  ) 、いつも朝までやり続ける。",
+        options: ["a. が早いか", "b. や否や", "c. が最後", "d. かと思いきや"],
+        answer: 2,
+        explanation: "【全句翻譯】他只要一用電腦打電動，就一定會玩到天亮。<br><br>" +
+                     "<strong>【正解分析】c. が最後：</strong>表示一旦發生了前項條件，就會無可挽回地導向某個必定發生的負面或固定結果。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. が早いか：表示單純動作緊接，無法表達「一旦開始就停不下來」的強烈結果。<br>" +
+                     "・b. や否や：表瞬間緊接，與「通宵持續玩」的習慣性結果不搭。<br>" +
+                     "・d. かと思いきや：表原以為卻不料，與此處規律的沉迷習慣不符。"
+      },
+      {
+        type: "6日目：拜訪順便",
+        question: "ご挨拶 (  ) 、一言お礼をさせていただきます。",
+        options: ["a. がてら", "b. かたがた", "c. そばから", "d. かたわら"],
+        answer: 1,
+        explanation: "【全句翻譯】前來拜訪致意，同時順便表達感謝之意。<br><br>" +
+                     "<strong>【正解分析】b. かたがた：</strong>帶著主要目的（如拜訪、致意）去行動時，順便兼做另一件事（多用於正式社交或書面敬語環境）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. がてら：多用於日常散步、順便去買東西等休閒移動，不適合正式社交拜訪。<br>" +
+                     "・c. そばから：表示事情剛做完馬上又發生，語意不通。<br>" +
+                     "・d. かたわら：表示長期兼職副業，無法用於單次拜訪的順便動作。"
+      },
+      {
+        type: "6日目：剛教完就忘",
+        question: "教える (  ) 忘れてしまう。",
+        options: ["a. かたがた", "b. がてら", "c. かたわら", "d. そばから"],
+        answer: 3,
+        explanation: "【全句翻譯】剛教完轉眼就忘記了。<br><br>" +
+                     "<strong>【正解分析】d. そばから：</strong>表示某個動作或事情才剛處理好，馬上又被重複發生或覆蓋（多用於無奈的負面反覆）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. かたがた：表正式社交順便，與「教完就忘」的無奈反覆無關。<br>" +
+                     "・b. がてら：表移動順便，文法完全不通。<br>" +
+                     "・c. かたわら：表長期兼職，無法表達瞬間發生的反覆動作。"
+      },
+      {
+        type: "6日目：正職兼顧",
+        question: "父は農業の (  ) 、小さい店を経営している。",
+        options: ["a. かたわら", "b. がてら", "c. かたがた", "d. そばから"],
+        answer: 0,
+        explanation: "【全句翻譯】父親平日從事農耕，同時經營一間小店。<br><br>" +
+                     "<strong>【正解分析】a. かたわら：</strong>表示除了主要的工作或身分外，同時還長期從事另一項副業或活動。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. がてら：表移動順便，無法表達長期並行的正職與副業。<br>" +
+                     "・c. かたがた：表正式拜訪順便，不適用於長期的經商活動。<br>" +
+                     "・d. そばから：表剛做完馬上又發生，與長期兼顧不符。"
+      },
+      {
+        type: "6日目：散步順便",
+        question: "散歩 (  ) 、本屋に行ってくるよ。",
+        options: ["a. かたがた", "b. がてら", "c. かたわら", "d. そばから"],
+        answer: 1,
+        explanation: "【全句翻譯】順便散步，去一趟書店。<br><br>" +
+                     "<strong>【正解分析】b. がてら：</strong>在進行某個移動或日常動作（如散步）時，順便完成另一個次要動作。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. かたがた：屬於正式社交用語，用在散步買書顯得過於拘謹不自然。<br>" +
+                     "・c. かたわら：表長期兼職，無法用於短期的散步順便。<br>" +
+                     "・d. そばから：表反覆發生，語意不合。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "親が出る (  ) 、子どもたちだけでその問題を解決した。",
+        options: ["a. までもなく", "b. までだ", "c. ないまでも", "d. てまでも"],
+        answer: 0,
+        explanation: "【全句翻譯】父母根本不需要出面，孩子們自己就把問題解決了[cite: 30]。<br><br>" +
+                     "<strong>【正解分析】a. までもなく：</strong>表示沒必要做到前項動作（父母出面）[cite: 30]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. までだ：表單純如此，語意不通。<br>" +
+                     "・c. ないまでも：表讓步，文法不合。<br>" +
+                     "・d. てまでも：表不惜代價，放入句中會變成「不惜父母出面」，完全錯誤。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "手紙を書かない (  ) 電話ぐらいしろ。",
+        options: ["a. までだ", "b. ないまでも", "c. までもない", "d. てまでも"],
+        answer: 1,
+        explanation: "【全句翻譯】就算不寫信，至少也打個電話吧[cite: 30]。<br><br>" +
+                     "<strong>【正解分析】b. ないまでも：</strong>表示「雖不至於……但至少……」，接在否定形後表達最低限度的要求[cite: 30]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. までだ：表單純如此，無法構成「就算不……也至少……」的讓步。<br>" +
+                     "・c. までもない：表沒必要，語意不通。<br>" +
+                     "・d. てまでも：表不惜代價，與句意衝突。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "今月 (  ) このマンションともお別れだ。",
+        options: ["a. に限る", "b. 限りだ", "c. を限りに", "d. 限ったことではない"],
+        answer: 2,
+        explanation: "【全句翻譯】以這個月為最後期限，就要跟這間公寓道別了。<br><br>" +
+                     "<strong>【正解分析】c. を限りに：</strong>表示以某個時間點為最後期限結束某事。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. に限る：表最好，文法不通。<br>" +
+                     "・b. 限りだ：表情感至極，文法不通。<br>" +
+                     "・d. 限ったことではない：表不只限於此，與合約到期無關。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "宝くじに当たったなんて、なんともうらやましい (  ) 。",
+        options: ["a. 限ったことではない", "b. に限る", "c. を限りに", "d. 限りだ"],
+        answer: 3,
+        explanation: "【全句翻譯】中樂透彩什麼的，真是讓人羨慕極了。<br><br>" +
+                     "<strong>【正解分析】d. 限りだ：</strong>接在情感形容詞「うらやましい」後，表示羨慕之至。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. 限ったことではない：表不只限於此，語意不合。<br>" +
+                     "・b. に限る：表最好，文法不合。<br>" +
+                     "・c. を限りに：表時間期限，文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "近所の人の話では、昨夜あの家でだれかが亡くなった (  ) 。",
+        options: ["a. ととのことだ", "b. とは", "c. とはいえ", "d. といえども"],
+        answer: 0,
+        explanation: "【全句翻譯】聽鄰居說，昨晚那棟房子有人去世了。<br><br>" +
+                     "<strong>【正解分析】a. ととのことだ：</strong>高級的傳聞表現，用於轉述鄰居的話。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. とは：表強烈驚訝，與傳述消息無關。<br>" +
+                     "・c. とはいえ：表雖說是，語意不合。<br>" +
+                     "・d. といえども：表縱使是，語意不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "入社したばかり (  ) 、もう少しまともな挨拶ができないのだろうか。",
+        options: ["a. とは", "b. とはいえ", "c. ととのことだ", "d. といえども"],
+        answer: 1,
+        explanation: "【全句翻譯】雖說才剛進公司，難道就不能好好打個招呼嗎。<br><br>" +
+                     "<strong>【正解分析】b. とはいえ：</strong>表示承認前項事實（剛進公司），但後文提出不應該因此表現不佳的質疑。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. とは：表驚訝，不適合連接此處的讓步反問。<br>" +
+                     "・c. ととのことだ：表傳聞，語意不通。<br>" +
+                     "・d. といえども：雖也可表縱使是，但日常情境多用 `とはいえ`。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "一人暮らしを始めて (  ) 、まともな食事をしたことがない。",
+        options: ["a. を皮切りに", "b. をもって", "c. からというもの", "d. に限る"],
+        answer: 2,
+        explanation: "【全句翻譯】自從開始一個人生活以來，就再也沒有吃過像樣的一餐。<br><br>" +
+                     "<strong>【正解分析】c. からというもの：</strong>表示自從某個起點開始，一直持續著某種狀態。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. を皮切りに：表大型事件開端，無法修飾個人生活狀態。<br>" +
+                     "・b. をもって：表期限生效，文法不合。<br>" +
+                     "・d. に限る：表最好，文法不合。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "今回の発言 (  ) 反対意見が次々と出た。",
+        options: ["a. というもの", "b. をもって", "c. に限る", "d. を皮切りに"],
+        answer: 3,
+        explanation: "【全句翻譯】以這次的發言為開端，反對意見陸續湧現。<br><br>" +
+                     "<strong>【正解分析】d. を皮切りに：</strong>表示以某事件為開端，隨後引發連鎖反應。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. というもの：表長時間持續，與單一發言引發的開端不合。<br>" +
+                     "・b. をもって：表期限生效，語意不合。<br>" +
+                     "・c. に限る：表最好，文法不合。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "やっと富士山の頂上に着いた (  ) 、まだ8合目だった。",
+        options: ["a. かと思いきや", "b. が早いか", "c. や否や", "d. が最後"],
+        answer: 0,
+        explanation: "【全句翻譯】本以為終於抵達富士山山頂了，沒想到還只是第八合目。<br><br>" +
+                     "<strong>【正解分析】a. かと思いきや：</strong>表示原以為如此，不料現實卻完全相反。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. が早いか：表動作瞬間緊接，無法表達預期落空的驚訝。<br>" +
+                     "・c. や否や：表動作緊接，不符合心理幻覺與現實落差的語境。<br>" +
+                     "・d. が最後：表一旦發生就無法挽回，語意不合。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "119番の通報を受ける (  ) 、救急車は出動した。",
+        options: ["a. や否や", "b. が早いか", "c. かと思いきや", "d. が最後"],
+        answer: 1,
+        explanation: "【全句翻譯】一接到119報案電話，救護車立刻出動了。<br><br>" +
+                     "<strong>【正解分析】b. が早いか：</strong>強調一接到電話的瞬間，救護車立刻同步出動。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. や否や：雖也可表緊接，但 `が早いか` 在強調「第一時間同步反應」上更具速度感。<br>" +
+                     "・c. かと思いきや：表意外轉折，與救護車出動的理所當然反應不合。<br>" +
+                     "・d. が最後：表一旦發生就完蛋了，語意不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "食べる (  ) 次の料理がどんどん運ばれてきた。",
+        options: ["a. がてら", "b. かたわら", "c. そばから", "d. かたがた"],
+        answer: 2,
+        explanation: "【全句翻譯】剛吃完，下一道料理就一直端上來，根本來不及品嚐。<br><br>" +
+                     "<strong>【正解分析】c. そばから：</strong>表示某個動作才剛做完，馬上又重複發生，帶有應接不暇的無奈感。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. がてら：表移動順便，文法不合。<br>" +
+                     "・b. かたわら：表長期兼職，無法表達眼前料理接連端上的瞬間反覆。<br>" +
+                     "・d. かたがた：表正式拜訪順便，文法不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "本日は先日のご報告 (  ) 、部下の紹介に参りました。",
+        options: ["a. かたがた", "b. がてら", "c. かたわら", "d. そばから"],
+        answer: 0,
+        explanation: "【全句翻譯】今天為報告前幾天的事，順便前來介紹部下。<br><br>" +
+                     "<strong>【正解分析】a. かたがた：</strong>正式社交拜訪中，以主要目的（報告）兼做另一件事（介紹部下）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. がてら：屬於日常休閒順便，用在正式商務報告過於輕率。<br>" +
+                     "・c. かたわら：表長期副業，不適用於單次拜訪。<br>" +
+                     "・d. そばから：表負面反覆，語意完全相反。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "これくらいの故障、修理を頼む (  ) 。僕が直してあげるよ。",
+        options: ["a. までだ", "b. までもない", "c. ないまでも", "d. てまでも"],
+        answer: 1,
+        explanation: "【全句翻譯】這種程度的故障，用不著託人修理。我來幫你修吧[cite: 30]。<br><br>" +
+                     "<strong>【正解分析】b. までもない：</strong>表示程度淺顯，根本用不著特地去拜託別人修理[cite: 30]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. までだ：表單純如此，語意不通。<br>" +
+                     "・c. ないまでも：表讓步，文法不合。<br>" +
+                     "・d. てまでも：表不惜代價，文法不合。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "朝の電車が混んでいるのは、今日に (  ) ことではない。",
+        options: ["a. 限る", "b. 限りだ", "c. を限りに", "d. 限った"],
+        answer: 3,
+        explanation: "【全句翻譯】早晨電車擁擠，不只限於今天。<br><br>" +
+                     "<strong>【正解分析】d. 限った：</strong>構成慣用否定句型「今日に限ったことではない」（不只限於今天）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. 限る：原形動詞，無法直接修飾後方的「ことではない」。<br>" +
+                     "・b. 限りだ：表情感至極，文法不合。<br>" +
+                     "・c. を限りに：表時間期限，文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "鈴木さんから、今日は風邪で休むと (  ) 電話がありました。",
+        options: ["a. のことだ", "b. の", "c. とはいえ", "d. といえども"],
+        answer: 1,
+        explanation: "【全句翻譯】鈴木打電話來說今天因為感冒要請假。<br><br>" +
+                     "<strong>【正解分析】b. の：</strong>透過「〜休むとの電話」的形式，修飾名詞表示「傳達……內容的電話」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. のことだ：通常用於句尾作結論，無法放在名詞前作修飾。<br>" +
+                     "・c. とはいえ：表雖說是，文法不合。<br>" +
+                     "・d. といえども：表縱使是，文法不合。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "あの歌手は人気が出てからというもの、 (  ) 大きくなっている。",
+        options: ["a. 態度が", "b. 声が", "c. 身體が", "d. 気持ちが"],
+        answer: 0,
+        explanation: "【全句翻譯】那名歌手自從走紅之後，態度就變得傲慢了。<br><br>" +
+                     "<strong>【正解分析】a. 態度が：</strong>搭配固定慣用語「態度が大きくなる」（態度變傲慢）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. 声が：聲音變大與走紅後的傲慢驕縱無必然邏輯。<br>" +
+                     "・c. 身體が：身體變大不符合人類成長與走紅的描述。<br>" +
+                     "・d. 気持ちが：心情變大不符合日文慣用語法。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "ひとたび怒った (  ) 、暴れて手がつけられなくなる。",
+        options: ["a. が最後", "b. が早いか", "c. や否や", "d. かと思いきや"],
+        answer: 0,
+        explanation: "【全句翻譯】一旦發起脾氣來，就會大鬧到無法收拾。<br><br>" +
+                     "<strong>【正解分析】a. が最後：</strong>構成「ひとたび〜たが最後」，表示一旦發生了前項條件，就會無可挽回地導向某個必定結果。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. が早いか：表動作瞬間緊接，無法與「ひとたび（一旦）」形成條件呼應。<br>" +
+                     "・c. や否や：表瞬間緊接，不符合假設條件的句型。<br>" +
+                     "・d. かと思いきや：表意外轉折，與「一旦發脾氣就必然大鬧」的因果不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "その小説家は執筆の (  ) 、趣味でピアノを弾いている。",
+        options: ["a. かたわら", "b. がてら", "c. そばから", "d. かたがた"],
+        answer: 0,
+        explanation: "【全句翻譯】那名小說家在從事寫作之餘，興趣是彈鋼琴。<br><br>" +
+                     "<strong>【正解分析】a. かたわら：</strong>表示除了主業寫作外，長期兼顧另一項興趣或活動。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. がてら：表移動順便，無法表達長期的興趣兼顧。<br>" +
+                     "・c. そばから：表負面反覆，語意不合。<br>" +
+                     "・d. かたがた：表正式拜訪順便，文法不合。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "上手になりたければ、ひたすら練習する (  ) 。",
+        options: ["a. までだ", "b. までもない", "c. ないまでも", "d. てまでも"],
+        answer: 0,
+        explanation: "【全句翻譯】如果想變厲害，那就只有拼命練習這條路了[cite: 30]。<br><br>" +
+                     "<strong>【正解分析】a. までだ：</strong>在此表示別無他法，除了這個辦法之外沒有別的路可走[cite: 30]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. までもない：表沒必要，與「想變強就必須練習」的積極必要性完全相反。<br>" +
+                     "・c. ないまでも：表讓步，文法不合。<br>" +
+                     "・d. てまでも：表不惜代價，放入句中語意不順。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "そのドラマは、視聴率が伸びず3回目を (  ) 打ち切られることになった。",
+        options: ["a. 限ったことではない", "b. 限りだ", "c. を限りに", "d. に限る"],
+        answer: 2,
+        explanation: "【全句翻譯】那部電視劇因收視率低迷，以第三集為最後期限遭到腰斬。<br><br>" +
+                     "<strong>【正解分析】c. を限りに：</strong>表示以第三集為最後的期限，之後節目結束。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. 限ったことではない：表不只限於此，文法不合。<br>" +
+                     "・b. 限りだ：表情感至極，文法不合。<br>" +
+                     "・d. に限る：表最好，文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "生活のためとは言え、休まず働かなければならないのはつらい。たとえ兄弟 (  ) 、助け合いが必要だ。",
+        options: ["a. とは", "b. といえども", "c. ととのことだ", "d. とはいえ"],
+        answer: 1,
+        explanation: "【全句翻譯】雖說是為了生活，但必須不停工作也是很辛苦的。縱使是兄弟，也需要互相幫助。<br><br>" +
+                     "<strong>【正解分析】b. といえども：</strong>書面語。表示縱使是親兄弟這種極端親密的身分，也不能例外。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. とは：表強烈驚訝，文法不合。<br>" +
+                     "・c. ととのことだ：表傳聞，文法不合。<br>" +
+                     "・d. とはいえ：雖也可表雖說如此，但此處配合「たとえ」的強烈假設，`といえども` 更具文學張力。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "彼の実力をもって (  ) 、成功するだろう。",
+        options: ["a. すれば", "b. みれば", "c. よれば", "d. くれば"],
+        answer: 0,
+        explanation: "【全句翻譯】憑藉他的實力來做的話，應該會成功吧。<br><br>" +
+                     "<strong>【正解分析】a. すれば：** 構成固定句型「〜をもってすれば」，表示憑藉某種強大的條件或實力來進行推測。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. みれば：搭配「〜からみれば」或「〜てみれば」，無法直接接在「をもって」後。<br>" +
+                     "・c. よれば：搭配「〜によれば（據說）」，與此處的實力條件推測無關。<br>" +
+                     "・d. くれば：動詞變化錯誤，無法構成此句型。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "彼のブログは、更新する (  ) 反響が相次ぐ。",
+        options: ["a. が早いか", "b. や否や", "c. そばから", "d. が最後"],
+        answer: 2,
+        explanation: "【全句翻譯】他的部落格只要一更新，迴響就接踵而至。<br><br>" +
+                     "<strong>【正解分析】c. そばから：** 表示前項動作（更新）才剛做完，後項（反響）馬上又反覆發生。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. が早いか：表單次瞬間緊接，無法表現長期反覆發生的現象。<br>" +
+                     "・b. や否や：表單次突發緊接，不適合常態性的部落格互動。<br>" +
+                     "・d. が最後：表一旦發生就完蛋了，語意不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "忘年会の買い出しがてら、 (  ) を下見してきた。",
+        options: ["a. 居酒屋", "b. 居酒屋で", "c. 居酒屋から", "d. 居酒屋に"],
+        answer: 0,
+        explanation: "【全句翻譯】在順便外出買尾牙東西的途中，順道勘察了居酒屋的場地。<br><br>" +
+                     "<strong>【正解分析】a. 居酒屋：** 透過直接受詞名詞「居酒屋」修飾後方的他動詞「下見してきた」（順便勘察了居酒屋）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. 居酒屋で：若加「で」會變成在居酒屋裡面勘察，但此處是去勘察場地本身。<br>" +
+                     "・c. 居酒屋から：從居酒屋出發，語意完全顛倒。<br>" +
+                     "・d. 居酒屋に：場所助詞多餘，因為「下見する」為直接受詞動詞。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "彼の行為は、犯罪と言える (  ) 、許されないことだ。",
+        options: ["a. までもなく", "b. までだ", "c. ないまでも", "d. てまでも"],
+        answer: 2,
+        explanation: "【全句翻譯】他的行為就算稱不上是犯罪，也是絕對不被允許的[cite: 30]。<br><br>" +
+                     "<strong>【正解分析】c. ないまでも：** 表示「雖不至於達到前項程度（稱作犯罪），但也至少達到後項嚴重程度（不被允許）」[cite: 30]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. までもなく：表沒必要，文法不合。<br>" +
+                     "・b. までだ：表單純如此，文法不合。<br>" +
+                     "・d. てまでも：表不惜代價，文法不合。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "最近コンピュータを使うようになってからのことだ (  ) 限ったことではない。",
+        options: ["a. に限る", "b. に", "c. 限りだ", "d. を限りに"],
+        answer: 1,
+        explanation: "【全句翻譯】漢字寫不出來這件事，不只限於最近開始使用電腦之後。<br><br>" +
+                     "<strong>【正解分析】b. に：** 構成固定句型「〜のことに限ったことではない」（不只限於……）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. 限る：原形動詞，無法直接修飾。<br>" +
+                     "・c. 限りだ：表情感至極，文法不合。<br>" +
+                     "・d. を限りに：表時間期限，文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "あんなに女らしく美しく見える人が、実は男だった (  ) …。",
+        options: ["a. とは", "b. ととのことだ", "c. とはいえ", "d. といえども"],
+        answer: 0,
+        explanation: "【全句翻譯】看起來那麼有女人味、那麼美的人，竟然實際上是個男的……。<br><br>" +
+                     "<strong>【正解分析】a. とは：** 用於對前項超乎想像的意外事實表示強烈的驚訝與感慨。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. ととのことだ：表傳聞轉述，不符合自身親眼見到並感到驚訝的情境。<br>" +
+                     "・c. とはいえ：表雖說如此，文法不合。<br>" +
+                     "・d. といえども：表縱使是，文法不合。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "そのジャーナリストは危険を冒して (  ) 戦場に行こうとしている。",
+        options: ["a. もって", "b. からというもの", "c. を皮切りに", "d. までも"],
+        answer: 3,
+        explanation: "【全句翻譯】那名記者甚至不惜冒著危險，也打算前往戰場[cite: 30]。<br><br>" +
+                     "<strong>【正解分析】d. までも：** 構成固定片語「危険を冒してまでも」（甚至不惜冒著危險）[cite: 30]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. もって：表期限或手段，無法與前面的動詞連用。<br>" +
+                     "・b. からというもの：表長時間持續，文法不合。<br>" +
+                     "・c. を皮切りに：表活動開端，文法不合。"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let userAnswers = new Array(quizData.length).fill(null);
+
+    // DOM 元素快取
+    const qTagEl = document.getElementById('q-tag');
+    const qNumEl = document.getElementById('q-num');
+    const qTextEl = document.getElementById('q-text');
+    const optionsEl = document.getElementById('options');
+    const explanationEl = document.getElementById('explanation');
+    const explanationContentEl = document.getElementById('explanation-content');
+    const progressBarEl = document.getElementById('progress');
+    const stageEl = document.getElementById('stage');
+    const resultsEl = document.getElementById('results');
+    const jumpGridEl = document.getElementById('jump-grid');
+    const answeredCountEl = document.getElementById('answered-count');
+    const hankoScoreEl = document.getElementById('hanko-score');
+    const vocabListEl = document.getElementById('vocab-list');
+
+    // 切換速查卡片天數
+    function switchVocabDay(day) {
+      document.querySelectorAll('.day-tab').forEach((tab) => {
+        tab.classList.toggle('active', tab.getAttribute('onclick').includes(day));
+      });
+      vocabListEl.innerHTML = (vocabData[day] || []).map(item => `<li>${item}</li>`).join('');
+    }
+
+    // 初始化跳題網格
+    function initJumpGrid() {
+      jumpGridEl.innerHTML = '';
+      quizData.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'jump-btn';
+        btn.innerText = i + 1;
+        btn.onclick = () => goToQuestion(i);
+        jumpGridEl.appendChild(btn);
+      });
+      updateJumpGridUI();
+    }
+
+    function updateJumpGridUI() {
+      const buttons = jumpGridEl.getElementsByClassName('jump-btn');
+      let answeredCount = 0;
+      let correctCount = 0;
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].className = 'jump-btn';
+        if (i === currentQuestion) buttons[i].classList.add('active');
+        if (userAnswers[i] === true) {
+          buttons[i].classList.add('correct');
+          answeredCount++;
+          correctCount++;
+        } else if (userAnswers[i] === false) {
+          buttons[i].classList.add('incorrect');
+          answeredCount++;
+        }
+      }
+
+      answeredCountEl.innerText = `已作答 ${answeredCount} ／ 50`;
+      hankoScoreEl.innerText = correctCount;
+    }
+
+    // 載入題目
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      qTagEl.innerText = q.type;
+      qNumEl.innerText = `第 ${currentQuestion + 1} 題 ／ 共 50 題`;
+      qTextEl.innerText = q.question;
+      progressBarEl.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+
+      optionsEl.innerHTML = '';
+      const isAnswered = userAnswers[currentQuestion] !== null;
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        if (isAnswered) {
+          btn.disabled = true;
+          if (idx === q.answer) btn.classList.add('correct');
+        }
+        btn.onclick = () => selectOption(idx);
+        optionsEl.appendChild(btn);
+      });
+
+      if (isAnswered) {
+        explanationContentEl.innerHTML = q.explanation;
+        explanationEl.classList.add('show');
+      } else {
+        explanationEl.classList.remove('show');
+      }
+
+      updateJumpGridUI();
+    }
+
+    // 作答選擇
+    function selectOption(idx) {
+      if (userAnswers[currentQuestion] !== null) return;
+
+      const q = quizData[currentQuestion];
+      const buttons = optionsEl.getElementsByTagName('button');
+      const isCorrect = (idx === q.answer);
+      userAnswers[currentQuestion] = isCorrect;
+
+      if (isCorrect) {
+        buttons[idx].classList.add('correct');
+      } else {
+        buttons[idx].classList.add('incorrect');
+        buttons[q.answer].classList.add('correct');
+      }
+
+      for (let btn of buttons) btn.disabled = true;
+
+      explanationContentEl.innerHTML = q.explanation;
+      explanationEl.classList.add('show');
+      updateJumpGridUI();
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quizData.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+      } else {
+        checkFinish();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+      }
+    }
+
+    function goToQuestion(idx) {
+      currentQuestion = idx;
+      loadQuestion();
+    }
+
+    function checkFinish() {
+      const answered = userAnswers.filter(a => a !== null).length;
+      if (answered < quizData.length) {
+        if (!confirm(`還有 ${quizData.length - answered} 題尚未作答，確定要查看總成績嗎？`)) return;
+      }
+      showScore();
+    }
+
+    function showScore() {
+      stageEl.style.display = 'none';
+      resultsEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'none';
+
+      const correctCount = userAnswers.filter(a => a === true).length;
+      document.getElementById('result-correct').innerText = correctCount;
+      document.getElementById('result-desc').innerText = correctCount >= 45 ? "太出色了！第三週文法掌握得完美無缺，實力直逼 N1 滿分！" : correctCount >= 35 ? "表現優異！觀念十分扎實，再接再厲就能順利合格！" : "建議搭配右側的文法速查卡複習動詞變化與句型接續喔！";
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      userAnswers = new Array(quizData.length).fill(null);
+      resultsEl.style.display = 'none';
+      stageEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'flex';
+      initJumpGrid();
+      loadQuestion();
+    }
+
+    // 初始化執行
+    initJumpGrid();
+    switchVocabDay(1);
+    loadQuestion();
+  </script>
+</body>
+</html>

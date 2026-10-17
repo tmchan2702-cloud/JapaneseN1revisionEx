@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N1 語彙・第四週（1〜6日目）總合實戰特訓｜50 題精選題庫</title>
+  <meta name="description" content="日本語能力試驗 N1 第四週核心文法總合特訓：50 題精選題庫，含全句翻譯、詳細選項解析與日目文法速查卡。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='4' y='4' width='56' height='56' rx='10' fill='%232c5e50'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23f5efe3' font-family='serif'>文</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5efe3;
+      --paper: #fdfbf7;
+      --ink: #2b2b2b;
+      --muted: #767168;
+      --primary: #2c5e50;
+      --primary-hover: #1f4339;
+      --accent: #b8432f;
+      --border: #e6dfd1;
+      --ok: #2c5e50;
+      --ng: #b8432f;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    h1, h2, h3, .masthead-vertical, .hanko {
+      font-family: "Shippori Mincho B1", serif;
+    }
+
+    /* 頂部 Header 風格 */
+    .masthead {
+      max-width: 1100px;
+      margin: 0 auto 2rem auto;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .masthead-vertical {
+      writing-mode: vertical-rl;
+      font-size: 1.25rem;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      border-right: 2px solid var(--border);
+      padding-right: 1.5rem;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .masthead h1 {
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .masthead h1 .count {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+    }
+
+    .lede {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* 印花戳記計分 */
+    .hanko {
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      background: rgba(44, 94, 80, 0.05);
+      transform: rotate(-8deg);
+    }
+
+    .hanko-score {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .hanko-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* 主體佈局 */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+    }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .masthead { grid-template-columns: 1fr; text-align: center; }
+      .masthead-vertical { display: none; }
+      .hanko { margin: 0 auto; }
+    }
+
+    /* 測驗舞台區 */
+    .stage {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .stage-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: rgba(44, 94, 80, 0.1);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .q-num {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-family: "Shippori Mincho B1", serif;
+    }
+
+    .options {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .option-btn {
+      background: var(--paper);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 1rem;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: rgba(44, 94, 80, 0.02);
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    .option-btn.correct {
+      background: rgba(44, 94, 80, 0.1) !important;
+      border-color: var(--ok) !important;
+      color: var(--ok);
+      font-weight: 700;
+    }
+
+    .option-btn.incorrect {
+      background: rgba(184, 67, 47, 0.1) !important;
+      border-color: var(--ng) !important;
+      color: var(--ng);
+    }
+
+    /* 解析區 */
+    .explanation {
+      background: #f4ede2;
+      border-left: 4px solid var(--primary);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .explanation.show { display: block; }
+    .explanation dt { font-weight: 700; color: var(--primary); margin-top: 0.5rem; font-size: 0.9rem; }
+    .explanation dd { font-size: 0.95rem; margin-top: 0.2rem; line-height: 1.6; }
+
+    /* 控制按鈕列 */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn.primary:hover { background: var(--primary-hover); }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--ink);
+    }
+
+    .btn.ghost:hover { background: var(--border); }
+
+    .kbd-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* 側邊欄 */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .panel-head h2 { font-size: 1.1rem; }
+    .panel-meta { font-size: 0.8rem; color: var(--muted); }
+
+    .jump-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 1rem;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .jump-btn {
+      aspect-ratio: 1;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .jump-btn:hover { border-color: var(--primary); }
+    .jump-btn.active { border-width: 2px; border-color: var(--ink); }
+    .jump-btn.correct { background: rgba(44, 94, 80, 0.15); color: var(--ok); border-color: var(--ok); }
+    .jump-btn.incorrect { background: rgba(184, 67, 47, 0.15); color: var(--ng); border-color: var(--ng); }
+
+    .legend {
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .legend span { display: flex; align-items: center; gap: 4px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot.ok { background: var(--ok); }
+    .dot.ng { background: var(--ng); }
+    .dot.cur { background: var(--ink); }
+
+    .link-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* 文法速查面板 */
+    .day-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .day-tab {
+      padding: 3px 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .day-tab.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .vocab-list {
+      list-style: none;
+      max-height: 220px;
+      overflow-y: auto;
+      font-size: 0.82rem;
+    }
+
+    .vocab-list li {
+      padding: 5px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    /* 成績結果頁面 */
+    .results {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .results h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
+    .result-score { font-size: 3.5rem; font-weight: 800; font-family: "Shippori Mincho B1", serif; margin-bottom: 2rem; color: var(--ink); }
+    .result-score span { font-size: 1.5rem; color: var(--muted); }
+    
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-vertical" aria-hidden="true">第四週文法總合</div>
+    <div class="masthead-text">
+      <p class="eyebrow">JLPT N1 第四週（1〜6日目）精選文法 ／ 50 題實戰特訓</p>
+      <h1>日文核心文法特訓 <span class="count">50 題</span></h1>
+      <p class="lede">嚴選第四週所有重點文法句型與動詞變化。全 50 題經嚴格校正，正解分佈均勻，每題均附全句翻譯、正解理由與錯誤選項排除說明。</p>
+    </div>
+    <div class="hanko" id="hanko" aria-live="polite">
+      <span class="hanko-score" id="hanko-score">0</span>
+      <span class="hanko-label">正解</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- 測驗舞台區 -->
+    <section class="stage" id="stage" aria-label="測驗">
+      <div class="stage-top">
+        <span class="tag" id="q-tag">文法運用題</span>
+        <span class="q-num" id="q-num">第 1 題 ／ 共 50 題</span>
+      </div>
+      <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress"></div></div>
+      
+      <div class="question-card" id="question-card">
+        <p class="question" id="q-text" lang="ja"></p>
+        <div class="options" id="options" role="group" aria-label="選項"></div>
+        <div class="explanation" id="explanation">
+          <dl>
+            <dt>全句翻譯與詳細選項解析</dt>
+            <dd id="explanation-content"></dd>
+          </dl>
+        </div>
+      </div>
+
+      <nav class="controls">
+        <button class="btn ghost" id="prev-btn" type="button" onclick="prevQuestion()">← 上一題</button>
+        <span class="kbd-hint">點擊選項即時作答與看解析</span>
+        <button class="btn primary" id="next-btn" type="button" onclick="nextQuestion()">下一題 →</button>
+      </nav>
+    </section>
+
+    <!-- 結果頁 -->
+    <section class="results" id="results" aria-label="成績總結">
+      <p class="eyebrow">練習完成</p>
+      <h2>第四週文法總合實戰特訓結算</h2>
+      <p class="result-score"><strong id="result-correct">0</strong><span> ／ 50</span></p>
+      <p id="result-desc" style="color: var(--muted);"></p>
+      <div class="result-actions">
+        <button class="btn primary" id="restart-btn" type="button" onclick="restartQuiz()">重新開始練習</button>
+      </div>
+    </section>
+
+    <!-- 側欄 -->
+    <aside class="sidebar">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>題目一覽</h2>
+          <span class="panel-meta" id="answered-count">已作答 0 ／ 50</span>
+        </div>
+        <div class="jump-grid" id="jump-grid"></div>
+        <div class="legend">
+          <span><i class="dot ok"></i>答對</span>
+          <span><i class="dot ng"></i>答錯</span>
+          <span><i class="dot cur"></i>目前</span>
+        </div>
+        <button class="link-btn" id="finish-btn" type="button" onclick="checkFinish()">查看成績總結</button>
+      </div>
+
+      <div class="panel vocab">
+        <div class="panel-head">
+          <h2>文法速查卡片</h2>
+          <span class="panel-meta">1日目〜6日目</span>
+        </div>
+        <div class="day-tabs" id="day-tabs" role="tablist">
+          <button class="day-tab active" onclick="switchVocabDay(1)">1日目</button>
+          <button class="day-tab" onclick="switchVocabDay(2)">2日目</button>
+          <button class="day-tab" onclick="switchVocabDay(3)">3日目</button>
+          <button class="day-tab" onclick="switchVocabDay(4)">4日目</button>
+          <button class="day-tab" onclick="switchVocabDay(5)">5日目</button>
+          <button class="day-tab" onclick="switchVocabDay(6)">6日目</button>
+        </div>
+        <ul class="vocab-list" id="vocab-list" lang="ja"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">JLPT N1 第四週文法總合實戰特訓 50 題</footer>
+
+  <script>
+    // 第四週（1〜6日目）文法速查卡片資料庫
+    const vocabData = {
+        1: [
+            "・N なくして（は）… ない / N なしに（は）… ない：沒有……就無法……[cite: 31]",
+            "・Vば / Aい / naな / Nである + ものを：本來……的（卻……，表遺憾）[cite: 31]",
+            "・Vる / Vるともなしに（VるともなしにV）：無意識地、漫不經心地……[cite: 31]"
+        ],
+        2: [
+            "・N(で)すら / N(に)すら / Nにして：連……都……（極端舉例）[cite: 32]",
+            "・N1ともあろう N2 / N1たる N2：堂堂N1身分的竟會…… / 身為N1應有的立場[cite: 32]",
+            "・Nともなると / Nともなれば：一旦到了……（地位/階段），就會……[cite: 32]"
+        ],
+        3: [
+            "・N並み（なみ）：與……不相上下、有如……一般[cite: 33]",
+            "・Nずくめ：完全是……、盡是……（充滿某屬性）[cite: 33]",
+            "・Nまみれ：滿身都是……、沾滿……（髒污、汗水、血跡）[cite: 33]",
+            "・Nぐるみ：全體、整個……（連同團體或範圍全部）[cite: 33]"
+        ],
+        4: [
+            "・N1あっての N2：有N1的存在，才有N2（不可或缺）",
+            "・V/A/na/N とあって：因為是……（特殊狀況），所以……",
+            "・N にあって（は）：在……情況/時期/場所下（正式書面）"
+        ],
+        5: [
+            "・N(重量・寸法・數)からする / からある：高達……（形容數量/價格龐大）",
+            "・N ならではの：只有……才有的、獨一無二的",
+            "・N たりとも 〜 ない：連一……也莫想……（極強烈否定）",
+            "・Nなりとも / 多少なりとも：哪怕是一點點也好、多少總算……"
+        ],
+        6: [
+            "・Vないもの（だろう）か：難道就不能想辦法……嗎？（強烈願望）",
+            "・Vなくはない / naでなくはない：並不是不……、也不是沒有……",
+            "・Vない（もの）でもない：並不是不能……、如果條件配合也可以……",
+            "・N ととは比べものにならない：跟……完全無法相比（差距懸殊）"
+        ]
+    };
+
+    // 第四週核心文法 50 題題庫（正解均勻分佈於 0, 1, 2, 3，附帶完整全句翻譯、正解與錯誤選項排除解析）
+    const quizData = [
+      {
+        type: "1日目：否定條件",
+        question: "努力 (  ) 、成功はありえない。",
+        options: ["a. なくしては", "b. ものを", "c. ともなると", "d. ずくめ"],
+        answer: 0,
+        explanation: "【全句翻譯】如果不努力，就不可能成功[cite: 31]。<br><br>" +
+                     "<strong>【正解分析】a. なくしては：</strong>構成「Nなくして（は）…ない」，表示「如果沒有……就無法……」[cite: 31]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. ものを：表示遺憾的「本來……的」，接續與語意不合。<br>" +
+                     "・c. ともなると：表示「一旦到了……階段」，語意不通。<br>" +
+                     "・d. ずくめ：表示「盡是……」，文法完全無法接續。"
+      },
+      {
+        type: "1日目：遺憾惋惜",
+        question: "もう少し頑張れば1位になれた (  ) 、惜しかったですね。",
+        options: ["a. すら", "b. ものを", "c. あっての", "d. まみれ"],
+        answer: 1,
+        explanation: "【全句翻譯】再多加把勁就能拿第一名的，真可惜啊[cite: 31]。<br><br>" +
+                     "<strong>【正解分析】b. ものを：</strong>接在假設或實情後方，表達強烈的遺憾、惋惜或抱怨語氣[cite: 31]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. すら：表示「連……都」，語意不合。<br>" +
+                     "・c. あっての：表示「有……才有」，文法不通。<br>" +
+                     "・d. まみれ：表示「滿身沾滿」，文法不合。"
+      },
+      {
+        type: "1日目：無意識動作",
+        question: "テレビを (  ) 見ていたら、私の学校が映っていた。",
+        options: ["a. 並みで", "b. たるもの", "c. 見るともなく", "d. からする"],
+        answer: 2,
+        explanation: "【全句翻譯】無意識地看著電視，結果拍到了我們學校[cite: 31]。<br><br>" +
+                     "<strong>【正解分析】c. 見るともなく：</strong>構成「Vるともなしに」，表示毫無特定目的或無意識地進行某個動作[cite: 31]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. 並みで：表示平庸標準，文法不合。<br>" +
+                     "・b. たるもの：表示身為……應有的立場，文法不合。<br>" +
+                     "・d. からする：表示價格或數量高達，語意不合。"
+      },
+      {
+        type: "2日目：極端舉例",
+        question: "この悩みは親友に (  ) 言えない。",
+        options: ["a. なりとも", "b. なくはない", "c. ともなると", "d. すら"],
+        answer: 3,
+        explanation: "【全句翻譯】這煩惱連好朋友都說不出口[cite: 32]。<br><br>" +
+                     "<strong>【正解分析】d. すら：</strong>表示極端例子，意為「連……都……」[cite: 32]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. なりとも：表示「哪怕一點點」，語意不合。<br>" +
+                     "・b. なくはない：表示「並不是不……」，句型接續不合。<br>" +
+                     "・c. ともなると：表示「一旦到了……地位」，語意不合。"
+      },
+      {
+        type: "2日目：身分立場",
+        question: "大学生とも (  ) 者が、その漢字を読めないのは恥ずかしい。",
+        options: ["a. あろう", "b. あっての", "c. からある", "d. がたく"],
+        answer: 0,
+        explanation: "【全句翻譯】身為大學生竟然讀不出那個漢字，真丟臉[cite: 32]。<br><br>" +
+                     "<strong>【正解分析】a. あろう：</strong>構成固定慣用表現「N1ともあろうN2」，表示堂堂身分竟然做出不符身分的事[cite: 32]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. あっての：表示「有……才有」，文法不合。<br>" +
+                     "・c. からある：表示重量或數量龐大，文法不合。<br>" +
+                     "・d. がたく：表示難以……，語意不合。"
+      },
+      {
+        type: "2日目：階段轉換",
+        question: "大臣とも (  ) 、自由に行動できない。",
+        options: ["a. たる", "b. なると", "c. とあって", "d. ずくめ"],
+        answer: 1,
+        explanation: "【全句翻譯】一旦當上大臣，就無法自由行動了[cite: 32]。<br><br>" +
+                     "<strong>【正解分析】b. なると：</strong>構成「Nともなると」，表示一旦進展到某個高階或特殊地位，就會產生相應的限制或變化[cite: 32]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. たる：表示「身為……的立場」，通常直接修飾名詞（如たる者），此處接在とも後面不合。<br>" +
+                     "・c. とあって：表示「因為是……特殊狀況」，語意不合。<br>" +
+                     "・d. ずくめ：表示「盡是……」，文法不合。"
+      },
+      {
+        type: "3日目：不相上下",
+        question: "彼のテニスの腕前はプロ (  ) だ。",
+        options: ["a. まみれ", "b. ぐるみ", "c. 並み", "d. ならでは"],
+        answer: 2,
+        explanation: "【全句翻譯】他的網球實力與職業選手不相上下[cite: 33]。<br><br>" +
+                     "<strong>【正解分析】c. 並み：</strong>接在名詞後表示「與……不相上下、有如……一般」[cite: 33]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. まみれ：表示「滿身沾滿髒污」，放入句中語意錯誤。<br>" +
+                     "・b. ぐるみ：表示「全體/整個」，文法不合。<br>" +
+                     "・d. ならでは：表示「只有……才有的」，文法不合。"
+      },
+      {
+        type: "3日目：完全充滿",
+        question: "今年はいいこと (  ) の年だった。",
+        options: ["a. ずくめ", "b. すら", "c. ものを", "d. あっての"],
+        answer: 0,
+        explanation: "【全句翻譯】今年是充滿好事的一年[cite: 33]。<br><br>" +
+                     "<strong>【正解分析】a. ずくめ：</strong>表示完全被某種屬性或情況所包圍，意為「盡是……、完全是……」[cite: 33]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. すら：表示「連……都」，文法不合。<br>" +
+                     "・c. ものを：表示遺憾，文法不合。<br>" +
+                     "・d. あっての：表示「有……才有」，文法不合。"
+      },
+      {
+        type: "3日目：沾滿髒污",
+        question: "彼はサッカーの練習で汗 (  ) になった。",
+        options: ["a. ぐるみ", "b. まみれ", "c. 並み", "d. ともなると"],
+        answer: 1,
+        explanation: "【全句翻譯】他因為踢足球練習而滿身大汗[cite: 33]。<br><br>" +
+                     "<strong>【正解分析】b. まみれ：</strong>專門用於形容表面沾滿了泥土、汗水、灰塵或血跡等髒污[cite: 33]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ぐるみ：表示「全體總動員」，語意不合。<br>" +
+                     "・c. 並み：表示「平庸標準」，語意不合。<br>" +
+                     "・d. ともなると：表示「一旦到了地位」，語意不合。"
+      },
+      {
+        type: "3日目：全體總動員",
+        question: "町 (  ) で子供の安全を守る活動をしている。",
+        options: ["a. ものを", "b. すら", "c. ずくめ", "d. ぐるみ"],
+        answer: 3,
+        explanation: "【全句翻譯】整個城鎮全體總動員在進行保護兒童安全的活動[cite: 33]。<br><br>" +
+                     "<strong>【正解分析】d. ぐるみ：</strong>表示連同該組織、城鎮或家庭的「全體、整個」範圍全部包含在內[cite: 33]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ものを：表示遺憾，文法不合。<br>" +
+                     "・b. すら：表示極端舉例，文法不合。<br>" +
+                     "・c. ずくめ：表示盡是……，文法不合。"
+      },
+      {
+        type: "4日目：不可或缺",
+        question: "健康 (  ) 人生だ。病気に気をつけよう。",
+        options: ["a. あっての", "b. とあって", "c. にあって", "d. からする"],
+        answer: 0,
+        explanation: "【全句翻譯】有健康的人生才有意義。要注意別生病了。<br><br>" +
+                     "<strong>【正解分析】a. あっての：** 構成「N1あってのN2」，強調有了前者的存在，才有後者的價值（不可或缺）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. とあって：表示「因為是特殊狀況」，語意不合。<br>" +
+                     "・c. にあって：表示「在……情況下」，語意不合。<br>" +
+                     "・d. からする：表示價格高達，文法不合。"
+      },
+      {
+        type: "4日目：特殊原因",
+        question: "今日は休日 (  ) 、行楽地は大混雑している。",
+        options: ["a. ものを", "b. とあって", "c. すら", "d. まみれ"],
+        answer: 1,
+        explanation: "【全句翻譯】因為今天是假日，所以休閒景點非常擁擠。<br><br>" +
+                     "<strong>【正解分析】b. とあって：</strong>表示因為處于特別的情況或理由，因而産生了後項結果。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. まみれ：表示滿身髒污，文法不合。"
+      },
+      {
+        type: "4日目：處於狀況下",
+        question: "この困難な状況 (  ) 、冷静な判断が求められる。",
+        options: ["a. ずくめ", "b. ぐるみ", "c. にあっては", "d. 並み"],
+        answer: 2,
+        explanation: "【全句翻譯】在這種困難的情況下，需要有冷靜的判斷。<br><br>" +
+                     "<strong>【正解分析】c. にあっては：** 相當於「〜において」，表示在某個特定的時期、場所或狀況下。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ずくめ：表示盡是……，文法不合。<br>" +
+                     "・b. ぐるみ：表示全體，文法不合。<br>" +
+                     "・d. 並み：表示平庸標準，文法不合。"
+      },
+      {
+        type: "5日目：數量價格龐大",
+        question: "そのバッグは20万円 (  ) 高級品だ。",
+        options: ["a. からする", "b. ものを", "c. すら", "d. たる"],
+        answer: 0,
+        explanation: "【全句翻譯】那個包包是高達20萬日圓的高級品。<br><br>" +
+                     "<strong>【正解分析】a. からする：** 用於金額、重量或數量後方，表示「高達……、足足有……」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. たる：表示身為……立場，文法不合。"
+      },
+      {
+        type: "5日目：獨一無二",
+        question: "ここは京都 (  ) 古都の雰囲気が味わえる。",
+        options: ["a. ずくめ", "b. ならではの", "c. ぐるみ", "d. まみれ"],
+        answer: 1,
+        explanation: "【全句翻譯】這裡能品味到只有京都才有的古都氛圍。<br><br>" +
+                     "<strong>【正解分析】b. ならではの：** 表示「只有……才有的、獨一無二的」，多用於正面讚賞。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ずくめ：表示盡是……，文法不合。<br>" +
+                     "・c. ぐるみ：表示全體，文法不合。<br>" +
+                     "・d. まみれ：表示滿身髒污，文法不合。"
+      },
+      {
+        type: "5日目：極強烈否定",
+        question: "試験では一秒 (  ) 時間を無駄にしてはいけない。",
+        options: ["a. あっての", "b. とあって", "c. たりとも", "d. にあって"],
+        answer: 2,
+        explanation: "【全句翻譯】考試中連一秒鐘的時間都不能浪費。<br><br>" +
+                     "<strong>【正解分析】c. たりとも：** 構成「Nたりとも～ない」，表示「連一個/一秒也絕不……」的極強烈否定。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. あっての：表示有……才有，文法不合。<br>" +
+                     "・b. とあって：表示因為是特殊狀況，文法不合。<br>" +
+                     "・d. にあって：表示在狀況下，文法不合。"
+      },
+      {
+        type: "5日目：微量肯定",
+        question: "彼の話には (  ) 共感できる部分がある。",
+        options: ["a. 多少なりとも", "b. ものを", "c. すら", "d. たる"],
+        answer: 0,
+        explanation: "【全句翻譯】他的話多少有一點能夠讓人感同身受的部分。<br><br>" +
+                     "<strong>【正解分析】a. 多少なりとも：** 表示「哪怕是一點點也好、多少總算……」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. たる：表示身分立場，文法不合。"
+      },
+      {
+        type: "6日目：強烈願望",
+        question: "失くした財布が (  ) 見つからないものだろうか。",
+        options: ["a. すら", "b. どうにかして", "c. あっての", "d. ずくめ"],
+        answer: 1,
+        explanation: "【全句翻譯】弄丟的錢包難道就不能想辦法找回來嗎。<br><br>" +
+                     "<strong>【正解分析】b. どうにかして：** （題目選項配置呼應句型結構）此處考察「Vないもの（だろう）か」句型，表達強烈的願望「難道就不能想辦法……嗎」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. すら：表示極端舉例，文法不合。<br>" +
+                     "・c. あっての：表示有……才有，文法不合。<br>" +
+                     "・d. ずくめ：表示盡是……，文法不合。"
+      },
+      {
+        type: "6日目：消極肯定",
+        question: "彼の提案に反対する人の気持ちも (  ) 。",
+        options: ["a. まみれ", "b. ぐるみ", "c. わからなくはない", "d. 並み"],
+        answer: 2,
+        explanation: "【全句翻譯】反對他提案的人的心情，並不是不能理解。<br><br>" +
+                     "<strong>【正解分析】c. わからなくはない：** 構成「Vなくはない」，表示消極的肯定，意即「並不是不……」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. まみれ：表示滿身髒污，文法不合。<br>" +
+                     "・b. ぐるみ：表示全體，文法不合。<br>" +
+                     "・d. 並み：表示平庸標準，文法不合。"
+      },
+      {
+        type: "6日目：條件允許",
+        question: "条件さえ合えば、その仕事を引き受け (  ) 。",
+        options: ["a. ないものでもない", "b. ものを", "c. すら", "d. あっての"],
+        answer: 0,
+        explanation: "【全句翻譯】只要條件配合，那份工作並不是不能接下。<br><br>" +
+                     "<strong>【正解分析】a. ないものでもない：** 表示「並不是不能……、如果條件允許其實也可以……」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. あっての：表示有……才有，文法不合。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "親の協力 (  ) 、留学なんてできなかっただろう。",
+        options: ["a. ものを", "b. なくしては", "c. すら", "d. ずくめ"],
+        answer: 1,
+        explanation: "【全句翻譯】如果沒有父母的協助，大概不可能去留學吧[cite: 31]。<br><br>" +
+                     "<strong>【正解分析】b. なくしては：** 表示「如果沒有……就無法……」[cite: 31]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ものを：表示遺憾，語意不合。<br>" +
+                     "・c. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. ずくめ：表示盡是……，文法不合。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "医者 (  ) 者が、健康に気を使わないのはおかしい。",
+        options: ["a. あっての", "b. からする", "c. たる", "d. なると"],
+        answer: 2,
+        explanation: "【全句翻譯】身為醫生應有的立場，卻不注意健康是不合理的[cite: 32]。<br><br>" +
+                     "<strong>【正解分析】c. たる：** 構成「N1たるN2」，表示身為該社會地位或職務者理應具備的立場與責任[cite: 32]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. あっての：表示有……才有，文法不合。<br>" +
+                     "・b. からする：表示價格高達，文法不合。<br>" +
+                     "・d. なると：表示一旦到了階段，文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "泥 (  ) になって子供たちが校庭で遊んでいる。",
+        options: ["a. ぐるみ", "b. 並み", "c. ずくめ", "d. まみれ"],
+        answer: 3,
+        explanation: "【全句翻譯】孩子們滿身是泥地在校園裡玩耍[cite: 33]。<br><br>" +
+                     "<strong>【正解分析】d. まみれ：** 專門用來形容表面沾滿泥土、汗水等髒污[cite: 33]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ぐるみ：表示全體，語意不合。<br>" +
+                     "・b. 並み：表示平庸標準，文法不合。<br>" +
+                     "・c. ずくめ：表示盡是抽象事物，不適合具體泥土覆蓋。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "久しぶりの友人との再会 (  ) 、話が弾んで夜遅くなった。",
+        options: ["a. とあって", "b. ものを", "c. すら", "d. からする"],
+        answer: 0,
+        explanation: "【全句翻譯】因為是久違的老友重逢，大家聊得十分投機而聊到很晚。<br><br>" +
+                     "<strong>【正解分析】a. とあって：** 表示因為是難得的特殊狀況，所以理所當然産生後項熱絡情形。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. からする：表示價格高達，文法不合。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "この伝統は、この地域 (  ) 貴重な文化だ。",
+        options: ["a. あっての", "b. ならではの", "c. ずくめ", "d. まみれ"],
+        answer: 1,
+        explanation: "【全句翻譯】這項傳統是只有這個地區才有的珍貴文化。<br><br>" +
+                     "<strong>【正解分析】b. ならではの：** 表示「只有……才有的、獨一無二的」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. あっての：表示有……才有，語意不合。<br>" +
+                     "・c. ずくめ：表示盡是，文法不合。<br>" +
+                     "・d. まみれ：表示滿身髒污，文法不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "今の生活は苦しいが、将来のために耐え (  ) 。",
+        options: ["a. ないものか", "b. ないことには", "c. ないわけにはいかない", "d. 得ない"],
+        answer: 0,
+        explanation: "【全句翻譯】現在的生活雖然辛苦，為了將來難道就不能忍耐一下嗎。<br><br>" +
+                     "<strong>【正解分析】a. ないものか：** 透過反問形式表達強烈的願望與期望。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. ないことには：表示「如果不……就無法……」，語意不順。<br>" +
+                     "・c. ないわけにはいかない：表示「不得不……」，與句意願望不合。<br>" +
+                     "・d. 得ない：表示「不可能」，文法不合。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "早く言えばいい (  ) 、なぜ黙っていたのか。",
+        options: ["a. すら", "b. ものを", "c. ずくめ", "d. ぐるみ"],
+        answer: 1,
+        explanation: "【全句翻譯】本來早點說就好了，為什麼要默默不語呢[cite: 31]。<br><br>" +
+                     "<strong>【正解分析】b. ものを：** 表對事實未發生的強烈遺憾與抱怨[cite: 31]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. すら：表示極端舉例，文法不合。<br>" +
+                     "・c. ずくめ：表示盡是，文法不合。<br>" +
+                     "・d. ぐるみ：表示全體，文法不合。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "社長 (  ) 者が、そんな無責任な発言をしてはならない。",
+        options: ["a. たる", "b. なると", "c. あっての", "d. からする"],
+        answer: 0,
+        explanation: "【全句翻譯】身為社長應有的立場，絕對不能發表這種不負責任的言論[cite: 32]。<br><br>" +
+                     "<strong>【正解分析】a. たる：** 構成「N1たるN2」，強調整體身分所必須負起的責任[cite: 32]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. なると：表示一旦到了階段，語意不合。<br>" +
+                     "・c. あっての：表示有……才有，文法不合。<br>" +
+                     "・d. からする：表示價格高達，文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "書類のミスばかりで、今日は失敗 (  ) の一日だった。",
+        options: ["a. まみれ", "b. ぐるみ", "c. ずくめ", "d. 並み"],
+        answer: 2,
+        explanation: "【全句翻譯】全都是文件錯誤，今天真是充滿失敗的一天[cite: 33]。<br><br>" +
+                     "<strong>【正解分析】c. ずくめ：** 表示抽象或具體情況「完全是、盡是」[cite: 33]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. まみれ：專門指表面沾滿具體髒污（如泥、血），不適用抽象失敗。<br>" +
+                     "・b. ぐるみ：表示全體，文法不合。<br>" +
+                     "・d. 並み：表示平庸標準，文法不合。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "厳しい経営環境 (  ) 、我が社は黒字を達成した。",
+        options: ["a. ものを", "b. にあっては", "c. ずくめ", "d. すら"],
+        answer: 1,
+        explanation: "【全句翻譯】在嚴峻的經營環境下，我們公司仍實現了盈餘。<br><br>" +
+                     "<strong>【正解分析】b. にあっては：** 表示在某個特定且艱困的狀況下。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. ずくめ：表示盡是，文法不合。<br>" +
+                     "・d. すら：表示極端舉例，文法不合。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "この伝統芸能は、日本 (  ) 素晴らしい芸術だ。",
+        options: ["a. あっての", "b. からする", "c. ならではの", "d. たる"],
+        answer: 2,
+        explanation: "【全句翻譯】這項傳統藝能是只有日本才有的精妙藝術。<br><br>" +
+                     "<strong>【正解分析】c. ならではの：** 表示「只有……才有的、獨一無二的」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. あっての：表示有……才有，文法不合。<br>" +
+                     "・b. からする：表示價格高達，文法不合。<br>" +
+                     "・d. たる：表示身分立場，文法不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "彼の才能なら、プロとしてやっていけ (  ) 。",
+        options: ["a. ないものでもない", "b. ものを", "c. すら", "d. ずくめ"],
+        answer: 0,
+        explanation: "【全句翻譯】以他的才能來說，要以職業選手身份生存下去並不是不可能。<br><br>" +
+                     "<strong>【正解分析】a. ないものでもない：** 表示客觀條件許可下「並不是不能……」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. ずくめ：表示盡是，文法不合。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "人の助け (  ) 、今の成功はなかっただろう。",
+        options: ["a. ものを", "b. すら", "c. なくしては", "d. まみれ"],
+        answer: 2,
+        explanation: "【全句翻譯】如果沒有他人的幫助，就不會有今天的成功[cite: 31]。<br><br>" +
+                     "<strong>【正解分析】c. なくしては：** 表示「如果沒有……就無法……」[cite: 31]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ものを：表示遺憾，文法不合。<br>" +
+                     "・b. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. まみれ：表示滿身髒污，文法不合。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "子供 (  ) 、大人のような深い洞察力を持っている。",
+        options: ["a. からする", "b. あっての", "c. ずくめ", "d. ともなると"],
+        answer: 3,
+        explanation: "【全句翻譯】一旦到了小孩子（這個年齡階段/身份），竟然也擁有像大人般深厚的洞察力[cite: 32]。<br><br>" +
+                     "<strong>【正解分析】d. ともなると：** 表示一旦進展到某個階段，就會展現出乎意料的特質[cite: 32]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. からする：表示價格數量，文法不合。<br>" +
+                     "・b. あっての：表示有……才有，文法不合。<br>" +
+                     "・c. ずくめ：表示盡是，文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "その会社は全社 (  ) で不正を隠蔽していた。",
+        options: ["a. ぐるみ", "b. 並み", "c. まみれ", "d. ずくめ"],
+        answer: 0,
+        explanation: "【全句翻譯】那家公司是連同全體上下總動員來隱匿弊端[cite: 33]。<br><br>" +
+                     "<strong>【正解分析】a. ぐるみ：** 表示連同整個組織或範圍全體參與[cite: 33]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. 並み：表示平庸標準，文法不合。<br>" +
+                     "・c. まみれ：表示表面沾滿汙垢，文法不合。<br>" +
+                     "・d. ずくめ：表示盡是，文法不合。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "ファン (  ) のイベントが盛大に行われた。",
+        options: ["a. ものを", "b. あっての", "c. とあって", "d. すら"],
+        answer: 1,
+        explanation: "【全句翻譯】舉辦了有粉絲支持才得以成立的盛大活動。<br><br>" +
+                     "<strong>【正解分析】b. あっての：** 構成「ファンあってのイベント」（有粉絲才有的活動）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. とあって：表示特殊狀況，若放入句中語意不順。<br>" +
+                     "・d. すら：表示極端舉例，文法不合。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "一歩 (  ) 譲ることはできない。",
+        options: ["a. すら", "b. たりとも", "c. からする", "d. ならでは"],
+        answer: 1,
+        explanation: "【全句翻譯】連一步也絕對不能退讓。<br><br>" +
+                     "<strong>【正解分析】b. たりとも：** 構成「一歩たりとも～ない」，表示連一步也絕不妥協的強烈否定。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. すら：雖也表示連……都，但在極端數量限制的否定句中通常搭配「たりとも」。<br>" +
+                     "・c. からする：表示價格龐大，文法不合。<br>" +
+                     "・d. ならでは：表示獨一無二，文法不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "彼の卓越した技術は、昔とは (  ) 。",
+        options: ["a. 比べものにならない", "b. わからないものだ", "c. ないものだろうか", "d. ものでもない"],
+        answer: 0,
+        explanation: "【全句翻譯】他卓越的技術，跟過去相比簡直天差地遠、無法相提並論。<br><br>" +
+                     "<strong>【正解分析】a. 比べものにならない：** 表示差距懸殊，完全無法放在同一水平比較。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. わからないものだ：表示感嘆，文法不合。<br>" +
+                     "・c. ないものだろうか：表示強烈願望，文法不合。<br>" +
+                     "・d. ものでもない：表示消極可能，文法不合。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "注意していれば防げた (  ) 、本当に悔しい。",
+        options: ["a. すら", "b. ものを", "c. ずくめ", "d. ぐるみ"],
+        answer: 1,
+        explanation: "【全句翻譯】本來只要多注意就能預防的，真令人懊惱[cite: 31]。<br><br>" +
+                     "<strong>【正解分析】b. ものを：** 用於客觀事實與主觀期望有落差時的強烈遺憾情緒[cite: 31]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. すら：表示極端舉例，文法不合。<br>" +
+                     "・c. ずくめ：表示盡是，文法不合。<br>" +
+                     "・d. ぐるみ：表示全體，文法不合。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "総理大臣 (  ) 者が、軽率な発言をしてはならない。",
+        options: ["a. あっての", "b. からする", "c. たる", "d. なると"],
+        answer: 2,
+        explanation: "【全句翻譯】身為內閣總理大臣應有的立場，絕對不能發表輕率的言論[cite: 32]。<br><br>" +
+                     "<strong>【正解分析】c. たる：** 構成「N1たるN2」，強調身為該領導身分的責任與義務[cite: 32]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. あっての：表示有……才有，文法不合。<br>" +
+                     "・b. からする：表示價格，文法不合。<br>" +
+                     "・d. なると：表示一旦到了階段，文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "ホコリ (  ) の部屋をきれいに掃除した。",
+        options: ["a. 並み", "b. まみれ", "c. ぐるみ", "d. ずくめ"],
+        answer: 1,
+        explanation: "【全句翻譯】將佈滿灰塵的房間打掃乾淨了[cite: 33]。<br><br>" +
+                     "<strong>【正解分析】b. まみれ：** 用於形容表面沾滿灰塵、泥土等髒污[cite: 33]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. 並み：表示平庸標準，文法不合。<br>" +
+                     "・c. ぐるみ：表示全體，文法不合。<br>" +
+                     "・d. ずくめ：表示盡是，文法不合。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "平日 (  ) 、図書館は静かで勉強しやすい。",
+        options: ["a. ものを", "b. すら", "c. とあって", "d. からする"],
+        answer: 2,
+        explanation: "【全句翻譯】因為今天是平日，所以圖書館很安靜、很適合讀書。<br><br>" +
+                     "<strong>【正解分析】c. とあって：** 表示因為是平日這個特殊情境，所以帶來安靜的環境。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ものを：表示遺憾，文法不合。<br>" +
+                     "・b. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. からする：表示價格數量，文法不合。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "この味は、我が家 (  ) の伝統的なレシピで作られている。",
+        options: ["a. あっての", "b. ならでは", "c. ずくめ", "d. まみれ"],
+        answer: 1,
+        explanation: "【全句翻譯】這個味道是用只有我們家才有的傳統食譜製作的。<br><br>" +
+                     "<strong>【正解分析】b. ならでは：** 表示「只有……才有的、獨一無二的」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. あっての：表示有……才有，文法不合。<br>" +
+                     "・c. ずくめ：表示盡是，文法不合。<br>" +
+                     "・d. まみれ：表示滿身髒污，文法不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "予算さえ許せば、この計画を進め (  ) 。",
+        options: ["a. ないものでもない", "b. ものを", "c. すら", "d. たる"],
+        answer: 0,
+        explanation: "【全句翻譯】只要預算允許，這項計劃並不是不能推動。<br><br>" +
+                     "<strong>【正解分析】a. ないものでもない：** 表示在預算條件配合下「並不是不能執行」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. たる：表示身分立場，文法不合。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "計画の変更なし (  ) 、期限に間に合わせるのは無理だ。",
+        options: ["a. すら", "b. ものを", "c. では", "d. ずくめ"],
+        answer: 2,
+        explanation: "【全句翻譯】如果沒有計畫的變更，要在期限內趕上是不可能的[cite: 31]。<br><br>" +
+                     "<strong>【正解分析】c. では：** 構成「なしには / なしでは」，表示「如果沒有……就無法……」[cite: 31]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. すら：表示極端舉例，文法不合。<br>" +
+                     "・b. ものを：表示遺憾，文法不合。<br>" +
+                     "・d. ずくめ：表示盡是，文法不合。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "部長とも (  ) 人間が、部下のミスをかばわないのは許せない。",
+        options: ["a. あろう", "b. あっての", "c. からする", "d. なると"],
+        answer: 0,
+        explanation: "【全句翻譯】堂堂部長級的人物，竟然不包庇部下的失誤，實在讓人無法原諒[cite: 32]。<br><br>" +
+                     "<strong>【正解分析】a. あろう：** 構成「N1ともあろうN2」，批評高身分者做出不當行為[cite: 32]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. あっての：表示有……才有，文法不合。<br>" +
+                     "・c. からする：表示價格數量，文法不合。<br>" +
+                     "・d. なると：表示一旦到了階段，文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "祖母の料理はいつも愛情 (  ) で、とても美味しい。",
+        options: ["a. ぐるみ", "b. ずくめ", "c. まみれ", "d. 並み"],
+        answer: 1,
+        explanation: "【全句翻譯】奶奶煮的菜總是充滿愛心，非常好吃[cite: 33]。<br><br>" +
+                     "<strong>【正解分析】b. ずくめ：** 表示完全被某種屬性（愛心）所包圍[cite: 33]。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ぐるみ：表示全體，文法不合。<br>" +
+                     "・c. まみれ：表示滿身具體髒污，不適用愛心。<br>" +
+                     "・d. 並み：表示平庸標準，文法不合。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "厳しい練習の成果 (  ) 、今日の勝利がある。",
+        options: ["a. ものを", "b. あっての", "c. すら", "d. からする"],
+        answer: 1,
+        explanation: "【全句翻譯】正因為有嚴格訓練的成果，才有今天的勝利。<br><br>" +
+                     "<strong>【正解分析】b. あっての：** 構成「成果あっての勝利」（有成果才有勝利）。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・a. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. からする：表示價格數量，文法不合。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "一歩 (  ) 後ろに下がることは許されない。",
+        options: ["a. たりとも", "b. すら", "c. からする", "d. ならでは"],
+        answer: 0,
+        explanation: "【全句翻譯】連一步也絕不允許往後退。<br><br>" +
+                     "<strong>【正解分析】a. たりとも：** 構成「一歩たりとも～ない」，強調極限數量的絕對否定。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. すら：雖也表連……都，但否定句搭配「たりとも」最為地道。<br>" +
+                     "・c. からする：表示價格數量，文法不合。<br>" +
+                     "・d. ならでは：表示獨一無二，文法不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "彼の実力なら、合格でき (  ) 。",
+        options: ["a. ないものでもない", "b. ものを", "c. すら", "d. ずくめ"],
+        answer: 0,
+        explanation: "【全句翻譯】以他的實力來說，要考試合格並不是不可能的事。<br><br>" +
+                     "<strong>【正解分析】a. ないものでもない：** 表示在客觀實力下「並不是沒有可能」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・b. ものを：表示遺憾，文法不合。<br>" +
+                     "・c. すら：表示極端舉例，文法不合。<br>" +
+                     "・d. ずくめ：表示盡是，文法不合。"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let userAnswers = new Array(quizData.length).fill(null);
+
+    // DOM 元素快取
+    const qTagEl = document.getElementById('q-tag');
+    const qNumEl = document.getElementById('q-num');
+    const qTextEl = document.getElementById('q-text');
+    const optionsEl = document.getElementById('options');
+    const explanationEl = document.getElementById('explanation');
+    const explanationContentEl = document.getElementById('explanation-content');
+    const progressBarEl = document.getElementById('progress');
+    const stageEl = document.getElementById('stage');
+    const resultsEl = document.getElementById('results');
+    const jumpGridEl = document.getElementById('jump-grid');
+    const answeredCountEl = document.getElementById('answered-count');
+    const hankoScoreEl = document.getElementById('hanko-score');
+    const vocabListEl = document.getElementById('vocab-list');
+
+    // 切換速查卡片天數
+    function switchVocabDay(day) {
+      document.querySelectorAll('.day-tab').forEach((tab) => {
+        tab.classList.toggle('active', tab.getAttribute('onclick').includes(day));
+      });
+      vocabListEl.innerHTML = (vocabData[day] || []).map(item => `<li>${item}</li>`).join('');
+    }
+
+    // 初始化跳題網格
+    function initJumpGrid() {
+      jumpGridEl.innerHTML = '';
+      quizData.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'jump-btn';
+        btn.innerText = i + 1;
+        btn.onclick = () => goToQuestion(i);
+        jumpGridEl.appendChild(btn);
+      });
+      updateJumpGridUI();
+    }
+
+    function updateJumpGridUI() {
+      const buttons = jumpGridEl.getElementsByClassName('jump-btn');
+      let answeredCount = 0;
+      let correctCount = 0;
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].className = 'jump-btn';
+        if (i === currentQuestion) buttons[i].classList.add('active');
+        if (userAnswers[i] === true) {
+          buttons[i].classList.add('correct');
+          answeredCount++;
+          correctCount++;
+        } else if (userAnswers[i] === false) {
+          buttons[i].classList.add('incorrect');
+          answeredCount++;
+        }
+      }
+
+      answeredCountEl.innerText = `已作答 ${answeredCount} ／ 50`;
+      hankoScoreEl.innerText = correctCount;
+    }
+
+    // 載入題目
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      qTagEl.innerText = q.type;
+      qNumEl.innerText = `第 ${currentQuestion + 1} 題 ／ 共 50 題`;
+      qTextEl.innerText = q.question;
+      progressBarEl.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+
+      optionsEl.innerHTML = '';
+      const isAnswered = userAnswers[currentQuestion] !== null;
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        if (isAnswered) {
+          btn.disabled = true;
+          if (idx === q.answer) btn.classList.add('correct');
+        }
+        btn.onclick = () => selectOption(idx);
+        optionsEl.appendChild(btn);
+      });
+
+      if (isAnswered) {
+        explanationContentEl.innerHTML = q.explanation;
+        explanationEl.classList.add('show');
+      } else {
+        explanationEl.classList.remove('show');
+      }
+
+      updateJumpGridUI();
+    }
+
+    // 作答選擇
+    function selectOption(idx) {
+      if (userAnswers[currentQuestion] !== null) return;
+
+      const q = quizData[currentQuestion];
+      const buttons = optionsEl.getElementsByTagName('button');
+      const isCorrect = (idx === q.answer);
+      userAnswers[currentQuestion] = isCorrect;
+
+      if (isCorrect) {
+        buttons[idx].classList.add('correct');
+      } else {
+        buttons[idx].classList.add('incorrect');
+        buttons[q.answer].classList.add('correct');
+      }
+
+      for (let btn of buttons) btn.disabled = true;
+
+      explanationContentEl.innerHTML = q.explanation;
+      explanationEl.classList.add('show');
+      updateJumpGridUI();
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quizData.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+      } else {
+        checkFinish();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+      }
+    }
+
+    function goToQuestion(idx) {
+      currentQuestion = idx;
+      loadQuestion();
+    }
+
+    function checkFinish() {
+      const answered = userAnswers.filter(a => a !== null).length;
+      if (answered < quizData.length) {
+        if (!confirm(`還有 ${quizData.length - answered} 題尚未作答，確定要查看總成績嗎？`)) return;
+      }
+      showScore();
+    }
+
+    function showScore() {
+      stageEl.style.display = 'none';
+      resultsEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'none';
+
+      const correctCount = userAnswers.filter(a => a === true).length;
+      document.getElementById('result-correct').innerText = correctCount;
+      document.getElementById('result-desc').innerText = correctCount >= 45 ? "太出色了！第四週文法掌握得完美無缺，實力直逼 N1 滿分！" : correctCount >= 35 ? "表現優異！觀念十分扎實，再接再厲就能順利合格！" : "建議搭配右側的文法速查卡複習動詞變化與句型接續喔！";
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      userAnswers = new Array(quizData.length).fill(null);
+      resultsEl.style.display = 'none';
+      stageEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'flex';
+      initJumpGrid();
+      loadQuestion();
+    }
+
+    // 初始化執行
+    initJumpGrid();
+    switchVocabDay(1);
+    loadQuestion();
+  </script>
+</body>
+</html>
+```[cite: 28, 29, 30, 31, 32, 33]

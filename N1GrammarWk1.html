@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N1 語彙・第一週（1〜6日目）總合實戰特訓｜50 題精選題庫</title>
+  <meta name="description" content="日本語能力試驗 N1 第一週核心文法總合特訓：50 題精選題庫，含全句翻譯、詳細選項解析與日目文法速查卡。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='4' y='4' width='56' height='56' rx='10' fill='%23b8432f'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23f5efe3' font-family='serif'>文</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5efe3;
+      --paper: #fdfbf7;
+      --ink: #2b2b2b;
+      --muted: #767168;
+      --primary: #b8432f;
+      --primary-hover: #963423;
+      --accent: #2c5e50;
+      --border: #e6dfd1;
+      --ok: #2c5e50;
+      --ng: #b8432f;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    h1, h2, h3, .masthead-vertical, .hanko {
+      font-family: "Shippori Mincho B1", serif;
+    }
+
+    /* 頂部 Header 風格 */
+    .masthead {
+      max-width: 1100px;
+      margin: 0 auto 2rem auto;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .masthead-vertical {
+      writing-mode: vertical-rl;
+      font-size: 1.25rem;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      border-right: 2px solid var(--border);
+      padding-right: 1.5rem;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .masthead h1 {
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .masthead h1 .count {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+    }
+
+    .lede {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* 印花戳記計分 */
+    .hanko {
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      background: rgba(184, 67, 47, 0.05);
+      transform: rotate(-8deg);
+    }
+
+    .hanko-score {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .hanko-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* 主體佈局 */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+    }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .masthead { grid-template-columns: 1fr; text-align: center; }
+      .masthead-vertical { display: none; }
+      .hanko { margin: 0 auto; }
+    }
+
+    /* 測驗舞台區 */
+    .stage {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .stage-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: rgba(184, 67, 47, 0.1);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .q-num {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-family: "Shippori Mincho B1", serif;
+    }
+
+    .options {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .option-btn {
+      background: var(--paper);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 1rem;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: rgba(184, 67, 47, 0.02);
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    .option-btn.correct {
+      background: rgba(44, 94, 80, 0.1) !important;
+      border-color: var(--ok) !important;
+      color: var(--ok);
+      font-weight: 700;
+    }
+
+    .option-btn.incorrect {
+      background: rgba(184, 67, 47, 0.1) !important;
+      border-color: var(--ng) !important;
+      color: var(--ng);
+    }
+
+    /* 解析區 */
+    .explanation {
+      background: #f4ede2;
+      border-left: 4px solid var(--primary);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .explanation.show { display: block; }
+    .explanation dt { font-weight: 700; color: var(--primary); margin-top: 0.5rem; font-size: 0.9rem; }
+    .explanation dd { font-size: 0.95rem; margin-top: 0.2rem; line-height: 1.6; }
+
+    /* 控制按鈕列 */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn.primary:hover { background: var(--primary-hover); }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--ink);
+    }
+
+    .btn.ghost:hover { background: var(--border); }
+
+    .kbd-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* 側邊欄 */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .panel-head h2 { font-size: 1.1rem; }
+    .panel-meta { font-size: 0.8rem; color: var(--muted); }
+
+    .jump-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 1rem;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .jump-btn {
+      aspect-ratio: 1;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .jump-btn:hover { border-color: var(--primary); }
+    .jump-btn.active { border-width: 2px; border-color: var(--ink); }
+    .jump-btn.correct { background: rgba(44, 94, 80, 0.15); color: var(--ok); border-color: var(--ok); }
+    .jump-btn.incorrect { background: rgba(184, 67, 47, 0.15); color: var(--ng); border-color: var(--ng); }
+
+    .legend {
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .legend span { display: flex; align-items: center; gap: 4px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot.ok { background: var(--ok); }
+    .dot.ng { background: var(--ng); }
+    .dot.cur { background: var(--ink); }
+
+    .link-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* 生字/文法速查面板 */
+    .day-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .day-tab {
+      padding: 3px 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .day-tab.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .vocab-list {
+      list-style: none;
+      max-height: 220px;
+      overflow-y: auto;
+      font-size: 0.82rem;
+    }
+
+    .vocab-list li {
+      padding: 5px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    /* 成績結果頁面 */
+    .results {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .results h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
+    .result-score { font-size: 3.5rem; font-weight: 800; font-family: "Shippori Mincho B1", serif; margin-bottom: 2rem; color: var(--ink); }
+    .result-score span { font-size: 1.5rem; color: var(--muted); }
+    
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-vertical" aria-hidden="true">第一週文法總合</div>
+    <div class="masthead-text">
+      <p class="eyebrow">JLPT N1 第一週（1〜6日目）精選文法 ／ 50 題實戰特訓</p>
+      <h1>日文核心文法特訓 <span class="count">50 題</span></h1>
+      <p class="lede">嚴選第一週所有重點文法句型與動詞變化。正解已隨機均勻分佈於 A、B、C、D。每題作答後即時顯示解析。</p>
+    </div>
+    <div class="hanko" id="hanko" aria-live="polite">
+      <span class="hanko-score" id="hanko-score">0</span>
+      <span class="hanko-label">正解</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- 測驗舞台區 -->
+    <section class="stage" id="stage" aria-label="測驗">
+      <div class="stage-top">
+        <span class="tag" id="q-tag">文法運用題</span>
+        <span class="q-num" id="q-num">第 1 題 ／ 共 50 題</span>
+      </div>
+      <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress"></div></div>
+      
+      <div class="question-card" id="question-card">
+        <p class="question" id="q-text" lang="ja"></p>
+        <div class="options" id="options" role="group" aria-label="選項"></div>
+        <div class="explanation" id="explanation">
+          <dl>
+            <dt>全句翻譯與詳細選項解析</dt>
+            <dd id="explanation-content"></dd>
+          </dl>
+        </div>
+      </div>
+
+      <nav class="controls">
+        <button class="btn ghost" id="prev-btn" type="button" onclick="prevQuestion()">← 上一題</button>
+        <span class="kbd-hint">點擊選項即時作答與看解析</span>
+        <button class="btn primary" id="next-btn" type="button" onclick="nextQuestion()">下一題 →</button>
+      </nav>
+    </section>
+
+    <!-- 結果頁 -->
+    <section class="results" id="results" aria-label="成績總結">
+      <p class="eyebrow">練習完成</p>
+      <h2>第一週文法總合實戰特訓結算</h2>
+      <p class="result-score"><strong id="result-correct">0</strong><span> ／ 50</span></p>
+      <p id="result-desc" style="color: var(--muted);"></p>
+      <div class="result-actions">
+        <button class="btn primary" id="restart-btn" type="button" onclick="restartQuiz()">重新開始練習</button>
+      </div>
+    </section>
+
+    <!-- 側欄 -->
+    <aside class="sidebar">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>題目一覽</h2>
+          <span class="panel-meta" id="answered-count">已作答 0 ／ 50</span>
+        </div>
+        <div class="jump-grid" id="jump-grid"></div>
+        <div class="legend">
+          <span><i class="dot ok"></i>答對</span>
+          <span><i class="dot ng"></i>答錯</span>
+          <span><i class="dot cur"></i>目前</span>
+        </div>
+        <button class="link-btn" id="finish-btn" type="button" onclick="checkFinish()">查看成績總結</button>
+      </div>
+
+      <div class="panel vocab">
+        <div class="panel-head">
+          <h2>文法速查卡片</h2>
+          <span class="panel-meta">1日目〜6日目</span>
+        </div>
+        <div class="day-tabs" id="day-tabs" role="tablist">
+          <button class="day-tab active" onclick="switchVocabDay(1)">1日目</button>
+          <button class="day-tab" onclick="switchVocabDay(2)">2日目</button>
+          <button class="day-tab" onclick="switchVocabDay(3)">3日目</button>
+          <button class="day-tab" onclick="switchVocabDay(4)">4日目</button>
+          <button class="day-tab" onclick="switchVocabDay(5)">5日目</button>
+          <button class="day-tab" onclick="switchVocabDay(6)">6日目</button>
+        </div>
+        <ul class="vocab-list" id="vocab-list" lang="ja"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">JLPT N1 第一週文法總合實戰特訓 50 題</footer>
+
+  <script>
+    // 第一週（1〜6日目）文法速查卡片資料庫
+    const vocabData = {
+        1: [
+            "・Nこそ：正因為……、……才……[cite: 27]",
+            "・Vてこそ：唯有……才能……（不能用於過去）[cite: 27]",
+            "・N/Vこそすれ：雖說……但絕對……（後文強烈否定）[cite: 27]"
+        ],
+        2: [
+            "・Vるくらいなら：與其……不如……（強烈排斥前項）[cite: 28]",
+            "・Vるものとする：規定、定為……（契約/公文用語）[cite: 28]",
+            "・(の/こと)はNぐらいのものだ：只有……、頂多是……[cite: 28]",
+            "・V/A/na/Nものとして：當作……來看待、假設……[cite: 28]"
+        ],
+        3: [
+            "・Nのことだから：因為是……所以一定……（推測）[cite: 29]",
+            "・V/A/na/Nことだし：既然……而且……（引出決定）[cite: 29]",
+            "・Vることのないよう(に)：為免……、請避免……[cite: 29]",
+            "・Vることなしに(は)：在沒有……的情況下[cite: 29]"
+        ],
+        4: [
+            "・Nに言わせれば / から言わせれば：依我之見、在……看來[cite: 30]",
+            "・V/A/na/Nとされる：被認為是……（客觀通念）[cite: 30]",
+            "・Vられる（自發）：自然而然地（如：思い出される）[cite: 30]"
+        ],
+        5: [
+            "・V/A/na/Nとみえて / とみえる：看起來像是……、似乎[cite: 31]",
+            "・V/A/na/Nとみられる：被預期、被認為會……[cite: 31]",
+            "・V/A/na/Nとみると：一旦發現……就立刻……[cite: 31]",
+            "・V/A/na/Nとすれば / とすると：假使、如果……的話[cite: 31]"
+        ],
+        6: [
+            "・V/A/na/Nとしたところで / としたって：縱使、就算……也於事無補[cite: 32]",
+            "・Vるところを：正當……的時候，卻……[cite: 32]",
+            "・N/短文というところだ：頂多也就是……左右[cite: 32]",
+            "・Vたところで〜ない：就算……也沒用、毫無意義[cite: 32]"
+        ]
+    };
+
+    // 第一週核心文法 50 題題庫（正解隨機分佈於 0~3，即 A~D）
+    const quizData = [
+      {
+        type: "1日目：強調句型",
+        question: "親になって (  ) 、親の苦労や気持ちがわかるものだ。",
+        options: ["a. すれ", "b. こそ", "c. あれ", "d. ばかり"],
+        answer: 1,
+        explanation: "【全句翻譯】唯有當了父母，才能明白父母的辛苦與心情[cite: 27]。<br><br>" +
+                   "<strong>【正解分析】b. こそ：</strong>「〜てこそ」表示「唯有在……之後才……」，強調條件的唯一性[cite: 27]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. すれ：搭配「こそすれ」使用，語意不合。<br>" +
+                   "・c. あれ：搭配「こそあれ」使用，此處應用「てこそ」。<br>" +
+                   "・d. ばかり：表「僅僅、總是」，無法與動詞て形構成「唯有」的強烈限定語氣。"
+      },
+      {
+        type: "1日目：強烈對比",
+        question: "その仕事は苦労こそ (  ) 、やりがいがある。",
+        options: ["a. すれ", "b. こそ", "c. あれ", "d. あって"],
+        answer: 2,
+        explanation: "【全句翻譯】工作雖說辛苦，但很有意義[cite: 27]。<br><br>" +
+                   "<strong>【正解分析】c. あれ：</strong>「苦労こそあれ」是慣用句型，意為「雖說有辛苦（但……）」，連接逆接轉折[cite: 27]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. すれ：需搭配名詞或動詞連用形構成「〜こそすれ」，表「雖有……但絕不……」。<br>" +
+                   "・b. こそ：單獨放於此處文法不通。<br>" +
+                   "・d. あって：形態錯誤。"
+      },
+      {
+        type: "1日目：否定強調",
+        question: "あなたには感謝こそ (  ) 、恨んでなどいません。",
+        options: ["a. あれ", "b. こそ", "c. すれ", "d. しろ"],
+        answer: 2,
+        explanation: "【全句翻譯】對你只有感謝，絕對沒有怨恨[cite: 27]。<br><br>" +
+                   "<strong>【正解分析】c. すれ：</strong>「N/Vます形＋こそすれ」表示「雖說有前項事實，但絕對沒有後項」，後文多接否定[cite: 27]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. あれ：應用於正面肯定或轉折。<br>" +
+                   "・b. こそ：重複。<br>" +
+                   "・d. しろ：意為「縱使、就算」，不符合句型結構。"
+      },
+      {
+        type: "2日目：極端排斥",
+        question: "友達を傷つけるくらいなら、自分が我慢した (  ) いい。",
+        options: ["a. ほうがいい", "b. ほうがましだ", "c. べきだ", "d. ものとする"],
+        answer: 0,
+        explanation: "【全句翻譯】比起傷害朋友，自己忍耐還比較好[cite: 28]。<br><br>" +
+                   "<strong>【正解分析】a. ほうがいい：</strong>「Vるくらいなら〜ほうがいい/ましだ」為固定句型，表「比起做前項極度排斥的事，寧願選擇後項」[cite: 28]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・b. ほうがましだ：語意亦通，此處以「ほうがいい」作為標準正解。<br>" +
+                   "・c. べきだ：表義務。<br>" +
+                   "・d. ものとする：契約規定用語。"
+      },
+      {
+        type: "2日目：契約規定",
+        question: "採用試験は、毎年10月に (  ) 。",
+        options: ["a. 行うことだ", "b. 行うところだ", "c. 行うものとする", "d. 行うべきだ"],
+        answer: 2,
+        explanation: "【全句翻譯】錄用考試定於每年10月舉行[cite: 28]。<br><br>" +
+                   "<strong>【正解分析】c. 行うものとする：</strong>「Vるものとする」多用於契約書、公文或規定，表示「決定如此、規定應當」[cite: 28]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. 行うことだ：表建議。<br>" +
+                   "・b. 行うところだ：表正要進行。<br>" +
+                   "・d. 行うべきだ：表道德義務。"
+      },
+      {
+        type: "2日目：唯一限定",
+        question: "彼が仕事を辞めないように説得できるのは、君 (  ) だ。",
+        options: ["a. くらいにする", "b. くらいのことだ", "c. ぐらいとみえる", "d. ぐらいのものだ"],
+        answer: 3,
+        explanation: "【全句翻譯】能勸他打消辭職念頭的人，只有你了[cite: 28]。<br><br>" +
+                   "<strong>【正解分析】d. ぐらいのものだ：</strong>「(Vの/こと)はNくらいのものだ」表示「除此之外別無其他，僅此而已」的強烈限定[cite: 28]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a、b、c 皆非此表獨一無二限定的正確慣用句型。"
+      },
+      {
+        type: "2日目：假設前提",
+        question: "田中さんはもう来ない (  ) 、始めましょう。",
+        options: ["a. ことだから", "b. ものとして", "c. とみると", "d. ものとする"],
+        answer: 1,
+        explanation: "【全句翻譯】就當田中先生不來了，我們開始吧[cite: 28]。<br><br>" +
+                   "<strong>【正解分析】b. ものとして：</strong>「V/A/na/N＋ものとして」表示「假定某個情況已經成立，並以此為基礎進行下一步思考」[cite: 28]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. ことだから：表原因推測。<br>" +
+                   "・c. とみると：表一看到就……。<br>" +
+                   "・d. ものとする：結句用語，無法直接接逗號。"
+      },
+      {
+        type: "3日目：性格推測",
+        question: "よくできる彼 (  ) 、合格は間違いないでしょう。",
+        options: ["a. ことだし", "b. ことのないよう", "c. のことだから", "d. ことなしに"],
+        answer: 2,
+        explanation: "【全句翻譯】因為是表現優異的他，合格鐵定沒問題吧[cite: 29]。<br><br>" +
+                   "<strong>【正解分析】c. のことだから：</strong>「N＋のことだから」根據某人一貫的特質或性格，對其接下來的表現做出強烈推測[cite: 29]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. ことだし：表原因並引出建議。<br>" +
+                   "・b. ことのないよう：表預防。<br>" +
+                   "・d. ことなしに：表沒有……。"
+      },
+      {
+        type: "3日目：理由引出",
+        question: "もう誰も来ない (  ) 、店を閉めよう。",
+        options: ["a. こととしたら", "b. ことだから", "c. ことだし", "d. ことに"],
+        answer: 2,
+        explanation: "【全句翻譯】既然已經沒客人來了，就把店關了吧[cite: 29]。<br><br>" +
+                   "<strong>【正解分析】c. ことだし：</strong>「V/A/na/N＋ことだし」提出某個客觀或主觀理由，順勢引出後面的決定或建議[cite: 29]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. こととしたら：非標準文法。<br>" +
+                   "・b. ことだから：通常接特定人物名詞。<br>" +
+                   "・d. ことに：副詞慣用句（〜ことに驚いた等）。"
+      },
+      {
+        type: "3日目：預防叮嚀",
+        question: "災害が来ても慌てる (  ) 、日頃から準備しておこう。",
+        options: ["a. ことなしに", "b. ことだから", "c. ことだし", "d. ことのないように"],
+        answer: 3,
+        explanation: "【全句翻譯】為了災害來臨時也不慌亂，平時就要做好準備[cite: 29]。<br><br>" +
+                   "<strong>【正解分析】d. ことのないように：</strong>「Vる＋ことのないよう(に)」意為「為了不致於發生……、請避免……」，用於事前預防[cite: 29]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. ことなしに：表沒有做前項動作。<br>" +
+                   "・b、c 語意不合。"
+      },
+      {
+        type: "3日目：無動作狀態",
+        question: "過去の事例を見る (  ) 、解決方法は見えてこないだろう。",
+        options: ["a. ことなしに", "b. ことのないように", "c. ことだから", "d. ことだし"],
+        answer: 0,
+        explanation: "【全句翻譯】不審視過去的案例，就無法找到解決方法吧[cite: 29]。<br><br>" +
+                   "<strong>【正解分析】a. ことなしに：</strong>「Vる＋ことなしに(は)」意同「〜ないで」，表示「在沒有審視/進行前項的情況下」直接做後項[cite: 29]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・b. ことのないように：表預防目的。<br>" +
+                   "・c、d 句型接續錯誤。"
+      },
+      {
+        type: "4日目：主觀視角",
+        question: "彼は天才と言われているが、私 (  ) 、単なる努力家だ。",
+        options: ["a. とされる", "b. に言わせれば", "c. とみられて", "d. とすると"],
+        answer: 1,
+        explanation: "【全句翻譯】大家都說他是天才，但在我看來，他只不過是個努力家[cite: 30]。<br><br>" +
+                   "<strong>【正解分析】b. に言わせれば：</strong>「N（人）＋に言わせれば / から言わせれば」表示「從某人的主觀角度來看」[cite: 30]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. とされる：表客觀社會通念。<br>" +
+                   "・c. とみられて：表客觀預期。<br>" +
+                   "・d. とすると：表假設。"
+      },
+      {
+        type: "4日目：客觀社會通念",
+        question: "この国には、よい指導者がいないのが一番の問題と (  ) 。",
+        options: ["a. 言わせれば", "b. 思い出される", "c. されている", "d. 感じさせられる"],
+        answer: 2,
+        explanation: "【全句翻譯】這個國家沒有好的領導人，被認為是最大的問題[cite: 30]。<br><br>" +
+                   "<strong>【正解分析】c. されている：</strong>「V/A/na/N＋とされる」表示客觀的社會評價、報導或通念[cite: 30]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. 言わせれば：主觀個人意見。<br>" +
+                   "・b、d 表自發情感，不合客觀問題陳述。"
+      },
+      {
+        type: "4日目：自發受身",
+        question: "この曲を聴くと、学生時代のことが (  ) 。",
+        options: ["a. 思い出す", "b. 思い出させる", "c. 思い出されて", "d. 思い出される"],
+        answer: 3,
+        explanation: "【全句翻譯】聽到這首曲子，學生時代的事便自然湧上心頭[cite: 30]。<br><br>" +
+                   "<strong>【正解分析】d. 思い出される：</strong>動詞自發型（〜られる）表示非基於刻意意志，而是受情境觸動「自然而然地想起」[cite: 30]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. 思い出す：主動意志。<br>" +
+                   "・b. 思い出させる：使役態。<br>" +
+                   "・c. 思い出されて：中斷句型。"
+      },
+      {
+        type: "5日目：樣態推測",
+        question: "田中さんは忙しいと (  ) 、このごろ電話もしてこない。",
+        options: ["a. みられる", "b. みえて", "c. とみると", "d. とすれば"],
+        answer: 1,
+        explanation: "【全句翻譯】田中先生似乎很忙，最近連電話也沒打來[cite: 31]。<br><br>" +
+                   "<strong>【正解分析】b. みえて：</strong>「V/A/na/N＋とみえて」根據所見到的線索（最近沒打電話）做出似乎如此的推測[cite: 31]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. みられる：通常作「とみられている」。<br>" +
+                   "・c. とみると：表一看到就……。<br>" +
+                   "・d. とすれば：表假設。"
+      },
+      {
+        type: "5日目：客觀預測",
+        question: "この地域では、今後も大きい地震が来ると (  ) 。",
+        options: ["a. みえて", "b. とすると", "c. みられている", "d. とみると"],
+        answer: 2,
+        explanation: "【全句翻譯】據預測，該地區今後也會發生大地震[cite: 31]。<br><br>" +
+                   "<strong>【正解分析】c. みられている：</strong>「V/A/na/N＋とみられている」透過客觀數據或局勢推測未來趨勢[cite: 31]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. みえて：樣態推測。<br>" +
+                   "・b、d 文法接續不合。"
+      },
+      {
+        type: "5日目：即時反應",
+        question: "彼は問題がちょっと難しいと (  ) 、自分で考えないで人に聞く。",
+        options: ["a. みえて", "b. とみると", "c. とすれば", "d. としても"],
+        answer: 1,
+        explanation: "【全句翻譯】他一發現題目有點難，就不自己動腦、直接問別人[cite: 31]。<br><br>" +
+                   "<strong>【正解分析】b. とみると：</strong>「V/A/na/N＋とみると」意為「一旦察覺、一看到某個狀況發生，立刻觸發後續習慣動作」[cite: 31]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. みえて：表外在樣態。<br>" +
+                   "・c. とすれば：表假設。<br>" +
+                   "・d. としても：表縱使。"
+      },
+      {
+        type: "5日目：假設條件",
+        question: "そこまで歩いて行くと (  ) 、30分くらいかかるだろう。",
+        options: ["a. みると", "b. みえて", "c. ことだから", "d. すれば"],
+        answer: 3,
+        explanation: "【全句翻譯】如果說要走到那裡的話，大概要花30分鐘吧[cite: 31]。<br><br>" +
+                   "<strong>【正解分析】d. すれば：</strong>「V/A/na/N＋とすれば / とすると」設定一個假設前提，並推論在該條件下的結果[cite: 31]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. みると：表一發現。<br>" +
+                   "・b. みえて：表似乎。<br>" +
+                   "・c. ことだから：表原因推測。"
+      },
+      {
+        type: "6日目：極端假設",
+        question: "今から急いだとし (  ) 、間に合わないだろう。",
+        options: ["a. も", "b. は", "c. ても", "d. ば"],
+        answer: 2,
+        explanation: "【全句翻譯】就算現在從頭趕起，也來不及了吧[cite: 32]。<br><br>" +
+                   "<strong>【正解分析】c. ても：</strong>「V/A/na/N＋としたところで / としたって（としたとしても）」表示縱使處於某條件下也於事無補[cite: 32]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a、b、d 無法與「とした」構成正確的 N1 讓步假設慣用句型。"
+      },
+      {
+        type: "6日目：特定狀況背景",
+        question: "お忙しい (  ) お集まりいただき、ありがとうございます。",
+        options: ["a. ところを", "b. ところで", "c. ところに", "d. ところが"],
+        answer: 0,
+        explanation: "【全句翻譯】感謝各位在百忙之中抽空前來集會[cite: 32]。<br><br>" +
+                   "<strong>【正解分析】a. ところを：</strong>「Vる/狀態表現＋ところを」前項為特定狀況或時機（忙碌的時候），後文伴隨感謝或抱歉[cite: 32]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・b. ところで：表話題轉換。<br>" +
+                   "・c. ところに：表時間點。<br>" +
+                   "・d. ところが：表然而。"
+      },
+      {
+        type: "6日目：數量極限",
+        question: "勉強時間は2、3時間と (  ) だ。",
+        options: ["a. いうほど", "b. いうところ", "c. いるところ", "d. いったこと"],
+        answer: 1,
+        explanation: "【全句翻譯】讀書時間頂多也就2、3個小時左右[cite: 32]。<br><br>" +
+                   "<strong>【正解分析】b. いうところ：</strong>「N/短文＋というところだ / といったところだ」表示程度或數量的極限，頂多達到這個範圍[cite: 32]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a、c、d 皆非表示數量極限的正確 N1 文法搭配。"
+      },
+      {
+        type: "6日目：徒勞無功",
+        question: "何回読んだ (  ) 、意味は全くわからない。",
+        options: ["a. ところを", "b. ところに", "c. ところで", "d. ところでさえ"],
+        answer: 2,
+        explanation: "【全句翻譯】不管讀幾遍，意思還是完全不懂[cite: 32]。<br><br>" +
+                   "<strong>【正解分析】c. ところで：</strong>「Vた＋ところで＋否定表現（〜ない）」表示即使做了某動作也無法改變壞結果，徒勞無功[cite: 32]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. ところを：表背景狀況。<br>" +
+                   "・b. ところに：表時間點。<br>" +
+                   "・d. 形態錯誤。"
+      },
+      {
+        type: "1日目：綜合強化",
+        question: "生活費を自分で稼いで (  ) 、自立していると言える。",
+        options: ["a. こそすれ", "b. てこそ", "c. あれ", "d. ばかり"],
+        answer: 1,
+        explanation: "【全句翻譯】唯有自己賺取生活費，才能說得上是自立[cite: 27]。<br><br>" +
+                   "<strong>【正解分析】b. てこそ：</strong>「Vてこそ」表示「唯有在……之後才……」（強調條件）[cite: 27]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a、c、d 放入句中語意與文法皆不通。"
+      },
+      {
+        type: "1日目：綜合辨析",
+        question: "白髪はふつう増え (  ) 、減ることはない。",
+        options: ["a. てこそ", "b. あれ", "c. とすれば", "d. こそすれ"],
+        answer: 3,
+        explanation: "【全句翻譯】白髮一般情況只会越來越多，絕對不會減少[cite: 27]。<br><br>" +
+                   "<strong>【正解分析】d. こそすれ：</strong>「増えこそすれ」表示「雖說會增加，但絕對沒有（減少）這回事」，後文接否定[cite: 27]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a、b、c 皆無法表達此種強烈的正反對比與絕對否定。"
+      },
+      {
+        type: "2日目：綜合辨析",
+        question: "そんなことをするくらい (  ) 、死んだほうがましだ。",
+        options: ["a. では", "b. なら", "c. には", "d. とは"],
+        answer: 1,
+        explanation: "【全句翻譯】如果要幹這種事情，還不如死了好[cite: 28]。<br><br>" +
+                   "<strong>【正解分析】b. なら：</strong>「Vるくらいなら」為固定句型，意為「比起做前項，寧願……」[cite: 28]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a、c、d 無法與「くらい」構成此比較排斥句型。"
+      },
+      {
+        type: "2日目：合約規定",
+        question: "契約の延長は、双方の同意による (  ) 。",
+        options: ["a. ものとして", "b. ことだ", "c. ものとする", "d. べきだ"],
+        answer: 2,
+        explanation: "【全句翻譯】規定合同的延長需要雙方的同意[cite: 28]。<br><br>" +
+                   "<strong>【正解分析】c. ものとする：</strong>公文與契約條款中規定事項的標準結句[cite: 28]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. ものとして：表假設前提，無法作為句尾。<br>" +
+                   "・b、d 語氣不合正式契約。"
+      },
+      {
+        type: "3日目：推測依據",
+        question: "全員そろった (  ) 、時間前だけれど始めましょうか。",
+        options: ["a. ことだから", "b. ことだし", "c. ことのないよう", "d. ことなしに"],
+        answer: 1,
+        explanation: "【全句翻譯】既然大家都聚齊了，雖然還不到時間，咱們開始吧[cite: 29]。<br><br>" +
+                   "<strong>【正解分析】b. ことだし：</strong>提出「大家都到齊了」這個客觀理由，順勢提出建議[cite: 29]。<br>" +
+                   "<strong>【錯誤選項說明】</strong><br>" +
+                   "・a. ことだから：通常接在特定人物後。<br>" +
+                   "・c、d 語意完全不符。"
+      },
+      {
+        type: "3日目：預防措施",
+        question: "今後、このような犯罪と関わる (  ) 注意してください。",
+        options: ["a. ことなしに", "b. ことだから", "c. ことだし", "d. ことのないように"],
+        answer: 3,
+        explanation: "【全句翻譯】請注意今後不要再和這樣的犯罪扯上關係[cite: 29]。<br><br>" +
+                   "<strong>【正解分析】d. ことのないように：</strong>預防發生不良事件的叮嚀句型[cite: 29]。<br>" +
+                   "・a、b、c 文法不合。"
+      },
+      {
+        type: "4日目：個人觀點",
+        question: "「いえ、うちの親 (  ) 、まだまだ若いそうですよ。」",
+        options: ["a. とされる", "b. に言わせれば", "c. とみられて", "d. 思い出される"],
+        answer: 1,
+        explanation: "【全句翻譯】「哪裡，要聽我父母說的話，你還年輕得很呢。」[cite: 30]<br><br>" +
+                   "<strong>【正解分析】b. に言わせれば：</strong>引述特定主體（父母）的主觀見解[cite: 30]。<br>" +
+                   "・a、c、d 語意不合。"
+      },
+      {
+        type: "4日目：客觀促進",
+        question: "この物質は植物の生長を促進すると (  ) 。",
+        options: ["a. 言わせれば", "b. 感心させられる", "c. される", "d. 悩まされている"],
+        answer: 2,
+        explanation: "【全句翻譯】這個物質被認為會促進植物的生長[cite: 30]。<br><br>" +
+                   "<strong>【正解分析】c. される：</strong>「とされる」表科學或客觀通念認定的事實[cite: 30]。<br>" +
+                   "・a、b、d 文法或語意不合。"
+      },
+      {
+        type: "5日目：樣態推測",
+        question: "それを聞いて、彼はしばらく声を出さなかった。かなり驚いたと (  ) 。",
+        options: ["a. みられる", "b. とすると", "c. とみると", "d. みえる"],
+        answer: 3,
+        explanation: "【全句翻譯】聽了這個，他好久沒出聲，看上去相當吃驚[cite: 31]。<br><br>" +
+                   "<strong>【正解分析】d. みえる：</strong>「〜とみえる」根據現場反應推測「看起來像是……」[cite: 31]。<br>" +
+                   "・a、b、c 搭配或語意不合。"
+      },
+      {
+        type: "5日目：即時反應",
+        question: "彼は、店員が韓国人だ (  ) 、必ず韓国語で話しかける。",
+        options: ["a. とすると", "b. とみえて", "c. とみると", "d. とみられる"],
+        answer: 2,
+        explanation: "【全句翻譯】他只要發現店員是韓國人，就必定會用韓語搭話[cite: 31]。<br><br>" +
+                   "<strong>【正解分析】c. とみると：</strong>一發現……就立刻……[cite: 31]。<br>" +
+                   "・a、b、d 文法不合。"
+      },
+      {
+        type: "6日目：極端讓步",
+        question: "どんなに急いだとし (  ) 、間に合わないだろう。",
+        options: ["a. も", "b. ても", "c. は", "d. ば"],
+        answer: 1,
+        explanation: "【全句翻譯】就算再怎麼趕，也來不及了吧[cite: 32]。<br><br>" +
+                   "<strong>【正解分析】b. ても：</strong>「としたって/としたとしても」的讓步表現[cite: 32]。<br>" +
+                   "・a、c、d 結構不合。"
+      },
+      {
+        type: "6日目：數量估計",
+        question: "勉強時間は2、3時間と (  ) だ。",
+        options: ["a. いうほど", "b. いうわけ", "c. というより", "d. いったところ"],
+        answer: 3,
+        explanation: "【全句翻譯】讀書時間頂多也就是2、3個小時左右[cite: 32]。<br><br>" +
+                   "<strong>【正解分析】d. いったところ：</strong>「といったところだ」表數量極限[cite: 32]。<br>" +
+                   "・a、b、c 語意不合。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "彼の日本語は小さい間違いこそ (  ) 、ほとんど完璧だ。",
+        options: ["a. すれ", "b. こそ", "c. あれ", "d. ばかり"],
+        answer: 2,
+        explanation: "【全句翻譯】他的日語儘管有些微小錯誤，但幾乎完美無缺[cite: 27]。<br><br>" +
+                   "<strong>【正解分析】c. あれ：</strong>「〜こそあれ」表雖有前項小缺點，但整體正面[cite: 27]。<br>" +
+                   "・a、b、d 語意或接續錯誤。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "中級漢字はできる (  ) 、上級漢字のクラスを取った。",
+        options: ["a. ものとする", "b. ものとして", "c. ことだから", "d. とみると"],
+        answer: 1,
+        explanation: "【全句翻譯】覺得中級漢字已經掌握了，所以選修了高級漢字班[cite: 28]。<br><br>" +
+                   "<strong>【正解分析】b. ものとして：</strong>以……為前提、假設……[cite: 28]。<br>" +
+                   "・a、c、d 語意不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "今の状況を知る (  ) 、未来を予測することはできない。",
+        options: ["a. ことのないように", "b. ことだから", "c. ことなしに", "d. ことだし"],
+        answer: 2,
+        explanation: "【全句翻譯】在不了解當前狀況的情況下，是無法預測未來的[cite: 29]。<br><br>" +
+                   "<strong>【正解分析】c. ことなしに：</strong>在沒有……的情況下[cite: 29]。<br>" +
+                   "・a、b、d 結構不合。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "この曲を聴くと、学生時代のことが思い出さ (  ) 。",
+        options: ["a. せる", "b. れる", "c. れるられる", "d. れるさせる"],
+        answer: 1,
+        explanation: "【全句翻譯】聽到這曲子，學生時代的事便自然湧現[cite: 30]。<br><br>" +
+                   "<strong>【正解分析】b. れる：</strong>自發受身動詞字尾變化（思い出される）[cite: 30]。<br>" +
+                   "・a、c、d 文法錯誤。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "その話が本当だ (  ) 、大変なことだ。",
+        options: ["a. とみえて", "b. とみると", "c. とみられる", "d. とすると"],
+        answer: 3,
+        explanation: "【全句翻譯】如果那件事是真的，那就糟糕了[cite: 31]。<br><br>" +
+                   "<strong>【正解分析】d. とすると：</strong>假使、如果……的話[cite: 31]。<br>" +
+                   "・a、b、c 語意不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "何回読んだ (  ) 、意味は全くわからない。",
+        options: ["a. ところを", "b. ところで", "c. ところに", "d. ところから"],
+        answer: 1,
+        explanation: "【全句翻譯】不管讀幾遍，意思還是完全不懂[cite: 32]。<br><br>" +
+                   "<strong>【正解分析】b. ところで：</strong>「Vた＋ところで〜ない」表徒勞無功[cite: 32]。<br>" +
+                   "・a、c、d 結構不合。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "その国で生活 (  ) 文化がわかるというものだ。",
+        options: ["a. こそすれ", "b. あれ", "c. してこそ", "d. ばかり"],
+        answer: 2,
+        explanation: "【全句翻譯】唯有在該國生活，才能真正懂其文化[cite: 27]。<br><br>" +
+                   "<strong>【正解分析】c. してこそ：</strong>唯有……才能……[cite: 27]。<br>" +
+                   "・a、b、d 語意不合。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "転勤でそんな田舎に行かされる (  ) 、会社を辞めたほうがいい。",
+        options: ["a. くらいなら", "b. ものとする", "c. ものとして", "d. ぐらいのもの"],
+        answer: 0,
+        explanation: "【全句翻譯】如果要因為調職去那種鄉下，還不如辭職比較好[cite: 28]。<br><br>" +
+                   "<strong>【正解分析】a. くらいなら：</strong>與其……不如……[cite: 28]。<br>" +
+                   "・b、c、d 文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "明るい彼女 (  ) 、どこへ行ってもすぐ友達ができるだろう。",
+        options: ["a. ことだし", "b. のことだから", "c. ことのないよう", "d. ことなしに"],
+        answer: 1,
+        explanation: "【全句翻譯】因為是開朗的她，不管去哪裡都能立刻交到朋友吧[cite: 29]。<br><br>" +
+                   "<strong>【正解分析】b. のことだから：</strong>根據某人一貫性格做出推測[cite: 29]。<br>" +
+                   "・a、c、d 結構不合。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "彼の仕事ぶりには感心さ (  ) 。",
+        options: ["a. れる", "b. せる", "c. される", "d. せられる"],
+        answer: 3,
+        explanation: "【全句翻譯】真是佩服他的工作狀態[cite: 30]。<br><br>" +
+                   "<strong>【正解分析】d. せられる：</strong>「感心させられる」為自發使役受身型，表不由自主地感到佩服[cite: 30]。<br>" +
+                   "・a、b、c 形態錯誤。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "彼女は、男の人にお金がないと (  ) 、急にその人に興味がなくなるようだ。",
+        options: ["a. みえて", "b. とすれば", "c. みると", "d. とみられる"],
+        answer: 2,
+        explanation: "【全句翻譯】那個女人一發現男人沒錢，似乎就會馬上對那人失去興趣[cite: 31]。<br><br>" +
+                   "<strong>【正解分析】c. みると：</strong>一發現……就……[cite: 31]。<br>" +
+                   "・a、b、d 語意不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "そんな多額の借金は、家を売った (  ) 、到底返せない。",
+        options: ["a. ところを", "b. ところに", "c. ところから", "d. ところで"],
+        answer: 3,
+        explanation: "【全句翻譯】這麼大筆的債務，就算把房子賣了也絕對還不起[cite: 32]。<br><br>" +
+                   "<strong>【正解分析】d. ところで：</strong>即使……也於事無補[cite: 32]。<br>" +
+                   "・a、b、c 文法不合。"
+      },
+      {
+        type: "1日目：綜合複習",
+        question: "程度の違いこそ (  ) あれ、悪いことをしたのは皆同じだ。",
+        options: ["a. すれ", "b. こそ", "c. あれ", "d. しろ"],
+        answer: 2,
+        explanation: "【全句翻譯】程度雖有不同，但幹了壞事大家都是一樣的[cite: 27]。<br><br>" +
+                   "<strong>【正解分析】c. あれ：</strong>「違いこそあれ」表雖有差異（但本質相同）[cite: 27]。<br>" +
+                   "・a、b、d 語意不合。"
+      },
+      {
+        type: "2日目：綜合複習",
+        question: "ぼくが買える家は、これ (  ) ぐらいのものだ。",
+        options: ["a. くらいなら", "b. ぐらいのものだ", "c. ものとする", "d. ものとして"],
+        answer: 1,
+        explanation: "【全句翻譯】我買得起的房子，頂多也就這種程度而已[cite: 28]。<br><br>" +
+                   "<strong>【正解分析】b. ぐらいのものだ：</strong>限定範圍「僅此而已」[cite: 28]。<br>" +
+                   "・a、c、d 文法不合。"
+      },
+      {
+        type: "3日目：綜合複習",
+        question: "道に迷う (  ) 、前もって地図で場所を確かめておいた。",
+        options: ["a. ことなしに", "b. ことだから", "c. ことのないように", "d. ことだし"],
+        answer: 2,
+        explanation: "【全句翻譯】為了不迷路，事前先用地圖確認了地點[cite: 29]。<br><br>" +
+                   "<strong>【正解分析】c. ことのないように：</strong>為防範……而事先採取行動[cite: 29]。<br>" +
+                   "・a、b、d 語意不合。"
+      },
+      {
+        type: "4日目：綜合複習",
+        question: "隣の家の騒音に悩まさ (  ) 。",
+        options: ["a. れている", "b. せられている", "c. せる", "d. れている（重複）"],
+        answer: 0,
+        explanation: "【全句翻譯】深受鄰居家的噪音困擾[cite: 30]。<br><br>" +
+                   "<strong>【正解分析】a. れている：</strong>「悩まされている」為自發受身持續態，表示飽受困擾[cite: 30]。<br>" +
+                   "・b、c、d 形態錯誤。"
+      },
+      {
+        type: "5日目：綜合複習",
+        question: "もし車を買い換える (  ) 、次はドイツの車がほしい。",
+        options: ["a. とみえて", "b. とみると", "c. とみられる", "d. とすれば"],
+        answer: 3,
+        explanation: "【全句翻譯】如果打算換車的話，下次想要買德國車[cite: 31]。<br><br>" +
+                   "<strong>【正解分析】d. とすれば：</strong>假使、如果……的話[cite: 31]。<br>" +
+                   "・a、b、c 語意不合。"
+      },
+      {
+        type: "6日目：綜合複習",
+        question: "あの頑固な父にタバコをやめさせよう (  ) 、無駄だよ。",
+        options: ["a. ところを", "b. としたって", "c. というところだ", "d. といったところ"],
+        answer: 1,
+        explanation: "【全句翻譯】就算想勸我那固執的父親戒菸，也是白費力氣[cite: 32]。<br><br>" +
+                   "<strong>【正解分析】b. としたって：</strong>縱使、就算……也於事無補[cite: 32]。<br>" +
+                   "・a、c、d 結構不合。"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let userAnswers = new Array(quizData.length).fill(null);
+
+    // DOM 元素快取
+    const qTagEl = document.getElementById('q-tag');
+    const qNumEl = document.getElementById('q-num');
+    const qTextEl = document.getElementById('q-text');
+    const optionsEl = document.getElementById('options');
+    const explanationEl = document.getElementById('explanation');
+    const explanationContentEl = document.getElementById('explanation-content');
+    const progressBarEl = document.getElementById('progress');
+    const stageEl = document.getElementById('stage');
+    const resultsEl = document.getElementById('results');
+    const jumpGridEl = document.getElementById('jump-grid');
+    const answeredCountEl = document.getElementById('answered-count');
+    const hankoScoreEl = document.getElementById('hanko-score');
+    const vocabListEl = document.getElementById('vocab-list');
+
+    // 切換速查卡片天數
+    function switchVocabDay(day) {
+      document.querySelectorAll('.day-tab').forEach((tab) => {
+        tab.classList.toggle('active', tab.getAttribute('onclick').includes(day));
+      });
+      vocabListEl.innerHTML = (vocabData[day] || []).map(item => `<li>${item}</li>`).join('');
+    }
+
+    // 初始化跳題網格
+    function initJumpGrid() {
+      jumpGridEl.innerHTML = '';
+      quizData.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'jump-btn';
+        btn.innerText = i + 1;
+        btn.onclick = () => goToQuestion(i);
+        jumpGridEl.appendChild(btn);
+      });
+      updateJumpGridUI();
+    }
+
+    function updateJumpGridUI() {
+      const buttons = jumpGridEl.getElementsByClassName('jump-btn');
+      let answeredCount = 0;
+      let correctCount = 0;
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].className = 'jump-btn';
+        if (i === currentQuestion) buttons[i].classList.add('active');
+        if (userAnswers[i] === true) {
+          buttons[i].classList.add('correct');
+          answeredCount++;
+          correctCount++;
+        } else if (userAnswers[i] === false) {
+          buttons[i].classList.add('incorrect');
+          answeredCount++;
+        }
+      }
+
+      answeredCountEl.innerText = `已作答 ${answeredCount} ／ 50`;
+      hankoScoreEl.innerText = correctCount;
+    }
+
+    // 載入題目
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      qTagEl.innerText = q.type;
+      qNumEl.innerText = `第 ${currentQuestion + 1} 題 ／ 共 50 題`;
+      qTextEl.innerText = q.question;
+      progressBarEl.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+
+      optionsEl.innerHTML = '';
+      const isAnswered = userAnswers[currentQuestion] !== null;
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        if (isAnswered) {
+          btn.disabled = true;
+          if (idx === q.answer) btn.classList.add('correct');
+        }
+        btn.onclick = () => selectOption(idx);
+        optionsEl.appendChild(btn);
+      });
+
+      if (isAnswered) {
+        explanationContentEl.innerHTML = q.explanation;
+        explanationEl.classList.add('show');
+      } else {
+        explanationEl.classList.remove('show');
+      }
+
+      updateJumpGridUI();
+    }
+
+    // 作答選擇
+    function selectOption(idx) {
+      if (userAnswers[currentQuestion] !== null) return;
+
+      const q = quizData[currentQuestion];
+      const buttons = optionsEl.getElementsByTagName('button');
+      const isCorrect = (idx === q.answer);
+      userAnswers[currentQuestion] = isCorrect;
+
+      if (isCorrect) {
+        buttons[idx].classList.add('correct');
+      } else {
+        buttons[idx].classList.add('incorrect');
+        buttons[q.answer].classList.add('correct');
+      }
+
+      for (let btn of buttons) btn.disabled = true;
+
+      explanationContentEl.innerHTML = q.explanation;
+      explanationEl.classList.add('show');
+      updateJumpGridUI();
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quizData.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+      } else {
+        checkFinish();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+      }
+    }
+
+    function goToQuestion(idx) {
+      currentQuestion = idx;
+      loadQuestion();
+    }
+
+    function checkFinish() {
+      const answered = userAnswers.filter(a => a !== null).length;
+      if (answered < quizData.length) {
+        if (!confirm(`還有 ${quizData.length - answered} 題尚未作答，確定要查看總成績嗎？`)) return;
+      }
+      showScore();
+    }
+
+    function showScore() {
+      stageEl.style.display = 'none';
+      resultsEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'none';
+
+      const correctCount = userAnswers.filter(a => a === true).length;
+      document.getElementById('result-correct').innerText = correctCount;
+      document.getElementById('result-desc').innerText = correctCount >= 45 ? "太出色了！第一週文法掌握得完美無缺，實力直逼 N1 滿分！" : correctCount >= 35 ? "表現優異！觀念十分扎實，再接再厲就能順利合格！" : "建議搭配右側的文法速查卡複習動詞變化與句型接續喔！";
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      userAnswers = new Array(quizData.length).fill(null);
+      resultsEl.style.display = 'none';
+      stageEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'flex';
+      initJumpGrid();
+      loadQuestion();
+    }
+
+    // 初始化執行
+    initJumpGrid();
+    switchVocabDay(1);
+    loadQuestion();
+  </script>
+</body>
+</html>
