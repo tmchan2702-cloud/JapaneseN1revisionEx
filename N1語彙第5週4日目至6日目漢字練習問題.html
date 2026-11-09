@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N1 語彙・第五週（4〜6日目）總合實戰特訓｜60 題精選題庫</title>
+  <meta name="description" content="JLPT N1 第五週（4〜6日目）核心語彙實戰特訓：60 題精選填空與語彙運用題庫，含全句翻譯、詳細選項解析與日目速查卡。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='4' y='4' width='56' height='56' rx='10' fill='%232c5e50'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23f5efe3' font-family='serif'>語</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5efe3;
+      --paper: #fdfbf7;
+      --ink: #2b2b2b;
+      --muted: #767168;
+      --primary: #2c5e50;
+      --primary-hover: #1f4339;
+      --accent: #b8432f;
+      --border: #e6dfd1;
+      --ok: #2c5e50;
+      --ng: #b8432f;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    h1, h2, h3, .masthead-vertical, .hanko {
+      font-family: "Shippori Mincho B1", serif;
+    }
+
+    /* Header 風格 */
+    .masthead {
+      max-width: 1100px;
+      margin: 0 auto 2rem auto;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .masthead-vertical {
+      writing-mode: vertical-rl;
+      font-size: 1.25rem;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      border-right: 2px solid var(--border);
+      padding-right: 1.5rem;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .masthead h1 {
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .masthead h1 .count {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+    }
+
+    .lede {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* 印花戳記計分 */
+    .hanko {
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      background: rgba(44, 94, 80, 0.05);
+      transform: rotate(-8deg);
+    }
+
+    .hanko-score {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .hanko-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* 主體佈局 */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+    }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .masthead { grid-template-columns: 1fr; text-align: center; }
+      .masthead-vertical { display: none; }
+      .hanko { margin: 0 auto; }
+    }
+
+    /* 測驗舞台區 */
+    .stage {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .stage-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: rgba(44, 94, 80, 0.1);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .q-num {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-family: "Shippori Mincho B1", serif;
+      word-break: break-word;
+    }
+
+    .options {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .option-btn {
+      background: var(--paper);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 1rem;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: rgba(44, 94, 80, 0.02);
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    .option-btn.correct {
+      background: rgba(44, 94, 80, 0.1) !important;
+      border-color: var(--ok) !important;
+      color: var(--ok);
+      font-weight: 700;
+    }
+
+    .option-btn.incorrect {
+      background: rgba(184, 67, 47, 0.1) !important;
+      border-color: var(--ng) !important;
+      color: var(--ng);
+    }
+
+    /* 解析區 */
+    .explanation {
+      background: #f4ede2;
+      border-left: 4px solid var(--primary);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .explanation.show { display: block; }
+    .explanation dt { font-weight: 700; color: var(--primary); margin-top: 0.5rem; font-size: 0.9rem; }
+    .explanation dd { font-size: 0.95rem; margin-top: 0.2rem; line-height: 1.6; }
+
+    /* 控制按鈕列 */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn.primary:hover { background: var(--primary-hover); }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--ink);
+    }
+
+    .btn.ghost:hover { background: var(--border); }
+
+    .kbd-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* 側邊欄 */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .panel-head h2 { font-size: 1.1rem; }
+    .panel-meta { font-size: 0.8rem; color: var(--muted); }
+
+    .jump-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 5px;
+      margin-bottom: 1rem;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+
+    .jump-btn {
+      aspect-ratio: 1;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .jump-btn:hover { border-color: var(--primary); }
+    .jump-btn.active { border-width: 2px; border-color: var(--ink); }
+    .jump-btn.correct { background: rgba(44, 94, 80, 0.15); color: var(--ok); border-color: var(--ok); }
+    .jump-btn.incorrect { background: rgba(184, 67, 47, 0.15); color: var(--ng); border-color: var(--ng); }
+
+    .legend {
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .legend span { display: flex; align-items: center; gap: 4px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot.ok { background: var(--ok); }
+    .dot.ng { background: var(--ng); }
+    .dot.cur { background: var(--ink); }
+
+    .link-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* 生字速查面板 */
+    .day-tab {
+      padding: 3px 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .day-tab.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .vocab-list {
+      list-style: none;
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 0.85rem;
+    }
+
+    .vocab-list li {
+      padding: 4px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    /* 成績結果頁面 */
+    .results {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .results h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
+    .result-score { font-size: 3.5rem; font-weight: 800; font-family: "Shippori Mincho B1", serif; margin-bottom: 2rem; color: var(--ink); }
+    .result-score span { font-size: 1.5rem; color: var(--muted); }
+    
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-vertical" aria-hidden="true">第五週語彙特訓</div>
+    <div class="masthead-text">
+      <p class="eyebrow">JLPT N1 第五週（4〜6日目）核心動詞與動詞／形容詞 ／ 60 題實戰特訓</p>
+      <h1>日文生字填充與語彙特訓 <span class="count">60 題</span></h1>
+      <p class="lede">涵蓋 4日目 試す・営む・損なう、5日目 背く・経る・値する、6日目 最寄り・気配・手際 之核心生字。隨機均勻選項、全句中文翻譯與詳細選項排除剖析。</p>
+    </div>
+    <div class="hanko" id="hanko" aria-live="polite">
+      <span class="hanko-score" id="hanko-score">0</span>
+      <span class="hanko-label">正解</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- 測驗舞台區 -->
+    <section class="stage" id="stage" aria-label="測驗">
+      <div class="stage-top">
+        <span class="tag" id="q-tag">生字填充題</span>
+        <span class="q-num" id="q-num">第 1 題 ／ 共 60 題</span>
+      </div>
+      <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress"></div></div>
+      
+      <div class="question-card" id="question-card">
+        <p class="question" id="q-text" lang="ja"></p>
+        <div class="options" id="options" role="group" aria-label="選項"></div>
+        <div class="explanation" id="explanation">
+          <dl>
+            <dt>全句翻譯與詳細選項解析</dt>
+            <dd id="explanation-content"></dd>
+          </dl>
+        </div>
+      </div>
+
+      <nav class="controls">
+        <button class="btn ghost" id="prev-btn" type="button" onclick="prevQuestion()">← 上一題</button>
+        <span class="kbd-hint">點擊選項即時作答與看解析</span>
+        <button class="btn primary" id="next-btn" type="button" onclick="nextQuestion()">下一題 →</button>
+      </nav>
+    </section>
+
+    <!-- 結果頁 -->
+    <section class="results" id="results" aria-label="成績總結">
+      <p class="eyebrow">練習完成</p>
+      <h2>第五週（4〜6日目）語彙實戰特訓結算</h2>
+      <p class="result-score"><strong id="result-correct">0</strong><span> ／ 60</span></p>
+      <p id="result-desc" style="color: var(--muted);"></p>
+      <div class="result-actions">
+        <button class="btn primary" id="restart-btn" type="button" onclick="restartQuiz()">重新開始練習</button>
+      </div>
+    </section>
+
+    <!-- 側欄 -->
+    <aside class="sidebar">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>題目一覽</h2>
+          <span class="panel-meta" id="answered-count">已作答 0 ／ 60</span>
+        </div>
+        <div class="jump-grid" id="jump-grid"></div>
+        <div class="legend">
+          <span><i class="dot ok"></i>答對</span>
+          <span><i class="dot ng"></i>答錯</span>
+          <span><i class="dot cur"></i>目前</span>
+        </div>
+        <button class="link-btn" id="finish-btn" type="button" onclick="checkFinish()">查看成績總結</button>
+      </div>
+
+      <div class="panel vocab">
+        <div class="panel-head">
+          <h2>生字速查卡片</h2>
+          <span class="panel-meta">4日目〜6日目</span>
+        </div>
+        <div class="day-tabs" id="day-tabs" role="tablist">
+          <button class="day-tab active" onclick="switchVocabDay(4)">4日目</button>
+          <button class="day-tab" onclick="switchVocabDay(5)">5日目</button>
+          <button class="day-tab" onclick="switchVocabDay(6)">6日目</button>
+        </div>
+        <ul class="vocab-list" id="vocab-list" lang="ja"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">JLPT N1 第五週（4〜6日目）核心語彙特訓 60 題</footer>
+
+  <script>
+    // 第五週（4〜6日目）生字速查卡片資料庫
+    const vocabData = {
+      4: [
+        "・負う（おう）：承擔責任、受傷",
+        "・沿う（そう）：沿著、順應",
+        "・損なう（そこなう）：損害、傷害健康",
+        "・似通う（にかよう）：相似",
+        "・恥じらう（はじらう）：害羞",
+        "・保つ（たもつ）：保持、維持",
+        "・志す（こころざす）：立志",
+        "・試す（ためす）：測試、嘗試",
+        "・犯す（おかす）：犯罪、犯錯",
+        "・乱す（みだす）：擾亂、破壞秩序",
+        "・満たす（みたす）：填滿、滿足需求",
+        "・果たす（はたす）：達成、履行責任",
+        "・抜かす（ぬかす）：漏掉、跳過",
+        "・負かす（まかす）：打敗對手",
+        "・悩ます（なやます）：使苦惱",
+        "・慣らす（ならす）：訓練、使習慣",
+        "・荒らす（あらす）：破壞、弄亂",
+        "・費やす（ついやす）：花費、消耗時間",
+        "・練る（ねる）：構思、琢磨",
+        "・鈍る（にぶる）：變遲鈍",
+        "・勝る（まさる）：勝過、優於",
+        "・操る（あやつる）：操控、熟練操作",
+        "・群がる（むらがる）：聚集",
+        "・備わる（そなわる）：具備",
+        "・改まる（あらたまる）：更新、態度端莊",
+        "・病む（やむ）：生病、苦惱",
+        "・富む（とむ）：豐富、富含",
+        "・恵む（めぐむ）：恩惠、施捨",
+        "・営む（いとなむ）：經營、維持生活",
+        "・危ぶむ（あやぶむ）：擔憂能否成功"
+      ],
+      5: [
+        "・築く（きずく）：建立、建造",
+        "・描く（えがく）：描繪、想像",
+        "・背く（そむく）：違背、背叛",
+        "・相次ぐ（あいつぐ）：接連發生",
+        "・試みる（こころみる）：嘗試",
+        "・省みる（かえりみる）：反省、檢討",
+        "・帯びる（おびる）：帶有酒意或氣息",
+        "・経る（へる）：經過時間、經由",
+        "・構える（かまえる）：擺好姿勢、開業",
+        "・栄える（さかえる）：繁榮",
+        "・絶える（たえる）：中斷、絕跡",
+        "・映える（はえる）：映照、襯託顯眼",
+        "・整える（ととのえる）：整理、準備好",
+        "・授ける（さずける）：授予、傳授",
+        "・傾ける（かたむける）：傾斜、傾聽",
+        "・設ける（もうける）：設置、設立",
+        "・手掛ける（てがける）：親自處理、設計",
+        "・定める（さだめる）：制定、決定",
+        "・目覚める（めざめる）：醒來、覺醒",
+        "・暮れる（くれる）：天黑、日子結束",
+        "・遅らせる（おくらせる）：延誤、推遲",
+        "・寝かせる（ねかせる）：使入睡",
+        "・震わせる（ふるわせる）：使顫抖",
+        "・値する（あたいする）：值得",
+        "・害する（がいする）：危害、損害",
+        "・称する（しょうする）：自稱",
+        "・制する（せいする）：控制、壓制",
+        "・脱する（だっする）：擺脫、逃脫",
+        "・徹する（てっする）：貫徹到底",
+        "・面する（めんする）：面向、臨街",
+        "・要する（ようする）：需要",
+        "・案じる（あんじる）：掛念、擔心",
+        "・重んじる（おもんじる）：重視",
+        "・演じる（えんじる）：扮演、演出",
+        "・興じる（きょうじる）：興致勃勃地玩",
+        "・禁じる（きんじる）：禁止",
+        "・準じる（じゅんじる）：比照、依照",
+        "・転じる（てんじる）：轉變",
+        "・報じる（ほうじる）：報導"
+      ],
+      6: [
+        "・最寄り（もより）：最近的",
+        "・誤り（あやまり）/過ち（あやまち）：錯誤/過失",
+        "・個々（ここ）：各個",
+        "・値打ち（ねうち）：價值",
+        "・初耳（はつみみ）：初次聽聞",
+        "・人並み（ひとなみ）：普通人的水準",
+        "・軒並み（のきなみ）：成排房屋/一律全都",
+        "・人任せ（ひとまかせ）：依賴他人",
+        "・善し悪し（よしあし）：好壞善惡",
+        "・目の当たり（めのあたり）：親眼目睹",
+        "・応急（おうきゅう）：應急處理",
+        "・気配（けはい）：氣息、跡象",
+        "・手際（てぎわ）：手法技巧",
+        "・知恵（ちえ）：智慧",
+        "・自我（じが）/自己（じこ）：自我/自己",
+        "・作戦（さくせん）：策略、作戰",
+        "・始末（しまつ）：處理、結局",
+        "・決意（けつい）：決心",
+        "・意欲（いよく）：意願、積極性",
+        "・片言（かたこと）：隻言片語",
+        "・独自（どくじ）：獨特、原創",
+        "・従来（じゅうらい）：傳統的、過去的",
+        "・無茶（むちゃ）：亂來的",
+        "・過密（かみつ）：過於緊密的",
+        "・不可欠（ふかけつ）：不可或缺的",
+        "・画期的（かっきてき）：劃時代的",
+        "・客観的（きゃっかんてき）/主観的（しゅかんてき）：客觀/主觀",
+        "・自発的（じはつてき）：自發的",
+        "・強制的な（きょうせいてき）：強制的"
+      ]
+    };
+
+    // 第五週（4〜6日目）核心生字 60 題題庫
+    const quizData = [
+      {
+        type: "4日目：Ⅰ類動詞・負う",
+        question: "今回のプロジェクト失敗の責任は、すべて私が (  ) つもりだ。",
+        options: ["負う", "沿う", "損なう", "似通う"],
+        answer: 0,
+        explanation: "【全句翻譯】這次專案失敗的責任，我打算全部由自己來承擔。<br><br>" +
+                     "<strong>【正解分析】負う（おう）：** 意為「承擔（責任）、背負；受（傷）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・沿う：順著、沿著。<br>" +
+                     "・損なう：損害、傷害。<br>" +
+                     "・似通う：相似。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・費やす",
+        question: "リサイクルして物を作るには、かなりのエネルギーを (  ) らしい。",
+        options: ["慣らす", "費やす", "荒らす", "操る"],
+        answer: 1,
+        explanation: "【全句翻譯】據說透過回收來製造物品，會消耗相當多的能源。<br><br>" +
+                     "<strong>【正解分析】費やす（ついやす）：** 意為「消耗、花費（時間、精力或資源）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・慣らす：訓練、使習慣。<br>" +
+                     "・荒らす：破壞、弄亂。<br>" +
+                     "・操る：操控、操作。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・富む",
+        question: "我が国はかつて、豊かな天然資源に (  ) いた。",
+        options: ["勝っていた", "営んでいた", "富んでいた", "満たしていた"],
+        answer: 2,
+        explanation: "【全句翻譯】我們國家過去曾擁有豐富的天然資源。<br><br>" +
+                     "<strong>【正解分析】富む（とむ）：** 搭配「〜に富む」意為「富含、豐富」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・勝っていた：勝過。<br>" +
+                     "・営んでいた：經營。<br>" +
+                     "・満たしていた：填滿、滿足。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・志す",
+        question: "彼女は将来、学者を (  ) て東京の大学に進学した。",
+        options: ["試し", "犯し", "乱し", "志し"],
+        answer: 3,
+        explanation: "【全句翻譯】她立志將來要成為學者，因而考入了東京的大學。<br><br>" +
+                     "<strong>【正解分析】志す（こころざす）：** 意為「立志、志向」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・試し：嘗試。<br>" +
+                     "・犯し：犯錯犯罪。<br>" +
+                     "・乱し：破壞擾亂。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・損なう",
+        question: "徹夜が続くと、健康を (  ) おそれがある。",
+        options: ["損なう", "保つ", "似通う", "恥じらう"],
+        answer: 0,
+        explanation: "【全句翻譯】如果持續通宵熬夜，恐怕會損害健康。<br><br>" +
+                     "<strong>【正解分析】損なう（そこなう）：** 意為「損害、傷害（健康或感情）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・保つ：保持維持。<br>" +
+                     "・似通う：相似。<br>" +
+                     "・恥じらう：害羞。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・鈍る",
+        question: "年を取っても、彼の包丁の腕前はまったく (  ) いない。",
+        options: ["病んで", "鈍って", "荒らして", "費やして"],
+        answer: 1,
+        explanation: "【全句翻譯】即使上了年紀，他的刀工技術也完全沒有變遲鈍退步。<br><br>" +
+                     "<strong>【正解分析】鈍る（にぶる）：** 意為「變遲鈍、退步、鈍化」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・病んで：生病。<br>" +
+                     "・荒らして：弄亂破壞。<br>" +
+                     "・費やして：花費消耗。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・満たす",
+        question: "我が社の製品は、国の厳しい安全基準を完璧に (  ) している。",
+        options: ["果たして", "抜かして", "満たして", "負かして"],
+        answer: 2,
+        explanation: "【全句翻譯】我們公司的產品完美符合並滿足了國家嚴格的安全標準。<br><br>" +
+                     "<strong>【正解分析】満たす（みたす）：** 意為「滿足（要求/條件）、填滿」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・果たして：完成、履行。<br>" +
+                     "・抜かして：漏掉、跳過。<br>" +
+                     "・負かして：打敗。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・備わる",
+        question: "あの子には、生まれつき優れた藝術の才能が (  ) いる。",
+        options: ["悩んでいる", "恵んでいる", "富んでいる", "備わっている"],
+        answer: 3,
+        explanation: "【全句翻譯】那個孩子天生就具備了優秀的藝術才能。<br><br>" +
+                     "<strong>【正解分析】備わる（そなわる）：** 意為「具備、擁有（天資或設備）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・悩んでいる：苦惱。<br>" +
+                     "・恵んでいる：施捨。<br>" +
+                     "・富んでいる：豐富。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・営む",
+        question: "祖父は長年、京都で小さな和菓子屋を (  ) きた。",
+        options: ["営んで", "危ぶんで", "練って", "操って"],
+        answer: 0,
+        explanation: "【全句翻譯】祖父多年來一直在京都經營著一家小型的日式點心店。<br><br>" +
+                     "<strong>【正解分析】営む（いとなむ）：** 意為「經營（事業）；過（生活）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・危ぶんで：擔憂。<br>" +
+                     "・練って：構思磨練。<br>" +
+                     "・操って：操作。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・練る",
+        question: "新項目的具體作戰計畫需要再仔細 (  ) 直す必要がある。",
+        options: ["抜かす", "練る", "負かす", "荒らす"],
+        answer: 1,
+        explanation: "【全句翻譯】新專案的具體作戰計畫需要再次仔細構思琢磨。<br><br>" +
+                     "<strong>【正解分析】練る（ねる）：** 意為「構思、推敲（計畫）；鍛鍊」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・抜かす：跳過、漏掉。<br>" +
+                     "・負かす：擊敗。<br>" +
+                     "・荒らす：弄亂破壞。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・背く",
+        question: "彼は親の教えに (  ) て、悪の道に進んでしまった。",
+        options: ["害して", "制して", "背いて", "準じて"],
+        answer: 2,
+        explanation: "【全句翻譯】他違背了父母的教誨，走上了邪路。<br><br>" +
+                     "<strong>【正解分析】背く（そむく）：** 意為「違背、背叛、不遵從」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・害して：損害。<br>" +
+                     "・制して：壓制。<br>" +
+                     "・準じて：依照。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・傾ける",
+        question: "先生は生徒たちの悩みに優しく耳を (  ) くれた。",
+        options: ["設けて", "構えて", "整えて", "傾けて"],
+        answer: 3,
+        explanation: "【全句翻譯】老師溫柔地傾聽著學生們的煩惱。<br><br>" +
+                     "<strong>【正解分析】傾ける（かたむける）：** 搭配「耳を傾ける」意為「傾聽」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・設けて：設置。<br>" +
+                     "・構えて：擺姿勢。<br>" +
+                     "・整えて：整理。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・帯びる",
+        question: "夕焼けによって、空が美しい赤みを (  ) きた。",
+        options: ["帯びて", "経て", "省みて", "築いて"],
+        answer: 0,
+        explanation: "【全句翻譯】因為晚霞，天空漸漸帶有了美麗的紅色采調。<br><br>" +
+                     "<strong>【正解分析】帯びる（おびる）：** 意為「帶有（顏色、氣息或酒意）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・経て：經過。<br>" +
+                     "・省みて：反省。<br>" +
+                     "・築いて：建立。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・目覚める",
+        question: "父は最近、料理の面白さに (  ) らしく、毎日台所に立っている。",
+        options: ["暮れた", "目覚めた", "転じた", "相次いだ"],
+        answer: 1,
+        explanation: "【全句翻譯】父親最近似乎對做菜的樂趣有所覺醒，每天都站在廚房裡。<br><br>" +
+                     "<strong>【正解分析】目覚める（めざめる）：** 意為「覺醒、對……產生興趣；醒來」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・暮れた：天黑。<br>" +
+                     "・転じた：轉變。<br>" +
+                     "・相次いだ：接連發生。"
+      },
+      {
+        type: "5日目：Ⅲ類動詞・案じる",
+        question: "母は海外で一人暮らしをしている兄の健康をいつも (  ) いる。",
+        options: ["報じている", "重んじている", "案じている", "演じている"],
+        answer: 2,
+        explanation: "【全句翻譯】母親總是掛念擔心著在國外獨自生活的哥哥的健康。<br><br>" +
+                     "<strong>【正解分析】案じる（あんじる）：** 意為「擔心、掛念」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・報じている：報導。<br>" +
+                     "・重んじている：重視。<br>" +
+                     "・演じている：扮演。"
+      },
+      {
+        type: "5日目：Ⅲ類動詞・脱する",
+        question: "我がチームはついに、最下位の危機を (  ) ことができた。",
+        options: ["徹する", "面する", "準じる", "脱する"],
+        answer: 3,
+        explanation: "【全句翻譯】我們隊伍終於能夠擺脫墊底的危機了。<br><br>" +
+                     "<strong>【正解分析】脱する（だっする）：** 意為「擺脫、逃脫、脫離危機」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・徹する：貫徹。<br>" +
+                     "・面する：面向。<br>" +
+                     "・準じる：比照。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・相次ぐ",
+        question: "最近、この地域では大きな地震が (  ) 起こっている。",
+        options: ["相次いで", "震わせて", "遅らせて", "絶えて"],
+        answer: 0,
+        explanation: "【全句翻譯】最近這個地區接連不斷地發生大地震。<br><br>" +
+                     "<strong>【正解分析】相次ぐ（あいつぐ）：** 意為「接連發生、相續發生」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・震わせて：使發抖。<br>" +
+                     "・遅らせて：推遲。<br>" +
+                     "・絶えて：中斷。"
+      },
+      {
+        type: "5日目：Ⅲ類動詞・興じる",
+        question: "休日に兄は、友人たちとマージャンに (  ) いた。",
+        options: ["重んじて", "興じて", "禁じて", "害して"],
+        answer: 1,
+        explanation: "【全句翻譯】假日裡哥哥和朋友們興致勃勃地打著麻將。<br><br>" +
+                     "<strong>【正解分析】興じる（きょうじる）：** 意為「興致勃勃地玩樂、享受」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・重んじて：重視。<br>" +
+                     "・禁じて：禁止。<br>" +
+                     "・害して：傷害。"
+      },
+      {
+        type: "5日目：Ⅲ類動詞・値する",
+        question: "この素晴らしい小説は、一読に (  ) 作家の名作だ。",
+        options: ["称する", "制する", "値する", "要する"],
+        answer: 2,
+        explanation: "【全句翻譯】這本極佳的小說是值得一讀的作家名作。<br><br>" +
+                     "<strong>【正解分析】値する（あたいする）：** 搭配「〜に値する」意為「值得、有……價值」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・称する：自稱。<br>" +
+                     "・制する：控制。<br>" +
+                     "・要する：需要。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・経る",
+        question: "10年の年月を (  ) て、二人はついに再會を果たした。",
+        options: ["描いて", "設けて", "授けて", "経て"],
+        answer: 3,
+        explanation: "【全句翻譯】經過了10年的歲月，兩人終於重逢了。<br><br>" +
+                     "<strong>【正解分析】経る（へる）：** 意為「經過（時間）；經由（地點）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・描いて：描繪。<br>" +
+                     "・設けて：設置。<br>" +
+                     "・授けて：授予。"
+      },
+      {
+        type: "6日目：副詞/形容動詞・軒並み",
+        question: "物価の上昇により、スーパーの食品が (  ) 値上がりした。",
+        options: ["軒並み", "応急に", "自発的に", "個々に"],
+        answer: 0,
+        explanation: "【全句翻譯】由於物價上漲，超市的食品一律全都漲價了。<br><br>" +
+                     "<strong>【正解分析】軒並み（のきなみ）：** 意為「一律、全都、普遍（成排地）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・応急に：應急地。<br>" +
+                     "・自発的に：自發地。<br>" +
+                     "・個々に：個別地。"
+      },
+      {
+        type: "6日目：形容動詞・過密",
+        question: "朝の電車は (  ) なダイヤで運行されている。",
+        options: ["無茶な", "過密な", "畫期的な", "不可欠な"],
+        answer: 1,
+        explanation: "【全句翻譯】早晨的電車是按照極為緊密的班次表在運行的。<br><br>" +
+                     "<strong>【正解分析】過密（かみつ）：** 意為「過於緊密的（班次/行程）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・無茶な：亂來的。<br>" +
+                     "・画期的な：劃時代的。<br>" +
+                     "・不可欠な：不可或缺的。"
+      },
+      {
+        type: "6日目：名詞・自己",
+        question: "投資や株の売買は、すべて (  ) 責任で行うべきだ。",
+        options: ["自我", "初耳", "自己", "人任せ"],
+        answer: 2,
+        explanation: "【全句翻譯】投資與股票買賣，全部都應該由自己承擔責任。<br><br>" +
+                     "<strong>【正解分析】自己（じこ）：** 搭配「自己責任」意為「自己承擔責任」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・自我：自我意識。<br>" +
+                     "・初耳：初次聽聞。<br>" +
+                     "・人任せ：依賴他人。"
+      },
+      {
+        type: "6日目：名詞・誤り",
+        question: "この書類には計算の (  ) が幾つか見つかった。",
+        options: ["過ち", "始末", "気配", "誤り"],
+        answer: 3,
+        explanation: "【全句翻譯】這份文件裡發現了幾處計算的錯誤。<br><br>" +
+                     "<strong>【正解分析】誤り（あやまり）：** 意為「（文字、計算或知識上的）錯誤」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・過ち：行為或道德上的過失。[特別注意：計算錯誤用誤り！]<br>" +
+                     "・始末：處理結末。<br>" +
+                     "・気配：氣息跡象。"
+      },
+      {
+        type: "6日目：名詞・値打ち",
+        question: "この古い畫架の絵は、將來高い (  ) が出るかもしれない。",
+        options: ["値打ち", "作戦", "手際", "知恵"],
+        answer: 0,
+        explanation: "【全句翻譯】這幅古老畫架上的畫，將來可能會產生很高的價值。<br><br>" +
+                     "<strong>【正解分析】値打ち（ねうち）：** 意為「價值、價格」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・作戦：策略。<br>" +
+                     "・手際：處理技巧。<br>" +
+                     "・知恵：智慧。"
+      },
+      {
+        type: "6日目：形容動詞・強制的に",
+        question: "フリーズしたパソコンを (  ) 終了させた。",
+        options: ["客観的に", "強制的に", "自発的に", "従来通り"],
+        answer: 1,
+        explanation: "【全句翻譯】將當機的電腦給強制關機了。<br><br>" +
+                     "<strong>【正解分析】強制的（きょうせいてき）：** 意為「強制的、強迫地」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・客観的に：客觀地。<br>" +
+                     "・自発的に：自發地。<br>" +
+                     "・従来通り：照舊。"
+      },
+      {
+        type: "6日目：名詞・決意",
+        question: "彼は知事選挙に立候補する (  ) を固めたようだ。",
+        options: ["意欲", "気配", "決意", "始末"],
+        answer: 2,
+        explanation: "【全句翻譯】他似乎已經下定決心要出馬競選知事了。<br><br>" +
+                     "<strong>【正解分析】決意（けつい）：** 搭配「決意を固める」意為「下定決心」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・意欲：意願。<br>" +
+                     "・気配：氣息。<br>" +
+                     "・始末：結局演變。"
+      },
+      {
+        type: "6日目：名詞・目の当たり",
+        question: "大地震による悲惨な慘狀を (  ) にして言葉を失った。",
+        options: ["人並み", "初耳", "最寄り", "目の当たり"],
+        answer: 3,
+        explanation: "【全句翻譯】親眼目睹了大地震造成的悲慘慘狀，頓時說不出話來。<br><br>" +
+                     "<strong>【正解分析】目の当たり（めのあたり）：** 搭配「目の当たりにする」意為「親眼目睹」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・人並み：普通人水準。<br>" +
+                     "・初耳：初次聽聞。<br>" +
+                     "・最寄り：最近的。"
+      },
+      {
+        type: "6日目：形容動詞・画期的",
+        question: "這是我們公司研發出的劃時代新技術。",
+        options: ["画期的な", "無茶な", "過密な", "個人的な"],
+        answer: 0,
+        explanation: "【全句翻譯】這是我們公司開發出的劃時代新技術。<br><br>" +
+                     "<strong>【正解分析】画期的（かっきてき）：** 意為「劃時代的、創新的」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・無茶な：亂來的。<br>" +
+                     "・過密な：過度緊密的。<br>" +
+                     "・個人的な：個人的。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・沿う",
+        question: "川に (  ) 散歩道を進むと、綺麗なお花畑が見えてきた。",
+        options: ["負う", "沿う", "損なう", "保つ"],
+        answer: 1,
+        explanation: "【全句翻譯】沿著河邊的散步小徑向前走，就能看到美麗的花田。<br><br>" +
+                     "<strong>【正解分析】沿う（そう）：** 意為「沿著、順著」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・負う：背負承擔。<br>" +
+                     "・損なう：損害。<br>" +
+                     "・保つ：維持保持。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・乱す",
+        question: "公共の場所で大聲を出して秩序を (  ) のはやめなさい。",
+        options: ["満たす", "果たす", "乱す", "抜かす"],
+        answer: 2,
+        explanation: "【全句翻譯】請停止在公共場所大聲喧嘩、擾亂秩序的行為。<br><br>" +
+                     "<strong>【正解分析】乱す（みだす）：** 意為「擾亂、破壞（秩序或心境）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・満たす：填滿。<br>" +
+                     "・果たす：達成。<br>" +
+                     "・抜かす：跳過漏掉。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・操る",
+        question: "彼は何種もの外國語を自由自在に (  ) 技能を持っている。",
+        options: ["荒らす", "練る", "勝る", "操る"],
+        answer: 3,
+        explanation: "【全句翻譯】他擁有能自由自在地運用操控多種外國語的技能。<br><br>" +
+                     "<strong>【正解分析】操る（あやつる）：** 意為「熟練操作、操控（語言或機器）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・荒らす：破壞弄亂。<br>" +
+                     "・練る：構思磨練。<br>" +
+                     "・勝る：勝過。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・築く",
+        question: "長年の努力によって、地域社會での強固な信用を (  ) 上げた。",
+        options: ["築き", "省みて", "栄えて", "絶えて"],
+        answer: 0,
+        explanation: "【全句翻譯】透過多年的努力，建立了在社區中的堅實信用。<br><br>" +
+                     "<strong>【正解分析】築く（きずく）：** 意為「建立、建造（信用或建築）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・省みて：反省。<br>" +
+                     "・栄えて：繁榮。<br>" +
+                     "・絶えて：中斷。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・映える",
+        question: "青空に真っ白な雪山が美しく (  ) ている。",
+        options: ["整って", "映え", "設けて", "定めて"],
+        answer: 1,
+        explanation: "【全句翻譯】純白的雪山在藍天的映襯下顯得格外美麗顯眼。<br><br>" +
+                     "<strong>【正解分析】映える（はえる）：** 意為「映照、襯託顯眼」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・整って：整理好。<br>" +
+                     "・設けて：設置。<br>" +
+                     "・定めて：制定。"
+      },
+      {
+        type: "5日目：Ⅲ類動詞・重んじる",
+        question: "傳統的な技術を守るため、古くからの職人質を (  ) べきだ。",
+        options: ["演じる", "興じる", "重んじる", "報じる"],
+        answer: 2,
+        explanation: "【全句翻譯】為了守護傳統技術，應該重視自古以來的職人精神。<br><br>" +
+                     "<strong>【正解分析】重んじる（おもんじる）：** 意為「重視、尊重」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・演じる：扮演。<br>" +
+                     "・興じる：玩得盡興。<br>" +
+                     "・報じる：報導。"
+      },
+      {
+        type: "6日目：名詞・手際",
+        question: "料理の廚師は非常に (  ) よく料理を仕上げた。",
+        options: ["気配", "知恵", "始末", "手際"],
+        answer: 3,
+        explanation: "【全句翻譯】廚師手法非常俐落有效率地完成了料理。<br><br>" +
+                     "<strong>【正解分析】手際（てぎわ）：** 搭配「手際よく」意為「手法俐落、技巧高明地」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・気配：氣息。<br>" +
+                     "・知恵：智慧。<br>" +
+                     "・始末：結局演變。"
+      },
+      {
+        type: "6日目：形容動詞・不可欠",
+        question: "水と空氣は人間の生存に (  ) な要素である。",
+        options: ["不可欠", "無茶", "畫期的", "強制"],
+        answer: 0,
+        explanation: "【全句翻譯】水和空氣是人類生存不可或缺的要素。<br><br>" +
+                     "<strong>【正解分析】不可欠（ふかけつ）：** 意為「不可或缺的」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・無茶：亂來的。<br>" +
+                     "・画期的：劃時代的。<br>" +
+                     "・強制：強制。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・勝る",
+        question: "試驗に試合で優勝できた時の嬉しさは、何物にも (  ) 。",
+        options: ["群がる", "勝る", "鈍る", "病む"],
+        answer: 1,
+        explanation: "【全句翻譯】在比賽中獲得冠軍時的喜悅，勝過世上的任何事物。<br><br>" +
+                     "<strong>【正解分析】勝る（まさる）：** 搭配「〜に勝る」意為「勝過、優於」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・群がる：聚集。<br>" +
+                     "・鈍る：變遲鈍。<br>" +
+                     "・病む：生病。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・危ぶむ",
+        question: "台風の接近により、明日の飛行機運航が (  ) れている。",
+        options: ["恵まれ", "練られ", "危ぶま", "操られ"],
+        answer: 2,
+        explanation: "【全句翻譯】受到颱風接近的影響，明天的航班能否正常起降受到擔憂。<br><br>" +
+                     "<strong>【正解分析】危ぶむ（あやぶむ）：** 意為「擔憂、懷疑（能否成功/順利）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・恵まれ：獲得恩惠。<br>" +
+                     "・練られ：構思磨練。<br>" +
+                     "・操られ：操控。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・描く",
+        question: "理想の將來像を頭の中で明確に (  ) みよう。",
+        options: ["背い", "築い", "省み", "描い"],
+        answer: 3,
+        explanation: "【全句翻譯】試著在腦海中明確地描繪理想的將來藍圖吧。<br><br>" +
+                     "<strong>【正解分析】描く（えがく）：** 意為「描繪、想像」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・背い：違背。<br>" +
+                     "・築い：建造。<br>" +
+                     "・省み：反省。"
+      },
+      {
+        type: "5日目：Ⅲ類動詞・禁じる",
+        question: "校內でのカンニング行為は嚴しく (  ) られている。",
+        options: ["禁じ", "案じ", "演じ", "轉じ"],
+        answer: 0,
+        explanation: "【全句翻譯】學校內部的作弊行為是被嚴厲禁止的。<br><br>" +
+                     "<strong>【正解分析】禁じる（きんじる）：** 意為「禁止」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・案じ：擔心。<br>" +
+                     "・演じ：扮演。<br>" +
+                     "・転じ：轉變。"
+      },
+      {
+        type: "6日目：名詞・最寄り",
+        question: "會場へお越しの際は、(  ) の駅から徒歩5分です。",
+        options: ["人並み", "最寄り", "軒並み", "初耳"],
+        answer: 1,
+        explanation: "【全句翻譯】前往會場時，從最近的車站步行只需5分鐘。<br><br>" +
+                     "<strong>【正解分析】最寄り（もより）：** 意為「最近的（車站或地點）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・人並み：普通人水準。<br>" +
+                     "・軒並み：一律全都。<br>" +
+                     "・初耳：初次聽聞。"
+      },
+      {
+        type: "6日目：名詞・気配",
+        question: "誰もいないはずの部屋から、人の (  ) がした。",
+        options: ["自我", "作戦", "気配", "始末"],
+        answer: 2,
+        explanation: "【全句翻譯】從理論上應該沒有人的房間裡，感覺到了人的氣息迹象。<br><br>" +
+                     "<strong>【正解分析】気配（けはい）：** 意為「氣息、迹象、感覺」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・自我：自我。<br>" +
+                     "・作戦：作戰策略。<br>" +
+                     "・始末：結局演變。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・果たす",
+        question: "彼は與えられた職務を最後まで責任を持って (  ) た。",
+        options: ["満たし", "負かし", "悩まし", "果たし"],
+        answer: 3,
+        explanation: "【全句翻譯】他帶著責任感將賦予的職務貫徹執行到了最後。<br><br>" +
+                     "<strong>【正解分析】果たす（はたす）：** 意為「完成、履行（責任/任務/目標）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・満たし：填滿。<br>" +
+                     "・負かし：打敗。<br>" +
+                     "・悩まし：使苦惱。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・保つ",
+        question: "食品の新鮮さを (  ) ために、冷凍庫で保管してください。",
+        options: ["保つ", "損なう", "犯す", "試す"],
+        answer: 0,
+        explanation: "【全句翻譯】為了維持食品的新鮮度，請在冷凍庫中保存。<br><br>" +
+                     "<strong>【正解分析】保つ（たもつ）：** 意為「保持、維持」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・損なう：損害。<br>" +
+                     "・犯す：犯罪。<br>" +
+                     "・試す：測試。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・栄える",
+        question: "貿易の中心地として、この港町は長年 (  ) きた。",
+        options: ["絶えて", "栄えて", "映えて", "暮れて"],
+        answer: 1,
+        explanation: "【全句翻譯】作為貿易中心，這座港口城鎮多年來繁榮興盛。<br><br>" +
+                     "<strong>【正解分析】栄える（さかえる）：** 意為「繁榮、興盛」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・絶えて：中斷絕跡。<br>" +
+                     "・映えて：襯託顯眼。<br>" +
+                     "・暮れて：天黑。"
+      },
+      {
+        type: "5日目：Ⅲ類動詞・害する",
+        question: "過度なストレスは、體だけでなく精神の健康をも (  ) 。",
+        options: ["制する", "脱する", "害する", "徹する"],
+        answer: 2,
+        explanation: "【全句翻譯】過度的壓力不僅傷害身體，也會損害精神健康。<br><br>" +
+                     "<strong>【正解分析】害する（がいする）：** 意為「損害、危害」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・制する：控制。<br>" +
+                     "・脱する：擺脫。<br>" +
+                     "・徹する：貫徹。"
+      },
+      {
+        type: "6日目：名詞・初耳",
+        question: "彼が既婚者だという話は、私にとって全くの (  ) だった。",
+        options: ["人任せ", "善し悪し", "應急", "初耳"],
+        answer: 3,
+        explanation: "【全句翻譯】關於他已經結婚這件事，對我來說完全是第一次聽說。<br><br>" +
+                     "<strong>【正解分析】初耳（はつみみ）：** 意為「初次聽聞」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・人任せ：依賴他人。<br>" +
+                     "・善し悪し：好壞。<br>" +
+                     "・応急：應急。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・群がる",
+        question: "砂糖の瓶の周りに、無数のアリが (  ) 聚集了過來。",
+        options: ["群がって", "操って", "勝って", "鈍って"],
+        answer: 0,
+        explanation: "【全句翻譯】無數的螞蟻聚集在了糖罐的周圍。<br><br>" +
+                     "<strong>【正解分析】群がる（むらがる）：** 意為「成群聚集」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・操って：操控。<br>" +
+                     "・勝って：勝過。<br>" +
+                     "・鈍って：遲鈍。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・犯す",
+        question: "法律や規則を (  ) 行為は許されない。",
+        options: ["志す", "犯す", "試す", "保つ"],
+        answer: 1,
+        explanation: "【全句翻譯】違犯法律或規則的行為是不被允許的。<br><br>" +
+                     "<strong>【正解分析】犯す（おかす）：** 意為「犯（罪/錯）、違犯」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・志す：立志。<br>" +
+                     "・試す：測試。<br>" +
+                     "・保つ：保持。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・手掛ける",
+        question: "這名著名的建築家親自設計了這棟市立圖書館。",
+        options: ["定める", "暮れる", "手掛ける", "遅らせる"],
+        answer: 2,
+        explanation: "【全句翻譯】這名著名的建築家親自設計處理了這棟市立圖書館。<br><br>" +
+                     "<strong>【正解分析】手掛ける（てがける）：** 意為「親自處理、設計」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・定める：制定。<br>" +
+                     "・暮れる：天黑。<br>" +
+                     "・遅らせる：推遲。"
+      },
+      {
+        type: "5日目：Ⅲ類動詞・徹する",
+        question: "彼は影の支援者として、現場の裏方に (  ) た。",
+        options: ["要し", "面し", "称し", "徹し"],
+        answer: 3,
+        explanation: "【全句翻譯】作為幕後支援者，他自始至終貫徹角色做幕後工作人員。<br><br>" +
+                     "<strong>【正解分析】徹する（てっする）：** 搭配「〜に徹する」意為「貫徹到底、堅持扮演……角色」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・要し：需要。<br>" +
+                     "・面し：面向。<br>" +
+                     "・称し：自稱。"
+      },
+      {
+        type: "6日目：名詞・人並み",
+        question: "贅沢は望まないが、(  ) の生活は送りたい。",
+        options: ["人並み", "個々", "過ち", "軒並み"],
+        answer: 0,
+        explanation: "【全句翻譯】我不奢求奢華，但希望能過上跟普通人一樣水平的生活。<br><br>" +
+                     "<strong>【正解分析】人並み（ひとなみ）：** 意為「普通人的水準、一般人的（生活）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・個々：各個。<br>" +
+                     "・過ち：過失。<br>" +
+                     "・軒並み：一律全都。"
+      },
+      {
+        type: "6日目：形容動詞・無茶",
+        question: "いくら急いでいるからといって、そんな (  ) な要求は通らない。",
+        options: ["自発的", "無茶", "客観的", "畫期的"],
+        answer: 1,
+        explanation: "【全句翻譯】再怎麼著急，那樣亂來胡鬧的要求也是行不通的。<br><br>" +
+                     "<strong>【正解分析】無茶（むちゃ）：** 意為「亂來的、荒謬胡鬧的」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・自発的：自發的。<br>" +
+                     "・客観的：客觀的。<br>" +
+                     "・画期的：劃時代的。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・荒らす",
+        question: "野良貓が荒らしていった庭を掃除する。",
+        options: ["悩まして", "荒らして", "費やして", "練って"],
+        answer: 1,
+        explanation: "【全句翻譯】整理被流浪貓翻亂搞破壞的花園。<br><br>" +
+                     "<strong>【正解分析】荒らす（あらす）：** 意為「破壞、弄亂、搞糟」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・悩まして：使苦惱。<br>" +
+                     "・費やして：花費。<br>" +
+                     "・練って：構思。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・設ける",
+        question: "顧客の意見を聞くため、專屬の相談窗口を (  ) た。",
+        options: ["傾けた", "授けた", "設けた", "整えた"],
+        answer: 2,
+        explanation: "【全句翻譯】為了聽取顧客的意見，設立了專屬的諮詢窗口。<br><br>" +
+                     "<strong>【正解分析】設ける（もうける）：** 意為「設置、設立（窗口/制度）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・傾けた：傾斜傾聽。<br>" +
+                     "・授けた：授予。<br>" +
+                     "・整えた：整理好。"
+      },
+      {
+        type: "5日目：Ⅲ類動詞・報じる",
+        question: "新聞各社は一斉にその重大事件のニュースを (  ) た。",
+        options: ["轉じた", "準じた", "演じた", "報じ"],
+        answer: 3,
+        explanation: "【全句翻譯】各大報社一齊報導了該重大事件的新聞。<br><br>" +
+                     "<strong>【正解分析】報じる（ほうじる）：** 意為「報導、報告」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・転じた：轉變。<br>" +
+                     "・準じた：比照。<br>" +
+                     "・演じた：演出。"
+      },
+      {
+        type: "6日目：名詞・片言",
+        question: "彼は (  ) の英語で旅行中身振りを交えて意思を傳えた。",
+        options: ["片言", "自我", "作戦", "始末"],
+        answer: 0,
+        explanation: "【全句翻譯】旅行中他用隻言片語的英語加上手勢表達了自己的意思。<br><br>" +
+                     "<strong>【正解分析】片言（かたこと）：** 意為「隻言片語、不流利的語言」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・自我：自我。<br>" +
+                     "・作戦：策略。<br>" +
+                     "・始末：處理。"
+      },
+      {
+        type: "6日目：形容動詞・自発的",
+        question: "ボランティア活動には、全校生徒が (  ) に參加した。",
+        options: ["強制的に", "自発的に", "主観的に", "傳統通り"],
+        answer: 1,
+        explanation: "【全句翻譯】全校學生都自發性地參加了志工活動。<br><br>" +
+                     "<strong>【正解分析】自発的（じはつてき）：** 意為「自發的、主動的」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・強制的に：強制的。<br>" +
+                     "・主観的に：主觀地。<br>" +
+                     "・伝統通り：非此詞。"
+      },
+      {
+        type: "4日目：Ⅰ類動詞・負かす",
+        question: "強敵を見事に (  ) て、決勝進出を決めた。",
+        options: ["果たして", "抜かして", "負かして", "満たして"],
+        answer: 2,
+        explanation: "【全句翻譯】漂亮地打敗強敵，決定挺進決賽。<br><br>" +
+                     "<strong>【正解分析】負かす（まかす）：** 意為「擊敗、打敗對手」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・果たして：完成。<br>" +
+                     "・抜かして：跳過。<br>" +
+                     "・満たして：滿足。"
+      },
+      {
+        type: "5日目：Ⅱ類動詞・省みる",
+        question: "自分の過去の行動を冷静に (  ) 、反省すべき點を探す。",
+        options: ["試みて", "帶びて", "經て", "省みて"],
+        answer: 3,
+        explanation: "【全句翻譯】冷靜地反省自己過去的行為，尋找應當反省檢討的地方。<br><br>" +
+                     "<strong>【正解分析】省みる（かえりみる）：** 意為「反省、回顧檢討」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・試みて：嘗試。<br>" +
+                     "・帯びて：帶有。<br>" +
+                     "・経て：經過。"
+      },
+      {
+        type: "6日目：名詞・始末",
+        question: "企畫の混亂を引き起こした (  ) をきちんとつけなさい。",
+        options: ["始末", "氣配", "手際", "知恵"],
+        answer: 0,
+        explanation: "【全句翻譯】請好好收拾處理引發專案混亂的殘局演變。<br><br>" +
+                     "<strong>【正解分析】始末（しまつ）：** 意為「始末、殘局收拾、處理（始末をつける）」。<br><br>" +
+                     "<strong>【錯誤選項排除說明】</strong><br>" +
+                     "・気配：氣息。<br>" +
+                     "・手際：處理技巧。<br>" +
+                     "・知恵：智慧。"
+      }
+    ];
+
+    // 洗牌與索引修正機制
+    quizData.forEach(q => {
+      q.options = q.options.map(opt => opt.replace(/^[A-D]\.\s*/, ""));
+      const correctOption = q.options[q.answer];
+      const shuffled = [...q.options];
+
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+
+      q.options = shuffled;
+      q.answer = shuffled.indexOf(correctOption);
+    });
+
+    let currentQuestion = 0;
+    let userAnswers = new Array(quizData.length).fill(null);
+
+    // DOM 快取
+    const qTagEl = document.getElementById('q-tag');
+    const qNumEl = document.getElementById('q-num');
+    const qTextEl = document.getElementById('q-text');
+    const optionsEl = document.getElementById('options');
+    const explanationEl = document.getElementById('explanation');
+    const explanationContentEl = document.getElementById('explanation-content');
+    const progressBarEl = document.getElementById('progress');
+    const stageEl = document.getElementById('stage');
+    const resultsEl = document.getElementById('results');
+    const jumpGridEl = document.getElementById('jump-grid');
+    const answeredCountEl = document.getElementById('answered-count');
+    const hankoScoreEl = document.getElementById('hanko-score');
+    const vocabListEl = document.getElementById('vocab-list');
+
+    // 切換速查卡天數
+    function switchVocabDay(day) {
+      document.querySelectorAll('.day-tab').forEach((tab) => {
+        tab.classList.toggle('active', tab.getAttribute('onclick').includes(day));
+      });
+      vocabListEl.innerHTML = (vocabData[day] || []).map(item => `<li>${item}</li>`).join('');
+    }
+
+    // 初始化 60 題 Jump Grid
+    function initJumpGrid() {
+      jumpGridEl.innerHTML = '';
+      quizData.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'jump-btn';
+        btn.innerText = i + 1;
+        btn.onclick = () => goToQuestion(i);
+        jumpGridEl.appendChild(btn);
+      });
+      updateJumpGridUI();
+    }
+
+    function selectOption(idx) {
+      if (userAnswers[currentQuestion] !== null) return;
+
+      const q = quizData[currentQuestion];
+      const buttons = optionsEl.getElementsByTagName('button');
+      const isCorrect = idx === q.answer;
+
+      userAnswers[currentQuestion] = isCorrect;
+
+      if (isCorrect) {
+        buttons[idx].classList.add('correct');
+      } else {
+        buttons[idx].classList.add('incorrect');
+        buttons[q.answer].classList.add('correct');
+      }
+
+      for (let btn of buttons) {
+        btn.disabled = true;
+      }
+
+      explanationContentEl.innerHTML = q.explanation;
+      explanationEl.classList.add('show');
+      updateJumpGridUI();
+    }
+
+    function updateJumpGridUI() {
+      const buttons = jumpGridEl.getElementsByClassName('jump-btn');
+      let answeredCount = 0;
+      let correctCount = 0;
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].className = 'jump-btn';
+        if (i === currentQuestion) buttons[i].classList.add('active');
+        if (userAnswers[i] === true) {
+          buttons[i].classList.add('correct');
+          answeredCount++;
+          correctCount++;
+        } else if (userAnswers[i] === false) {
+          buttons[i].classList.add('incorrect');
+          answeredCount++;
+        }
+      }
+
+      answeredCountEl.innerText = `已作答 ${answeredCount} ／ 60`;
+      hankoScoreEl.innerText = correctCount;
+    }
+
+    // 載入題目
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      qTagEl.innerText = q.type;
+      qNumEl.innerText = `第 ${currentQuestion + 1} 題 ／ 共 60 題`;
+      qTextEl.innerText = q.question;
+      progressBarEl.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+
+      optionsEl.innerHTML = '';
+      const isAnswered = userAnswers[currentQuestion] !== null;
+
+      const labels = ["A", "B", "C", "D"];
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.innerText = `${labels[idx]}. ${opt}`;
+
+        if (isAnswered) {
+          btn.disabled = true;
+          if (idx === q.answer) {
+            btn.classList.add("correct");
+          }
+        }
+
+        btn.onclick = () => selectOption(idx);
+        optionsEl.appendChild(btn);
+      });
+
+      if (isAnswered) {
+        explanationContentEl.innerHTML = q.explanation;
+        explanationEl.classList.add('show');
+      } else {
+        explanationEl.classList.remove('show');
+      }
+
+      updateJumpGridUI();
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quizData.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+      } else {
+        checkFinish();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+      }
+    }
+
+    function goToQuestion(idx) {
+      currentQuestion = idx;
+      loadQuestion();
+    }
+
+    function checkFinish() {
+      const answered = userAnswers.filter(a => a !== null).length;
+      if (answered < quizData.length) {
+        if (!confirm(`還有 ${quizData.length - answered} 題尚未作答，確定要查看總成績嗎？`)) return;
+      }
+      showScore();
+    }
+
+    function showScore() {
+      stageEl.style.display = 'none';
+      resultsEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'none';
+
+      const correctCount = userAnswers.filter(a => a === true).length;
+      document.getElementById('result-correct').innerText = correctCount;
+      document.getElementById('result-desc').innerText = correctCount >= 54 ? "太出色了！第五週（4〜6日目）動詞與重點語彙掌握得完美無缺，實力直逼 N1 滿分！" : correctCount >= 42 ? "表現優異！動詞與語彙觀念十分扎實，再接再厲就能順利合格！" : "建議搭配右側的生字速查卡多加溫習與對照喔！";
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      userAnswers = new Array(quizData.length).fill(null);
+      resultsEl.style.display = 'none';
+      stageEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'flex';
+      initJumpGrid();
+      loadQuestion();
+    }
+
+    // 初始化執行
+    initJumpGrid();
+    switchVocabDay(4);
+    loadQuestion();
+  </script>
+</body>
+</html>
