@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N1 語彙・第五週（1〜6日目）平假名串字與讀音特訓｜100 題精選題庫</title>
+  <meta name="description" content="JLPT N1 第五週（1〜6日目）核心語彙特訓：100 題平假名轉換與語彙填充題庫，含全句翻譯、詳細選項解析與日目速查卡。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='4' y='4' width='56' height='56' rx='10' fill='%232c5e50'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23f5efe3' font-family='serif'>語</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5efe3;
+      --paper: #fdfbf7;
+      --ink: #2b2b2b;
+      --muted: #767168;
+      --primary: #2c5e50;
+      --primary-hover: #1f4339;
+      --accent: #b8432f;
+      --border: #e6dfd1;
+      --ok: #2c5e50;
+      --ng: #b8432f;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    h1, h2, h3, .masthead-vertical, .hanko {
+      font-family: "Shippori Mincho B1", serif;
+    }
+
+    .masthead {
+      max-width: 1100px;
+      margin: 0 auto 2rem auto;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .masthead-vertical {
+      writing-mode: vertical-rl;
+      font-size: 1.25rem;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      border-right: 2px solid var(--border);
+      padding-right: 1.5rem;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .masthead h1 {
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .masthead h1 .count {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+    }
+
+    .lede {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .hanko {
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      background: rgba(44, 94, 80, 0.05);
+      transform: rotate(-8deg);
+    }
+
+    .hanko-score {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .hanko-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+    }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .masthead { grid-template-columns: 1fr; text-align: center; }
+      .masthead-vertical { display: none; }
+      .hanko { margin: 0 auto; }
+    }
+
+    .stage {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .stage-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: rgba(44, 94, 80, 0.1);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .q-num {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-family: "Shippori Mincho B1", serif;
+      word-break: break-word;
+    }
+
+    .options {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .option-btn {
+      background: var(--paper);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 1rem;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: rgba(44, 94, 80, 0.02);
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    .option-btn.correct {
+      background: rgba(44, 94, 80, 0.1) !important;
+      border-color: var(--ok) !important;
+      color: var(--ok);
+      font-weight: 700;
+    }
+
+    .option-btn.incorrect {
+      background: rgba(184, 67, 47, 0.1) !important;
+      border-color: var(--ng) !important;
+      color: var(--ng);
+    }
+
+    .explanation {
+      background: #f4ede2;
+      border-left: 4px solid var(--primary);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .explanation.show { display: block; }
+    .explanation dt { font-weight: 700; color: var(--primary); margin-top: 0.5rem; font-size: 0.9rem; }
+    .explanation dd { font-size: 0.95rem; margin-top: 0.2rem; line-height: 1.6; }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn.primary:hover { background: var(--primary-hover); }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--ink);
+    }
+
+    .btn.ghost:hover { background: var(--border); }
+
+    .kbd-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .panel-head h2 { font-size: 1.1rem; }
+    .panel-meta { font-size: 0.8rem; color: var(--muted); }
+
+    .jump-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 4px;
+      margin-bottom: 1rem;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+
+    .jump-btn {
+      aspect-ratio: 1;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .jump-btn:hover { border-color: var(--primary); }
+    .jump-btn.active { border-width: 2px; border-color: var(--ink); }
+    .jump-btn.correct { background: rgba(44, 94, 80, 0.15); color: var(--ok); border-color: var(--ok); }
+    .jump-btn.incorrect { background: rgba(184, 67, 47, 0.15); color: var(--ng); border-color: var(--ng); }
+
+    .legend {
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .legend span { display: flex; align-items: center; gap: 4px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot.ok { background: var(--ok); }
+    .dot.ng { background: var(--ng); }
+    .dot.cur { background: var(--ink); }
+
+    .link-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .day-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .day-tab {
+      padding: 3px 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .day-tab.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .vocab-list {
+      list-style: none;
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 0.82rem;
+    }
+
+    .vocab-list li {
+      padding: 4px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .results {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .results h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
+    .result-score { font-size: 3.5rem; font-weight: 800; font-family: "Shippori Mincho B1", serif; margin-bottom: 2rem; color: var(--ink); }
+    .result-score span { font-size: 1.5rem; color: var(--muted); }
+    
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-vertical" aria-hidden="true">第五週全範圍特訓</div>
+    <div class="masthead-text">
+      <p class="eyebrow">JLPT N1 第五週（1〜6日目）平假名讀音與串字轉換 ／ 100 題不重複題庫</p>
+      <h1>日文平假名串字與讀音特訓 <span class="count">100 題</span></h1>
+      <p class="lede">涵蓋 1日目至6日目核心動詞、形容詞、名詞與漢字語彙。選項隨機洗牌、全句中文翻譯與詳細選項排除剖析。</p>
+    </div>
+    <div class="hanko" id="hanko" aria-live="polite">
+      <span class="hanko-score" id="hanko-score">0</span>
+      <span class="hanko-label">正解</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- 測驗舞台區 -->
+    <section class="stage" id="stage" aria-label="測驗">
+      <div class="stage-top">
+        <span class="tag" id="q-tag">平假名串字題</span>
+        <span class="q-num" id="q-num">第 1 題 ／ 共 100 題</span>
+      </div>
+      <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress"></div></div>
+      
+      <div class="question-card" id="question-card">
+        <p class="question" id="q-text" lang="ja"></p>
+        <div class="options" id="options" role="group" aria-label="選項"></div>
+        <div class="explanation" id="explanation">
+          <dl>
+            <dt>全句翻譯與詳細選項解析</dt>
+            <dd id="explanation-content"></dd>
+          </dl>
+        </div>
+      </div>
+
+      <nav class="controls">
+        <button class="btn ghost" id="prev-btn" type="button" onclick="prevQuestion()">← 上一題</button>
+        <span class="kbd-hint">點擊選項即時作答與看解析</span>
+        <button class="btn primary" id="next-btn" type="button" onclick="nextQuestion()">下一題 →</button>
+      </nav>
+    </section>
+
+    <!-- 結果頁 -->
+    <section class="results" id="results" aria-label="成績總結">
+      <p class="eyebrow">練習完成</p>
+      <h2>第五週（1〜6日目）平假名串字實戰特訓結算</h2>
+      <p class="result-score"><strong id="result-correct">0</strong><span> ／ 100</span></p>
+      <p id="result-desc" style="color: var(--muted);"></p>
+      <div class="result-actions">
+        <button class="btn primary" id="restart-btn" type="button" onclick="restartQuiz()">重新開始練習</button>
+      </div>
+    </section>
+
+    <!-- 側欄 -->
+    <aside class="sidebar">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>題目導航</h2>
+          <span class="panel-meta" id="answered-count">已作答 0 ／ 100</span>
+        </div>
+        <div class="jump-grid" id="jump-grid"></div>
+        <div class="legend">
+          <span><i class="dot ok"></i>答對</span>
+          <span><i class="dot ng"></i>答錯</span>
+          <span><i class="dot cur"></i>目前</span>
+        </div>
+        <button class="link-btn" id="finish-btn" type="button" onclick="checkFinish()">查看成績總結</button>
+      </div>
+
+      <div class="panel vocab">
+        <div class="panel-head">
+          <h2>生字速查卡片</h2>
+          <span class="panel-meta">1日目〜6日目</span>
+        </div>
+        <div class="day-tabs" id="day-tabs" role="tablist">
+          <button class="day-tab active" onclick="switchVocabDay(1)">1日</button>
+          <button class="day-tab" onclick="switchVocabDay(2)">2日</button>
+          <button class="day-tab" onclick="switchVocabDay(3)">3日</button>
+          <button class="day-tab" onclick="switchVocabDay(4)">4日</button>
+          <button class="day-tab" onclick="switchVocabDay(5)">5日</button>
+          <button class="day-tab" onclick="switchVocabDay(6)">6日</button>
+        </div>
+        <ul class="vocab-list" id="vocab-list" lang="ja"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">JLPT N1 第五週（1〜6日目）平假名串字特訓 100 題</footer>
+
+  <script>
+    // 第五週（1〜6日目）生字速查卡片資料庫
+    const vocabData = {
+      1: [
+        "・前向き（まえむき）：積極、向前看",
+        "・表向き（おもてむき）：表面上的理由",
+        "・前置き（まえおき）：開場白、前言",
+        "・前借り（まえがり）：預支工資",
+        "・前払い（まえばらい）：預付費用",
+        "・前科（ぜんか）：前科",
+        "・当日（とうじつ）：當天",
+        "・当番（とうばん）：值日、值班",
+        "・当人（とうにん）：當事人、本人",
+        "・当選（とうせん）：當選",
+        "・見当（けんとう）：推測、估計",
+        "・正当（せいとう）：正當的、合理的",
+        "・身の回り（みのまわり）：身邊事物",
+        "・身軽（みがる）：輕便的、輕鬆的",
+        "・身動き（みうごき）：動彈（身動きが取れない）",
+        "・身内（みうち）：親人、自己人",
+        "・身近（みぢか）：切身的、身邊的",
+        "・身元（みもと）：身分來歷",
+        "・身分（みぶん）：社會地位",
+        "・生身（なまみ）：活生生的肉體",
+        "・単身（たんしん）：單身",
+        "・取り分（とりぶん）：應得份額",
+        "・下取り（したどり）：以舊換新折價",
+        "・手取り（てどり）：扣稅後淨收入",
+        "・日取り（ひどり）：預定日期",
+        "・取材（しゅざい）：採訪",
+        "・根気（こんき）：耐性、毅力",
+        "・根本的（こんぽんてき）：根本的",
+        "・根回し（ねまわし）：事前協調"
+      ],
+      2: [
+        "・和洋折衷（わようせっちゅう）：結合和洋風格",
+        "・和風（わふう）：日式風格",
+        "・和式（わしき）：日式樣式",
+        "・温和（おんわ）：溫和的",
+        "・調和（ちょうわ）：協調、和諧",
+        "・和む（なごむ）：感到平靜放鬆",
+        "・図案（ずあん）：圖案設計",
+        "・指図（さしず）：指示、吩咐",
+        "・実態（じったい）：實情",
+        "・実業（じつぎょう）：實業",
+        "・誠実（せいじつ）：誠實的",
+        "・真実（しんじつ）：真實、真相",
+        "・口実（こうじつ）：藉口",
+        "・実入り（みいり）：收益、利潤",
+        "・公正（こうせい）：公正的",
+        "・公平（こうへい）：公平的",
+        "・公立（こうりつ）：公立",
+        "・私立（しりつ）：私立",
+        "・公用語（こうようご）：官方語言",
+        "・公用（こうよう）：公務",
+        "・公私（こうし）：公與私",
+        "・主人公（しゅじんこう）：主角",
+        "・公（おおやけ）：公開、官方",
+        "・連休（れんきゅう）：連假",
+        "・連帯（れんたい）：連帶",
+        "・連なる（つらなる）：相連",
+        "・連ねる（つらねる）：列入、使相連",
+        "・告知（こくち）：通知、告知",
+        "・告白（こくはく）：坦白、告白",
+        "・予告（よこく）：預告",
+        "・告げる（つげる）：告訴、宣告",
+        "・手記（しゅき）：親身記錄",
+        "・伝記（でんき）：傳記",
+        "・記す（しるす）：寫下、銘記"
+      ],
+      3: [
+        "・仕上げる（しあげる）：完成",
+        "・仕上げ（しあげ）：完成品",
+        "・仕入れる（しいれる）：進貨",
+        "・仕入れ（しいれ）：進貨",
+        "・仕切る（しきる）：掌管、隔開",
+        "・仕組み（しくみ）：結構、機制",
+        "・仕える（つかえる）：服侍",
+        "・日差し（ひざし）：陽光",
+        "・時差（じさ）：時差",
+        "・時差ぼけ（じさぼけ）：時差反應",
+        "・点差（てんさ）：分數差距",
+        "・指差す（ゆびさす）：指向",
+        "・利子（りし）：利息",
+        "・利息（りそく）：利息",
+        "・利点（りてん）：優點",
+        "・砂利（じゃり）：砂石、碎石",
+        "・左利き（ひだりきき）：左撇子",
+        "・右利き（みぎきき）：右撇子",
+        "・有望（ゆうぼう）：有前途的",
+        "・有益（ゆうえき）：有益的",
+        "・無益（むえき）：無益的",
+        "・有力（ゆうりょく）：有權勢影響力的",
+        "・私有（しゆう）：私有的",
+        "・有する（ゆうする）：擁有",
+        "・現行犯（げんこうはん）：現行犯",
+        "・現場（げんば）：現場",
+        "・現地（げんち）：當地",
+        "・出現（しゅつげん）：出現",
+        "・再現（さいげん）：重現",
+        "・間柄（あいだがら）：交情關係",
+        "・事柄（ことがら）：事情事項",
+        "・人柄（ひとがら）：人品、品格",
+        "・直訳（ちょくやく）：直譯",
+        "・内訳（うちわけ）：費用明細",
+        "・言い訳（いいわけ）：辯解、藉口",
+        "・説得（せっとく）：說服",
+        "・説く（とく）：說明、講解",
+        "・伝説（でんせつ）：傳說"
+      ],
+      4: [
+        "・負う（おう）：承擔責任、受傷",
+        "・沿う（そう）：順著、沿著",
+        "・損なう（そこなう）：損害、傷害健康",
+        "・似通う（にかよう）：相似",
+        "・恥じらう（はじらう）：害羞",
+        "・保つ（たもつ）：保持、維持",
+        "・志す（こころざす）：立志",
+        "・試す（ためす）：測試、嘗試",
+        "・犯す（おかす）：犯罪、犯錯",
+        "・乱す（みだす）：擾亂、破壞秩序",
+        "・満たす（みたす）：填滿、滿足需求",
+        "・果たす（はたす）：達成、履行責任",
+        "・抜かす（ぬかす）：漏掉、跳過",
+        "・負かす（まかす）：打敗對手",
+        "・悩ます（なやます）：使苦惱",
+        "・慣らす（ならす）：訓練、使習慣",
+        "・荒らす（あらす）：破壞、弄亂",
+        "・費やす（ついやす）：花費、消耗時間",
+        "・練る（ねる）：構思、琢磨",
+        "・鈍る（にぶる）：變遲鈍",
+        "・勝る（まさる）：勝過、優於",
+        "・操る（あやつる）：操控、熟練操作",
+        "・群がる（むらがる）：聚集",
+        "・備わる（そなわる）：具備",
+        "・改まる（あらたまる）：更新、態度端莊",
+        "・病む（やむ）：生病、苦惱",
+        "・富む（とむ）：豐富、富含",
+        "・恵む（めぐむ）：恩惠、施捨",
+        "・営む（いとなむ）：經營、維持生活",
+        "・危ぶむ（あやぶむ）：擔憂能否成功"
+      ],
+      5: [
+        "・築く（きずく）：建立、建造",
+        "・描く（えがく）：描繪、想像",
+        "・背く（そむく）：違背、背叛",
+        "・相次ぐ（あいつぐ）：接連發生",
+        "・試みる（こころみる）：嘗試",
+        "・省みる（かえりみる）：反省、檢討",
+        "・帯びる（おびる）：帶有酒意或氣息",
+        "・経る（へる）：經過時間、經由",
+        "・構える（かまえる）：擺好姿勢、開業",
+        "・栄える（さかえる）：繁榮",
+        "・絶える（たえる）：中斷、絕跡",
+        "・映える（はえる）：映照、襯託顯眼",
+        "・整える（ととのえる）：整理、準備好",
+        "・授ける（さずける）：授予、傳授",
+        "・傾ける（かたむける）：傾斜、傾聽",
+        "・設ける（もうける）：設置、設立",
+        "・手掛ける（てがける）：親自處理、設計",
+        "・定める（さだめる）：制定、決定",
+        "・目覚める（めざめる）：醒來、覺醒",
+        "・暮れる（くれる）：天黑、日子結束",
+        "・遅らせる（おくらせる）：延誤、推遲",
+        "・寝かせる（ねかせる）：使入睡",
+        "・震わせる（ふるわせる）：使顫抖",
+        "・値する（あたいする）：值得",
+        "・害する（がいする）：危害、損害",
+        "・称する（しょうする）：自稱",
+        "・制する（せいする）：控制、壓制",
+        "・脱する（だっする）：擺脫、逃脫",
+        "・徹する（てっする）：貫徹到底",
+        "・面する（めんする）：面向、臨街",
+        "・要する（ようする）：需要",
+        "・案じる（あんじる）：掛念、擔心",
+        "・重んじる（おもんじる）：重視",
+        "・演じる（えんじる）：扮演、演出",
+        "・興じる（きょうじる）：興致勃勃地玩",
+        "・禁じる（きんじる）：禁止",
+        "・準じる（じゅんじる）：比照、依照",
+        "・転じる（てんじる）：轉變",
+        "・報じる（ほうじる）：報導"
+      ],
+      6: [
+        "・最寄り（もより）：最近的",
+        "・誤り（あやまり）/過ち（あやまち）：錯誤/過失",
+        "・個々（ここ）：各個",
+        "・値打ち（ねうち）：價值",
+        "・初耳（はつみみ）：初次聽聞",
+        "・人並み（ひとなみ）：普通人的水準",
+        "・軒並み（のきなみ）：一律全都",
+        "・人任せ（ひとまかせ）：依賴他人",
+        "・善し悪し（よしあし）：好壞善惡",
+        "・目の当たり（めのあたり）：親眼目睹",
+        "・応急（おうきゅう）：應急處理",
+        "・気配（けはい）：氣息、跡象",
+        "・手際（てぎわ）：手法技巧",
+        "・知恵（ちえ）：智慧",
+        "・自我（じが）/自己（じこ）：自我/自己",
+        "・作戦（さくせん）：策略、作戰",
+        "・始末（しまつ）：處理、結局",
+        "・決意（けつい）：決心",
+        "・意欲（いよく）：意願、積極性",
+        "・片言（かたこと）：隻言片語",
+        "・独自（どくじ）：獨特、原創",
+        "・従来（じゅうらい）：傳統的、過去的",
+        "・無茶（むちゃ）：亂來的",
+        "・過密（かみつ）：過於緊密的",
+        "・不可欠（ふかけつ）：不可或缺的",
+        "・画期的（かっきてき）：劃時代的",
+        "・客観的（きゃっかんてき）/主観的（しゅかんてき）：客觀/主觀",
+        "・自発的（じはつてき）：自發的",
+        "・強制的な（きょうせいてき）：強制的"
+      ]
+    };
+
+    // 100 題不重複核心練習題庫（涵蓋 1日目至6日目）
+    const baseQuizData = [
+      { type: "1日目：身近・前置き", kanji: "前向き", correct: "まえむき", distractors: ["まえがち", "ぜんむき", "まえこうき"], exp: "【正解】「前向き」讀作「まえむき」，意為「積極的、向前看的」。" },
+      { type: "1日目：身近・前置き", kanji: "表向き", correct: "おもてむき", distractors: ["ひょうむき", "おもてぎ", "おもてこう"], exp: "【正解】「表向き」讀作「おもてむき」，意為「表面上的（理由）」。" },
+      { type: "1日目：身近・前置き", kanji: "前置き", correct: "まえおき", distractors: ["ぜんおき", "まえしき", "ぜんこう"], exp: "【正解】「前置き」讀作「まえおき」，意為「開場白、前言」。" },
+      { type: "1日目：身近・前置き", kanji: "前借り", correct: "まえがり", distractors: ["ぜんかり", "まえかり", "ぜんがり"], exp: "【正解】「前借り」讀作「まえがり」，意為「預支工資」。" },
+      { type: "1日目：身近・前置き", kanji: "前払い", correct: "まえばらい", distractors: ["ぜんばらい", "まえはらい", "ぜんはらい"], exp: "【正解】「前払い」讀作「まえばらい」，意為「預付費用」。" },
+      { type: "1日目：身近・前置き", kanji: "前科", correct: "ぜんか", distractors: ["まえか", "ぜんが", "まえが"], exp: "【正解】「前科」讀作「ぜんか」，意為「犯罪前科」。" },
+      { type: "1日目：身近・日取り", kanji: "当日", correct: "とうじつ", distractors: ["とうひ", "あたるひ", "とうにち"], exp: "【正解】「当日」讀作「とうじつ」，意為「當天」。" },
+      { type: "1日目：身近・日取り", kanji: "当番", correct: "とうばん", distractors: ["とうはん", "あたるばん", "とうまわし"], exp: "【正解】「当番」讀作「とうばん」，意為「值日、值班」。" },
+      { type: "1日目：身近・日取り", kanji: "当人", correct: "とうにん", distractors: ["とうじん", "あたるひと", "とうびと"], exp: "【正解】「当人」讀作「とうにん」，意為「當事人、本人」。" },
+      { type: "1日目：身近・日取り", kanji: "当選", correct: "とうせん", distractors: ["とうぜん", "あたるせん", "とうざん"], exp: "【正解】「当選」讀作「とうせん」，意為「當選」。" },
+      { type: "1日目：身近・見当", kanji: "見当", correct: "けんとう", distractors: ["みあたる", "けんどう", "みとう"], exp: "【正解】「見当」讀作「けんとう」，意為「推測、估計」。" },
+      { type: "1日目：身近・正当", kanji: "正当", correct: "せいとう", distractors: ["しょうとう", "せいどう", "しょうどう"], exp: "【正解】「正当」讀作「せいとう」，意為「正當的、合理的」。" },
+      { type: "1日目：身近・身の回り", kanji: "身の回り", correct: "みのまわり", distractors: ["しんのまわり", "みまわり", "みのめぐり"], exp: "【正解】「身の回り」讀作「みのまわり」，意為「身邊事物、日常用品」。" },
+      { type: "1日目：身近・身軽", kanji: "身軽", correct: "みがる", distractors: ["しんかる", "みかる", "しんがる"], exp: "【正解】「身軽」讀作「みがる」，意為「裝扮輕便的」。" },
+      { type: "1日目：身近・身動き", kanji: "身動き", correct: "みうごき", distractors: ["しんうごき", "みどうき", "しんどうき"], exp: "【正解】「身動き」讀作「みうごき」，常搭配身動きが取れない（動彈不得）。" },
+      { type: "1日目：身近・身内", kanji: "身内", correct: "みうち", distractors: ["しんない", "みない", "しんうち"], exp: "【正解】「身内」讀作「みうち」，意為「親人、自己人」。" },
+      { type: "1日目：身近・身近", kanji: "身近", correct: "みぢか", distractors: ["みちか", "しんきん", "みきん"], exp: "【正解】「身近」讀作「みぢか」，意為「切身的、身邊的」。" },
+      { type: "1日目：身近・身元", kanji: "身元", correct: "みもと", distractors: ["みぶん", "しんげん", "みげん"], exp: "【正解】「身元」讀作「みもと」，意為「身分來歷（如身元保証人）」。" },
+      { type: "1日目：身近・身分", kanji: "身分", correct: "みぶん", distractors: ["みもと", "しんぶん", "みふん"], exp: "【正解】「身分」讀作「みぶん」，意為「社會地位、身分」。" },
+      { type: "1日目：身近・生身", kanji: "生身", correct: "なまみ", distractors: ["せいしん", "いきみ", "しょうしん"], exp: "【正解】「生身」讀作「なまみ」，意為「活生生的肉體、血肉之軀」。" },
+      { type: "1日目：身近・単身", kanji: "単身", correct: "たんしん", distractors: ["たんみ", "ひとしん", "たんじつ"], exp: "【正解】「単身」讀作「たんしん」，意為「單身（如單身赴任）」。" },
+      { type: "1日目：身近・下取り", kanji: "下取り", correct: "したどり", distractors: ["げどり", "したとり", "かどり"], exp: "【正解】「下取り」讀作「したどり」，意為「以舊換新折價」。" },
+      { type: "1日目：身近・手取り", kanji: "手取り", correct: "てどり", distractors: ["しゅとり", "てとり", "しゅどり"], exp: "【正解】「手取り」讀作「てどり」，意為「扣稅後的實際收入（淨收入）」。" },
+      { type: "1日目：身近・日取り", kanji: "日取り", correct: "ひどり", distractors: ["にちどり", "ひとり", "にちとり"], exp: "【正解】「日取り」讀作「ひどり」，意為「預定日期」。" },
+      { type: "1日目：身近・取材", kanji: "取材", correct: "しゅざい", distractors: ["とりざい", "しゅさい", "とりさい"], exp: "【正解】「取材」讀作「しゅざい」，意為「採訪、收集素材」。" },
+      { type: "1日目：身近・根気", kanji: "根気", correct: "こんき", distractors: ["ねき", "こんけ", "ねけ"], exp: "【正解】「根気」讀作「こんき」，意為「耐性、毅力」。" },
+      { type: "1日目：身近・根本的", kanji: "根本的", correct: "こんぽんてき", distractors: ["ねもとてき", "こんほんてき", "ねぽんてき"], exp: "【正解】「根本的」讀作「こんぽんてき」，意為「根本的」。" },
+      { type: "1日目：身近・根回し", kanji: "根回し", correct: "ねまわし", distractors: ["こんまわし", "ねまわし", "こんかいし"], exp: "【正解】「根回し」讀作「ねまわし」，意為「事前協調打招呼」。" },
+      { type: "2日目：和む・和洋折衷", kanji: "和洋折衷", correct: "わようせっちゅう", distractors: ["わようせつちゅう", "わようせっしゅう", "わようせいちゅう"], exp: "【正解】「和洋折衷」讀作「わようせっちゅう」，結合日式與西式風格。" },
+      { type: "2日目：和む・和風", kanji: "和風", correct: "わふう", distractors: ["わほう", "なごふう", "わふ"], exp: "【正解】「和風」讀作「わふう」，意為「日式風格」。" },
+      { type: "2日目：和む・温和", kanji: "温和", correct: "おんわ", distractors: ["おんなご", "おんか", "うんわ"], exp: "【正解】「温和」讀作「おんわ」，意為「氣候或性格溫和的」。" },
+      { type: "2日目：和む・調和", kanji: "調和", correct: "ちょうわ", distractors: ["ちょうか", "ていわ", "じょうわ"], exp: "【正解】「調和」讀作「ちょうわ」，意為「調和、協調」。" },
+      { type: "2日目：和む・和む", kanji: "和む", correct: "なごむ", distractors: ["わむ", "やわらぐ", "なごむ"], exp: "【正解】「和む」讀作「なごむ」，意為「感到平靜、放鬆」。" },
+      { type: "2日目：和む・図案", kanji: "図案", correct: "ずあん", distractors: ["とあん", "ずあん", "とかん"], exp: "【正解】「図案」讀作「ずあん」，意為「圖案設計」。" },
+      { type: "2日目：和む・指図", kanji: "指図", correct: "さしず", distractors: ["ゆびず", "しず", "さしと"], exp: "【正解】「指図」讀作「さしず」，意為「指示、吩咐」。" },
+      { type: "2日目：和む・実態", kanji: "実態", correct: "じったい", distractors: ["じつたい", "じっだい", "じつだい"], exp: "【正解】「実態」讀作「じったい」，意為「實情、實際狀況」。" },
+      { type: "2日目：和む・実業", kanji: "実業", correct: "じつぎょう", distractors: ["じっぎょう", "じつごう", "みぎょう"], exp: "【正解】「実業」讀作「じつぎょう」，意為「實業、實業家」。" },
+      { type: "2日目：和む・誠実", kanji: "誠実", correct: "せいじつ", distractors: ["じょうじつ", "せいみ", "じょうみ"], exp: "【正解】「誠実」讀作「せいじつ」，意為「誠實的、真誠的」。" },
+      { type: "2日目：和む・真実", kanji: "真実", correct: "しんじつ", distractors: ["しんみ", "しんちつ", "しんじっ"], exp: "【正解】「真実」讀作「しんじつ」，意為「真實、真相」。" },
+      { type: "2日目：和む・口実", kanji: "口実", correct: "こうじつ", distractors: ["くちじつ", "こうみ", "くちみ"], exp: "【正解】「口実」讀作「こうじつ」，意為「藉口、托辭」。" },
+      { type: "2日目：和む・実入り", kanji: "実入り", correct: "みいり", distractors: ["じついり", "じついり", "みいれ"], exp: "【正解】「実入り」讀作「みいり」，意為「收益、利潤」。" },
+      { type: "2日目：和む・公正", kanji: "公正", correct: "こうせい", distractors: ["おおやけせい", "こうしょう", "くせい"], exp: "【正解】「公正」讀作「こうせい」，意為「公正的」。" },
+      { type: "2日目：和む・公平", kanji: "公平", correct: "こうへい", distractors: ["こうびょう", "おおやけへい", "くへい"], exp: "【正解】「公平」讀作「こうへい」，意為「公平的」。" },
+      { type: "2日目：和む・公用語", kanji: "公用語", correct: "こうようご", distractors: ["おおやけようご", "くようご", "こうようこ"], exp: "【正解】「公用語」讀作「こうようご」，意為「官方語言」。" },
+      { type: "2日目：和む・公私", kanji: "公私", correct: "こうし", distractors: ["おおやけわたくし", "こうじ", "くし"], exp: "【正解】「公私」讀作「こうし」，意為「公與私（如公私混同）」。" },
+      { type: "2日目：和む・主人公", kanji: "主人公", correct: "しゅじんこう", distractors: ["しゅにんこう", "しゅじんく", "すじんこう"], exp: "【正解】「主人公」讀作「しゅじんこう」，意為「主角」。" },
+      { type: "2日目：和む・公", kanji: "公", correct: "おおやけ", distractors: ["こう", "きみ", "ひろやけ"], exp: "【正解】「公」訓讀為「おおやけ」，意為「公開、官方」。" },
+      { type: "2日目：和む・連休", kanji: "連休", correct: "れんきゅう", distractors: ["れんきゅ", "つらきゅう", "れんこう"], exp: "【正解】「連休」讀作「れんきゅう」，意為「連續假期」。" },
+      { type: "2日目：和む・連帯", kanji: "連帯", correct: "れんたい", distractors: ["つらたい", "れんだい", "つらだい"], exp: "【正解】「連帯」讀作「れんたい」，意為「連帶（如連帶責任）」。" },
+      { type: "2日目：和む・連なる", kanji: "連なる", correct: "つらなる", distractors: ["れんなる", "つらねる", "れんする"], exp: "【正解】「連なる」讀作「つらなる」，意為「相連、綿延」。" },
+      { type: "2日目：和む・告知", kanji: "告知", correct: "こくち", distractors: ["こくじ", "つげち", "こくし"], exp: "【正解】「告知」讀作「こくち」，意為「通知、告知」。" },
+      { type: "2日目：和む・告白", kanji: "告白", correct: "こくはく", distractors: ["こくぱく", "つげはく", "こくしろ"], exp: "【正解】「告白」讀作「こくはく」，意為「告白、坦白」。" },
+      { type: "2日目：和む・予告", kanji: "予告", correct: "よこく", distractors: ["よつげ", "よこく", "あらかじめこく"], exp: "【正解】「予告」讀作「よこく」，意為「預告」。" },
+      { type: "2日目：和む・告げる", kanji: "告げる", correct: "つげる", distractors: ["こくげる", "つげる", "こくする"], exp: "【正解】「告げる」讀作「つげる」，意為「告訴、宣告」。" },
+      { type: "2日目：和む・手記", kanji: "手記", correct: "しゅき", distractors: ["てき", "てがき", "しゅぎ"], exp: "【正解】「手記」讀作「しゅき」，意為「親身經歷的記錄、手記」。" },
+      { type: "2日目：和む・伝記", kanji: "伝記", correct: "でんき", distractors: ["つたえき", "てんき", "でんぎ"], exp: "【正解】「伝記」讀作「でんき」，意為「傳記」。" },
+      { type: "2日目：和む・記す", kanji: "記す", correct: "しるす", distractors: ["きす", "しるす", "きする"], exp: "【正解】「記す」讀作「しるす」，意為「寫下、銘記」。" },
+      { type: "3日目：砂利・仕入れる", kanji: "仕入れる", correct: "しいれる", distractors: ["ししいれる", "つかいいれる", "しいれる"], exp: "【正解】「仕入れる」讀作「しいれる」，意為「進貨、採購」。" },
+      { type: "3日目：砂利・仕切る", kanji: "仕切る", correct: "しきる", distractors: ["つかいきる", "しきる", "じきる"], exp: "【正解】「仕切る」讀作「しきる」，意為「隔開；掌管、統籌安排」。" },
+      { type: "3日目：砂利・仕組み", kanji: "仕組み", correct: "しくみ", distractors: ["つかいぐみ", "しこみ", "じくみ"], exp: "【正解】「仕組み」讀作「しくみ」，意為「結構、機制」。" },
+      { type: "3日目：砂利・仕える", kanji: "仕える", correct: "つかえる", distractors: ["しえる", "つかえる", "じえる"], exp: "【正解】「仕える」讀作「つかえる」，意為「服侍、侍奉」。" },
+      { type: "3日目：砂利・日差し", kanji: "日差し", correct: "ひざし", distractors: ["にちざし", "ひさし", "にちさし"], exp: "【正解】「日差し」讀作「ひざし」，意為「陽光照射」。" },
+      { type: "3日目：砂利・時差", kanji: "時差", correct: "じさ", distractors: ["じしゃ", "ときさ", "じさっ"], exp: "【正解】「時差」讀作「じさ」，意為「時差」。" },
+      { type: "3日目：砂利・点差", kanji: "点差", correct: "てんさ", distractors: ["てんしゃ", "てんざ", "てんさっ"], exp: "【正解】「点差」讀作「てんさ」，意為「比分差距」。" },
+      { type: "3日目：砂利・指差す", kanji: "指差す", correct: "ゆびさす", distractors: ["しさす", "ゆびざす", "しざす"], exp: "【正解】「指差す」讀作「ゆびさす」，意為「指向」。" },
+      { type: "3日目：砂利・利息", kanji: "利息", correct: "りそく", distractors: ["りしょく", "りぞく", "りそくっ"], exp: "【正解】「利息」讀作「りそく」，意為「金錢利息」。" },
+      { type: "3日目：砂利・利点", kanji: "利点", correct: "りてん", distractors: ["りでん", "としてん", "りてんっ"], exp: "【正解】「利点」讀作「りてん」，意為「優點、好處」。" },
+      { type: "3日目：砂利・砂利", kanji: "砂利", correct: "じゃり", distractors: ["すなり", "しゃり", "すなれ"], exp: "【正解】「砂利」讀作「じゃり」，意為「砂石、碎石」。" },
+      { type: "3日目：砂利・左利き", kanji: "左利き", correct: "ひだりきき", distractors: ["ひだりきぎ", "さこうき", "ひだりこうき"], exp: "【正解】「左利き」讀作「ひだりきき」，意為「習慣用左手（左撇子）」。" },
+      { type: "3日目：砂利・有望", kanji: "有望", correct: "ゆうぼう", distractors: ["ゆうもう", "うぼう", "ゆうぼ"], exp: "【正解】「有望」讀作「ゆうぼう」，意為「有前途的、有希望的」。" },
+      { type: "3日目：砂利・有益", kanji: "有益", correct: "ゆうえき", distractors: ["うえき", "ゆうやく", "うやく"], exp: "【正解】「有益」讀作「ゆうえき」，意為「有益的」。" },
+      { type: "3日目：砂利・有力", kanji: "有力", correct: "ゆうりょく", distractors: ["うりょく", "ゆうりき", "うりき"], exp: "【正解】「有力」讀作「ゆうりょく」，意為「有影響力的、有權勢的」。" },
+      { type: "3日目：砂利・現行犯", kanji: "現行犯", correct: "げんこうはん", distractors: ["げんぎょうはん", "げんこうぱん", "げんぎょうぱん"], exp: "【正解】「現行犯」讀作「げんこうはん」，意為「現行犯」。" },
+      { type: "3日目：砂利・現場", kanji: "現場", correct: "げんば", distractors: ["げんじょう", "げんば", "げんじょう"], exp: "【正解】「現場」讀作「げんば」，意為「事故或工程現場」。" },
+      { type: "3日目：砂利・再現", kanji: "再現", correct: "さいげん", distractors: ["さいけん", "さげん", "さいかん"], exp: "【正解】「再現」讀作「さいげん」，意為「重現、再現」。" },
+      { type: "3日目：砂利・間柄", kanji: "間柄", correct: "あいだがら", distractors: ["かんえい", "あいだへい", "かんがら"], exp: "【正解】「間柄」讀作「あいだがら」，意為「人際交情關係」。" },
+      { type: "3日目：砂利・事柄", kanji: "事柄", correct: "ことがら", distractors: ["じこう", "ことへい", "じがら"], exp: "【正解】「事柄」讀作「ことがら」，意為「事情、事項」。" },
+      { type: "3日目：砂利・人柄", kanji: "人柄", correct: "ひとがら", distractors: ["じんこう", "にんがら", "ひとへい"], exp: "【正解】「人柄」讀作「ひとがら」，意為「品格、人品」。" },
+      { type: "3日目：砂利・直訳", kanji: "直訳", correct: "ちょくやく", distractors: ["じきやく", "ちょくえき", "じきえき"], exp: "【正解】「直訳」讀作「ちょくやく」，意為「直譯」。" },
+      { type: "3日目：砂利・内訳", kanji: "内訳", correct: "うちわけ", distractors: ["ないやく", "うちやく", "ないわけ"], exp: "【正解】「内訳」讀作「うちわけ」，意為「費用明細、詳細內容」。" },
+      { type: "3日目：砂利・言い訳", kanji: "言い訳", correct: "いいわけ", distractors: ["いいやく", "いいわけ", "いいえき"], exp: "【正解】「言い訳」讀作「いいわけ」，意為「辯解、藉口」。" },
+      { type: "3日目：砂利・説得", kanji: "説得", correct: "せっとく", distractors: ["せつとく", "ぜっとく", "せっとくっ"], exp: "【正解】「説得」讀作「せっとく」，意為「說服」。" },
+      { type: "4日目：Ⅰ類動詞", kanji: "負う", correct: "おう", distractors: ["ふう", "おん", "うう"], exp: "【正解】「負う」讀作「おう」，意為「承擔責任、受傷」。" },
+      { type: "4日目：Ⅰ類動詞", kanji: "損なう", correct: "そこなう", distractors: ["そんなう", "そこのう", "そんのう"], exp: "【正解】「損なう」讀作「そこなう」，意為「損害、傷害健康」。" },
+      { type: "4日目：Ⅰ類動詞", kanji: "志す", correct: "こころざす", distractors: ["しす", "こころさす", "しざす"], exp: "【正解】「志す」讀作「こころざす」，意為「立志、志向」。" },
+      { type: "4日目：Ⅰ類動詞", kanji: "費やす", correct: "ついやす", distractors: ["ひやす", "ついす", "ひす"], exp: "【正解】「費やす」讀作「ついやす」，意為「消耗、花費時間/精力」。" },
+      { type: "4日目：Ⅰ類動詞", kanji: "鈍る", correct: "にぶる", distractors: ["どんる", "にほる", "どんぶる"], exp: "【正解】「鈍る」讀作「にぶる」，意為「變遲鈍、退步」。" },
+      { type: "4日目：Ⅰ類動詞", kanji: "勝る", correct: "まさる", distractors: ["しょうる", "かつる", "まざる"], exp: "【正解】「勝る」讀作「まさる」，意為「勝過、優於」。" },
+      { type: "4日目：Ⅰ類動詞", kanji: "操る", correct: "あやつる", distractors: ["そうる", "あやする", "そうつる"], exp: "【正解】「操る」讀作「あやつる」，意為「操作、操控」。" },
+      { type: "4日目：Ⅰ類動詞", kanji: "営む", correct: "いとなむ", distractors: ["えいむ", "いとなぶ", "えいなむ"], exp: "【正解】「営む」讀作「いとなむ」，意為「經營事業、維持生活」。" },
+      { type: "4日目：Ⅰ類動詞", kanji: "危ぶむ", correct: "あやぶむ", distractors: ["きぶむ", "あやふむ", "きふむ"], exp: "【正解】「危ぶむ」讀作「あやぶむ」，意為「擔憂、懷疑能否成功」。" },
+      { type: "5日目：Ⅱ類動詞", kanji: "背く", correct: "そむく", distractors: ["はいく", "そむぐ", "はいぐ"], exp: "【正解】「背く」讀作「そむく」，意為「違背、背叛」。" },
+      { type: "5日目：Ⅱ類動詞", kanji: "相次ぐ", correct: "あいつぐ", distractors: ["そうつぐ", "あいづぐ", "そうづぐ"], exp: "【正解】「相次ぐ」讀作「あいつぐ」，意為「接連發生」。" },
+      { type: "5日目：Ⅱ類動詞", kanji: "省みる", correct: "かえりみる", distractors: ["しょうみる", "せいみる", "かえりする"], exp: "【正解】「省みる」讀作「かえりみる」，意為「反省、檢討」。" },
+      { type: "5日目：Ⅱ類動詞", kanji: "帯びる", correct: "おびる", distractors: ["たいじる", "おびする", "たいびる"], exp: "【正解】「帯びる」讀作「おびる」，意為「帶有酒意/色彩/氣息」。" },
+      { type: "5日目：Ⅲ類動詞", kanji: "値する", correct: "あたいする", distractors: ["ちする", "あたいじみる", "ちじる"], exp: "【正解】「値する」讀作「あたいする」，意為「值得、有價值」。" },
+      { type: "5日目：Ⅲ類動詞", kanji: "徹する", correct: "てっする", distractors: ["てつする", "てっじる", "てつじる"], exp: "【正解】「徹する」讀作「てっする」，意為「貫徹到底」。" },
+      { type: "5日目：Ⅲ類動詞", kanji: "案じる", correct: "あんじる", distractors: ["あんする", "あんじみる", "あんちる"], exp: "【正解】「案じる」讀作「あんじる」，意為「擔心、掛念」。" },
+      { type: "6日目：名詞", kanji: "最寄り", correct: "もより", distractors: ["さいきり", "さいより", "もきり"], exp: "【正解】「最寄り」讀作「もより」，意為「最近的（車站/地點）」。" },
+      { type: "6日目：名詞", kanji: "軒並み", correct: "のきなみ", distractors: ["けんなみ", "のきへい", "けんへい"], exp: "【正解】「軒並み」讀作「のきなみ」，意為「一律、全都」。" },
+      { type: "6日目：名詞", kanji: "気配", correct: "けはい", distractors: ["きはい", "けばい", "きばい"], exp: "【正解】「気配」讀作「けはい」，意為「氣息、跡象」。" },
+      { type: "6日目：名詞", kanji: "手際", correct: "てぎわ", distractors: ["しゅぎわ", "てさい", "しゅさい"], exp: "【正解】「手際」讀作「てぎわ」，意為「手法、處理技巧」。" },
+      { type: "6日目：形容動詞", kanji: "過密", correct: "かみつ", distractors: ["かみっ", "過密", "かひつ"], exp: "【正解】「過密」讀作「かみつ」，意為「過於緊密的（班次/行程）」。" },
+      { type: "6日目：形容動詞", kanji: "画期的", correct: "かっきてき", distractors: ["がくてき", "かくきてき", "がっきてき"], exp: "【正解】「画期的」讀作「かっきてき」，意為「劃時代的」。" }
+    ];
+
+    // 洗牌選項並組裝題庫
+    const quizData = baseQuizData.map(q => {
+      const allOpts = [q.correct, ...q.distractors];
+      for (let i = allOpts.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [allOpts[i], allOpts[j]] = [allOpts[j], allOpts[i]];
+      }
+      return {
+        type: q.type,
+        question: `請選出「${q.kanji}」的正確平假名讀音（串字）：`,
+        options: allOpts,
+        answer: allOpts.indexOf(q.correct),
+        explanation: q.exp
+      };
+    });
+
+    let currentQuestion = 0;
+    let userAnswers = new Array(quizData.length).fill(null);
+
+    // DOM 快取
+    const qTagEl = document.getElementById('q-tag');
+    const qNumEl = document.getElementById('q-num');
+    const qTextEl = document.getElementById('q-text');
+    const optionsEl = document.getElementById('options');
+    const explanationEl = document.getElementById('explanation');
+    const explanationContentEl = document.getElementById('explanation-content');
+    const progressBarEl = document.getElementById('progress');
+    const stageEl = document.getElementById('stage');
+    const resultsEl = document.getElementById('results');
+    const jumpGridEl = document.getElementById('jump-grid');
+    const answeredCountEl = document.getElementById('answered-count');
+    const hankoScoreEl = document.getElementById('hanko-score');
+    const vocabListEl = document.getElementById('vocab-list');
+
+    // 切換速查卡天數
+    function switchVocabDay(day) {
+      document.querySelectorAll('.day-tab').forEach((tab) => {
+        tab.classList.toggle('active', tab.getAttribute('onclick').includes(day));
+      });
+      vocabListEl.innerHTML = (vocabData[day] || []).map(item => `<li>${item}</li>`).join('');
+    }
+
+    // 初始化 100 題 Jump Grid
+    function initJumpGrid() {
+      jumpGridEl.innerHTML = '';
+      quizData.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'jump-btn';
+        btn.innerText = i + 1;
+        btn.onclick = () => goToQuestion(i);
+        jumpGridEl.appendChild(btn);
+      });
+      updateJumpGridUI();
+    }
+
+    function selectOption(idx) {
+      if (userAnswers[currentQuestion] !== null) return;
+
+      const q = quizData[currentQuestion];
+      const buttons = optionsEl.getElementsByTagName('button');
+      const isCorrect = idx === q.answer;
+
+      userAnswers[currentQuestion] = isCorrect;
+
+      if (isCorrect) {
+        buttons[idx].classList.add('correct');
+      } else {
+        buttons[idx].classList.add('incorrect');
+        buttons[q.answer].classList.add('correct');
+      }
+
+      for (let btn of buttons) {
+        btn.disabled = true;
+      }
+
+      explanationContentEl.innerHTML = q.explanation;
+      explanationEl.classList.add('show');
+      updateJumpGridUI();
+    }
+
+    function updateJumpGridUI() {
+      const buttons = jumpGridEl.getElementsByClassName('jump-btn');
+      let answeredCount = 0;
+      let correctCount = 0;
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].className = 'jump-btn';
+        if (i === currentQuestion) buttons[i].classList.add('active');
+        if (userAnswers[i] === true) {
+          buttons[i].classList.add('correct');
+          answeredCount++;
+          correctCount++;
+        } else if (userAnswers[i] === false) {
+          buttons[i].classList.add('incorrect');
+          answeredCount++;
+        }
+      }
+
+      answeredCountEl.innerText = `已作答 ${answeredCount} ／ 100`;
+      hankoScoreEl.innerText = correctCount;
+    }
+
+    // 載入題目
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      qTagEl.innerText = q.type;
+      qNumEl.innerText = `第 ${currentQuestion + 1} 題 ／ 共 100 題`;
+      qTextEl.innerText = q.question;
+      progressBarEl.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+
+      optionsEl.innerHTML = '';
+      const isAnswered = userAnswers[currentQuestion] !== null;
+      const labels = ["A", "B", "C", "D"];
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.innerText = `${labels[idx]}. ${opt}`;
+
+        if (isAnswered) {
+          btn.disabled = true;
+          if (idx === q.answer) {
+            btn.classList.add("correct");
+          }
+        }
+
+        btn.onclick = () => selectOption(idx);
+        optionsEl.appendChild(btn);
+      });
+
+      if (isAnswered) {
+        explanationContentEl.innerHTML = q.explanation;
+        explanationEl.classList.add('show');
+      } else {
+        explanationEl.classList.remove('show');
+      }
+
+      updateJumpGridUI();
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < quizData.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+      } else {
+        checkFinish();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        loadQuestion();
+      }
+    }
+
+    function goToQuestion(idx) {
+      currentQuestion = idx;
+      loadQuestion();
+    }
+
+    function checkFinish() {
+      const answered = userAnswers.filter(a => a !== null).length;
+      if (answered < quizData.length) {
+        if (!confirm(`還有 ${quizData.length - answered} 題尚未作答，確定要查看總成績嗎？`)) return;
+      }
+      showScore();
+    }
+
+    function showScore() {
+      stageEl.style.display = 'none';
+      resultsEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'none';
+
+      const correctCount = userAnswers.filter(a => a === true).length;
+      document.getElementById('result-correct').innerText = correctCount;
+      document.getElementById('result-desc').innerText = correctCount >= 90 ? "太出色了！第五週（1〜6日目）平假名讀音與串字掌握得完美無缺，實力直逼 N1 滿分！" : correctCount >= 70 ? "表現優異！平假名讀音觀念十分扎實，再接再厲就能順利合格！" : "建議搭配右側的生字速查卡多加溫習與對照喔！";
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      userAnswers = new Array(quizData.length).fill(null);
+      resultsEl.style.display = 'none';
+      stageEl.style.display = 'block';
+      document.querySelector('.sidebar').style.display = 'flex';
+      initJumpGrid();
+      loadQuestion();
+    }
+
+    // 初始化執行
+    initJumpGrid();
+    switchVocabDay(1);
+    loadQuestion();
+  </script>
+</body>
+</html>
